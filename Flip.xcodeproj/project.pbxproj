@@ -9,7 +9,12 @@
 /* Begin PBXBuildFile section */
 		71C624DA28809F9D007B2CAF /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C624D928809F9D007B2CAF /* CloudKit.framework */; };
 		71C624DC2880A0C1007B2CAF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C624DB2880A0C1007B2CAF /* HomeView.swift */; };
-		71C624DE2880A149007B2CAF /* BooksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C624DD2880A149007B2CAF /* BooksView.swift */; };
+		71C624DE2880A149007B2CAF /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C624DD2880A149007B2CAF /* LibraryView.swift */; };
+		71C624E02880AEC0007B2CAF /* Book-CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C624DF2880AEC0007B2CAF /* Book-CoreDataHelpers.swift */; };
+		71C624E22880B5D5007B2CAF /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C624E12880B5D5007B2CAF /* SearchView.swift */; };
+		71C624E42880B5F8007B2CAF /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C624E32880B5F8007B2CAF /* StatsView.swift */; };
+		71C624E62880B615007B2CAF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C624E52880B615007B2CAF /* SettingsView.swift */; };
+		71C624E82880B8EF007B2CAF /* LibraryBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C624E72880B8EF007B2CAF /* LibraryBookView.swift */; };
 		71E002BE288095B8006E23DF /* FlipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E002BD288095B8006E23DF /* FlipApp.swift */; };
 		71E002C0288095B8006E23DF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E002BF288095B8006E23DF /* ContentView.swift */; };
 		71E002C2288095B9006E23DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71E002C1288095B9006E23DF /* Assets.xcassets */; };
@@ -23,7 +28,12 @@
 		71C624D728809F80007B2CAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		71C624D928809F9D007B2CAF /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		71C624DB2880A0C1007B2CAF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		71C624DD2880A149007B2CAF /* BooksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksView.swift; sourceTree = "<group>"; };
+		71C624DD2880A149007B2CAF /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		71C624DF2880AEC0007B2CAF /* Book-CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Book-CoreDataHelpers.swift"; sourceTree = "<group>"; };
+		71C624E12880B5D5007B2CAF /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		71C624E32880B5F8007B2CAF /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		71C624E52880B615007B2CAF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		71C624E72880B8EF007B2CAF /* LibraryBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryBookView.swift; sourceTree = "<group>"; };
 		71E002BA288095B8006E23DF /* Flip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71E002BD288095B8006E23DF /* FlipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipApp.swift; sourceTree = "<group>"; };
 		71E002BF288095B8006E23DF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -77,9 +87,14 @@
 				71C624D628809F5D007B2CAF /* Flip.entitlements */,
 				71E002BD288095B8006E23DF /* FlipApp.swift */,
 				71C624DB2880A0C1007B2CAF /* HomeView.swift */,
-				71C624DD2880A149007B2CAF /* BooksView.swift */,
+				71C624DD2880A149007B2CAF /* LibraryView.swift */,
+				71C624E72880B8EF007B2CAF /* LibraryBookView.swift */,
 				71E002BF288095B8006E23DF /* ContentView.swift */,
+				71C624E52880B615007B2CAF /* SettingsView.swift */,
+				71C624E32880B5F8007B2CAF /* StatsView.swift */,
+				71C624E12880B5D5007B2CAF /* SearchView.swift */,
 				71E002CE28809767006E23DF /* DataController.swift */,
+				71C624DF2880AEC0007B2CAF /* Book-CoreDataHelpers.swift */,
 				71E002CB288095D4006E23DF /* Flip.xcdatamodeld */,
 				71E002C1288095B9006E23DF /* Assets.xcassets */,
 				71E002C3288095B9006E23DF /* Preview Content */,
@@ -167,10 +182,15 @@
 			files = (
 				71E002C0288095B8006E23DF /* ContentView.swift in Sources */,
 				71E002CF28809767006E23DF /* DataController.swift in Sources */,
+				71C624E02880AEC0007B2CAF /* Book-CoreDataHelpers.swift in Sources */,
+				71C624E82880B8EF007B2CAF /* LibraryBookView.swift in Sources */,
 				71E002BE288095B8006E23DF /* FlipApp.swift in Sources */,
-				71C624DE2880A149007B2CAF /* BooksView.swift in Sources */,
+				71C624E22880B5D5007B2CAF /* SearchView.swift in Sources */,
+				71C624E62880B615007B2CAF /* SettingsView.swift in Sources */,
+				71C624DE2880A149007B2CAF /* LibraryView.swift in Sources */,
 				71C624DC2880A0C1007B2CAF /* HomeView.swift in Sources */,
 				71E002CD288095D4006E23DF /* Flip.xcdatamodeld in Sources */,
+				71C624E42880B5F8007B2CAF /* StatsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

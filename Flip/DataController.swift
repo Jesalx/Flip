@@ -46,6 +46,10 @@ class DataController: ObservableObject {
             book.summary = "This is a summar of some book. Words. Blah blah blah."
             book.read = Bool.random()
             book.publicationDate = Date()
+            book.genres = "Genre1, Genre2, Genre3"
+            book.publishingCompany = "Random House Publishing"
+            book.pageCount = Int16.random(in: 1...1400)
+            book.dateRead = Date()
         }
         try viewContext.save()
     }

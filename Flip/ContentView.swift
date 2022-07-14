@@ -8,27 +8,40 @@
 import SwiftUI
 
 struct ContentView: View {
+    @SceneStorage("selectedView") var selectedView = LibraryView.tag
+    
     var body: some View {
-        TabView {
+        TabView(selection: $selectedView) {
 //            HomeView()
+//                .tag(HomeView.tag)
 //                .tabItem {
 //                    Image(systemName: "house")
 //                    Text("Home")
 //                }
             
-            BooksView(showOnlyReadBooks: true)
+            LibraryView(showOnlyReadBooks: true)
+                .tag(LibraryView.tag)
                 .tabItem {
                     Image(systemName: "books.vertical.fill")
                     Text("Library")
                 }
             
-            Text("Search")
+            SearchView()
+                .tag(SearchView.tag)
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                     Text("Search")
                 }
             
-            Text("Settings")
+             StatsView()
+                .tag(StatsView.tag)
+                .tabItem {
+                    Image(systemName: "hourglass")
+                    Text("Stats")
+                }
+            
+            HomeView()
+                .tag(HomeView.tag)
                 .tabItem {
                     Image(systemName: "gear")
                     Text("Settings")

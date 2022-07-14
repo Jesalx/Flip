@@ -1,5 +1,5 @@
 //
-//  BooksView.swift
+//  LibraryView.swift
 //  Flip
 //
 //  Created by Jesal Patel on 7/14/22.
@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-struct BooksView: View {
+struct LibraryView: View {
+    static let tag: String = "Library"
+    
     let showOnlyReadBooks: Bool
     let books: FetchRequest<Book>
     
@@ -16,16 +18,14 @@ struct BooksView: View {
         books = FetchRequest<Book>(entity: Book.entity(), sortDescriptors: [
             NSSortDescriptor(keyPath: \Book.title, ascending: true)
         ], predicate: NSPredicate(format: "read = %d", showOnlyReadBooks))
-        // ], predicate: NSPredicate(format: "read = %d", showOnlyReadBooks))
-        
     }
     
     var body: some View {
         NavigationView {
             List {
                 ForEach(books.wrappedValue) { book in
-                    NavigationLink(book.title ?? "Unknown") {
-                        Text(book.title ?? "Unknown")
+                    NavigationLink(destination: LibraryBookView(book: book)) {
+                        Text(book.bookTitle)
                     }
                 }
             }
@@ -35,10 +35,10 @@ struct BooksView: View {
     }
 }
 
-struct BooksView_Previews: PreviewProvider {
+struct LibraryView_Previews: PreviewProvider {
     static var dataController = DataController.preview
     static var previews: some View {
-        BooksView(showOnlyReadBooks: false)
+        LibraryView(showOnlyReadBooks: false)
             .environment(\.managedObjectContext, dataController.container.viewContext)
             .environmentObject(dataController)
     }
