@@ -1,0 +1,393 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		71C624DA28809F9D007B2CAF /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C624D928809F9D007B2CAF /* CloudKit.framework */; };
+		71C624DC2880A0C1007B2CAF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C624DB2880A0C1007B2CAF /* HomeView.swift */; };
+		71C624DE2880A149007B2CAF /* BooksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C624DD2880A149007B2CAF /* BooksView.swift */; };
+		71E002BE288095B8006E23DF /* FlipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E002BD288095B8006E23DF /* FlipApp.swift */; };
+		71E002C0288095B8006E23DF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E002BF288095B8006E23DF /* ContentView.swift */; };
+		71E002C2288095B9006E23DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71E002C1288095B9006E23DF /* Assets.xcassets */; };
+		71E002C5288095B9006E23DF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71E002C4288095B9006E23DF /* Preview Assets.xcassets */; };
+		71E002CD288095D4006E23DF /* Flip.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 71E002CB288095D4006E23DF /* Flip.xcdatamodeld */; };
+		71E002CF28809767006E23DF /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E002CE28809767006E23DF /* DataController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		71C624D628809F5D007B2CAF /* Flip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Flip.entitlements; sourceTree = "<group>"; };
+		71C624D728809F80007B2CAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		71C624D928809F9D007B2CAF /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		71C624DB2880A0C1007B2CAF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		71C624DD2880A149007B2CAF /* BooksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksView.swift; sourceTree = "<group>"; };
+		71E002BA288095B8006E23DF /* Flip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flip.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		71E002BD288095B8006E23DF /* FlipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipApp.swift; sourceTree = "<group>"; };
+		71E002BF288095B8006E23DF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		71E002C1288095B9006E23DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		71E002C4288095B9006E23DF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		71E002CC288095D4006E23DF /* Flip.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Flip.xcdatamodel; sourceTree = "<group>"; };
+		71E002CE28809767006E23DF /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		71E002B7288095B8006E23DF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71C624DA28809F9D007B2CAF /* CloudKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		71C624D828809F9D007B2CAF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				71C624D928809F9D007B2CAF /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		71E002B1288095B8006E23DF = {
+			isa = PBXGroup;
+			children = (
+				71E002BC288095B8006E23DF /* Flip */,
+				71E002BB288095B8006E23DF /* Products */,
+				71C624D828809F9D007B2CAF /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		71E002BB288095B8006E23DF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				71E002BA288095B8006E23DF /* Flip.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		71E002BC288095B8006E23DF /* Flip */ = {
+			isa = PBXGroup;
+			children = (
+				71C624D728809F80007B2CAF /* Info.plist */,
+				71C624D628809F5D007B2CAF /* Flip.entitlements */,
+				71E002BD288095B8006E23DF /* FlipApp.swift */,
+				71C624DB2880A0C1007B2CAF /* HomeView.swift */,
+				71C624DD2880A149007B2CAF /* BooksView.swift */,
+				71E002BF288095B8006E23DF /* ContentView.swift */,
+				71E002CE28809767006E23DF /* DataController.swift */,
+				71E002CB288095D4006E23DF /* Flip.xcdatamodeld */,
+				71E002C1288095B9006E23DF /* Assets.xcassets */,
+				71E002C3288095B9006E23DF /* Preview Content */,
+			);
+			path = Flip;
+			sourceTree = "<group>";
+		};
+		71E002C3288095B9006E23DF /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				71E002C4288095B9006E23DF /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		71E002B9288095B8006E23DF /* Flip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 71E002C8288095B9006E23DF /* Build configuration list for PBXNativeTarget "Flip" */;
+			buildPhases = (
+				71E002B6288095B8006E23DF /* Sources */,
+				71E002B7288095B8006E23DF /* Frameworks */,
+				71E002B8288095B8006E23DF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Flip;
+			productName = Flip;
+			productReference = 71E002BA288095B8006E23DF /* Flip.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		71E002B2288095B8006E23DF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					71E002B9288095B8006E23DF = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 71E002B5288095B8006E23DF /* Build configuration list for PBXProject "Flip" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 71E002B1288095B8006E23DF;
+			productRefGroup = 71E002BB288095B8006E23DF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				71E002B9288095B8006E23DF /* Flip */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		71E002B8288095B8006E23DF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71E002C5288095B9006E23DF /* Preview Assets.xcassets in Resources */,
+				71E002C2288095B9006E23DF /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		71E002B6288095B8006E23DF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71E002C0288095B8006E23DF /* ContentView.swift in Sources */,
+				71E002CF28809767006E23DF /* DataController.swift in Sources */,
+				71E002BE288095B8006E23DF /* FlipApp.swift in Sources */,
+				71C624DE2880A149007B2CAF /* BooksView.swift in Sources */,
+				71C624DC2880A0C1007B2CAF /* HomeView.swift in Sources */,
+				71E002CD288095D4006E23DF /* Flip.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		71E002C6288095B9006E23DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		71E002C7288095B9006E23DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		71E002C9288095B9006E23DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Flip/Flip.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Flip/Preview Content\"";
+				DEVELOPMENT_TEAM = 8W74HT4Y4R;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Flip/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.jesal.Flip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		71E002CA288095B9006E23DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Flip/Flip.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Flip/Preview Content\"";
+				DEVELOPMENT_TEAM = 8W74HT4Y4R;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Flip/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.jesal.Flip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		71E002B5288095B8006E23DF /* Build configuration list for PBXProject "Flip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				71E002C6288095B9006E23DF /* Debug */,
+				71E002C7288095B9006E23DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		71E002C8288095B9006E23DF /* Build configuration list for PBXNativeTarget "Flip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				71E002C9288095B9006E23DF /* Debug */,
+				71E002CA288095B9006E23DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		71E002CB288095D4006E23DF /* Flip.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				71E002CC288095D4006E23DF /* Flip.xcdatamodel */,
+			);
+			currentVersion = 71E002CC288095D4006E23DF /* Flip.xcdatamodel */;
+			path = Flip.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 71E002B2288095B8006E23DF /* Project object */;
+}

@@ -1,0 +1,12 @@
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+## User settings
+xcuserdata/
+
+## App packaging
+*.ipa
+*.dSYM.zip
+*.dSYM
