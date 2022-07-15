@@ -27,13 +27,16 @@ struct LibraryView: View {
                     Button {
                         showingSortOrder.toggle()
                     } label: {
-                        Label("Sort", systemImage: "arrow.up.arrow.down")
+//                        Label("Sort", systemImage: "arrow.up.arrow.down")
+                        Label("Sort", systemImage: "line.3.horizontal.decrease.circle")
                     }
                 }
             }
             .confirmationDialog("Sort Books", isPresented: $showingSortOrder) {
                 Button("Author") { sortOrder = .author }
                 Button("Title") { sortOrder = .title }
+                Button("Finish Date") { sortOrder = .readDate }
+                Button("Publication Date") { sortOrder = .publicationDate }
                 Button("Cancel", role: .cancel) { }
             } message: {
                 Text("Sort Books")

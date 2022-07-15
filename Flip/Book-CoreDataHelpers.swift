@@ -9,7 +9,7 @@ import Foundation
 
 extension Book {
     enum SortOrder {
-        case title, author
+        case title, author, publicationDate, readDate
     }
     
     var bookTitle: String {

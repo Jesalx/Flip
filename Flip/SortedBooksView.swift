@@ -20,6 +20,10 @@ struct SortedBooksView: View {
             sortDescriptor = NSSortDescriptor(keyPath: \Book.title, ascending: true)
         case .author:
             sortDescriptor = NSSortDescriptor(keyPath: \Book.author, ascending: true)
+        case .readDate:
+            sortDescriptor = NSSortDescriptor(keyPath: \Book.dateRead, ascending: true)
+        case .publicationDate:
+            sortDescriptor = NSSortDescriptor(keyPath: \Book.publicationDate, ascending: true)
         }
         _books = FetchRequest<Book>(entity: Book.entity(), sortDescriptors: [sortDescriptor])
     }
