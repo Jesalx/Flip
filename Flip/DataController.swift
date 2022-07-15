@@ -81,6 +81,17 @@ class DataController: ObservableObject {
         book2.pageCount = Int16(442)
         book2.dateRead = Date()
         
+        let book3 = Book(context: viewContext)
+        book3.title = "This is a really long title of a book that doesn't exist so I can see how it looks"
+        book3.author = "Sir Noobington Richard Reginald Arthur"
+        book3.summary = "This book takes place in space."
+        book3.read = true
+        book3.publicationDate = Date()
+        book3.genres = "Genre1, Genre2, Genre3"
+        book3.publishingCompany = "Random House Publishing"
+        book3.pageCount = 3600
+        book3.dateRead = Date()
+        
         try viewContext.save()
     }
     
@@ -98,5 +109,9 @@ class DataController: ObservableObject {
         let fetchRequest1: NSFetchRequest<NSFetchRequestResult> = Book.fetchRequest()
         let batchDeleteRequest1 = NSBatchDeleteRequest(fetchRequest: fetchRequest1)
         _ = try? container.viewContext.execute(batchDeleteRequest1)
+    }
+    
+    func count<T>(for fetchRequest: NSFetchRequest<T>) -> Int {
+        (try? container.viewContext.count(for: fetchRequest)) ?? 0
     }
 }

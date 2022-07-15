@@ -10,8 +10,43 @@ import SwiftUI
 struct SearchView: View {
     static let tag: String = "Search"
     
+    @State private var searchedBooks: [Item] = []
+    @State private var searchText = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            List(searchedBooks) { item in
+                VStack(alignment: .leading) {
+                    Text(item.volumeInfo.title ?? "None")
+                }
+            }
+            .navigationTitle("Search")
+        }
+        .searchable(text: $searchText, prompt: "Search Google Books")
+        .onSubmit(of: .search) {
+            Task { @MainActor in
+                await loadData()
+            }
+        }
+    }
+    
+    func loadData() async {
+        let formattedQuery = searchText.replacingOccurrences(of: " ", with: "+")
+        let urlstring = "https://www.googleapis.com/books/v1/volumes?q=\(formattedQuery)&printType=books&maxResults=20"
+        guard let url = URL(string: urlstring) else {
+            print("Invalid search URL")
+            return
+        }
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            if let decodedResponse = try? JSONDecoder().decode(Response.self, from: data) {
+                searchedBooks = decodedResponse.items
+            } else {
+                searchedBooks = []
+            }
+        } catch {
+            print("Invalid search data")
+        }
     }
 }
 

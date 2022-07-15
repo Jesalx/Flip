@@ -9,15 +9,20 @@ import SwiftUI
 
 struct LibraryRowView: View {
     @ObservedObject var book: Book
+    
     var body: some View {
         NavigationLink(destination: LibraryBookView(book: book)) {
             HStack {
                 VStack(alignment: .leading) {
                     Text(book.bookTitle)
                         .font(.headline)
+                    
                     Text(book.bookAuthor)
                         .font(.subheadline)
                 }
+                Spacer()
+                Image(systemName: "checkmark.circle")
+                    .foregroundColor(book.bookRead ? .primary : .clear)
             }
         }
     }

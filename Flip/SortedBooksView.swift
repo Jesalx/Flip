@@ -12,8 +12,12 @@ struct SortedBooksView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     
     @FetchRequest private var books: FetchedResults<Book>
+    let sortOrder: Book.SortOrder
+    let bookFilter: Book.BookFilter
     
     init(sortOrder: Book.SortOrder, bookFilter: Book.BookFilter) {
+        self.sortOrder = sortOrder
+        self.bookFilter = bookFilter
         var sortDescriptor: NSSortDescriptor
         var predicate: NSPredicate
         
@@ -40,15 +44,35 @@ struct SortedBooksView: View {
     }
     
     var body: some View {
-        ForEach(books) { book in
-            LibraryRowView(book: book)
-        }
-        .onDelete { offsets in
-            for offset in offsets {
-                let book = books[offset]
-                dataController.delete(book)
+        Group {
+            if books.isEmpty {
+                Text(emptyBooksText())
+                    .foregroundColor(.secondary)
+            } else {
+                List {
+                    ForEach(books) { book in
+                        LibraryRowView(book: book)
+                    }
+                    .onDelete { offsets in
+                        for offset in offsets {
+                            let book = books[offset]
+                            dataController.delete(book)
+                        }
+                        dataController.save()
+                    }
+                }
             }
-            dataController.save()
+        }
+    }
+    
+    func emptyBooksText() -> String {
+        switch bookFilter {
+        case .allBooks:
+            return "Your library is empty."
+        case .readBooks:
+            return "You don't have any read books."
+        case .unreadBooks:
+            return "You don't have any unread books."
         }
     }
 }

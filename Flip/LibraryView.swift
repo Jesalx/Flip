@@ -19,37 +19,47 @@ struct LibraryView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                SortedBooksView(sortOrder: sortOrder, bookFilter: bookFilter)
-            }
-            .navigationTitle("Library")
-            .toolbar {
-               ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        showingSortOrder.toggle()
-                    } label: {
-                        Label("Sort", systemImage: "arrow.up.arrow.down")
+            SortedBooksView(sortOrder: sortOrder, bookFilter: bookFilter)
+                .navigationTitle(navigationTitleText())
+                .toolbar {
+                   ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            showingSortOrder.toggle()
+                        } label: {
+                            Label("Sort", systemImage: "arrow.up.arrow.down")
+                        }
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Menu {
+                            Button("All Items") { bookFilter = .allBooks }
+                            Button("Read") { bookFilter = .readBooks }
+                            Button("Unread") { bookFilter = .unreadBooks }
+                        } label: {
+                            Label("Filter", systemImage: "line.3.horizontal.decrease.circle")
+                        }
                     }
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Menu {
-                        Button("All Items") { bookFilter = .allBooks }
-                        Button("Read") { bookFilter = .readBooks }
-                        Button("Unread") { bookFilter = .unreadBooks }
-                    } label: {
-                        Label("Filter", systemImage: "line.3.horizontal.decrease.circle")
-                    }
+                .confirmationDialog("Sort Books", isPresented: $showingSortOrder) {
+                    Button("Author") { sortOrder = .author }
+                    Button("Title") { sortOrder = .title }
+                    Button("Finish Date") { sortOrder = .readDate }
+                    Button("Publication Date") { sortOrder = .publicationDate }
+                    Button("Cancel", role: .cancel) { }
+                } message: {
+                    Text("Sort Books")
                 }
-            }
-            .confirmationDialog("Sort Books", isPresented: $showingSortOrder) {
-                Button("Author") { sortOrder = .author }
-                Button("Title") { sortOrder = .title }
-                Button("Finish Date") { sortOrder = .readDate }
-                Button("Publication Date") { sortOrder = .publicationDate }
-                Button("Cancel", role: .cancel) { }
-            } message: {
-                Text("Sort Books")
-            }
+            EmptySelectionView()
+        }
+    }
+    
+    func navigationTitleText() -> String {
+        switch bookFilter {
+        case .allBooks:
+            return "Library"
+        case .readBooks:
+            return "Read"
+        case .unreadBooks:
+            return "Unread"
         }
     }
 }
