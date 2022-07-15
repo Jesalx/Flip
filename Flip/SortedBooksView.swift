@@ -13,7 +13,14 @@ struct SortedBooksView: View {
     
     @FetchRequest private var books: FetchedResults<Book>
     
-    init(sortDescriptor: NSSortDescriptor) {
+    init(sortOrder: Book.SortOrder) {
+        var sortDescriptor: NSSortDescriptor
+        switch sortOrder {
+        case .title:
+            sortDescriptor = NSSortDescriptor(keyPath: \Book.title, ascending: true)
+        case .author:
+            sortDescriptor = NSSortDescriptor(keyPath: \Book.author, ascending: true)
+        }
         _books = FetchRequest<Book>(entity: Book.entity(), sortDescriptors: [sortDescriptor])
     }
     
@@ -33,6 +40,6 @@ struct SortedBooksView: View {
 
 struct SortedBooksView_Previews: PreviewProvider {
     static var previews: some View {
-        SortedBooksView(sortDescriptor: NSSortDescriptor(keyPath: \Book.author, ascending: true))
+        SortedBooksView(sortOrder: .author)
     }
 }

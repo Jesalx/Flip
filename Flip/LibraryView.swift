@@ -14,23 +14,12 @@ struct LibraryView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     
     @State private var showingSortOrder = false
-    @State private var sortDescriptor: NSSortDescriptor = NSSortDescriptor(keyPath: \Book.author, ascending: true)
-    
-//    let showOnlyReadBooks: Bool
-//    let books: FetchRequest<Book>
-//
-//    init(showOnlyReadBooks: Bool) {
-//        self.showOnlyReadBooks = showOnlyReadBooks
-//        books = FetchRequest<Book>(entity: Book.entity(), sortDescriptors: [
-//            NSSortDescriptor(keyPath: \Book.author, ascending: true)
-//        ])
-////        ], predicate: NSPredicate(format: "read = %d", showOnlyReadBooks))
-//    }
+    @State private var sortOrder: Book.SortOrder = Book.SortOrder.author
     
     var body: some View {
         NavigationView {
             List {
-                SortedBooksView(sortDescriptor: sortDescriptor)
+                SortedBooksView(sortOrder: sortOrder)
             }
             .navigationTitle("Library")
             .toolbar {
@@ -43,8 +32,8 @@ struct LibraryView: View {
                 }
             }
             .confirmationDialog("Sort Books", isPresented: $showingSortOrder) {
-                Button("Author") { sortDescriptor = NSSortDescriptor(keyPath: \Book.author, ascending: true)}
-                Button("Title") { sortDescriptor = NSSortDescriptor(keyPath: \Book.title, ascending: true)}
+                Button("Author") { sortOrder = .author }
+                Button("Title") { sortOrder = .title }
                 Button("Cancel", role: .cancel) { }
             } message: {
                 Text("Sort Books")
