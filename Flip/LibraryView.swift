@@ -10,6 +10,12 @@ import SwiftUI
 struct LibraryView: View {
     static let tag: String = "Library"
     
+    @EnvironmentObject var dataController: DataController
+    @Environment(\.managedObjectContext) var managedObjectContext
+    
+    @State private var showingSortOrder = false
+    @State private var sortOrder = Book.SortOrder.author
+    
     let showOnlyReadBooks: Bool
     let books: FetchRequest<Book>
     
@@ -17,20 +23,42 @@ struct LibraryView: View {
         self.showOnlyReadBooks = showOnlyReadBooks
         books = FetchRequest<Book>(entity: Book.entity(), sortDescriptors: [
             NSSortDescriptor(keyPath: \Book.title, ascending: true)
-        ], predicate: NSPredicate(format: "read = %d", showOnlyReadBooks))
+        ])
+//        ], predicate: NSPredicate(format: "read = %d", showOnlyReadBooks))
     }
     
     var body: some View {
         NavigationView {
             List {
                 ForEach(books.wrappedValue) { book in
-                    NavigationLink(destination: LibraryBookView(book: book)) {
-                        Text(book.bookTitle)
+                    LibraryRowView(book: book)
+                }
+                .onDelete { offsets in
+                    for offset in offsets {
+                        let book = books.wrappedValue[offset]
+                        dataController.delete(book)
                     }
+                    dataController.save()
                 }
             }
             //.navigationTitle(showOnlyReadBooks ? "Read Books" : "Unread Books")
             .navigationTitle("Library")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        showingSortOrder.toggle()
+                    } label: {
+                        Label("Sort", systemImage: "arrow.up.arrow.down")
+                    }
+                }
+            }
+            .confirmationDialog("Sort Books", isPresented: $showingSortOrder) {
+                Button("Author") { sortOrder = .author }
+                Button("Title") { sortOrder = .title }
+                Button("Cancel", role: .cancel) { }
+            } message: {
+                Text("Sort Books")
+            }
         }
     }
 }

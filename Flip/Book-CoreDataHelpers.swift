@@ -8,6 +8,10 @@
 import Foundation
 
 extension Book {
+    enum SortOrder {
+        case title, author
+    }
+    
     var bookTitle: String {
         title ?? "Unknown Title"
     }

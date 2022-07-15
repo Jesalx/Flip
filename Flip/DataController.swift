@@ -51,6 +51,19 @@ class DataController: ObservableObject {
             book.pageCount = Int16.random(in: 1...1400)
             book.dateRead = Date()
         }
+        let book = Book(context: viewContext)
+        book.title = "The Way of Kings"
+        book.author = "Brandon Sanderson"
+        book.summary = """
+        Roshar is a world of stone and storms. Uncanny tempests of incredible power sweep across the rocky terrain so frequently that they have shaped ecology and civilization alike. Animals hide in shells, trees pull in branches, and grass retracts into the soilless ground. Cities are built only where the topography offers shelter.
+        """
+        book.read = true
+        book.publicationDate = Date()
+        book.genres = "Fantasy, Action & Adventure, Epic"
+        book.publishingCompany = "Tom Doherty Associates, 2010"
+        book.pageCount = Int16(1008)
+        book.dateRead = Date()
+        
         try viewContext.save()
     }
     

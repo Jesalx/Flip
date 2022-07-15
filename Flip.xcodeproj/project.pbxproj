@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7107F44E2880DA4500CE89A5 /* LibraryRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107F44D2880DA4500CE89A5 /* LibraryRowView.swift */; };
 		71C624DA28809F9D007B2CAF /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C624D928809F9D007B2CAF /* CloudKit.framework */; };
 		71C624DC2880A0C1007B2CAF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C624DB2880A0C1007B2CAF /* HomeView.swift */; };
 		71C624DE2880A149007B2CAF /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C624DD2880A149007B2CAF /* LibraryView.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7107F44D2880DA4500CE89A5 /* LibraryRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryRowView.swift; sourceTree = "<group>"; };
 		71C624D628809F5D007B2CAF /* Flip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Flip.entitlements; sourceTree = "<group>"; };
 		71C624D728809F80007B2CAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		71C624D928809F9D007B2CAF /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -88,6 +90,7 @@
 				71E002BD288095B8006E23DF /* FlipApp.swift */,
 				71C624DB2880A0C1007B2CAF /* HomeView.swift */,
 				71C624DD2880A149007B2CAF /* LibraryView.swift */,
+				7107F44D2880DA4500CE89A5 /* LibraryRowView.swift */,
 				71C624E72880B8EF007B2CAF /* LibraryBookView.swift */,
 				71E002BF288095B8006E23DF /* ContentView.swift */,
 				71C624E52880B615007B2CAF /* SettingsView.swift */,
@@ -191,6 +194,7 @@
 				71C624DC2880A0C1007B2CAF /* HomeView.swift in Sources */,
 				71E002CD288095D4006E23DF /* Flip.xcdatamodeld in Sources */,
 				71C624E42880B5F8007B2CAF /* StatsView.swift in Sources */,
+				7107F44E2880DA4500CE89A5 /* LibraryRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -51,12 +51,22 @@ struct LibraryBookView: View {
             
             Section {
                 Toggle("Mark Read", isOn: $read)
-                DatePicker("Date Finished", selection: $dateRead, in: ...Date.now, displayedComponents: .date)
-                    .datePickerStyle(.graphical)
+                if read {
+                    DatePicker("Date Finished", selection: $dateRead, in: ...Date.now, displayedComponents: .date)
+                        .datePickerStyle(.graphical)
+                }
             }
         }
         .navigationTitle(book.bookTitle)
-//        .navigationBarTitleDisplayMode(.inline)
+        .onChange(of: read) { _ in update() }
+        .onChange(of: dateRead) { _ in update() }
+        .onDisappear(perform: dataController.save)
+    }
+    
+    func update() {
+        book.objectWillChange.send()
+        book.read = read
+        book.dateRead = dateRead
     }
 }
 
