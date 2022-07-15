@@ -64,6 +64,23 @@ class DataController: ObservableObject {
         book.pageCount = Int16(1008)
         book.dateRead = Date()
         
+        let book2 = Book(context: viewContext)
+        book2.title = "Reaper"
+        book2.author = "Will Wight"
+        book2.summary = """
+        With his home finally secure, Lindon delves deep into the ancient labyrinth, seeking long-lost Soulsmithing knowledge and the secret to destroying the Dreadgods. Monarchs plot against him and against each other, unaware of the threats gathering in realms beyond.
+
+        Far above Lindon and the Monarchs and the Dreadgods, another war is waged. Suriel and the Abidan clash against the Mad King and his forces in a battle for the fate of many worlds.
+
+        And if it is lost, Cradle will be destroyed.
+        """
+        book2.read = true
+        book2.publicationDate = Date()
+        book2.genres = "Fiction, Fantasy, General"
+        book2.publishingCompany = "Hidden Gnome Publishing"
+        book2.pageCount = Int16(442)
+        book2.dateRead = Date()
+        
         try viewContext.save()
     }
     

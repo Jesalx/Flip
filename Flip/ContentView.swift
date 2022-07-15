@@ -19,7 +19,7 @@ struct ContentView: View {
 //                    Text("Home")
 //                }
             
-            LibraryView(showOnlyReadBooks: true)
+            LibraryView()
                 .tag(LibraryView.tag)
                 .tabItem {
                     Image(systemName: "books.vertical.fill")
