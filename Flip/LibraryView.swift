@@ -14,21 +14,30 @@ struct LibraryView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     
     @State private var showingSortOrder = false
-    @State private var sortOrder: Book.SortOrder = Book.SortOrder.author
+    @State private var sortOrder: Book.SortOrder = .author
+    @State private var bookFilter: Book.BookFilter = .allBooks
     
     var body: some View {
         NavigationView {
             List {
-                SortedBooksView(sortOrder: sortOrder)
+                SortedBooksView(sortOrder: sortOrder, bookFilter: bookFilter)
             }
             .navigationTitle("Library")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+               ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         showingSortOrder.toggle()
                     } label: {
-//                        Label("Sort", systemImage: "arrow.up.arrow.down")
-                        Label("Sort", systemImage: "line.3.horizontal.decrease.circle")
+                        Label("Sort", systemImage: "arrow.up.arrow.down")
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Menu {
+                        Button("All Items") { bookFilter = .allBooks }
+                        Button("Read") { bookFilter = .readBooks }
+                        Button("Unread") { bookFilter = .unreadBooks }
+                    } label: {
+                        Label("Filter", systemImage: "line.3.horizontal.decrease.circle")
                     }
                 }
             }

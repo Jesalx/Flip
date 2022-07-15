@@ -13,8 +13,19 @@ struct SortedBooksView: View {
     
     @FetchRequest private var books: FetchedResults<Book>
     
-    init(sortOrder: Book.SortOrder) {
+    init(sortOrder: Book.SortOrder, bookFilter: Book.BookFilter) {
         var sortDescriptor: NSSortDescriptor
+        var predicate: NSPredicate
+        
+        switch bookFilter {
+        case .allBooks:
+            predicate = NSPredicate(value: true)
+        case .readBooks:
+            predicate = NSPredicate(format: "read = true")
+        case .unreadBooks:
+            predicate = NSPredicate(format: "read = false")
+        }
+        
         switch sortOrder {
         case .title:
             sortDescriptor = NSSortDescriptor(keyPath: \Book.title, ascending: true)
@@ -25,7 +36,7 @@ struct SortedBooksView: View {
         case .publicationDate:
             sortDescriptor = NSSortDescriptor(keyPath: \Book.publicationDate, ascending: true)
         }
-        _books = FetchRequest<Book>(entity: Book.entity(), sortDescriptors: [sortDescriptor])
+        _books = FetchRequest<Book>(entity: Book.entity(), sortDescriptors: [sortDescriptor], predicate: predicate)
     }
     
     var body: some View {
@@ -44,6 +55,6 @@ struct SortedBooksView: View {
 
 struct SortedBooksView_Previews: PreviewProvider {
     static var previews: some View {
-        SortedBooksView(sortOrder: .author)
+        SortedBooksView(sortOrder: .author, bookFilter: .allBooks)
     }
 }

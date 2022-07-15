@@ -12,6 +12,10 @@ extension Book {
         case title, author, publicationDate, readDate
     }
     
+    enum BookFilter {
+        case allBooks, readBooks, unreadBooks
+    }
+    
     var bookTitle: String {
         title ?? "Unknown Title"
     }
