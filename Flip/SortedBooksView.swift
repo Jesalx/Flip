@@ -35,6 +35,8 @@ struct SortedBooksView: View {
             sortDescriptor = NSSortDescriptor(keyPath: \Book.title, ascending: true)
         case .author:
             sortDescriptor = NSSortDescriptor(keyPath: \Book.author, ascending: true)
+        case .pageCount:
+            sortDescriptor = NSSortDescriptor(keyPath: \Book.pageCount, ascending: true)
         case .readDate:
             sortDescriptor = NSSortDescriptor(keyPath: \Book.dateRead, ascending: true)
         case .publicationDate:

@@ -40,6 +40,7 @@ struct LibraryView: View {
                 .confirmationDialog("Sort Books", isPresented: $showingSortOrder) {
                     Button("Author") { sortOrder = .author }
                     Button("Title") { sortOrder = .title }
+                    Button("Page Count") { sortOrder = .pageCount }
                     Button("Finish Date") { sortOrder = .readDate }
                     Button("Publication Date") { sortOrder = .publicationDate }
                     Button("Cancel", role: .cancel) { }
