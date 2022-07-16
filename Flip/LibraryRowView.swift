@@ -42,6 +42,7 @@ struct LibraryRowView: View {
                     Text(book.bookFirstAuthor)
                         .font(.subheadline)
                 }
+                Spacer()
                 Image(systemName: "checkmark.circle")
                     .foregroundColor(book.bookRead ? .primary : .clear)
             }
