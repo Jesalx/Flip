@@ -16,6 +16,7 @@ struct SearchedBookView: View {
     @FetchRequest private var books: FetchedResults<Book>
     
     @State private var showingFullDescription = false
+    @State private var showingDeleteConfirmation = false
     
     init(item: Item) {
         self.item = item
@@ -94,11 +95,12 @@ struct SearchedBookView: View {
         }
         .navigationTitle(item.volumeInfo.wrappedTitle)
         .navigationBarTitleDisplayMode(.inline)
+        .onDisappear(perform: dataController.save)
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 if let _ = books.first {
                     Button(role: .destructive) {
-                        deleteBook()
+                        showingDeleteConfirmation.toggle()
                     } label: {
                         Label("Delete", systemImage: "minus.circle")
                             .foregroundColor(.red)
@@ -112,6 +114,9 @@ struct SearchedBookView: View {
                     }
                 }
             }
+        }
+        .alert(isPresented: $showingDeleteConfirmation) {
+            Alert(title: Text("Delete book"), message: Text("Are you sure you want to delete \(item.volumeInfo.wrappedTitle) from your library?"), primaryButton: .destructive(Text("Delete"), action: deleteBook), secondaryButton: .cancel())
         }
     }
     
@@ -138,6 +143,7 @@ struct SearchedBookView: View {
     func deleteBook() {
         if let book = books.first {
             dataController.delete(book)
+            dataController.save()
             return
         }
     }
