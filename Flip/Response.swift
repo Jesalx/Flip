@@ -15,6 +15,10 @@ struct Item: Codable, Identifiable {
     let id: String
     let selfLink: String
     let volumeInfo: VolumeInfo
+    
+    static var example: Item {
+        Item(id: "abc123", selfLink: "somestring", volumeInfo: VolumeInfo(title: "The Way of Kings", subtitle: "Some Subtitle", authors: ["Brandon Sanderson"], publisher: "Random House", publishedDate: "2022-01-01", description: "This is a description, I don't know what the book is about.", pageCount: 1403, categories: ["Fiction", "Sci-Fi"], imageLinks: ImageLinks(smallThumbnail: "", thumbnail: "")))
+    }
 }
 
 struct VolumeInfo: Codable {
@@ -30,8 +34,6 @@ struct VolumeInfo: Codable {
     
     let pageCount: Int?
     let categories: [String]?
-//    let averageRatings: Int?
-//    let ratingsCount: Int?
     let imageLinks: ImageLinks?
     
     var wrappedTitle: String {

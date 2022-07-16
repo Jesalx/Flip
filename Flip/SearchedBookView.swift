@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct SearchedBookView: View {
-    let volumeInfo: VolumeInfo
+    let item: Item
     
     var body: some View {
         List {
             HStack(alignment: .center) {
-                AsyncImage(url: volumeInfo.wrappedSmallThumbnail) { phase in
+                AsyncImage(url: item.volumeInfo.wrappedSmallThumbnail) { phase in
                     switch phase {
                     case .empty:
 //                        ProgressView()
@@ -43,7 +43,7 @@ struct SearchedBookView: View {
 
             
             Section {
-                Text(volumeInfo.wrappedTitle)
+                Text(item.volumeInfo.wrappedTitle)
                     .font(.headline)
                     .multilineTextAlignment(.center)
             }
@@ -52,34 +52,34 @@ struct SearchedBookView: View {
 
             
             Section("Author") {
-                ForEach(volumeInfo.wrappedAuthors, id:\.self) { author in
+                ForEach(item.volumeInfo.wrappedAuthors, id:\.self) { author in
                     Text(author)
                 }
             }
             
             Section("Publisher") {
-                Text(volumeInfo.wrappedPublisher)
+                Text(item.volumeInfo.wrappedPublisher)
             }
             
             Section("Publication Date") {
-                Text(volumeInfo.wrappedPublishedDate)
+                Text(item.volumeInfo.wrappedPublishedDate)
             }
             
             Section("Page Count") {
-                Text("\(volumeInfo.wrappedPageCount)")
+                Text("\(item.volumeInfo.wrappedPageCount)")
             }
             
             Section("Genres") {
-                ForEach(volumeInfo.wrappedGenres, id:\.self) { genre in
+                ForEach(item.volumeInfo.wrappedGenres, id:\.self) { genre in
                     Text(genre)
                 }
             }
             
             Section("Description") {
-                Text(volumeInfo.wrappedDescription)
+                Text(item.volumeInfo.wrappedDescription)
             }
         }
-        .navigationTitle(volumeInfo.wrappedTitle)
+        .navigationTitle(item.volumeInfo.wrappedTitle)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
            ToolbarItem(placement: .navigationBarTrailing) {
@@ -97,7 +97,7 @@ struct SearchedBookView: View {
 struct SearchedBookView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SearchedBookView(volumeInfo: VolumeInfo.example)
+            SearchedBookView(item: Item.example)
         }
     }
 }

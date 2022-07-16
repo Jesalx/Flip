@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct SearchedBookRowView: View {
-    let volumeInfo: VolumeInfo
+    let item: Item
     
     var body: some View {
-        NavigationLink(destination: SearchedBookView(volumeInfo: volumeInfo)) {
+        NavigationLink(destination: SearchedBookView(item: item)) {
             HStack {
-                AsyncImage(url: volumeInfo.wrappedSmallThumbnail) { phase in
+                AsyncImage(url: item.volumeInfo.wrappedSmallThumbnail) { phase in
                     switch phase {
                     case .empty:
                         Image(systemName: "book.closed")
@@ -36,10 +36,10 @@ struct SearchedBookRowView: View {
                 .frame(width: 45, height: 70)
                 .cornerRadius(8)
                 VStack(alignment: .leading) {
-                    Text(volumeInfo.wrappedTitle)
+                    Text(item.volumeInfo.wrappedTitle)
                         .font(.headline)
                     
-                    Text(volumeInfo.wrappedFirstAuthor)
+                    Text(item.volumeInfo.wrappedFirstAuthor)
                         .font(.subheadline)
                 }
             }
@@ -49,6 +49,6 @@ struct SearchedBookRowView: View {
 
 struct SearchedBookRowView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchedBookRowView(volumeInfo: VolumeInfo.example)
+        SearchedBookRowView(item: Item.example)
     }
 }
