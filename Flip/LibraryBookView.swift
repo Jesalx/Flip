@@ -76,7 +76,7 @@ struct LibraryBookView: View {
             
             Section("Description") {
                 Text(book.bookSummary)
-                    .lineLimit(showingFullDescription ? 100 : 5)
+                    .lineLimit(showingFullDescription ? 100 : 8)
                     .onTapGesture {
                         showingFullDescription.toggle()
                     }
@@ -96,13 +96,14 @@ struct LibraryBookView: View {
                 }
                 .tint(.red)
             }
-            .navigationTitle(book.bookTitle)
-            .onChange(of: read) { _ in update() }
-            .onChange(of: dateRead) { _ in update() }
-            .onDisappear(perform: dataController.save)
-            .alert(isPresented: $showingDeleteConfirmation) {
-                Alert(title: Text("Delete book"), message: Text("Are you sure you want to delete \(book.bookTitle) from your library?"), primaryButton: .destructive(Text("Delete"), action: delete), secondaryButton: .cancel())
-            }
+        }
+        .navigationTitle(book.bookTitle)
+        .navigationBarTitleDisplayMode(.inline)
+        .onChange(of: read) { _ in update() }
+        .onChange(of: dateRead) { _ in update() }
+        .onDisappear(perform: dataController.save)
+        .alert(isPresented: $showingDeleteConfirmation) {
+            Alert(title: Text("Delete book"), message: Text("Are you sure you want to delete \(book.bookTitle) from your library?"), primaryButton: .destructive(Text("Delete"), action: delete), secondaryButton: .cancel())
         }
     }
     

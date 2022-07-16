@@ -122,6 +122,9 @@ struct SearchedBookView: View {
     
     func saveBook() {
         if let _ = books.first { return }
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
+        
         let book = Book(context: managedObjectContext)
         book.id = item.id
         book.title = item.volumeInfo.wrappedTitle

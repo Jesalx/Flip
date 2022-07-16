@@ -40,12 +40,12 @@ struct ContentView: View {
                     Text("Stats")
                 }
             
-            HomeView()
-                .tag(HomeView.tag)
-                .tabItem {
-                    Image(systemName: "gear")
-                    Text("Settings")
-                }
+//            HomeView()
+//                .tag(HomeView.tag)
+//                .tabItem {
+//                    Image(systemName: "gear")
+//                    Text("Settings")
+//                }
         }
     }
 }
