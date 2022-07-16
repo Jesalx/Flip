@@ -22,14 +22,12 @@ struct LibraryView: View {
             SortedBooksView(sortOrder: sortOrder, bookFilter: bookFilter)
                 .navigationTitle(navigationTitleText())
                 .toolbar {
-                   ToolbarItem(placement: .navigationBarTrailing) {
+                    ToolbarItemGroup(placement: .navigationBarTrailing) {
                         Button {
                             showingSortOrder.toggle()
                         } label: {
                             Label("Sort", systemImage: "arrow.up.arrow.down")
                         }
-                    }
-                    ToolbarItem(placement: .navigationBarTrailing) {
                         Menu {
                             Button("All Items") { bookFilter = .allBooks }
                             Button("Read") { bookFilter = .readBooks }

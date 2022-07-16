@@ -10,22 +10,31 @@ import SwiftUI
 struct SearchedBookView: View {
     let item: Item
     
+    @EnvironmentObject var dataController: DataController
+    @Environment(\.managedObjectContext) var managedObjectContext
+    
+    @FetchRequest private var books: FetchedResults<Book>
+    
+    @State private var showingFullDescription = false
+    
+    init(item: Item) {
+        self.item = item
+        let predicate = NSPredicate(format: "id == %@", item.id)
+        let fetchRequest = FetchRequest<Book>(entity: Book.entity(), sortDescriptors: [], predicate: predicate)
+        _books = fetchRequest
+    }
+    
     var body: some View {
         List {
             HStack(alignment: .center) {
                 AsyncImage(url: item.volumeInfo.wrappedSmallThumbnail) { phase in
                     switch phase {
-                    case .empty:
-//                        ProgressView()
+                    case .empty, .failure(_):
                         Image(systemName: "book.closed")
                             .resizable()
                             .scaledToFit()
                     case .success(let image):
                         image
-                            .resizable()
-                            .scaledToFit()
-                    case .failure(_):
-                        Image(systemName: "book.closed")
                             .resizable()
                             .scaledToFit()
                     @unknown default:
@@ -77,27 +86,69 @@ struct SearchedBookView: View {
             
             Section("Description") {
                 Text(item.volumeInfo.wrappedDescription)
+                    .lineLimit(showingFullDescription ? 100 : 5)
+                    .onTapGesture {
+                        showingFullDescription.toggle()
+                    }
             }
         }
         .navigationTitle(item.volumeInfo.wrappedTitle)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-           ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
-                    
-                } label: {
-                    Label("Save", systemImage: "plus")
-                        .font(.headline)
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                if let _ = books.first {
+                    Button(role: .destructive) {
+                        deleteBook()
+                    } label: {
+                        Label("Delete", systemImage: "minus.circle")
+                            .foregroundColor(.red)
+                    }
+                } else {
+                    Button {
+                        saveBook()
+                    } label: {
+                        Label("Save", systemImage: "plus.circle")
+                            .font(.headline)
+                    }
                 }
             }
+        }
+    }
+    
+    func saveBook() {
+        if let _ = books.first { return }
+        let book = Book(context: managedObjectContext)
+        book.id = item.id
+        book.title = item.volumeInfo.wrappedTitle
+        let authors = item.volumeInfo.wrappedAuthors.joined(separator: ", ")
+        book.author = authors
+        
+        book.summary = item.volumeInfo.wrappedDescription
+        book.read = false
+        book.publicationDate = item.volumeInfo.wrappedPublishedDate
+        let genres = item.volumeInfo.wrappedGenres.joined(separator: ", ")
+        book.genres = genres
+        book.publishingCompany = item.volumeInfo.wrappedPublisher
+        book.pageCount = Int16(item.volumeInfo.wrappedPageCount)
+        book.dateRead = Date()
+        dataController.save()
+    }
+    
+    func deleteBook() {
+        if let book = books.first {
+            dataController.delete(book)
+            return
         }
     }
 }
 
 struct SearchedBookView_Previews: PreviewProvider {
+    static var dataController = DataController.preview
     static var previews: some View {
         NavigationView {
             SearchedBookView(item: Item.example)
+                .environment(\.managedObjectContext, dataController.container.viewContext)
+                .environmentObject(dataController)
         }
     }
 }

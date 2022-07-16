@@ -4,14 +4,15 @@
         <attribute name="author" optional="YES" attributeType="String"/>
         <attribute name="dateRead" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="genres" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="pageCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="publicationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="publicationDate" optional="YES" attributeType="String"/>
         <attribute name="publishingCompany" optional="YES" attributeType="String"/>
         <attribute name="read" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="summary" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Book" positionX="-45" positionY="0" width="128" height="164"/>
+        <element name="Book" positionX="-45" positionY="0" width="128" height="179"/>
     </elements>
 </model>

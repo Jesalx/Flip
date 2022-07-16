@@ -46,7 +46,7 @@ struct LibraryBookView: View {
             }
             
             Section("Publication Date") {
-                Text(book.bookPublicationDate, style: .date)
+                Text(book.bookPublicationDate)
             }
             
             Section {
@@ -71,9 +71,12 @@ struct LibraryBookView: View {
 }
 
 struct LibraryBookView_Previews: PreviewProvider {
+    static var dataController = DataController.preview
     static var previews: some View {
         NavigationView {
             LibraryBookView(book: Book.example)
+                .environment(\.managedObjectContext, dataController.container.viewContext)
+                .environmentObject(dataController)
         }
     }
 }
