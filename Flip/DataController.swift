@@ -51,6 +51,7 @@ class DataController: ObservableObject {
             book.publishingCompany = "Random House Publishing"
             book.pageCount = Int16.random(in: 1...1400)
             book.dateRead = Date()
+            book.thumbnail = URL(string: "https://www.google.com")
         }
         let book = Book(context: viewContext)
         book.id = UUID().uuidString
@@ -65,6 +66,7 @@ class DataController: ObservableObject {
         book.publishingCompany = "Tom Doherty Associates, 2010"
         book.pageCount = Int16(1008)
         book.dateRead = Date()
+        book.thumbnail = URL(string: "https://www.google.com")
         
         let book2 = Book(context: viewContext)
         book2.id = UUID().uuidString
@@ -83,6 +85,7 @@ class DataController: ObservableObject {
         book2.publishingCompany = "Hidden Gnome Publishing"
         book2.pageCount = Int16(442)
         book2.dateRead = Date()
+        book2.thumbnail = URL(string: "https://www.google.com")
         
         let book3 = Book(context: viewContext)
         book3.id = UUID().uuidString
@@ -95,6 +98,7 @@ class DataController: ObservableObject {
         book3.publishingCompany = "Random House Publishing"
         book3.pageCount = 3600
         book3.dateRead = Date()
+        book3.thumbnail = URL(string: "https://www.google.com")
         
         try viewContext.save()
     }

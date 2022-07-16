@@ -70,6 +70,7 @@ extension Book {
         book.pageCount = Int16(Int.random(in: 20...1500))
         book.publishingCompany = "Random Publishing Company"
         book.genres = "Genre1, Genre2, Genre3"
+        book.thumbnail = URL(string: "https://www.google.com")
         
         
         return book
