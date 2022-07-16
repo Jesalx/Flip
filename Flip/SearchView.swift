@@ -16,13 +16,12 @@ struct SearchView: View {
     var body: some View {
         NavigationView {
             List(searchedBooks) { item in
-                VStack(alignment: .leading) {
-                    Text(item.volumeInfo.title ?? "None")
-                }
+                SearchedBookRowView(volumeInfo: item.volumeInfo)
             }
             .navigationTitle("Search")
         }
         .searchable(text: $searchText, prompt: "Search Google Books")
+        .disableAutocorrection(true)
         .onSubmit(of: .search) {
             Task { @MainActor in
                 await loadData()
@@ -31,21 +30,28 @@ struct SearchView: View {
     }
     
     func loadData() async {
-        let formattedQuery = searchText.replacingOccurrences(of: " ", with: "+")
+        let strippedQuery = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        let formattedQuery = strippedQuery.replacingOccurrences(of: " ", with: "+")
         let urlstring = "https://www.googleapis.com/books/v1/volumes?q=\(formattedQuery)&printType=books&maxResults=20"
+//        let urlstring = "https://www.googleapis.com/books/v1/volumes?q=\(formattedQuery)&filter=ebooks&printType=books&maxResults=20"
         guard let url = URL(string: urlstring) else {
             print("Invalid search URL")
             return
         }
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
-            if let decodedResponse = try? JSONDecoder().decode(Response.self, from: data) {
+            let decoder = JSONDecoder()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "YYYY-MM-dd"
+            decoder.dateDecodingStrategy = .formatted(formatter)
+            if let decodedResponse = try? decoder.decode(Response.self, from: data) {
                 searchedBooks = decodedResponse.items
             } else {
                 searchedBooks = []
             }
         } catch {
             print("Invalid search data")
+                searchedBooks = []
         }
     }
 }
