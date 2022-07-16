@@ -16,6 +16,7 @@ struct LibraryBookView: View {
     @State private var dateRead: Date
     @State private var read: Bool
     @State private var showingDeleteConfirmation = false
+    @State private var showingFullDescription = false
     
     init(book: Book) {
         self.book = book
@@ -25,22 +26,34 @@ struct LibraryBookView: View {
     
     var body: some View {
         List {
-            Section("Author") {
-                Text(book.bookAuthor)
-            }
-            
-            Section("Genres") {
-                ForEach(book.bookGenres, id:\.self) { genre in
-                    Text(genre)
+            HStack(alignment: .center) {
+                AsyncImage(url: book.thumbnail) { phase in
+                    switch phase {
+                    case .empty, .failure(_):
+                        Image(systemName: "book.closed")
+                            .resizable()
+                            .scaledToFit()
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .scaledToFit()
+                    @unknown default:
+                        Image(systemName: "book.closed")
+                            .resizable()
+                            .scaledToFit()
+                    }
                 }
+                .cornerRadius(20)
+                .frame(width: 190, height: 270)
             }
+            .frame(maxWidth: .infinity)
+            .listRowBackground(Color.clear)
+            .listRowInsets( EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0) )
             
-            Section("Description") {
-                Text(book.bookSummary)
-            }
-            
-            Section("Page Count") {
-                Text("\(book.pageCount)")
+            Section("Author") {
+                ForEach(book.bookAuthors, id:\.self) { author in
+                    Text(author)
+                }
             }
             
             Section("Publisher") {
@@ -51,6 +64,24 @@ struct LibraryBookView: View {
                 Text(book.bookPublicationDate)
             }
             
+            Section("Page Count") {
+                Text("\(book.bookPageCount)")
+            }
+            
+            Section("Genres") {
+                ForEach(book.bookGenres, id:\.self) { genre in
+                    Text(genre)
+                }
+            }
+            
+            Section("Description") {
+                Text(book.bookSummary)
+                    .lineLimit(showingFullDescription ? 100 : 5)
+                    .onTapGesture {
+                        showingFullDescription.toggle()
+                    }
+            }
+                
             Section {
                 Toggle("Mark Read", isOn: $read)
                 if read {
@@ -63,15 +94,15 @@ struct LibraryBookView: View {
                 Button("Remove from library") {
                     showingDeleteConfirmation.toggle()
                 }
-                    .tint(.red)
+                .tint(.red)
             }
-        }
-        .navigationTitle(book.bookTitle)
-        .onChange(of: read) { _ in update() }
-        .onChange(of: dateRead) { _ in update() }
-        .onDisappear(perform: dataController.save)
-        .alert(isPresented: $showingDeleteConfirmation) {
-            Alert(title: Text("Delete book"), message: Text("Are you sure you want to delete \(book.bookTitle) from your library?"), primaryButton: .destructive(Text("Delete"), action: delete), secondaryButton: .cancel())
+            .navigationTitle(book.bookTitle)
+            .onChange(of: read) { _ in update() }
+            .onChange(of: dateRead) { _ in update() }
+            .onDisappear(perform: dataController.save)
+            .alert(isPresented: $showingDeleteConfirmation) {
+                Alert(title: Text("Delete book"), message: Text("Are you sure you want to delete \(book.bookTitle) from your library?"), primaryButton: .destructive(Text("Delete"), action: delete), secondaryButton: .cancel())
+            }
         }
     }
     
