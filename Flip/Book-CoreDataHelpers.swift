@@ -24,6 +24,15 @@ extension Book {
         author ?? "Unknown Author"
     }
     
+    var bookAuthors: [String] {
+        let authors = bookAuthor.components(separatedBy: ", ")
+        return authors
+    }
+    
+    var bookFirstAuthor: String {
+        bookAuthors.first ?? "Unknown Author"
+    }
+    
     var bookSummary: String {
         summary ?? "No Description."
     }
