@@ -14,24 +14,7 @@ struct SearchedBookRowView: View {
         NavigationLink(destination: SearchedBookView(item: item)) {
             HStack {
                 AsyncImage(url: item.volumeInfo.wrappedSmallThumbnail) { phase in
-                    switch phase {
-                    case .empty:
-                        Image(systemName: "book.closed")
-                            .resizable()
-                            .scaledToFit()
-                    case .success(let image):
-                        image
-                            .resizable()
-                            .scaledToFit()
-                    case .failure(_):
-                        Image(systemName: "book.closed")
-                            .resizable()
-                            .scaledToFit()
-                    @unknown default:
-                        Image(systemName: "book.closed")
-                            .resizable()
-                            .scaledToFit()
-                    }
+                    ThumbnailImage(phase)
                 }
                 .frame(width: 45, height: 70)
                 .cornerRadius(8)
@@ -43,6 +26,23 @@ struct SearchedBookRowView: View {
                         .font(.subheadline)
                 }
             }
+        }
+    }
+    
+    func ThumbnailImage(_ phase: AsyncImagePhase) -> some View {
+        switch phase {
+        case .empty, .failure(_):
+            return Image(systemName: "book.closed")
+                .resizable()
+                .scaledToFit()
+        case .success(let image):
+            return image
+                .resizable()
+                .scaledToFit()
+        @unknown default:
+            return Image(systemName: "book.closed")
+                .resizable()
+                .scaledToFit()
         }
     }
 }

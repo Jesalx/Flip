@@ -49,7 +49,7 @@ struct SearchedBookView: View {
     }
     
     var BookSections: some View {
-        return Group {
+        Group {
             Section {
                 Text(item.volumeInfo.wrappedTitle)
                     .font(.headline)

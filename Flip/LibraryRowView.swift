@@ -34,16 +34,12 @@ struct LibraryRowView: View {
     
     func ThumbnailImage(_ phase: AsyncImagePhase) -> some View {
         switch phase {
-        case .empty:
+        case .empty, .failure(_):
             return Image(systemName: "book.closed")
                 .resizable()
                 .scaledToFit()
         case .success(let image):
             return image
-                .resizable()
-                .scaledToFit()
-        case .failure(_):
-            return Image(systemName: "book.closed")
                 .resizable()
                 .scaledToFit()
         @unknown default:
