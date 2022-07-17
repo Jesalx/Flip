@@ -74,6 +74,56 @@
 			path = Configuration;
 			sourceTree = "<group>";
 		};
+		71B2BC222884B21100D4078C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				71C624DF2880AEC0007B2CAF /* Book-CoreDataHelpers.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		71B2BC232884B24500D4078C /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				71B2BC242884B25500D4078C /* Library */,
+				71B2BC252884B26D00D4078C /* Search */,
+				71B2BC262884B27600D4078C /* Stats */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		71B2BC242884B25500D4078C /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				71C624DD2880A149007B2CAF /* LibraryView.swift */,
+				7107F44D2880DA4500CE89A5 /* LibraryRowView.swift */,
+				71C624E72880B8EF007B2CAF /* LibraryBookView.swift */,
+				7107F4512881DD8000CE89A5 /* EmptySelectionView.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		71B2BC252884B26D00D4078C /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				71C624E12880B5D5007B2CAF /* SearchView.swift */,
+				7107F45928821CD500CE89A5 /* SearchedBookRowView.swift */,
+				7107F45528820DE700CE89A5 /* SearchedBookView.swift */,
+				7107F4532882032300CE89A5 /* Response.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		71B2BC262884B27600D4078C /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				71C624E32880B5F8007B2CAF /* StatsView.swift */,
+				71CF10072883861200708B9F /* StatsYearView.swift */,
+				71A74A532883A54A000125E3 /* StatsMonthView.swift */,
+			);
+			path = Stats;
+			sourceTree = "<group>";
+		};
 		71C624D828809F9D007B2CAF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,22 +152,12 @@
 		71E002BC288095B8006E23DF /* Flip */ = {
 			isa = PBXGroup;
 			children = (
+				71B2BC232884B24500D4078C /* Tabs */,
+				71B2BC222884B21100D4078C /* Extensions */,
 				71B2BC212884B0B700D4078C /* Configuration */,
 				71E002BD288095B8006E23DF /* FlipApp.swift */,
-				7107F4512881DD8000CE89A5 /* EmptySelectionView.swift */,
-				71C624DD2880A149007B2CAF /* LibraryView.swift */,
-				7107F44D2880DA4500CE89A5 /* LibraryRowView.swift */,
-				71C624E72880B8EF007B2CAF /* LibraryBookView.swift */,
-				71E002BF288095B8006E23DF /* ContentView.swift */,
-				71C624E32880B5F8007B2CAF /* StatsView.swift */,
-				71CF10072883861200708B9F /* StatsYearView.swift */,
-				71A74A532883A54A000125E3 /* StatsMonthView.swift */,
-				71C624E12880B5D5007B2CAF /* SearchView.swift */,
-				7107F45928821CD500CE89A5 /* SearchedBookRowView.swift */,
-				7107F45528820DE700CE89A5 /* SearchedBookView.swift */,
-				7107F4532882032300CE89A5 /* Response.swift */,
 				71E002CE28809767006E23DF /* DataController.swift */,
-				71C624DF2880AEC0007B2CAF /* Book-CoreDataHelpers.swift */,
+				71E002BF288095B8006E23DF /* ContentView.swift */,
 				71E002CB288095D4006E23DF /* Flip.xcdatamodeld */,
 				71E002C1288095B9006E23DF /* Assets.xcassets */,
 				71E002C3288095B9006E23DF /* Preview Content */,
