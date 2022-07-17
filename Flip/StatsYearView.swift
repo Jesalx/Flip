@@ -38,7 +38,7 @@ struct StatsYearView: View {
         }
         .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
         .padding()
-        .background(.secondary.opacity(0.2))
+        .background(Color.secondary.opacity(0.2))
         .cornerRadius(20)
     }
 }
