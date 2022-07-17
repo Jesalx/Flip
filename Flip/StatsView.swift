@@ -12,7 +12,7 @@ struct StatsView: View {
     
     let columns = [GridItem(.flexible(minimum: 80), spacing: 15), GridItem(.flexible(minimum: 80), spacing: 15)]
    
-    @FetchRequest private var books: FetchedResults<Book>
+    @FetchRequest(sortDescriptors: [], predicate: NSPredicate(format: "read = True")) private var books: FetchedResults<Book>
     
     var readBooks: [Book] {
         let readBooks = books.filter { $0.bookRead }
@@ -25,10 +25,6 @@ struct StatsView: View {
     
     var lifetimePages: Int {
         return readBooks.reduce(0) { $0 + $1.bookPageCount}
-    }
-    
-    init() {
-        _books = FetchRequest<Book>(entity: Book.entity(), sortDescriptors: [])
     }
     
     var body: some View {

@@ -25,33 +25,31 @@ struct SearchedBookView: View {
         _books = fetchRequest
     }
     
-    var body: some View {
-        List {
-            HStack(alignment: .center) {
-                AsyncImage(url: item.volumeInfo.wrappedSmallThumbnail) { phase in
-                    switch phase {
-                    case .empty, .failure(_):
-                        Image(systemName: "book.closed")
-                            .resizable()
-                            .scaledToFit()
-                    case .success(let image):
-                        image
-                            .resizable()
-                            .scaledToFit()
-                    @unknown default:
-                        Image(systemName: "book.closed")
-                            .resizable()
-                            .scaledToFit()
-                    }
-                }
-                .cornerRadius(20)
-                .frame(width: 190, height: 270)
-            }
-            .frame(maxWidth: .infinity)
-            .listRowBackground(Color.clear)
-            .listRowInsets( EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0) )
-
-            
+    var bookExists: Bool {
+        guard let _ = books.first else { return false }
+        return true
+    }
+    
+    var AddDeleteToolbarItem: some View {
+        if bookExists {
+            return AnyView(Button(role: .destructive) {
+                showingDeleteConfirmation.toggle()
+            } label: {
+                Label("Delete", systemImage: "trash")
+                    .foregroundColor(.red)
+            })
+        } else {
+            return AnyView(Button {
+                saveBook()
+            } label: {
+                Label("Save", systemImage: "plus.circle")
+                    .font(.headline)
+            })
+        }
+    }
+    
+    var BookSections: some View {
+        return Group {
             Section {
                 Text(item.volumeInfo.wrappedTitle)
                     .font(.headline)
@@ -87,36 +85,56 @@ struct SearchedBookView: View {
             
             Section("Description") {
                 Text(item.volumeInfo.wrappedDescription)
-                    .lineLimit(showingFullDescription ? 100 : 5)
+                    .lineLimit(showingFullDescription ? 100 : 7)
                     .onTapGesture {
                         showingFullDescription.toggle()
                     }
             }
+        }
+    }
+    
+    var body: some View {
+        List {
+            HStack(alignment: .center) {
+                AsyncImage(url: item.volumeInfo.wrappedSmallThumbnail) { phase in
+                    CoverImage(phase)
+                }
+                .cornerRadius(20)
+                .frame(width: 190, height: 270)
+            }
+            .frame(maxWidth: .infinity)
+            .listRowBackground(Color.clear)
+            .listRowInsets( EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0) )
+
+            BookSections
         }
         .navigationTitle(item.volumeInfo.wrappedTitle)
         .navigationBarTitleDisplayMode(.inline)
         .onDisappear(perform: dataController.save)
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
-                if let _ = books.first {
-                    Button(role: .destructive) {
-                        showingDeleteConfirmation.toggle()
-                    } label: {
-                        Label("Delete", systemImage: "trash")
-                            .foregroundColor(.red)
-                    }
-                } else {
-                    Button {
-                        saveBook()
-                    } label: {
-                        Label("Save", systemImage: "plus.circle")
-                            .font(.headline)
-                    }
-                }
+                AddDeleteToolbarItem
             }
         }
         .alert(isPresented: $showingDeleteConfirmation) {
             Alert(title: Text("Delete book"), message: Text("Are you sure you want to delete \(item.volumeInfo.wrappedTitle) from your library?"), primaryButton: .destructive(Text("Delete"), action: deleteBook), secondaryButton: .cancel())
+        }
+    }
+    
+    func CoverImage(_ phase: AsyncImagePhase) -> some View {
+        switch phase {
+        case .empty, .failure(_):
+            return Image(systemName: "book.closed")
+                .resizable()
+                .scaledToFit()
+        case .success(let image):
+            return image
+                .resizable()
+                .scaledToFit()
+        @unknown default:
+            return Image(systemName: "book.closed")
+                .resizable()
+                .scaledToFit()
         }
     }
     

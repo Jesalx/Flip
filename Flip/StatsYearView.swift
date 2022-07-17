@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct StatsYearView: View {
-//    let titleText: String
-//    let upperText: String
-//    let lowerText: String
-    
-    let pagesRead: Int
-    let booksRead: Int
-    let currentDate = Date()
+    let books: [Book]
     
     init(books: [Book]) {
         let comp = Calendar.current.dateComponents([.year], from: Date())
         let startOfYear = Calendar.current.date(from: comp) ?? Date()
-        let yearBooks = books.filter { $0.bookDateRead > startOfYear && $0.bookRead }
-        self.pagesRead = yearBooks.reduce(0) { $0 + $1.bookPageCount}
-        self.booksRead = yearBooks.count
+        self.books = books.filter { $0.bookDateRead > startOfYear && $0.bookRead }
+    }
+    
+    var pagesRead: Int {
+        books.reduce(0) { $0 + $1.bookPageCount}
+    }
+    
+    var booksRead: Int {
+        books.count
     }
     
     var body: some View {

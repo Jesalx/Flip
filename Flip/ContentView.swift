@@ -12,13 +12,6 @@ struct ContentView: View {
     
     var body: some View {
         TabView(selection: $selectedView) {
-//            HomeView()
-//                .tag(HomeView.tag)
-//                .tabItem {
-//                    Image(systemName: "house")
-//                    Text("Home")
-//                }
-            
             LibraryView()
                 .tag(LibraryView.tag)
                 .tabItem {
@@ -39,13 +32,6 @@ struct ContentView: View {
                     Image(systemName: "hourglass")
                     Text("Stats")
                 }
-            
-//            HomeView()
-//                .tag(HomeView.tag)
-//                .tabItem {
-//                    Image(systemName: "gear")
-//                    Text("Settings")
-//                }
         }
     }
 }

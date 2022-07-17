@@ -24,24 +24,18 @@ struct LibraryBookView: View {
         _read = State(wrappedValue: book.bookRead)
     }
     
+    var OptionalDateView: some View {
+        read
+        ? DatePicker("Date Finished", selection: $dateRead, in: ...Date.now, displayedComponents: .date)
+            .datePickerStyle(.graphical)
+        : nil
+    }
+    
     var body: some View {
         List {
             HStack(alignment: .center) {
                 AsyncImage(url: book.thumbnail) { phase in
-                    switch phase {
-                    case .empty, .failure(_):
-                        Image(systemName: "book.closed")
-                            .resizable()
-                            .scaledToFit()
-                    case .success(let image):
-                        image
-                            .resizable()
-                            .scaledToFit()
-                    @unknown default:
-                        Image(systemName: "book.closed")
-                            .resizable()
-                            .scaledToFit()
-                    }
+                    CoverImage(phase)
                 }
                 .cornerRadius(20)
                 .frame(width: 190, height: 270)
@@ -84,10 +78,8 @@ struct LibraryBookView: View {
                 
             Section {
                 Toggle("Mark Read", isOn: $read)
-                if read {
-                    DatePicker("Date Finished", selection: $dateRead, in: ...Date.now, displayedComponents: .date)
-                        .datePickerStyle(.graphical)
-                }
+                OptionalDateView
+
             }
             
             Section {
@@ -104,6 +96,23 @@ struct LibraryBookView: View {
         .onDisappear(perform: dataController.save)
         .alert(isPresented: $showingDeleteConfirmation) {
             Alert(title: Text("Delete book"), message: Text("Are you sure you want to delete \(book.bookTitle) from your library?"), primaryButton: .destructive(Text("Delete"), action: delete), secondaryButton: .cancel())
+        }
+    }
+    
+    func CoverImage(_ phase: AsyncImagePhase) -> some View {
+        switch phase {
+        case .empty, .failure(_):
+            return Image(systemName: "book.closed")
+                .resizable()
+                .scaledToFit()
+        case .success(let image):
+            return image
+                .resizable()
+                .scaledToFit()
+        @unknown default:
+            return Image(systemName: "book.closed")
+                .resizable()
+                .scaledToFit()
         }
     }
     

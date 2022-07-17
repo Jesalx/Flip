@@ -14,24 +14,7 @@ struct LibraryRowView: View {
         NavigationLink(destination: LibraryBookView(book: book)) {
             HStack {
                 AsyncImage(url: book.thumbnail) { phase in
-                    switch phase {
-                    case .empty:
-                        Image(systemName: "book.closed")
-                            .resizable()
-                            .scaledToFit()
-                    case .success(let image):
-                        image
-                            .resizable()
-                            .scaledToFit()
-                    case .failure(_):
-                        Image(systemName: "book.closed")
-                            .resizable()
-                            .scaledToFit()
-                    @unknown default:
-                        Image(systemName: "book.closed")
-                            .resizable()
-                            .scaledToFit()
-                    }
+                    ThumbnailImage(phase)
                 }
                 .frame(width: 45, height: 70)
                 .cornerRadius(8)
@@ -46,6 +29,27 @@ struct LibraryRowView: View {
                 Image(systemName: "checkmark.circle")
                     .foregroundColor(book.bookRead ? .primary : .clear)
             }
+        }
+    }
+    
+    func ThumbnailImage(_ phase: AsyncImagePhase) -> some View {
+        switch phase {
+        case .empty:
+            return Image(systemName: "book.closed")
+                .resizable()
+                .scaledToFit()
+        case .success(let image):
+            return image
+                .resizable()
+                .scaledToFit()
+        case .failure(_):
+            return Image(systemName: "book.closed")
+                .resizable()
+                .scaledToFit()
+        @unknown default:
+            return Image(systemName: "book.closed")
+                .resizable()
+                .scaledToFit()
         }
     }
 }

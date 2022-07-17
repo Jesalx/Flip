@@ -18,32 +18,40 @@ struct SearchView: View {
     @State private var searchText = ""
     @State private var searchStatus = SearchStatus.prompt
     
+    var OptionalSearchView: some View {
+        Group {
+            switch searchStatus {
+            case .prompt:
+                Text("")
+            case .searching:
+                ProgressView()
+            case .success:
+                 List(searchedBooks) { item in
+                    SearchedBookRowView(item: item)
+                 }
+            case .failed:
+                Text("Something went wrong. Try again later.")
+                    .foregroundColor(.secondary)
+            }
+        }
+    }
+    
     var body: some View {
         NavigationView {
-            Group {
-                switch searchStatus {
-                case .prompt:
-                    Text("")
-                case .searching:
-                    ProgressView()
-                case .success:
-                     List(searchedBooks) { item in
-                        SearchedBookRowView(item: item)
-                     }
-                case .failed:
-                    Text("Something went wrong. Try again later.")
-                        .foregroundColor(.secondary)
-                }
-            }
+            OptionalSearchView
             .navigationTitle("Search")
         }
         .searchable(text: $searchText, prompt: "Search Google Books")
         .disableAutocorrection(true)
         .onSubmit(of: .search) {
-            Task { @MainActor in
-                searchStatus = .searching
-                await loadData()
-            }
+            submitSearch()
+        }
+    }
+    
+    func submitSearch() {
+        Task { @MainActor in
+            searchStatus = .searching
+            await loadData()
         }
     }
     

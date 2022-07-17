@@ -28,45 +28,43 @@ struct LibraryView: View {
         }
     }
     
+    var FilterToolbarItem: some View {
+        Button {
+            hapticFeedback(style: .light)
+            showingSortOrder.toggle()
+        } label: {
+            Label("Sort", systemImage: "arrow.up.arrow.down")
+        }
+    }
+    
+    var SortToolbarItem: some View {
+        Menu {
+            Button("All Items") { bookFilter = .allBooks }
+            Button("Read") { bookFilter = .readBooks }
+            Button("Unread") { bookFilter = .unreadBooks }
+        } label: {
+            Label("Filter", systemImage: "line.3.horizontal.decrease.circle")
+        }
+        .onTapGesture {
+            hapticFeedback(style: .light)
+        }
+    }
     
     var body: some View {
         NavigationView {
-//            SortedBooksView(sortOrder: sortOrder, bookFilter: bookFilter)
             List {
                 ForEach(books) { book in
                     LibraryRowView(book: book)
                 }
                 .onDelete { offsets in
-                    let generator = UIImpactFeedbackGenerator(style: .medium)
-                    generator.impactOccurred()
-                    for offset in offsets {
-                        let book = books[offset]
-                        dataController.delete(book)
-                    }
-                    dataController.save()
+                    delete(offsets)
                 }
             }
-            .searchable(text: query, prompt: "Search")
             .navigationTitle(navigationTitleText())
-            .navigationViewStyle(StackNavigationViewStyle())
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    Button {
-                        hapticFeedback()
-                        showingSortOrder.toggle()
-                    } label: {
-                        Label("Sort", systemImage: "arrow.up.arrow.down")
-                    }
-                    Menu {
-                        Button("All Items") { bookFilter = .allBooks }
-                        Button("Read") { bookFilter = .readBooks }
-                        Button("Unread") { bookFilter = .unreadBooks }
-                    } label: {
-                        Label("Filter", systemImage: "line.3.horizontal.decrease.circle")
-                    }
-                    .onTapGesture {
-                        hapticFeedback()
-                    }
+                    FilterToolbarItem
+                    SortToolbarItem
                 }
             }
             .confirmationDialog("Sort Books", isPresented: $showingSortOrder) {
@@ -83,8 +81,18 @@ struct LibraryView: View {
             .onChange(of: bookFilter) { _ in updateFilter() }
             EmptySelectionView()
         }
+        .searchable(text: query, prompt: "Search")
     }
     
+    func delete(_ offsets: IndexSet) {
+        hapticFeedback(style: .medium)
+        for offset in offsets {
+            let book = books[offset]
+            dataController.delete(book)
+        }
+        dataController.save()
+    }
+
     func updateFilter() {
         var predicate: NSPredicate
         switch bookFilter {
@@ -115,8 +123,8 @@ struct LibraryView: View {
         books.sortDescriptors = descriptor
     }
     
-    func hapticFeedback() {
-        let generator = UIImpactFeedbackGenerator(style: .light)
+    func hapticFeedback(style: UIImpactFeedbackGenerator.FeedbackStyle) {
+        let generator = UIImpactFeedbackGenerator(style: style)
         generator.impactOccurred()
     }
     
