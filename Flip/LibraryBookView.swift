@@ -99,20 +99,25 @@ struct LibraryBookView: View {
         }
         .navigationTitle(book.bookTitle)
         .navigationBarTitleDisplayMode(.inline)
-        .onChange(of: read) { _ in update() }
-        .onChange(of: dateRead) { _ in update() }
+        .onChange(of: read) { _ in updateRead() }
+        .onChange(of: dateRead) { _ in updateDate() }
         .onDisappear(perform: dataController.save)
         .alert(isPresented: $showingDeleteConfirmation) {
             Alert(title: Text("Delete book"), message: Text("Are you sure you want to delete \(book.bookTitle) from your library?"), primaryButton: .destructive(Text("Delete"), action: delete), secondaryButton: .cancel())
         }
     }
     
-    func update() {
+    func updateRead() {
         book.objectWillChange.send()
         book.read = read
         if read == false {
-            dateRead = Date()
+            book.dateRead = Date()
         }
+        dataController.save()
+    }
+    
+    func updateDate() {
+        book.objectWillChange.send()
         book.dateRead = dateRead
         dataController.save()
     }
