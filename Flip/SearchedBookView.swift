@@ -102,7 +102,7 @@ struct SearchedBookView: View {
                     Button(role: .destructive) {
                         showingDeleteConfirmation.toggle()
                     } label: {
-                        Label("Delete", systemImage: "minus.circle")
+                        Label("Delete", systemImage: "trash")
                             .foregroundColor(.red)
                     }
                 } else {

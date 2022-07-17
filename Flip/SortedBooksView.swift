@@ -11,9 +11,21 @@ struct SortedBooksView: View {
     @EnvironmentObject var dataController: DataController
     @Environment(\.managedObjectContext) var managedObjectContext
     
+    @State private var searchText = ""
+    
     @FetchRequest private var books: FetchedResults<Book>
+    
     let sortOrder: Book.SortOrder
     let bookFilter: Book.BookFilter
+    
+    var searchedBooks: [Book] {
+        let booksArr = Array(books)
+        if searchText.isEmpty {
+            return booksArr
+        } else {
+            return booksArr.filter { $0.bookTitle.contains(searchText) || $0.bookAuthor.contains(searchText) }
+        }
+    }
     
     init(sortOrder: Book.SortOrder, bookFilter: Book.BookFilter) {
         self.sortOrder = sortOrder
@@ -46,28 +58,29 @@ struct SortedBooksView: View {
     }
     
     var body: some View {
-        Group {
-            if books.isEmpty {
-                Text(emptyBooksText())
-                    .foregroundColor(.secondary)
-            } else {
-                List {
-                    ForEach(books) { book in
-                        LibraryRowView(book: book)
-                    }
-                    .onDelete { offsets in
-                        let generator = UIImpactFeedbackGenerator(style: .medium)
-                        generator.impactOccurred()
-                        for offset in offsets {
-                            let book = books[offset]
-                            dataController.delete(book)
-                        }
-                        dataController.save()
-                    }
+        ZStack {
+            List {
+                ForEach(searchedBooks) { book in
+                    LibraryRowView(book: book)
                 }
+                .onDelete { offsets in
+                    let generator = UIImpactFeedbackGenerator(style: .medium)
+                    generator.impactOccurred()
+                    for offset in offsets {
+                        let book = searchedBooks[offset]
+                        dataController.delete(book)
+                    }
+                    dataController.save()
+                }
+            }
+            .searchable(text: $searchText, prompt: "Search")
+            
+            if searchedBooks.isEmpty && searchText.isEmpty {
+                Text(emptyBooksText())
             }
         }
     }
+
     
     func emptyBooksText() -> String {
         switch bookFilter {
