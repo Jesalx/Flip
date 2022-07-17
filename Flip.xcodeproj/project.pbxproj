@@ -36,7 +36,7 @@
 		7107F45928821CD500CE89A5 /* SearchedBookRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedBookRowView.swift; sourceTree = "<group>"; };
 		71A74A532883A54A000125E3 /* StatsMonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsMonthView.swift; sourceTree = "<group>"; };
 		71C624D628809F5D007B2CAF /* Flip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Flip.entitlements; sourceTree = "<group>"; };
-		71C624D728809F80007B2CAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		71C624D728809F80007B2CAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71C624D928809F9D007B2CAF /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		71C624DD2880A149007B2CAF /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		71C624DF2880AEC0007B2CAF /* Book-CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Book-CoreDataHelpers.swift"; sourceTree = "<group>"; };
@@ -65,6 +65,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		71B2BC212884B0B700D4078C /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				71C624D728809F80007B2CAF /* Info.plist */,
+				71C624D628809F5D007B2CAF /* Flip.entitlements */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
 		71C624D828809F9D007B2CAF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,8 +102,7 @@
 		71E002BC288095B8006E23DF /* Flip */ = {
 			isa = PBXGroup;
 			children = (
-				71C624D728809F80007B2CAF /* Info.plist */,
-				71C624D628809F5D007B2CAF /* Flip.entitlements */,
+				71B2BC212884B0B700D4078C /* Configuration */,
 				71E002BD288095B8006E23DF /* FlipApp.swift */,
 				7107F4512881DD8000CE89A5 /* EmptySelectionView.swift */,
 				71C624DD2880A149007B2CAF /* LibraryView.swift */,
@@ -358,14 +366,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Flip/Flip.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Flip/Configuration/Flip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Flip/Preview Content\"";
 				DEVELOPMENT_TEAM = 8W74HT4Y4R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Flip/Info.plist;
+				INFOPLIST_FILE = Flip/Configuration/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -389,14 +397,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Flip/Flip.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Flip/Configuration/Flip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Flip/Preview Content\"";
 				DEVELOPMENT_TEAM = 8W74HT4Y4R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Flip/Info.plist;
+				INFOPLIST_FILE = Flip/Configuration/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -8,9 +8,17 @@
 import CoreData
 import SwiftUI
 
+/// A singleton responsible for managing Core Data, specifically handling saving
+/// and loading, checking the existence of a book, and adding sample data for
+/// debugging purposes
 class DataController: ObservableObject {
+
+    /// CloudKit container responsible for storing all book related data
     let container: NSPersistentCloudKitContainer
 
+    /// Initializes data controller in memory for debugging and development purposes
+    /// or on disk for regular application runs.
+    /// - Parameter inMemory: Whether to store this data in temporary memory
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "Flip")
 
@@ -36,8 +44,9 @@ class DataController: ObservableObject {
         return dataController
     }()
 
-    // swiftlint:disable:next function_body_length
+    /// Creates example books for testing purposes
     func createSampleData() throws {
+        // swiftlint:disable:previous function_body_length
         let viewContext = container.viewContext
 
         for num in 1...10 {
@@ -98,6 +107,8 @@ class DataController: ObservableObject {
         try viewContext.save()
     }
 
+    /// Saves Core Data context if there are changes, but does nothing if there
+    /// are no changes to be made.
     func save() {
         if container.viewContext.hasChanges {
             try? container.viewContext.save()
