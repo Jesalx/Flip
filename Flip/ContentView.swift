@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @SceneStorage("selectedView") var selectedView = LibraryView.tag
-    
+
     var body: some View {
         TabView(selection: $selectedView) {
             LibraryView()
@@ -18,14 +18,14 @@ struct ContentView: View {
                     Image(systemName: "books.vertical.fill")
                     Text("Library")
                 }
-            
+
             SearchView()
                 .tag(SearchView.tag)
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                     Text("Search")
                 }
-            
+
              StatsView()
                 .tag(StatsView.tag)
                 .tabItem {

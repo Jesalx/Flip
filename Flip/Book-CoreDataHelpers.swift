@@ -11,63 +11,63 @@ extension Book {
     enum SortOrder {
         case title, author, pageCount, publicationDate, readDate
     }
-    
+
     enum BookFilter {
         case allBooks, readBooks, unreadBooks
     }
-    
+
     var bookTitle: String {
         title ?? "Unknown Title"
     }
-    
+
     var bookAuthor: String {
         author ?? "Unknown Author"
     }
-    
+
     var bookAuthors: [String] {
         let authors = bookAuthor.components(separatedBy: ", ")
         return authors
     }
-    
+
     var bookFirstAuthor: String {
         bookAuthors.first ?? "Unknown Author"
     }
-    
+
     var bookSummary: String {
         summary ?? "No Description."
     }
-    
+
     var bookDateRead: Date {
         dateRead ?? Date()
     }
-    
+
     var bookPublicationDate: String {
         publicationDate ?? "Unknown Publication Date"
     }
-    
+
     var bookRead: Bool {
         read
     }
-    
+
     var bookPageCount: Int {
         Int(pageCount)
     }
-    
+
     var bookPublisher: String {
         publishingCompany ?? "Unknown Publisher"
     }
-    
+
     var bookGenres: [String] {
         guard let genreString = genres else { return ["No listed genres"] }
         let genreList: [String] = genreString.components(separatedBy: ",")
         let trimmed = genreList.map { $0.trimmingCharacters(in: .whitespacesAndNewlines)}
         return trimmed
     }
-    
+
     static var example: Book {
         let controller = DataController(inMemory: true)
         let viewContext = controller.container.viewContext
-        
+
         let book = Book(context: viewContext)
         book.id = "f3j2kljF=f2jlkf32j-l"
         book.title = "Example Title"
@@ -80,8 +80,7 @@ extension Book {
         book.publishingCompany = "Random Publishing Company"
         book.genres = "Genre1, Genre2, Genre3"
         book.thumbnail = URL(string: "https://www.google.com")
-        
-        
+
         return book
     }
 }

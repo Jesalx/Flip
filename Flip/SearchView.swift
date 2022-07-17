@@ -11,13 +11,13 @@ struct SearchView: View {
     enum SearchStatus {
         case prompt, searching, success, failed
     }
-    
+
     static let tag: String = "Search"
-    
+
     @State private var searchedBooks: [Item] = []
     @State private var searchText = ""
     @State private var searchStatus = SearchStatus.prompt
-    
+
     var OptionalSearchView: some View {
         Group {
             switch searchStatus {
@@ -35,7 +35,7 @@ struct SearchView: View {
             }
         }
     }
-    
+
     var body: some View {
         NavigationView {
             OptionalSearchView
@@ -47,14 +47,14 @@ struct SearchView: View {
             submitSearch()
         }
     }
-    
+
     func submitSearch() {
         Task { @MainActor in
             searchStatus = .searching
             await loadData()
         }
     }
-    
+
     func loadData() async {
         let strippedQuery = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
         let formattedQuery = strippedQuery.replacingOccurrences(of: " ", with: "+")

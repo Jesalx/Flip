@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LibraryRowView: View {
     @ObservedObject var book: Book
-    
+
     var body: some View {
         NavigationLink(destination: LibraryBookView(book: book)) {
             HStack {
@@ -21,7 +21,7 @@ struct LibraryRowView: View {
                 VStack(alignment: .leading) {
                     Text(book.bookTitle)
                         .font(.headline)
-                    
+
                     Text(book.bookFirstAuthor)
                         .font(.subheadline)
                 }
@@ -31,10 +31,10 @@ struct LibraryRowView: View {
             }
         }
     }
-    
+
     func ThumbnailImage(_ phase: AsyncImagePhase) -> some View {
         switch phase {
-        case .empty, .failure(_):
+        case .empty, .failure:
             return Image(systemName: "book.closed")
                 .resizable()
                 .scaledToFit()

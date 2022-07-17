@@ -10,12 +10,12 @@ import SwiftUI
 @main
 struct FlipApp: App {
     @StateObject var dataController: DataController
-    
+
     init() {
         let dataController = DataController()
         _dataController = StateObject(wrappedValue: dataController)
     }
-    
+
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -24,7 +24,7 @@ struct FlipApp: App {
                 .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification), perform: save)
         }
     }
-    
+
     func save(_ note: Notification) {
         dataController.save()
     }

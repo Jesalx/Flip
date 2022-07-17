@@ -9,34 +9,34 @@ import SwiftUI
 
 struct StatsView: View {
     static let tag: String = "Stats"
-    
+
     let columns = [GridItem(.flexible(minimum: 80), spacing: 15), GridItem(.flexible(minimum: 80), spacing: 15)]
-   
+
     @FetchRequest(sortDescriptors: [], predicate: NSPredicate(format: "read = True")) private var books: FetchedResults<Book>
-    
+
     var readBooks: [Book] {
         let readBooks = books.filter { $0.bookRead }
         return readBooks
     }
-    
+
     var lifetimeBooks: Int {
         return readBooks.count
     }
-    
+
     var lifetimePages: Int {
         return readBooks.reduce(0) { $0 + $1.bookPageCount}
     }
-    
+
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .center) {
-                    VStack() {
+                    VStack {
                         StatsYearView(books: readBooks)
                         StatsMonthView(books: readBooks)
                     }
                     .padding()
-                    
+
                     VStack(alignment: .center) {
                         Text("Lifetime Books Read")
                             .font(.title)

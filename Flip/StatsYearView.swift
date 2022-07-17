@@ -9,23 +9,23 @@ import SwiftUI
 
 struct StatsYearView: View {
     let books: [Book]
-    
+
     init(books: [Book]) {
         let comp = Calendar.current.dateComponents([.year], from: Date())
         let startOfYear = Calendar.current.date(from: comp) ?? Date()
         self.books = books.filter { $0.bookDateRead > startOfYear && $0.bookRead }
     }
-    
+
     var pagesRead: Int {
         books.reduce(0) { $0 + $1.bookPageCount}
     }
-    
+
     var booksRead: Int {
         books.count
     }
-    
+
     var body: some View {
-        HStack() {
+        HStack {
             Text(Date().formatted(.dateTime.year()))
                 .font(.title.weight(.semibold))
             Spacer()

@@ -9,27 +9,27 @@ import SwiftUI
 
 struct SearchedBookView: View {
     let item: Item
-    
+
     @EnvironmentObject var dataController: DataController
     @Environment(\.managedObjectContext) var managedObjectContext
-    
+
     @FetchRequest private var books: FetchedResults<Book>
-    
+
     @State private var showingFullDescription = false
     @State private var showingDeleteConfirmation = false
-    
+
     init(item: Item) {
         self.item = item
         let predicate = NSPredicate(format: "id == %@", item.id)
         let fetchRequest = FetchRequest<Book>(entity: Book.entity(), sortDescriptors: [], predicate: predicate)
         _books = fetchRequest
     }
-    
+
     var bookExists: Bool {
         guard let _ = books.first else { return false }
         return true
     }
-    
+
     var AddDeleteToolbarItem: some View {
         if bookExists {
             return AnyView(Button(role: .destructive) {
@@ -47,7 +47,7 @@ struct SearchedBookView: View {
             })
         }
     }
-    
+
     var BookSections: some View {
         Group {
             Section {
@@ -58,31 +58,30 @@ struct SearchedBookView: View {
             .frame(maxWidth: .infinity, alignment: .center)
             .listRowBackground(Color.clear)
 
-            
             Section("Author") {
-                ForEach(item.volumeInfo.wrappedAuthors, id:\.self) { author in
+                ForEach(item.volumeInfo.wrappedAuthors, id: \.self) { author in
                     Text(author)
                 }
             }
-            
+
             Section("Publisher") {
                 Text(item.volumeInfo.wrappedPublisher)
             }
-            
+
             Section("Publication Date") {
                 Text(item.volumeInfo.wrappedPublishedDate)
             }
-            
+
             Section("Page Count") {
                 Text("\(item.volumeInfo.wrappedPageCount)")
             }
-            
+
             Section("Genres") {
-                ForEach(item.volumeInfo.wrappedGenres, id:\.self) { genre in
+                ForEach(item.volumeInfo.wrappedGenres, id: \.self) { genre in
                     Text(genre)
                 }
             }
-            
+
             Section("Description") {
                 Text(item.volumeInfo.wrappedDescription)
                     .lineLimit(showingFullDescription ? 100 : 7)
@@ -92,7 +91,7 @@ struct SearchedBookView: View {
             }
         }
     }
-    
+
     var body: some View {
         List {
             HStack(alignment: .center) {
@@ -120,10 +119,10 @@ struct SearchedBookView: View {
             Alert(title: Text("Delete book"), message: Text("Are you sure you want to delete \(item.volumeInfo.wrappedTitle) from your library?"), primaryButton: .destructive(Text("Delete"), action: deleteBook), secondaryButton: .cancel())
         }
     }
-    
+
     func CoverImage(_ phase: AsyncImagePhase) -> some View {
         switch phase {
-        case .empty, .failure(_):
+        case .empty, .failure:
             return Image(systemName: "book.closed")
                 .resizable()
                 .scaledToFit()
@@ -137,18 +136,18 @@ struct SearchedBookView: View {
                 .scaledToFit()
         }
     }
-    
+
     func saveBook() {
         if let _ = books.first { return }
         let generator = UIImpactFeedbackGenerator(style: .medium)
         generator.impactOccurred()
-        
+
         let book = Book(context: managedObjectContext)
         book.id = item.id
         book.title = item.volumeInfo.wrappedTitle
         let authors = item.volumeInfo.wrappedAuthors.joined(separator: ", ")
         book.author = authors
-        
+
         book.summary = item.volumeInfo.wrappedDescription
         book.read = false
         book.publicationDate = item.volumeInfo.wrappedPublishedDate
@@ -160,7 +159,7 @@ struct SearchedBookView: View {
         book.thumbnail = item.volumeInfo.wrappedSmallThumbnail
         dataController.save()
     }
-    
+
     func deleteBook() {
         if let book = books.first {
             dataController.delete(book)

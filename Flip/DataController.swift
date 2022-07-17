@@ -10,24 +10,24 @@ import SwiftUI
 
 class DataController: ObservableObject {
     let container: NSPersistentCloudKitContainer
-    
+
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "Flip")
-        
+
         if inMemory {
             container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
         }
-        
-        container.loadPersistentStores { storeDescription, error in
+
+        container.loadPersistentStores { _, error in
             if let error = error {
                 fatalError("Fatal error loading store: \(error.localizedDescription)")
             }
         }
     }
-    
+
     static var preview: DataController = {
         let dataController = DataController(inMemory: true)
-        
+
         do {
             try dataController.createSampleData()
         } catch {
@@ -35,10 +35,10 @@ class DataController: ObservableObject {
         }
         return dataController
     }()
-    
+
     func createSampleData() throws {
         let viewContext = container.viewContext
-        
+
         for i in 1...10 {
             let book = Book(context: viewContext)
             book.id = UUID().uuidString
@@ -67,7 +67,7 @@ class DataController: ObservableObject {
         book.pageCount = Int16(1008)
         book.dateRead = Date()
         book.thumbnail = URL(string: "https://www.google.com")
-        
+
         let book2 = Book(context: viewContext)
         book2.id = UUID().uuidString
         book2.title = "Reaper"
@@ -86,7 +86,7 @@ class DataController: ObservableObject {
         book2.pageCount = Int16(442)
         book2.dateRead = Date()
         book2.thumbnail = URL(string: "https://www.google.com")
-        
+
         let book3 = Book(context: viewContext)
         book3.id = UUID().uuidString
         book3.title = "This is a really long title of a book that doesn't exist so I can see how it looks"
@@ -99,30 +99,30 @@ class DataController: ObservableObject {
         book3.pageCount = 3600
         book3.dateRead = Date()
         book3.thumbnail = URL(string: "https://www.google.com")
-        
+
         try viewContext.save()
     }
-    
+
     func save() {
         if container.viewContext.hasChanges {
             try? container.viewContext.save()
         }
     }
-    
+
     func delete(_ object: NSManagedObject) {
         container.viewContext.delete(object)
     }
-    
+
     func deleteAll() {
         let fetchRequest1: NSFetchRequest<NSFetchRequestResult> = Book.fetchRequest()
         let batchDeleteRequest1 = NSBatchDeleteRequest(fetchRequest: fetchRequest1)
         _ = try? container.viewContext.execute(batchDeleteRequest1)
     }
-    
+
     func count<T>(for fetchRequest: NSFetchRequest<T>) -> Int {
         (try? container.viewContext.count(for: fetchRequest)) ?? 0
     }
-    
+
     func containsBook(id: String) -> Bool {
         let fetchRequest: NSFetchRequest<Book> = NSFetchRequest(entityName: "Book")
         fetchRequest.predicate = NSPredicate(format: "id == %@", id)

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SearchedBookRowView: View {
     let item: Item
-    
+
     var body: some View {
         NavigationLink(destination: SearchedBookView(item: item)) {
             HStack {
@@ -21,17 +21,17 @@ struct SearchedBookRowView: View {
                 VStack(alignment: .leading) {
                     Text(item.volumeInfo.wrappedTitle)
                         .font(.headline)
-                    
+
                     Text(item.volumeInfo.wrappedFirstAuthor)
                         .font(.subheadline)
                 }
             }
         }
     }
-    
+
     func ThumbnailImage(_ phase: AsyncImagePhase) -> some View {
         switch phase {
-        case .empty, .failure(_):
+        case .empty, .failure:
             return Image(systemName: "book.closed")
                 .resizable()
                 .scaledToFit()

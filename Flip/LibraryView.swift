@@ -9,12 +9,12 @@ import SwiftUI
 
 struct LibraryView: View {
     static let tag: String = "Library"
-    
+
     @EnvironmentObject var dataController: DataController
     @Environment(\.managedObjectContext) var managedObjectContext
-    
+
     @FetchRequest(sortDescriptors: [SortDescriptor(\Book.author, order: .forward)]) private var books: FetchedResults<Book>
-    
+
     @State private var showingSortOrder = false
     @State private var sortOrder: Book.SortOrder = .author
     @State private var bookFilter: Book.BookFilter = .allBooks
@@ -27,7 +27,7 @@ struct LibraryView: View {
             books.nsPredicate = newValue.isEmpty ? nil : NSPredicate(format: "title CONTAINS[c] %@ OR author CONTAINS[c] %@", newValue, newValue)
         }
     }
-    
+
     var FilterToolbarItem: some View {
         Button {
             hapticFeedback(style: .light)
@@ -36,7 +36,7 @@ struct LibraryView: View {
             Label("Sort", systemImage: "arrow.up.arrow.down")
         }
     }
-    
+
     var SortToolbarItem: some View {
         Menu {
             Button("All Items") { bookFilter = .allBooks }
@@ -49,7 +49,7 @@ struct LibraryView: View {
             hapticFeedback(style: .light)
         }
     }
-    
+
     var body: some View {
         NavigationView {
             List {
@@ -83,7 +83,7 @@ struct LibraryView: View {
         }
         .searchable(text: query, prompt: "Search")
     }
-    
+
     func delete(_ offsets: IndexSet) {
         hapticFeedback(style: .medium)
         for offset in offsets {
@@ -105,7 +105,7 @@ struct LibraryView: View {
         }
         books.nsPredicate = predicate
     }
-    
+
     func updateSort() {
         var descriptor: [SortDescriptor<Book>]
         switch sortOrder {
@@ -122,13 +122,12 @@ struct LibraryView: View {
         }
         books.sortDescriptors = descriptor
     }
-    
+
     func hapticFeedback(style: UIImpactFeedbackGenerator.FeedbackStyle) {
         let generator = UIImpactFeedbackGenerator(style: style)
         generator.impactOccurred()
     }
-    
-    
+
     func navigationTitleText() -> String {
         switch bookFilter {
         case .allBooks:
