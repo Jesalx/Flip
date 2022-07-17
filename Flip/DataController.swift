@@ -36,13 +36,14 @@ class DataController: ObservableObject {
         return dataController
     }()
 
+    // swiftlint:disable:next function_body_length
     func createSampleData() throws {
         let viewContext = container.viewContext
 
-        for i in 1...10 {
+        for num in 1...10 {
             let book = Book(context: viewContext)
             book.id = UUID().uuidString
-            book.title = "Book \(i)"
+            book.title = "Book \(num)"
             book.author = "Author Name"
             book.summary = "This is a summar of some book. Words. Blah blah blah."
             book.read = Bool.random()
@@ -57,9 +58,8 @@ class DataController: ObservableObject {
         book.id = UUID().uuidString
         book.title = "The Way of Kings"
         book.author = "Brandon Sanderson"
-        book.summary = """
-        Roshar is a world of stone and storms. Uncanny tempests of incredible power sweep across the rocky terrain so frequently that they have shaped ecology and civilization alike. Animals hide in shells, trees pull in branches, and grass retracts into the soilless ground. Cities are built only where the topography offers shelter.
-        """
+        // swiftlint:disable:next line_length
+        book.summary = "Roshar is a world of stone and storms. Uncanny tempests of incredible power sweep across the rocky terrain so frequently that they have shaped ecology and civilization alike. Animals hide in shells, trees pull in branches, and grass retracts into the soilless ground. Cities are built only where the topography offers shelter."
         book.read = true
         book.publicationDate = "2021"
         book.genres = "Fantasy, Action & Adventure, Epic"
@@ -72,13 +72,8 @@ class DataController: ObservableObject {
         book2.id = UUID().uuidString
         book2.title = "Reaper"
         book2.author = "Will Wight"
-        book2.summary = """
-        With his home finally secure, Lindon delves deep into the ancient labyrinth, seeking long-lost Soulsmithing knowledge and the secret to destroying the Dreadgods. Monarchs plot against him and against each other, unaware of the threats gathering in realms beyond.
-
-        Far above Lindon and the Monarchs and the Dreadgods, another war is waged. Suriel and the Abidan clash against the Mad King and his forces in a battle for the fate of many worlds.
-
-        And if it is lost, Cradle will be destroyed.
-        """
+        // swiftlint:disable:next line_length
+        book2.summary = "With his home finally secure, Lindon delves deep into the ancient labyrinth, seeking long-lost Soulsmithing knowledge and the secret to destroying the Dreadgods. Monarchs plot against him and against each other, unaware of the threats gathering in realms beyond. Far above Lindon and the Monarchs and the Dreadgods, another war is waged. Suriel and the Abidan clash against the Mad King and his forces in a battle for the fate of many worlds. And if it is lost, Cradle will be destroyed."
         book2.read = true
         book2.publicationDate = "2012"
         book2.genres = "Fiction, Fantasy, General"

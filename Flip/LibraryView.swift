@@ -13,7 +13,9 @@ struct LibraryView: View {
     @EnvironmentObject var dataController: DataController
     @Environment(\.managedObjectContext) var managedObjectContext
 
-    @FetchRequest(sortDescriptors: [SortDescriptor(\Book.author, order: .forward)]) private var books: FetchedResults<Book>
+    @FetchRequest(
+        sortDescriptors: [SortDescriptor(\Book.author, order: .forward)]
+    ) private var books: FetchedResults<Book>
 
     @State private var showingSortOrder = false
     @State private var sortOrder: Book.SortOrder = .author
@@ -24,11 +26,13 @@ struct LibraryView: View {
             searchText
         } set: { newValue in
             searchText = newValue
-            books.nsPredicate = newValue.isEmpty ? nil : NSPredicate(format: "title CONTAINS[c] %@ OR author CONTAINS[c] %@", newValue, newValue)
+            books.nsPredicate = newValue.isEmpty
+            ? nil
+            : NSPredicate(format: "title CONTAINS[c] %@ OR author CONTAINS[c] %@", newValue, newValue)
         }
     }
 
-    var FilterToolbarItem: some View {
+    var filterToolbarItem: some View {
         Button {
             hapticFeedback(style: .light)
             showingSortOrder.toggle()
@@ -37,7 +41,7 @@ struct LibraryView: View {
         }
     }
 
-    var SortToolbarItem: some View {
+    var sortToolbarItem: some View {
         Menu {
             Button("All Items") { bookFilter = .allBooks }
             Button("Read") { bookFilter = .readBooks }
@@ -63,8 +67,8 @@ struct LibraryView: View {
             .navigationTitle(navigationTitleText())
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    FilterToolbarItem
-                    SortToolbarItem
+                    filterToolbarItem
+                    sortToolbarItem
                 }
             }
             .confirmationDialog("Sort Books", isPresented: $showingSortOrder) {

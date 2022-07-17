@@ -21,7 +21,10 @@ struct FlipApp: App {
             ContentView()
                 .environment(\.managedObjectContext, dataController.container.viewContext)
                 .environmentObject(dataController)
-                .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification), perform: save)
+                .onReceive(
+                    NotificationCenter.default.publisher(
+                        for: UIApplication.willResignActiveNotification), perform: save
+                )
         }
     }
 

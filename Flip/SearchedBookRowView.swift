@@ -14,7 +14,7 @@ struct SearchedBookRowView: View {
         NavigationLink(destination: SearchedBookView(item: item)) {
             HStack {
                 AsyncImage(url: item.volumeInfo.wrappedSmallThumbnail) { phase in
-                    ThumbnailImage(phase)
+                    thumbnailImage(phase)
                 }
                 .frame(width: 45, height: 70)
                 .cornerRadius(8)
@@ -29,7 +29,7 @@ struct SearchedBookRowView: View {
         }
     }
 
-    func ThumbnailImage(_ phase: AsyncImagePhase) -> some View {
+    func thumbnailImage(_ phase: AsyncImagePhase) -> some View {
         switch phase {
         case .empty, .failure:
             return Image(systemName: "book.closed")

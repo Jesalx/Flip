@@ -18,7 +18,7 @@ struct SearchView: View {
     @State private var searchText = ""
     @State private var searchStatus = SearchStatus.prompt
 
-    var OptionalSearchView: some View {
+    var optionalSearchView: some View {
         Group {
             switch searchStatus {
             case .prompt:
@@ -38,7 +38,7 @@ struct SearchView: View {
 
     var body: some View {
         NavigationView {
-            OptionalSearchView
+            optionalSearchView
             .navigationTitle("Search")
         }
         .searchable(text: $searchText, prompt: "Search Google Books")

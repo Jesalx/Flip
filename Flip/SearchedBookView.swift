@@ -26,11 +26,11 @@ struct SearchedBookView: View {
     }
 
     var bookExists: Bool {
-        guard let _ = books.first else { return false }
+        guard books.first != nil else { return false }
         return true
     }
 
-    var AddDeleteToolbarItem: some View {
+    var addDeleteToolbarItem: some View {
         if bookExists {
             return AnyView(Button(role: .destructive) {
                 showingDeleteConfirmation.toggle()
@@ -48,7 +48,7 @@ struct SearchedBookView: View {
         }
     }
 
-    var BookSections: some View {
+    var bookSections: some View {
         Group {
             Section {
                 Text(item.volumeInfo.wrappedTitle)
@@ -96,7 +96,7 @@ struct SearchedBookView: View {
         List {
             HStack(alignment: .center) {
                 AsyncImage(url: item.volumeInfo.wrappedSmallThumbnail) { phase in
-                    CoverImage(phase)
+                    coverImage(phase)
                 }
                 .cornerRadius(20)
                 .frame(width: 190, height: 270)
@@ -105,22 +105,26 @@ struct SearchedBookView: View {
             .listRowBackground(Color.clear)
             .listRowInsets( EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0) )
 
-            BookSections
+            bookSections
         }
         .navigationTitle(item.volumeInfo.wrappedTitle)
         .navigationBarTitleDisplayMode(.inline)
         .onDisappear(perform: dataController.save)
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
-                AddDeleteToolbarItem
+                addDeleteToolbarItem
             }
         }
         .alert(isPresented: $showingDeleteConfirmation) {
-            Alert(title: Text("Delete book"), message: Text("Are you sure you want to delete \(item.volumeInfo.wrappedTitle) from your library?"), primaryButton: .destructive(Text("Delete"), action: deleteBook), secondaryButton: .cancel())
+            Alert(
+                title: Text("Delete book"),
+                message: Text("Are you sure you want to delete \(item.volumeInfo.wrappedTitle) from your library?"),
+                primaryButton: .destructive(Text("Delete"), action: deleteBook),
+                secondaryButton: .cancel())
         }
     }
 
-    func CoverImage(_ phase: AsyncImagePhase) -> some View {
+    func coverImage(_ phase: AsyncImagePhase) -> some View {
         switch phase {
         case .empty, .failure:
             return Image(systemName: "book.closed")
@@ -138,7 +142,7 @@ struct SearchedBookView: View {
     }
 
     func saveBook() {
-        if let _ = books.first { return }
+        if books.first != nil { return }
         let generator = UIImpactFeedbackGenerator(style: .medium)
         generator.impactOccurred()
 

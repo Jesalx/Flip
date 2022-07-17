@@ -72,7 +72,11 @@ extension Book {
         book.id = "f3j2kljF=f2jlkf32j-l"
         book.title = "Example Title"
         book.author = "First Middle Last"
-        book.summary = "This is a summary of the book. I don't know how long this will be for a real book, but this will have to do for now. Example text."
+        book.summary = """
+                    This is a summary of the book.
+                    I don't know how long this will be for a real book,
+                    but this will have to do for now. Example text.
+                    """
         book.publicationDate = "2022"
         book.read = Bool.random()
         book.dateRead = Date()

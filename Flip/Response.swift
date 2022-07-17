@@ -17,7 +17,25 @@ struct Item: Codable, Identifiable {
     let volumeInfo: VolumeInfo
 
     static var example: Item {
-        Item(id: "abc123", selfLink: "somestring", volumeInfo: VolumeInfo(title: "The Way of Kings", subtitle: "Some Subtitle", authors: ["Brandon Sanderson"], publisher: "Random House", publishedDate: "2022-01-01", description: "This is a description, I don't know what the book is about.", pageCount: 1403, categories: ["Fiction", "Sci-Fi"], imageLinks: ImageLinks(smallThumbnail: "", thumbnail: "")))
+        Item(
+            id: "abc123",
+            selfLink: "somestring",
+            volumeInfo:
+                VolumeInfo(
+                    title: "The Way of Kings",
+                    subtitle: "Some Subtitle",
+                    authors: ["Brandon Sanderson"],
+                    publisher: "Random House",
+                    publishedDate: "2022-01-01",
+                    description: "This is a description, I don't know what the book is about.",
+                    pageCount: 1403,
+                    categories: ["Fiction", "Sci-Fi"],
+                    imageLinks:
+                        ImageLinks(
+                            smallThumbnail: "",
+                            thumbnail: "")
+                )
+        )
     }
 }
 
@@ -77,7 +95,6 @@ struct VolumeInfo: Codable {
     }
 
     static var example: VolumeInfo {
-//        let volumeInfo = VolumeInfo(title: "The Way of Kings", subtitle: "Some Subtitle", authors: ["Brandon Sanderson"], publisher: "Random House", publishedDate: "2022-01-01", description: "This is a description, I don't know what the book is about.", pageCount: 1403, categories: ["Fiction", "Sci-Fi"], imageLinks: ImageLinks(smallThumbnail: URL(string: "http://books.google.com/books/content?id=QVn-CgAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"), thumbnail: URL(string: "http://books.google.com/books/content?id=QVn-CgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api")))
         let volumeInfo = VolumeInfo(
             title: "The Way of Kings",
             subtitle: "Some Subtitle",

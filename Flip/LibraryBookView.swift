@@ -24,7 +24,7 @@ struct LibraryBookView: View {
         _read = State(wrappedValue: book.bookRead)
     }
 
-    var OptionalDateView: some View {
+    var optionalDateView: some View {
         read
         ? DatePicker("Date Finished", selection: $dateRead, in: ...Date.now, displayedComponents: .date)
             .datePickerStyle(.graphical)
@@ -35,7 +35,7 @@ struct LibraryBookView: View {
         List {
             HStack(alignment: .center) {
                 AsyncImage(url: book.thumbnail) { phase in
-                    CoverImage(phase)
+                    coverImage(phase)
                 }
                 .cornerRadius(20)
                 .frame(width: 190, height: 270)
@@ -78,7 +78,7 @@ struct LibraryBookView: View {
 
             Section {
                 Toggle("Mark Read", isOn: $read)
-                OptionalDateView
+                optionalDateView
 
             }
 
@@ -95,11 +95,15 @@ struct LibraryBookView: View {
         .onChange(of: dateRead) { _ in updateDate() }
         .onDisappear(perform: dataController.save)
         .alert(isPresented: $showingDeleteConfirmation) {
-            Alert(title: Text("Delete book"), message: Text("Are you sure you want to delete \(book.bookTitle) from your library?"), primaryButton: .destructive(Text("Delete"), action: delete), secondaryButton: .cancel())
+            Alert(
+                title: Text("Delete book"),
+                message: Text("Are you sure you want to delete \(book.bookTitle) from your library?"),
+                primaryButton: .destructive(Text("Delete"), action: delete),
+                secondaryButton: .cancel())
         }
     }
 
-    func CoverImage(_ phase: AsyncImagePhase) -> some View {
+    func coverImage(_ phase: AsyncImagePhase) -> some View {
         switch phase {
         case .empty, .failure:
             return Image(systemName: "book.closed")
