@@ -2,7 +2,6 @@
 //  EmptySelectionView.swift
 //  Flip
 //
-//  Created by Jesal Patel on 7/15/22.
 //
 
 import SwiftUI

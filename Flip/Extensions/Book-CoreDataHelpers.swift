@@ -2,7 +2,6 @@
 //  Book-CoreDataHelpers.swift
 //  Flip
 //
-//  Created by Jesal Patel on 7/14/22.
 //
 
 import Foundation
@@ -65,11 +64,11 @@ extension Book {
     }
 
     static var example: Book {
-        let controller = DataController(inMemory: true)
+        let controller = DataController.preview
         let viewContext = controller.container.viewContext
 
         let book = Book(context: viewContext)
-        book.id = "f3j2kljF=f2jlkf32j-l"
+        book.id = "example-id-ABC123abc"
         book.title = "Example Title"
         book.author = "First Middle Last"
         book.summary = """
@@ -78,7 +77,7 @@ extension Book {
                     but this will have to do for now. Example text.
                     """
         book.publicationDate = "2022"
-        book.read = Bool.random()
+        book.read = true
         book.dateRead = Date()
         book.pageCount = Int16(Int.random(in: 20...1500))
         book.publishingCompany = "Random Publishing Company"

@@ -2,7 +2,6 @@
 //  DataController.swift
 //  Flip
 //
-//  Created by Jesal Patel on 7/14/22.
 //
 
 import CoreData
@@ -20,7 +19,7 @@ class DataController: ObservableObject {
     /// or on disk for regular application runs.
     /// - Parameter inMemory: Whether to store this data in temporary memory
     init(inMemory: Bool = false) {
-        container = NSPersistentCloudKitContainer(name: "Flip")
+        container = NSPersistentCloudKitContainer(name: "Flip", managedObjectModel: Self.model)
 
         if inMemory {
             container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
@@ -44,7 +43,17 @@ class DataController: ObservableObject {
         return dataController
     }()
 
-    /// Creates example books for testing purposes
+    static let model: NSManagedObjectModel = {
+        guard let url = Bundle.main.url(forResource: "Flip", withExtension: "momd") else {
+            fatalError("Failed to locate model file.")
+        }
+        guard let managedObjectModel = NSManagedObjectModel(contentsOf: url) else {
+            fatalError("Failed to load model file.")
+        }
+        return managedObjectModel
+    }()
+
+    /// Creates example books for testing purposes. Creates 13 Book objects in total.
     func createSampleData() throws {
         // swiftlint:disable:previous function_body_length
         let viewContext = container.viewContext

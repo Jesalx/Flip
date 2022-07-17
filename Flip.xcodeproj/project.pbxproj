@@ -13,6 +13,10 @@
 		7107F45628820DE700CE89A5 /* SearchedBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107F45528820DE700CE89A5 /* SearchedBookView.swift */; };
 		7107F45A28821CD500CE89A5 /* SearchedBookRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107F45928821CD500CE89A5 /* SearchedBookRowView.swift */; };
 		71A74A542883A54A000125E3 /* StatsMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A74A532883A54A000125E3 /* StatsMonthView.swift */; };
+		71B2BC2E2884B52A00D4078C /* FlipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B2BC2D2884B52A00D4078C /* FlipTests.swift */; };
+		71B2BC372884B88800D4078C /* BookTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B2BC362884B88800D4078C /* BookTest.swift */; };
+		71B2BC392884BD7E00D4078C /* DevelopmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B2BC382884BD7E00D4078C /* DevelopmentTests.swift */; };
+		71B2BC3D2884C3A900D4078C /* ExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B2BC3C2884C3A900D4078C /* ExtensionTests.swift */; };
 		71C624DA28809F9D007B2CAF /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C624D928809F9D007B2CAF /* CloudKit.framework */; };
 		71C624DE2880A149007B2CAF /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C624DD2880A149007B2CAF /* LibraryView.swift */; };
 		71C624E02880AEC0007B2CAF /* Book-CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C624DF2880AEC0007B2CAF /* Book-CoreDataHelpers.swift */; };
@@ -28,6 +32,16 @@
 		71E002CF28809767006E23DF /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E002CE28809767006E23DF /* DataController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		71B2BC2F2884B52A00D4078C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71E002B2288095B8006E23DF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 71E002B9288095B8006E23DF;
+			remoteInfo = Flip;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		7107F44D2880DA4500CE89A5 /* LibraryRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryRowView.swift; sourceTree = "<group>"; };
 		7107F4512881DD8000CE89A5 /* EmptySelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySelectionView.swift; sourceTree = "<group>"; };
@@ -35,6 +49,11 @@
 		7107F45528820DE700CE89A5 /* SearchedBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedBookView.swift; sourceTree = "<group>"; };
 		7107F45928821CD500CE89A5 /* SearchedBookRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedBookRowView.swift; sourceTree = "<group>"; };
 		71A74A532883A54A000125E3 /* StatsMonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsMonthView.swift; sourceTree = "<group>"; };
+		71B2BC2B2884B52A00D4078C /* FlipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		71B2BC2D2884B52A00D4078C /* FlipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipTests.swift; sourceTree = "<group>"; };
+		71B2BC362884B88800D4078C /* BookTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTest.swift; sourceTree = "<group>"; };
+		71B2BC382884BD7E00D4078C /* DevelopmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentTests.swift; sourceTree = "<group>"; };
+		71B2BC3C2884C3A900D4078C /* ExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionTests.swift; sourceTree = "<group>"; };
 		71C624D628809F5D007B2CAF /* Flip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Flip.entitlements; sourceTree = "<group>"; };
 		71C624D728809F80007B2CAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71C624D928809F9D007B2CAF /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -54,6 +73,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		71B2BC282884B52A00D4078C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		71E002B7288095B8006E23DF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -124,6 +150,17 @@
 			path = Stats;
 			sourceTree = "<group>";
 		};
+		71B2BC2C2884B52A00D4078C /* FlipTests */ = {
+			isa = PBXGroup;
+			children = (
+				71B2BC2D2884B52A00D4078C /* FlipTests.swift */,
+				71B2BC362884B88800D4078C /* BookTest.swift */,
+				71B2BC382884BD7E00D4078C /* DevelopmentTests.swift */,
+				71B2BC3C2884C3A900D4078C /* ExtensionTests.swift */,
+			);
+			path = FlipTests;
+			sourceTree = "<group>";
+		};
 		71C624D828809F9D007B2CAF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				71E002BC288095B8006E23DF /* Flip */,
+				71B2BC2C2884B52A00D4078C /* FlipTests */,
 				71E002BB288095B8006E23DF /* Products */,
 				71C624D828809F9D007B2CAF /* Frameworks */,
 			);
@@ -145,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				71E002BA288095B8006E23DF /* Flip.app */,
+				71B2BC2B2884B52A00D4078C /* FlipTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -176,6 +215,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		71B2BC2A2884B52A00D4078C /* FlipTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 71B2BC332884B52A00D4078C /* Build configuration list for PBXNativeTarget "FlipTests" */;
+			buildPhases = (
+				71B2BC272884B52A00D4078C /* Sources */,
+				71B2BC282884B52A00D4078C /* Frameworks */,
+				71B2BC292884B52A00D4078C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				71B2BC302884B52A00D4078C /* PBXTargetDependency */,
+			);
+			name = FlipTests;
+			productName = FlipTests;
+			productReference = 71B2BC2B2884B52A00D4078C /* FlipTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		71E002B9288095B8006E23DF /* Flip */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 71E002C8288095B9006E23DF /* Build configuration list for PBXNativeTarget "Flip" */;
@@ -204,6 +261,10 @@
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
+					71B2BC2A2884B52A00D4078C = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 71E002B9288095B8006E23DF;
+					};
 					71E002B9288095B8006E23DF = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
@@ -223,11 +284,19 @@
 			projectRoot = "";
 			targets = (
 				71E002B9288095B8006E23DF /* Flip */,
+				71B2BC2A2884B52A00D4078C /* FlipTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		71B2BC292884B52A00D4078C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		71E002B8288095B8006E23DF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -261,6 +330,17 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		71B2BC272884B52A00D4078C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71B2BC372884B88800D4078C /* BookTest.swift in Sources */,
+				71B2BC2E2884B52A00D4078C /* FlipTests.swift in Sources */,
+				71B2BC392884BD7E00D4078C /* DevelopmentTests.swift in Sources */,
+				71B2BC3D2884C3A900D4078C /* ExtensionTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		71E002B6288095B8006E23DF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -286,7 +366,51 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		71B2BC302884B52A00D4078C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 71E002B9288095B8006E23DF /* Flip */;
+			targetProxy = 71B2BC2F2884B52A00D4078C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		71B2BC312884B52A00D4078C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8W74HT4Y4R;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.jesal.FlipTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Flip.app/Flip";
+			};
+			name = Debug;
+		};
+		71B2BC322884B52A00D4078C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8W74HT4Y4R;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.jesal.FlipTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Flip.app/Flip";
+			};
+			name = Release;
+		};
 		71E002C6288095B9006E23DF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -466,6 +590,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		71B2BC332884B52A00D4078C /* Build configuration list for PBXNativeTarget "FlipTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				71B2BC312884B52A00D4078C /* Debug */,
+				71B2BC322884B52A00D4078C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		71E002B5288095B8006E23DF /* Build configuration list for PBXProject "Flip" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
