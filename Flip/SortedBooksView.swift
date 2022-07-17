@@ -56,7 +56,7 @@ struct SortedBooksView: View {
                         LibraryRowView(book: book)
                     }
                     .onDelete { offsets in
-                        let generator = UIImpactFeedbackGenerator(style: .light)
+                        let generator = UIImpactFeedbackGenerator(style: .medium)
                         generator.impactOccurred()
                         for offset in offsets {
                             let book = books[offset]

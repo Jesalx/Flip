@@ -24,6 +24,7 @@ struct LibraryView: View {
                 .toolbar {
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
                         Button {
+                            hapticFeedback()
                             showingSortOrder.toggle()
                         } label: {
                             Label("Sort", systemImage: "arrow.up.arrow.down")
@@ -34,6 +35,9 @@ struct LibraryView: View {
                             Button("Unread") { bookFilter = .unreadBooks }
                         } label: {
                             Label("Filter", systemImage: "line.3.horizontal.decrease.circle")
+                        }
+                        .onTapGesture {
+                            hapticFeedback()
                         }
                     }
                 }
@@ -50,6 +54,12 @@ struct LibraryView: View {
             EmptySelectionView()
         }
     }
+    
+    func hapticFeedback() {
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
+    }
+    
     
     func navigationTitleText() -> String {
         switch bookFilter {

@@ -110,7 +110,11 @@ struct LibraryBookView: View {
     func update() {
         book.objectWillChange.send()
         book.read = read
+        if read == false {
+            dateRead = Date()
+        }
         book.dateRead = dateRead
+        dataController.save()
     }
     
     func delete() {
