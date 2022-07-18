@@ -32,7 +32,6 @@ struct LibraryBookView: View {
                 Text("Rating")
                 Spacer()
                 LibraryRatingView(rating: $rating)
-//                Spacer()
             }
             DatePicker("Date Finished", selection: $dateRead, in: ...Date.now, displayedComponents: [.date])
         }
@@ -100,9 +99,9 @@ struct LibraryBookView: View {
         }
         .navigationTitle(book.bookTitle)
         .navigationBarTitleDisplayMode(.inline)
-        .onChange(of: read) { _ in updateRead() }
-        .onChange(of: dateRead) { _ in updateDate() }
-        .onChange(of: rating) { _ in updateRating() }
+        .onChange(of: read) { _ in update() }
+        .onChange(of: dateRead) { _ in update() }
+        .onChange(of: rating) { _ in update() }
         .onDisappear(perform: dataController.save)
         .alert(isPresented: $showingDeleteConfirmation) {
             Alert(
@@ -113,14 +112,11 @@ struct LibraryBookView: View {
         }
     }
 
-    func hapticFeedback(style: UIImpactFeedbackGenerator.FeedbackStyle) {
-        let generator = UIImpactFeedbackGenerator(style: style)
-        generator.impactOccurred()
-    }
-
-    func updateRead() {
+    func update() {
         book.objectWillChange.send()
         book.read = read
+        book.rating = Int16(rating)
+        book.dateRead = dateRead
         if read == false {
             book.dateRead = Date()
             book.rating = Int16(3)
@@ -128,17 +124,27 @@ struct LibraryBookView: View {
         dataController.save()
     }
 
-    func updateRating() {
-        book.objectWillChange.send()
-        book.rating = Int16(rating)
-        dataController.save()
-    }
-
-    func updateDate() {
-        book.objectWillChange.send()
-        book.dateRead = dateRead
-        dataController.save()
-    }
+//    func updateRead() {
+//        book.objectWillChange.send()
+//        book.read = read
+//        if read == false {
+//            book.dateRead = Date()
+//            book.rating = Int16(3)
+//        }
+//        dataController.save()
+//    }
+//
+//    func updateRating() {
+//        book.objectWillChange.send()
+//        book.rating = Int16(rating)
+//        dataController.save()
+//    }
+//
+//    func updateDate() {
+//        book.objectWillChange.send()
+//        book.dateRead = dateRead
+//        dataController.save()
+//    }
 
     func delete() {
         dataController.delete(book)

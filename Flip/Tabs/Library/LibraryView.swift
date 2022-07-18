@@ -64,6 +64,10 @@ struct LibraryView: View {
                 }
             }
             .navigationTitle(navigationTitleText())
+            // Searchable modifier can cause crashes on some phones
+            // (iPhone 12/13 Regular/Pro) during orientation changes
+            // in iOS 15. This seems to be fixed in iOS 16. It may be
+            // good to turn off landscape mode until then.
             .searchable(text: query, prompt: "Search")
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -83,7 +87,7 @@ struct LibraryView: View {
             }
             .onChange(of: sortOrder) { _ in updateSort() }
             .onChange(of: bookFilter) { _ in updateFilter() }
-//            EmptySelectionView()
+            EmptySelectionView()
         }
     }
 
