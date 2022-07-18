@@ -14,6 +14,7 @@ struct LibraryBookView: View {
 
     @State private var dateRead: Date
     @State private var read: Bool
+    @State private var rating: Int
     @State private var showingDeleteConfirmation = false
     @State private var showingFullDescription = false
 
@@ -21,12 +22,16 @@ struct LibraryBookView: View {
         self.book = book
         _dateRead = State(wrappedValue: book.bookDateRead)
         _read = State(wrappedValue: book.bookRead)
+        _rating = State(wrappedValue: 3)
     }
 
-    var optionalDateView: some View {
+    var optionalReadView: some View {
         read
-        ? DatePicker("Date Finished", selection: $dateRead, in: ...Date.now, displayedComponents: .date)
+        ? Group {
+            LibraryRatingView(rating: $rating)
+            DatePicker("Date Finished", selection: $dateRead, in: ...Date.now, displayedComponents: .date)
             .datePickerStyle(.graphical)
+        }
         : nil
     }
 
@@ -60,8 +65,7 @@ struct LibraryBookView: View {
             }
             Section {
                 Toggle("Mark Read", isOn: $read)
-                optionalDateView
-
+                optionalReadView
             }
             Section {
                 Button("Remove from library") {
