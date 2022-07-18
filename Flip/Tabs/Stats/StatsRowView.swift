@@ -18,15 +18,23 @@ struct StatsRowView: View {
         books.count
     }
 
+    var bookWord: String {
+        return booksRead == 1 ? "Book" : "Books"
+    }
+
+    var pageWord: String {
+        return pagesRead == 1 ? "Page" : "Pages"
+    }
+
     var body: some View {
         HStack {
             Text(Date().formatted(dateStyle))
                 .font(.title.weight(.semibold))
             Spacer()
             VStack(alignment: .trailing, spacing: 10) {
-                Text("\(booksRead) books read")
+                Text("\(booksRead) \(bookWord) read")
                     .font(.headline)
-                Text("\(pagesRead) pages read")
+                Text("\(pagesRead) \(pageWord) read")
                     .font(.headline)
             }
         }
