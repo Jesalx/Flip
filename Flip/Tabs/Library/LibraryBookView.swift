@@ -30,6 +30,48 @@ struct LibraryBookView: View {
         : nil
     }
 
+    var bookSections: some View {
+        Group {
+            Section("Author") {
+                ForEach(book.bookAuthors, id: \.self) { author in
+                    Text(author)
+                }
+            }
+            Section("Publisher") {
+                Text(book.bookPublisher)
+            }
+            Section("Publication Date") {
+                Text(book.bookPublicationDate)
+            }
+            Section("Page Count") {
+                Text("\(book.bookPageCount)")
+            }
+            Section("Genres") {
+                ForEach(book.bookGenres, id: \.self) { genre in
+                    Text(genre)
+                }
+            }
+            Section("Description") {
+                Text(book.bookSummary)
+                    .lineLimit(showingFullDescription ? 100 : 8)
+                    .onTapGesture {
+                        showingFullDescription.toggle()
+                    }
+            }
+            Section {
+                Toggle("Mark Read", isOn: $read)
+                optionalDateView
+
+            }
+            Section {
+                Button("Remove from library") {
+                    showingDeleteConfirmation.toggle()
+                }
+                .tint(.red)
+            }
+        }
+    }
+
     var body: some View {
         List {
             HStack(alignment: .center) {
@@ -41,50 +83,7 @@ struct LibraryBookView: View {
             .listRowBackground(Color.clear)
             .listRowInsets( EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0) )
 
-            Section("Author") {
-                ForEach(book.bookAuthors, id: \.self) { author in
-                    Text(author)
-                }
-            }
-
-            Section("Publisher") {
-                Text(book.bookPublisher)
-            }
-
-            Section("Publication Date") {
-                Text(book.bookPublicationDate)
-            }
-
-            Section("Page Count") {
-                Text("\(book.bookPageCount)")
-            }
-
-            Section("Genres") {
-                ForEach(book.bookGenres, id: \.self) { genre in
-                    Text(genre)
-                }
-            }
-
-            Section("Description") {
-                Text(book.bookSummary)
-                    .lineLimit(showingFullDescription ? 100 : 8)
-                    .onTapGesture {
-                        showingFullDescription.toggle()
-                    }
-            }
-
-            Section {
-                Toggle("Mark Read", isOn: $read)
-                optionalDateView
-
-            }
-
-            Section {
-                Button("Remove from library") {
-                    showingDeleteConfirmation.toggle()
-                }
-                .tint(.red)
-            }
+            bookSections
         }
         .navigationTitle(book.bookTitle)
         .navigationBarTitleDisplayMode(.inline)

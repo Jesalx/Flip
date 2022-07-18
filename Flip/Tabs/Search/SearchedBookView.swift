@@ -62,25 +62,20 @@ struct SearchedBookView: View {
                     Text(author)
                 }
             }
-
             Section("Publisher") {
                 Text(item.volumeInfo.wrappedPublisher)
             }
-
             Section("Publication Date") {
                 Text(item.volumeInfo.wrappedPublishedDate)
             }
-
             Section("Page Count") {
                 Text("\(item.volumeInfo.wrappedPageCount)")
             }
-
             Section("Genres") {
                 ForEach(item.volumeInfo.wrappedGenres, id: \.self) { genre in
                     Text(genre)
                 }
             }
-
             Section("Description") {
                 Text(item.volumeInfo.wrappedDescription)
                     .lineLimit(showingFullDescription ? 100 : 7)
