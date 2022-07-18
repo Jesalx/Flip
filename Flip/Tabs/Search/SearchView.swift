@@ -8,7 +8,7 @@ import SwiftUI
 
 struct SearchView: View {
     enum SearchStatus {
-        case prompt, searching, success, failed
+        case prompt, searching, success, noResults, failed
     }
 
     static let tag: String = "Search"
@@ -28,9 +28,14 @@ struct SearchView: View {
                  List(searchedBooks) { item in
                     SearchedBookRowView(item: item)
                  }
-            case .failed:
+            case .noResults:
                 Text("No results found.")
                     .foregroundColor(.secondary)
+            case .failed:
+                Text("Could not connect to Google Books.\nPlease try again later.")
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+                    .padding()
             }
         }
     }
@@ -57,8 +62,8 @@ struct SearchView: View {
     func loadData() async {
         let strippedQuery = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
         let formattedQuery = strippedQuery.replacingOccurrences(of: " ", with: "+")
-        let url = "https://www.googleapis.com/books/v1/volumes?q=\(formattedQuery)&printType=books&maxResults=20"
-        guard let url = URL(string: url) else {
+        let queryUrl = "https://www.googleapis.com/books/v1/volumes?q=\(formattedQuery)&printType=books&maxResults=20"
+        guard let url = URL(string: queryUrl) else {
             print("Invalid search URL")
             return
         }
@@ -69,8 +74,8 @@ struct SearchView: View {
             formatter.dateFormat = "YYYY-MM-dd"
             decoder.dateDecodingStrategy = .formatted(formatter)
             if let decodedResponse = try? decoder.decode(Response.self, from: data) {
-                searchedBooks = decodedResponse.items
-                searchStatus = .success
+                searchedBooks = decodedResponse.items ?? []
+                searchStatus = decodedResponse.totalItems == 0 ? .noResults : .success
             } else {
                 searchedBooks = []
                 searchStatus = .failed

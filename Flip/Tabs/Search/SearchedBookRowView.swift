@@ -30,19 +30,23 @@ struct SearchedBookRowView: View {
     }
 
     func thumbnailImage(_ phase: AsyncImagePhase) -> some View {
-        switch phase {
-        case .empty, .failure:
-            return Image(systemName: "book.closed")
-                .resizable()
-                .scaledToFit()
-        case .success(let image):
-            return image
-                .resizable()
-                .scaledToFit()
-        @unknown default:
-            return Image(systemName: "book.closed")
-                .resizable()
-                .scaledToFit()
+        Group {
+            switch phase {
+            case .empty, .failure:
+                Image(systemName: "book.closed")
+                    .resizable()
+                    .font(.body.weight(.ultraLight))
+                    .scaledToFit()
+            case .success(let image):
+                image
+                    .resizable()
+                    .scaledToFit()
+            @unknown default:
+                Image(systemName: "book.closed")
+                    .resizable()
+                    .font(.body.weight(.ultraLight))
+                    .scaledToFit()
+            }
         }
     }
 }

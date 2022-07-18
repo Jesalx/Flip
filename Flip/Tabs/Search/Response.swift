@@ -7,7 +7,8 @@
 import SwiftUI
 
 struct Response: Codable {
-    let items: [Item]
+    let totalItems: Int
+    let items: [Item]?
 }
 
 struct Item: Codable, Identifiable {
