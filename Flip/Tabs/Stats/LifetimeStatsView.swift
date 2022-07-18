@@ -22,16 +22,16 @@ struct LifetimeStatsView: View {
         Group {
             VStack(alignment: .center) {
                 Text("Lifetime Books Read")
-                    .font(.title)
+                    .font(.title.weight(.semibold))
                 Text("\(booksRead)")
-                    .font(.title2)
+                    .font(.title.weight(.semibold))
             }
             .padding()
             VStack {
                 Text("Lifetime Pages Read")
-                    .font(.title)
+                    .font(.title.weight(.semibold))
                 Text("\(pagesRead)")
-                    .font(.title2)
+                    .font(.title.weight(.semibold))
             }
             .padding()
             Spacer()

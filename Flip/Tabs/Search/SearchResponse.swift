@@ -44,9 +44,9 @@ struct VolumeInfo: Codable {
     let subtitle: String?
     let authors: [String]?
     let publisher: String?
-    // For some reason I can't set the date type of publishedDate to 'Date?' or else it won't decode
-    // properly even when i set the dateDecodingStrategy and formatter to use "yyyy-MM-dd". Come back
-    // to this and found out why this is happening
+    // Not currently parsing publishedDate into a Date? because Google Books doesn't
+    // always return a consistent date format. I've seen the format "yyyy" as
+    // well as "yyyy-MM-dd" so far, but there may be others.
     let publishedDate: String?
     let description: String?
 
