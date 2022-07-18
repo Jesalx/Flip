@@ -10,7 +10,7 @@ struct LibraryBookView: View {
     let book: Book
 
     @EnvironmentObject var dataController: DataController
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) private var dismiss
 
     @State private var dateRead: Date
     @State private var read: Bool
@@ -127,7 +127,7 @@ struct LibraryBookView: View {
     func delete() {
         dataController.delete(book)
         dataController.save()
-        presentationMode.wrappedValue.dismiss()
+        dismiss()
     }
 }
 
