@@ -29,7 +29,7 @@ struct SearchView: View {
                     SearchedBookRowView(item: item)
                  }
             case .failed:
-                Text("Something went wrong. Try again later.")
+                Text("No results found.")
                     .foregroundColor(.secondary)
             }
         }
@@ -57,8 +57,8 @@ struct SearchView: View {
     func loadData() async {
         let strippedQuery = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
         let formattedQuery = strippedQuery.replacingOccurrences(of: " ", with: "+")
-        let urlstring = "https://www.googleapis.com/books/v1/volumes?q=\(formattedQuery)&printType=books&maxResults=20"
-        guard let url = URL(string: urlstring) else {
+        let url = "https://www.googleapis.com/books/v1/volumes?q=\(formattedQuery)&printType=books&maxResults=20"
+        guard let url = URL(string: url) else {
             print("Invalid search URL")
             return
         }

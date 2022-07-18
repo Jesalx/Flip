@@ -5,6 +5,7 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct SearchedBookRowView: View {
     let item: Item
@@ -12,7 +13,7 @@ struct SearchedBookRowView: View {
     var body: some View {
         NavigationLink(destination: SearchedBookView(item: item)) {
             HStack {
-                AsyncImage(url: item.volumeInfo.wrappedSmallThumbnail) { phase in
+                CachedAsyncImage(url: item.volumeInfo.wrappedSmallThumbnail) { phase in
                     thumbnailImage(phase)
                 }
                 .frame(width: 45, height: 70)

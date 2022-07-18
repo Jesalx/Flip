@@ -4,6 +4,7 @@
 //
 //
 
+import CachedAsyncImage
 import SwiftUI
 
 struct LibraryRowView: View {
@@ -12,7 +13,7 @@ struct LibraryRowView: View {
     var body: some View {
         NavigationLink(destination: LibraryBookView(book: book)) {
             HStack {
-                AsyncImage(url: book.thumbnail) { phase in
+                CachedAsyncImage(url: book.thumbnail) { phase in
                     thumbnailImage(phase)
                 }
                 .frame(width: 45, height: 70)

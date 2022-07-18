@@ -4,6 +4,7 @@
 //
 //
 
+import CachedAsyncImage
 import SwiftUI
 
 struct SearchedBookView: View {
@@ -94,7 +95,7 @@ struct SearchedBookView: View {
     var body: some View {
         List {
             HStack(alignment: .center) {
-                AsyncImage(url: item.volumeInfo.wrappedSmallThumbnail) { phase in
+                CachedAsyncImage(url: item.volumeInfo.wrappedSmallThumbnail) { phase in
                     coverImage(phase)
                 }
                 .cornerRadius(20)

@@ -30,6 +30,8 @@ class DataController: ObservableObject {
                 fatalError("Fatal error loading store: \(error.localizedDescription)")
             }
         }
+
+        self.container.viewContext.automaticallyMergesChangesFromParent = true
     }
 
     static var preview: DataController = {
@@ -63,7 +65,7 @@ class DataController: ObservableObject {
             book.id = UUID().uuidString
             book.title = "Book \(num)"
             book.author = "Author Name"
-            book.summary = "This is a summar of some book. Words. Blah blah blah."
+            book.summary = "This is a summary of some book. Words. Blah blah blah."
             book.read = Bool.random()
             book.publicationDate = "2022"
             book.genres = "Genre1, Genre2, Genre3"
@@ -129,9 +131,18 @@ class DataController: ObservableObject {
     }
 
     func deleteAll() {
-        let fetchRequest1: NSFetchRequest<NSFetchRequestResult> = Book.fetchRequest()
-        let batchDeleteRequest1 = NSBatchDeleteRequest(fetchRequest: fetchRequest1)
-        _ = try? container.viewContext.execute(batchDeleteRequest1)
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Book.fetchRequest()
+        delete(fetchRequest)
+    }
+
+    func delete(_ fetchRequest: NSFetchRequest<NSFetchRequestResult>) {
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        batchDeleteRequest.resultType = .resultTypeObjectIDs
+
+        if let delete = try? container.viewContext.execute(batchDeleteRequest) as? NSBatchDeleteResult {
+            let changes = [NSDeletedObjectsKey: delete.result as? [NSManagedObjectID] ?? []]
+            NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [container.viewContext])
+        }
     }
 
     func count<T>(for fetchRequest: NSFetchRequest<T>) -> Int {
