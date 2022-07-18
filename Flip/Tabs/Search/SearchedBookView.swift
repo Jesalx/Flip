@@ -134,7 +134,7 @@ struct SearchedBookView: View {
         book.genres = genres
         book.publishingCompany = item.volumeInfo.wrappedPublisher
         book.pageCount = Int16(item.volumeInfo.wrappedPageCount)
-        book.rating = Int16(0)
+        book.rating = Int16(3)
         book.dateRead = Date()
         book.thumbnail = item.volumeInfo.wrappedSmallThumbnail
         dataController.save()

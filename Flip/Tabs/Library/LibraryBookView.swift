@@ -28,7 +28,12 @@ struct LibraryBookView: View {
     var optionalReadView: some View {
         read
         ? Group {
-            LibraryRatingView(rating: $rating)
+            HStack {
+                Text("Rating")
+                Spacer()
+                LibraryRatingView(rating: $rating)
+//                Spacer()
+            }
             DatePicker("Date Finished", selection: $dateRead, in: ...Date.now, displayedComponents: [.date])
         }
         : nil
@@ -118,7 +123,7 @@ struct LibraryBookView: View {
         book.read = read
         if read == false {
             book.dateRead = Date()
-            book.rating = Int16(0)
+            book.rating = Int16(3)
         }
         dataController.save()
     }

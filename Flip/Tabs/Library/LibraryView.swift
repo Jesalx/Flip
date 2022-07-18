@@ -83,7 +83,7 @@ struct LibraryView: View {
             }
             .onChange(of: sortOrder) { _ in updateSort() }
             .onChange(of: bookFilter) { _ in updateFilter() }
-            EmptySelectionView()
+//            EmptySelectionView()
         }
     }
 
