@@ -4,7 +4,6 @@
 //
 //
 
-import CachedAsyncImage
 import SwiftUI
 
 struct LibraryBookView: View {
@@ -34,9 +33,7 @@ struct LibraryBookView: View {
     var body: some View {
         List {
             HStack(alignment: .center) {
-                CachedAsyncImage(url: book.thumbnail) { phase in
-                    coverImage(phase)
-                }
+                CoverView(url: book.thumbnail)
                 .cornerRadius(20)
                 .frame(width: 190, height: 270)
             }
@@ -100,27 +97,6 @@ struct LibraryBookView: View {
                 message: Text("Are you sure you want to delete \(book.bookTitle) from your library?"),
                 primaryButton: .destructive(Text("Delete"), action: delete),
                 secondaryButton: .cancel())
-        }
-    }
-
-    func coverImage(_ phase: AsyncImagePhase) -> some View {
-        Group {
-            switch phase {
-            case .empty, .failure:
-                Image(systemName: "book.closed")
-                    .resizable()
-                    .font(.body.weight(.ultraLight))
-                    .scaledToFit()
-            case .success(let image):
-                image
-                    .resizable()
-                    .scaledToFit()
-            @unknown default:
-                Image(systemName: "book.closed")
-                    .resizable()
-                    .font(.body.weight(.ultraLight))
-                    .scaledToFit()
-            }
         }
     }
 

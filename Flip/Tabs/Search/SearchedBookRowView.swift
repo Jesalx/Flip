@@ -5,7 +5,6 @@
 //
 
 import SwiftUI
-import CachedAsyncImage
 
 struct SearchedBookRowView: View {
     let item: Item
@@ -13,9 +12,7 @@ struct SearchedBookRowView: View {
     var body: some View {
         NavigationLink(destination: SearchedBookView(item: item)) {
             HStack {
-                CachedAsyncImage(url: item.volumeInfo.wrappedSmallThumbnail) { phase in
-                    thumbnailImage(phase)
-                }
+                CoverView(url: item.volumeInfo.wrappedSmallThumbnail)
                 .frame(width: 45, height: 70)
                 .cornerRadius(8)
                 VStack(alignment: .leading) {
@@ -25,27 +22,6 @@ struct SearchedBookRowView: View {
                     Text(item.volumeInfo.wrappedFirstAuthor)
                         .font(.subheadline)
                 }
-            }
-        }
-    }
-
-    func thumbnailImage(_ phase: AsyncImagePhase) -> some View {
-        Group {
-            switch phase {
-            case .empty, .failure:
-                Image(systemName: "book.closed")
-                    .resizable()
-                    .font(.body.weight(.ultraLight))
-                    .scaledToFit()
-            case .success(let image):
-                image
-                    .resizable()
-                    .scaledToFit()
-            @unknown default:
-                Image(systemName: "book.closed")
-                    .resizable()
-                    .font(.body.weight(.ultraLight))
-                    .scaledToFit()
             }
         }
     }

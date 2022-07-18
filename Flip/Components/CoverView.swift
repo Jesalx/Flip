@@ -8,7 +8,7 @@ import CachedAsyncImage
 import SwiftUI
 
 struct CoverView: View {
-    let url: URL
+    let url: URL?
 
     var body: some View {
         CachedAsyncImage(url: url, urlCache: .imageCache) { phase in

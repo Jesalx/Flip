@@ -4,7 +4,6 @@
 //
 //
 
-import CachedAsyncImage
 import SwiftUI
 
 struct LibraryRowView: View {
@@ -13,9 +12,7 @@ struct LibraryRowView: View {
     var body: some View {
         NavigationLink(destination: LibraryBookView(book: book)) {
             HStack {
-                CachedAsyncImage(url: book.thumbnail) { phase in
-                    thumbnailImage(phase)
-                }
+                CoverView(url: book.thumbnail)
                 .frame(width: 45, height: 70)
                 .cornerRadius(8)
                 VStack(alignment: .leading) {
@@ -28,27 +25,6 @@ struct LibraryRowView: View {
                 Spacer()
                 Image(systemName: "book")
                     .foregroundColor(book.bookRead ? .primary : .clear)
-            }
-        }
-    }
-
-    func thumbnailImage(_ phase: AsyncImagePhase) -> some View {
-        Group {
-            switch phase {
-            case .empty, .failure:
-                Image(systemName: "book.closed")
-                    .resizable()
-                    .font(.body.weight(.ultraLight))
-                    .scaledToFit()
-            case .success(let image):
-                image
-                    .resizable()
-                    .scaledToFit()
-            @unknown default:
-                Image(systemName: "book.closed")
-                    .resizable()
-                    .font(.body.weight(.ultraLight))
-                    .scaledToFit()
             }
         }
     }
