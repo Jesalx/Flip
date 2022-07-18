@@ -13,6 +13,8 @@
 		7107F45628820DE700CE89A5 /* SearchedBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107F45528820DE700CE89A5 /* SearchedBookView.swift */; };
 		7107F45A28821CD500CE89A5 /* SearchedBookRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107F45928821CD500CE89A5 /* SearchedBookRowView.swift */; };
 		714D19BF288500960092163A /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 714D19BE288500960092163A /* CachedAsyncImage */; };
+		71785A642885B989008F1F96 /* CoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71785A632885B989008F1F96 /* CoverView.swift */; };
+		71785A662885BACF008F1F96 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71785A652885BACF008F1F96 /* ImageCache.swift */; };
 		71A74A542883A54A000125E3 /* StatsMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A74A532883A54A000125E3 /* StatsMonthView.swift */; };
 		71B2BC2E2884B52A00D4078C /* FlipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B2BC2D2884B52A00D4078C /* FlipTests.swift */; };
 		71B2BC372884B88800D4078C /* BookTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B2BC362884B88800D4078C /* BookTest.swift */; };
@@ -49,6 +51,8 @@
 		7107F4532882032300CE89A5 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 		7107F45528820DE700CE89A5 /* SearchedBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedBookView.swift; sourceTree = "<group>"; };
 		7107F45928821CD500CE89A5 /* SearchedBookRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedBookRowView.swift; sourceTree = "<group>"; };
+		71785A632885B989008F1F96 /* CoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverView.swift; sourceTree = "<group>"; };
+		71785A652885BACF008F1F96 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		71A74A532883A54A000125E3 /* StatsMonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsMonthView.swift; sourceTree = "<group>"; };
 		71B2BC2B2884B52A00D4078C /* FlipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		71B2BC2D2884B52A00D4078C /* FlipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipTests.swift; sourceTree = "<group>"; };
@@ -93,6 +97,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		71785A602885B969008F1F96 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				71785A632885B989008F1F96 /* CoverView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		71B2BC212884B0B700D4078C /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				71C624DF2880AEC0007B2CAF /* Book-CoreDataHelpers.swift */,
+				71785A652885BACF008F1F96 /* ImageCache.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -193,6 +206,7 @@
 		71E002BC288095B8006E23DF /* Flip */ = {
 			isa = PBXGroup;
 			children = (
+				71785A602885B969008F1F96 /* Components */,
 				71B2BC232884B24500D4078C /* Tabs */,
 				71B2BC222884B21100D4078C /* Extensions */,
 				71B2BC212884B0B700D4078C /* Configuration */,
@@ -365,7 +379,9 @@
 				71C624DE2880A149007B2CAF /* LibraryView.swift in Sources */,
 				71CF10082883861200708B9F /* StatsYearView.swift in Sources */,
 				7107F4522881DD8000CE89A5 /* EmptySelectionView.swift in Sources */,
+				71785A662885BACF008F1F96 /* ImageCache.swift in Sources */,
 				7107F45A28821CD500CE89A5 /* SearchedBookRowView.swift in Sources */,
+				71785A642885B989008F1F96 /* CoverView.swift in Sources */,
 				71E002CD288095D4006E23DF /* Flip.xcdatamodeld in Sources */,
 				71C624E42880B5F8007B2CAF /* StatsView.swift in Sources */,
 				7107F44E2880DA4500CE89A5 /* LibraryRowView.swift in Sources */,
