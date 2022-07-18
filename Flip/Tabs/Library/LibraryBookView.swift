@@ -29,8 +29,7 @@ struct LibraryBookView: View {
         read
         ? Group {
             LibraryRatingView(rating: $rating)
-            DatePicker("Date Finished", selection: $dateRead, in: ...Date.now, displayedComponents: .date)
-            .datePickerStyle(.graphical)
+            DatePicker("Date Finished", selection: $dateRead, in: ...Date.now, displayedComponents: [.date])
         }
         : nil
     }
@@ -64,7 +63,7 @@ struct LibraryBookView: View {
                     }
             }
             Section {
-                Toggle("Mark Read", isOn: $read)
+                Toggle("Mark Read", isOn: $read.animation())
                 optionalReadView
             }
             Section {
@@ -77,7 +76,7 @@ struct LibraryBookView: View {
     }
 
     var body: some View {
-        List {
+        Form {
             HStack(alignment: .center) {
                 CoverView(url: book.thumbnail)
                 .cornerRadius(20)
@@ -85,7 +84,12 @@ struct LibraryBookView: View {
             }
             .frame(maxWidth: .infinity)
             .listRowBackground(Color.clear)
-            .listRowInsets( EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0) )
+            .listRowInsets(EdgeInsets(
+                top: 0,
+                leading: 0,
+                bottom: 0,
+                trailing: 0)
+            )
 
             bookSections
         }
@@ -118,7 +122,6 @@ struct LibraryBookView: View {
     }
 
     func updateDate() {
-        hapticFeedback(style: .light)
         book.objectWillChange.send()
         book.dateRead = dateRead
         dataController.save()
