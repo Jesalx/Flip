@@ -6,7 +6,7 @@
 
 import SwiftUI
 
-struct Response: Codable {
+struct SearchResponse: Codable {
     let totalItems: Int
     let items: [Item]?
 }
