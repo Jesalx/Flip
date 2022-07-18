@@ -4,6 +4,7 @@
 //
 //
 
+import CoreSpotlight
 import SwiftUI
 
 struct ContentView: View {
@@ -32,6 +33,11 @@ struct ContentView: View {
                     Text("Stats")
                 }
         }
+        .onContinueUserActivity(CSSearchableItemActionType, perform: moveToHome)
+    }
+
+    func moveToHome(_ input: Any) {
+        selectedView = LibraryView.tag
     }
 }
 

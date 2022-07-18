@@ -137,7 +137,14 @@ struct SearchedBookView: View {
         book.rating = Int16(3)
         book.dateRead = Date()
         book.thumbnail = item.volumeInfo.wrappedSmallThumbnail
+        // When adding the spotlight information for a book that isn't
+        // initially in our library we need to save it first, before we
+        // perform the dataController.update(book) function which adds
+        // the spotlight information (and saves again) because book doesn't
+        // initially have a unique objectId assigned to it by CoreData. Saving
+        // before we update the spotlight information fixes this.
         dataController.save()
+        dataController.update(book)
     }
 
     func deleteBook() {

@@ -4,6 +4,7 @@
 //
 //
 
+import CoreSpotlight
 import SwiftUI
 
 struct LibraryView: View {
@@ -19,6 +20,7 @@ struct LibraryView: View {
     @State private var showingSortOrder = false
     @State private var sortOrder: Book.SortOrder = .author
     @State private var bookFilter: Book.BookFilter = .allBooks
+    @State private var selectedBook: Book?
     @State private var searchText = ""
     var query: Binding<String> {
         Binding {
@@ -55,12 +57,23 @@ struct LibraryView: View {
 
     var body: some View {
         NavigationView {
-            List {
-                ForEach(books) { book in
-                    LibraryRowView(book: book)
+            Group {
+                if let book = selectedBook {
+                    NavigationLink(
+                        destination: LibraryBookView(book: book),
+                        tag: book,
+                        selection: $selectedBook,
+                        label: EmptyView.init
+                    )
+                    .id(book)
                 }
-                .onDelete { offsets in
-                    delete(offsets)
+                List {
+                    ForEach(books) { book in
+                        LibraryRowView(book: book)
+                    }
+                    .onDelete { offsets in
+                        delete(offsets)
+                    }
                 }
             }
             .navigationTitle(navigationTitleText())
@@ -75,6 +88,7 @@ struct LibraryView: View {
                     sortToolbarItem
                 }
             }
+            .onContinueUserActivity(CSSearchableItemActionType, perform: loadSpotlightBook)
             .confirmationDialog("Sort Books", isPresented: $showingSortOrder) {
                 Button("Author") { sortOrder = .author }
                 Button("Title") { sortOrder = .title }
@@ -98,6 +112,16 @@ struct LibraryView: View {
             dataController.delete(book)
         }
         dataController.save()
+    }
+
+    func selectBook(with identifier: String) {
+        selectedBook = dataController.book(with: identifier)
+    }
+
+    func loadSpotlightBook(_ userActivity: NSUserActivity) {
+        if let uniqueIdentifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String {
+            selectBook(with: uniqueIdentifier)
+        }
     }
 
     func updateFilter() {

@@ -5,6 +5,7 @@
 //
 
 import CoreData
+import CoreSpotlight
 import SwiftUI
 
 /// A singleton responsible for managing Core Data, specifically handling saving
@@ -126,7 +127,10 @@ class DataController: ObservableObject {
         }
     }
 
-    func delete(_ object: NSManagedObject) {
+    func delete(_ object: Book) {
+        let id = object.objectID.uriRepresentation().absoluteString
+        CSSearchableIndex.default().deleteSearchableItems(withIdentifiers: [id])
+//        CSSearchableIndex.default().deleteSearchableItems(withDomainIdentifiers: ["dev.jesal"])
         container.viewContext.delete(object)
     }
 
@@ -154,5 +158,34 @@ class DataController: ObservableObject {
         fetchRequest.predicate = NSPredicate(format: "id == %@", id)
         let existence = count(for: fetchRequest)
         return existence >= 1
+    }
+
+    func update(_ book: Book) {
+        let bookId = book.objectID.uriRepresentation().absoluteString
+        let attributeSet = CSSearchableItemAttributeSet(contentType: .text)
+        attributeSet.title = book.bookTitle
+        attributeSet.authorNames = book.bookAuthors
+        attributeSet.contentDescription = book.bookSummary
+
+        let searchableItem = CSSearchableItem(
+            uniqueIdentifier: bookId,
+            domainIdentifier: "dev.jesal",
+            attributeSet: attributeSet
+        )
+
+        CSSearchableIndex.default().indexSearchableItems([searchableItem])
+        save()
+    }
+
+    func book(with uniqueIdentifier: String) -> Book? {
+        guard let url = URL(string: uniqueIdentifier) else {
+            return nil
+        }
+
+        guard let id = container.persistentStoreCoordinator.managedObjectID(forURIRepresentation: url) else {
+            return nil
+        }
+
+        return try? container.viewContext.existingObject(with: id) as? Book
     }
 }

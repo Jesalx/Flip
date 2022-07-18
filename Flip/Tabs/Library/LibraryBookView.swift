@@ -102,7 +102,7 @@ struct LibraryBookView: View {
         .onChange(of: read) { _ in update() }
         .onChange(of: dateRead) { _ in update() }
         .onChange(of: rating) { _ in update() }
-        .onDisappear(perform: dataController.save)
+        .onDisappear { dataController.update(book) }
         .alert(isPresented: $showingDeleteConfirmation) {
             Alert(
                 title: Text("Delete book"),
@@ -121,33 +121,12 @@ struct LibraryBookView: View {
             book.dateRead = Date()
             book.rating = Int16(3)
         }
-        dataController.save()
+        dataController.update(book)
     }
-
-//    func updateRead() {
-//        book.objectWillChange.send()
-//        book.read = read
-//        if read == false {
-//            book.dateRead = Date()
-//            book.rating = Int16(3)
-//        }
-//        dataController.save()
-//    }
-//
-//    func updateRating() {
-//        book.objectWillChange.send()
-//        book.rating = Int16(rating)
-//        dataController.save()
-//    }
-//
-//    func updateDate() {
-//        book.objectWillChange.send()
-//        book.dateRead = dateRead
-//        dataController.save()
-//    }
 
     func delete() {
         dataController.delete(book)
+        dataController.save()
         presentationMode.wrappedValue.dismiss()
     }
 }
