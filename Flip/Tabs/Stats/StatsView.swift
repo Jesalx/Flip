@@ -33,14 +33,6 @@ struct StatsView: View {
         return books.filter { $0.bookDateRead > startOfMonth }
     }
 
-    var lifetimeBooks: Int {
-        return readBooks.count
-    }
-
-    var lifetimePages: Int {
-        return readBooks.reduce(0) { $0 + $1.bookPageCount}
-    }
-
     var body: some View {
         NavigationView {
             ScrollView {
@@ -51,21 +43,7 @@ struct StatsView: View {
                     }
                     .padding()
 
-                    VStack(alignment: .center) {
-                        Text("Lifetime Books Read")
-                            .font(.title)
-                        Text("\(lifetimeBooks)")
-                            .font(.title2)
-                    }
-                    .padding()
-                    VStack {
-                        Text("Lifetime Pages Read")
-                            .font(.title)
-                        Text("\(lifetimePages)")
-                            .font(.title2)
-                    }
-                    .padding()
-                    Spacer()
+                    LifetimeStatsView(books: readBooks)
                 }
             }
             .navigationTitle("Stats")
