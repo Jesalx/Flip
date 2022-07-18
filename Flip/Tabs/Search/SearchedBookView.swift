@@ -42,7 +42,7 @@ struct SearchedBookView: View {
             return AnyView(Button {
                 saveBook()
             } label: {
-                Label("Save", systemImage: "plus.circle")
+                Label("Save", systemImage: "bookmark")
                     .font(.headline)
             })
         }

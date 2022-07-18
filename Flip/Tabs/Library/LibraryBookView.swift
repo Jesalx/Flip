@@ -124,6 +124,11 @@ struct LibraryBookView: View {
         }
     }
 
+    func hapticFeedback(style: UIImpactFeedbackGenerator.FeedbackStyle) {
+        let generator = UIImpactFeedbackGenerator(style: style)
+        generator.impactOccurred()
+    }
+
     func updateRead() {
         book.objectWillChange.send()
         book.read = read
@@ -134,6 +139,7 @@ struct LibraryBookView: View {
     }
 
     func updateDate() {
+        hapticFeedback(style: .light)
         book.objectWillChange.send()
         book.dateRead = dateRead
         dataController.save()
