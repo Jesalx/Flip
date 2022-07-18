@@ -1,19 +1,14 @@
 //
-//  StatsYearView.swift
+//  StatsRowView.swift
 //  Flip
 //
 //
 
 import SwiftUI
 
-struct StatsYearView: View {
+struct StatsRowView: View {
     let books: [Book]
-
-    init(books: [Book]) {
-        let comp = Calendar.current.dateComponents([.year], from: Date())
-        let startOfYear = Calendar.current.date(from: comp) ?? Date()
-        self.books = books.filter { $0.bookDateRead > startOfYear && $0.bookRead }
-    }
+    let dateStyle: Date.FormatStyle
 
     var pagesRead: Int {
         books.reduce(0) { $0 + $1.bookPageCount}
@@ -25,14 +20,14 @@ struct StatsYearView: View {
 
     var body: some View {
         HStack {
-            Text(Date().formatted(.dateTime.year()))
+            Text(Date().formatted(dateStyle))
                 .font(.title.weight(.semibold))
             Spacer()
             VStack(alignment: .trailing, spacing: 10) {
                 Text("\(booksRead) books read")
-                    .font(.subheadline)
+                    .font(.headline)
                 Text("\(pagesRead) pages read")
-                    .font(.subheadline)
+                    .font(.headline)
             }
         }
         .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
@@ -42,8 +37,8 @@ struct StatsYearView: View {
     }
 }
 
-struct StatsYearView_Previews: PreviewProvider {
+struct StatsRowView_Previews: PreviewProvider {
     static var previews: some View {
-        StatsYearView(books: [Book.example])
+        StatsRowView(books: [Book.example], dateStyle: .dateTime.month(.wide))
     }
 }

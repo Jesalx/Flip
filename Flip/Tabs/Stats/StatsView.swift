@@ -21,6 +21,18 @@ struct StatsView: View {
         return readBooks
     }
 
+    var yearlyReadBooks: [Book] {
+        let comp = Calendar.current.dateComponents([.year], from: Date())
+        let startOfYear = Calendar.current.date(from: comp) ?? Date()
+        return readBooks.filter { $0.bookDateRead > startOfYear }
+    }
+
+    var monthlyReadBooks: [Book] {
+        let comp = Calendar.current.dateComponents([.year, .month], from: Date())
+        let startOfMonth = Calendar.current.date(from: comp) ?? Date()
+        return books.filter { $0.bookDateRead > startOfMonth }
+    }
+
     var lifetimeBooks: Int {
         return readBooks.count
     }
@@ -34,8 +46,8 @@ struct StatsView: View {
             ScrollView {
                 VStack(alignment: .center) {
                     VStack {
-                        StatsYearView(books: readBooks)
-                        StatsMonthView(books: readBooks)
+                        StatsRowView(books: yearlyReadBooks, dateStyle: .dateTime.year())
+                        StatsRowView(books: monthlyReadBooks, dateStyle: .dateTime.month(.wide))
                     }
                     .padding()
 
