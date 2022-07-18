@@ -64,6 +64,7 @@ struct LibraryView: View {
                 }
             }
             .navigationTitle(navigationTitleText())
+            .searchable(text: query, prompt: "Search")
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     filterToolbarItem
@@ -84,7 +85,6 @@ struct LibraryView: View {
             .onChange(of: bookFilter) { _ in updateFilter() }
             EmptySelectionView()
         }
-        .searchable(text: query, prompt: "Search")
     }
 
     func delete(_ offsets: IndexSet) {
