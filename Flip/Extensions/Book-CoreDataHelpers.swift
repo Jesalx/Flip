@@ -52,6 +52,10 @@ extension Book {
         Int(pageCount)
     }
 
+    var wrappedRating: Int {
+        Int(rating)
+    }
+
     var bookPublisher: String {
         publishingCompany ?? "Unknown Publisher"
     }
@@ -83,6 +87,7 @@ extension Book {
         book.publishingCompany = "Random Publishing Company"
         book.genres = "Genre1, Genre2, Genre3"
         book.thumbnail = URL(string: "https://www.google.com")
+        book.rating = Int16(Int.random(in: 1...5))
 
         return book
     }

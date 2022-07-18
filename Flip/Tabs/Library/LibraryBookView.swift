@@ -22,7 +22,7 @@ struct LibraryBookView: View {
         self.book = book
         _dateRead = State(wrappedValue: book.bookDateRead)
         _read = State(wrappedValue: book.bookRead)
-        _rating = State(wrappedValue: 3)
+        _rating = State(wrappedValue: book.wrappedRating)
     }
 
     var optionalReadView: some View {
@@ -97,6 +97,7 @@ struct LibraryBookView: View {
         .navigationBarTitleDisplayMode(.inline)
         .onChange(of: read) { _ in updateRead() }
         .onChange(of: dateRead) { _ in updateDate() }
+        .onChange(of: rating) { _ in updateRating() }
         .onDisappear(perform: dataController.save)
         .alert(isPresented: $showingDeleteConfirmation) {
             Alert(
@@ -117,7 +118,14 @@ struct LibraryBookView: View {
         book.read = read
         if read == false {
             book.dateRead = Date()
+            book.rating = Int16(0)
         }
+        dataController.save()
+    }
+
+    func updateRating() {
+        book.objectWillChange.send()
+        book.rating = Int16(rating)
         dataController.save()
     }
 
