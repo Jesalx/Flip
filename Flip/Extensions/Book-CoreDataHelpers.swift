@@ -7,11 +7,11 @@
 import Foundation
 
 extension Book {
-    enum SortOrder {
+    enum SortOrder: String, Codable, CaseIterable {
         case title, author, pageCount, publicationDate, readDate
     }
 
-    enum BookFilter {
+    enum BookFilter: String, Codable, CaseIterable {
         case allBooks, readBooks, unreadBooks
     }
 
@@ -65,6 +65,13 @@ extension Book {
         let genreList: [String] = genreString.components(separatedBy: ",")
         let trimmed = genreList.map { $0.trimmingCharacters(in: .whitespacesAndNewlines)}
         return trimmed
+    }
+
+    var weekDayNumber: Int {
+        // Calendar will return an integer in range [1,7] while we need to use
+        // integers in the range [0,6] for mapping to weekday names in
+        // Calendar.weekdaySymbols so we'll subtract 1 from any result
+        return Calendar.current.component(.weekday, from: bookDateRead) - 1
     }
 
     static var example: Book {

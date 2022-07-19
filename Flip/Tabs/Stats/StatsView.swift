@@ -42,7 +42,9 @@ struct StatsView: View {
                         StatsRowView(books: monthlyReadBooks, dateStyle: .dateTime.month(.wide))
                     }
                     .padding()
-
+                    StatsWeekView(books: readBooks)
+                        .frame(height: 100)
+                        .padding()
                     LifetimeStatsView(books: readBooks)
                 }
             }
