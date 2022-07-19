@@ -22,6 +22,8 @@ struct LibraryView: View {
     @State private var bookFilter: Book.BookFilter = .allBooks
     @State private var selectedBook: Book?
     @State private var searchText = ""
+    @State private var path = [Book]()
+
     var query: Binding<String> {
         Binding {
             searchText
@@ -56,31 +58,21 @@ struct LibraryView: View {
     }
 
     var body: some View {
-        NavigationView {
-            Group {
-                if let book = selectedBook {
-                    NavigationLink(
-                        destination: LibraryBookView(book: book),
-                        tag: book,
-                        selection: $selectedBook,
-                        label: EmptyView.init
-                    )
-                    .id(book)
-                }
-                List {
-                    ForEach(books) { book in
+        NavigationStack(path: $path) {
+            List {
+                ForEach(books) { book in
+                    NavigationLink(value: book) {
                         LibraryRowView(book: book)
                     }
-                    .onDelete { offsets in
-                        delete(offsets)
-                    }
+                }
+                .onDelete { offsets in
+                    delete(offsets)
                 }
             }
             .navigationTitle(navigationTitleText())
-            // Searchable modifier can cause crashes on some phones
-            // (iPhone 12/13 Regular/Pro) during orientation changes
-            // in iOS 15. This seems to be fixed in iOS 16. It may be
-            // good to turn off landscape mode until then.
+            .navigationDestination(for: Book.self) { book in
+                LibraryBookView(book: book)
+            }
             .searchable(text: query, prompt: "Search")
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -101,9 +93,7 @@ struct LibraryView: View {
             }
             .onChange(of: sortOrder) { _ in updateSort() }
             .onChange(of: bookFilter) { _ in updateFilter() }
-            EmptySelectionView()
         }
-        .navigationViewStyle(.stack)
     }
 
     func delete(_ offsets: IndexSet) {
@@ -117,6 +107,9 @@ struct LibraryView: View {
 
     func selectBook(with identifier: String) {
         selectedBook = dataController.book(with: identifier)
+        if let book = selectedBook {
+            path.append(book)
+        }
     }
 
     func loadSpotlightBook(_ userActivity: NSUserActivity) {

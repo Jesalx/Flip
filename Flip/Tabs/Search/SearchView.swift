@@ -41,11 +41,10 @@ struct SearchView: View {
     }
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             optionalSearchView
-            .navigationTitle("Search")
+                .navigationTitle("Search")
         }
-        .navigationViewStyle(.stack)
         .searchable(text: $searchText, prompt: "Search Google Books")
         .disableAutocorrection(true)
         .onSubmit(of: .search) {

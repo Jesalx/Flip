@@ -134,7 +134,7 @@ struct LibraryBookView: View {
 struct LibraryBookView_Previews: PreviewProvider {
     static var dataController = DataController.preview
     static var previews: some View {
-        NavigationView {
+        NavigationStack {
             LibraryBookView(book: Book.example)
                 .environment(\.managedObjectContext, dataController.container.viewContext)
                 .environmentObject(dataController)
