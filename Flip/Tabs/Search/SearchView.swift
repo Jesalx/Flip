@@ -12,7 +12,6 @@ struct SearchView: View {
     }
 
     static let tag: String = "Search"
-    static let topId: String = "SearchTop"
 
     @State private var searchedBooks: [Item] = []
     @State private var searchText = ""
@@ -27,8 +26,6 @@ struct SearchView: View {
                 ProgressView()
             case .success:
                  List(searchedBooks) { item in
-                     EmptyView()
-                         .id(SearchView.topId)
                      SearchedBookRowView(item: item)
                  }
             case .noResults:
