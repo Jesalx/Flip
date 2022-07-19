@@ -10,18 +10,16 @@ struct SearchedBookRowView: View {
     let item: Item
 
     var body: some View {
-        NavigationLink(destination: SearchedBookView(item: item)) {
-            HStack {
-                CoverView(url: item.volumeInfo.wrappedSmallThumbnail)
-                .frame(width: 45, height: 70)
-                .cornerRadius(8)
-                VStack(alignment: .leading) {
-                    Text(item.volumeInfo.wrappedTitle)
-                        .font(.headline)
+        HStack {
+            CoverView(url: item.volumeInfo.wrappedSmallThumbnail)
+            .frame(width: 45, height: 70)
+            .cornerRadius(8)
+            VStack(alignment: .leading) {
+                Text(item.volumeInfo.wrappedTitle)
+                    .font(.headline)
 
-                    Text(item.volumeInfo.wrappedFirstAuthor)
-                        .font(.subheadline)
-                }
+                Text(item.volumeInfo.wrappedFirstAuthor)
+                    .font(.subheadline)
             }
         }
     }

@@ -26,7 +26,9 @@ struct SearchView: View {
                 ProgressView()
             case .success:
                  List(searchedBooks) { item in
-                     SearchedBookRowView(item: item)
+                     NavigationLink(value: item) {
+                         SearchedBookRowView(item: item)
+                     }
                  }
             case .noResults:
                 Text("No results found.")
@@ -43,7 +45,10 @@ struct SearchView: View {
     var body: some View {
         NavigationStack {
             optionalSearchView
-                .navigationTitle("Search")
+            .navigationTitle("Search")
+            .navigationDestination(for: Item.self) { item in
+                SearchedBookView(item: item)
+            }
         }
         .searchable(text: $searchText, prompt: "Search Google Books")
         .disableAutocorrection(true)
@@ -54,6 +59,7 @@ struct SearchView: View {
 
     func submitSearch() {
         Task { @MainActor in
+            print("Here")
             searchStatus = .searching
             await loadData()
         }
@@ -85,6 +91,7 @@ struct SearchView: View {
             searchedBooks = []
             searchStatus = .failed
         }
+        print(searchStatus)
     }
 }
 

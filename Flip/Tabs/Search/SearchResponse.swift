@@ -11,10 +11,18 @@ struct SearchResponse: Codable {
     let items: [Item]?
 }
 
-struct Item: Codable, Identifiable {
+struct Item: Codable, Identifiable, Hashable {
     let id: String
     let selfLink: String
     let volumeInfo: VolumeInfo
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+
+    static func == (lhs: Item, rhs: Item) -> Bool {
+        return lhs.id == rhs.id
+    }
 
     static var example: Item {
         Item(
