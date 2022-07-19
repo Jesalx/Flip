@@ -103,6 +103,7 @@ struct LibraryView: View {
             .onChange(of: bookFilter) { _ in updateFilter() }
             EmptySelectionView()
         }
+        .navigationViewStyle(.stack)
     }
 
     func delete(_ offsets: IndexSet) {

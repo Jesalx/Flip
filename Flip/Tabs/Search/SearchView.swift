@@ -45,6 +45,7 @@ struct SearchView: View {
             optionalSearchView
             .navigationTitle("Search")
         }
+        .navigationViewStyle(.stack)
         .searchable(text: $searchText, prompt: "Search Google Books")
         .disableAutocorrection(true)
         .onSubmit(of: .search) {
