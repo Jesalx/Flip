@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LibraryView: View {
     static let tag: String = "Library"
+    static let topId: String = "LibraryTop"
 
     @EnvironmentObject var dataController: DataController
     @Environment(\.managedObjectContext) var managedObjectContext
@@ -68,6 +69,8 @@ struct LibraryView: View {
                     .id(book)
                 }
                 List {
+                    EmptyView()
+                        .id(LibraryView.topId)
                     ForEach(books) { book in
                         LibraryRowView(book: book)
                     }
