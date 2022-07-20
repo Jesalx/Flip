@@ -13,7 +13,6 @@ struct LibraryListView: View {
     let bookFilter: Book.BookFilter
 
     @EnvironmentObject var dataController: DataController
-    @Environment(\.managedObjectContext) var managedObjectContext
 
     let booksRequest: FetchRequest<Book>
     var books: [Book] {
@@ -66,7 +65,9 @@ struct LibraryListView: View {
 }
 
 struct LibraryListView_Previews: PreviewProvider {
+    static var dataController = DataController.preview
     static var previews: some View {
         LibraryListView(sortOrder: .author, bookFilter: .allBooks)
+            .environmentObject(dataController)
     }
 }

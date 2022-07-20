@@ -11,7 +11,6 @@ struct LibraryView: View {
     static let tag: String = "Library"
 
     @EnvironmentObject var dataController: DataController
-//    @Environment(\.managedObjectContext) var managedObjectContext
 
     @SceneStorage("sortOrder") private var sortOrder: Book.SortOrder = .author
     @SceneStorage("bookFilter") private var bookFilter: Book.BookFilter = .allBooks
@@ -103,7 +102,6 @@ struct LibraryView_Previews: PreviewProvider {
     static var dataController = DataController.preview
     static var previews: some View {
         LibraryView()
-//            .environment(\.managedObjectContext, dataController.container.viewContext)
             .environmentObject(dataController)
     }
 }

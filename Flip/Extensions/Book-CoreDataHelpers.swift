@@ -144,7 +144,7 @@ extension Book {
 //            descriptor = [SortDescriptor(\Book.publicationDate, order: .forward)]
             descriptor = [
                 NSSortDescriptor(keyPath: \Book.publicationDate, ascending: true),
-                NSSortDescriptor(keyPath: \Book.title, ascending: true),
+                NSSortDescriptor(keyPath: \Book.title, ascending: true)
             ]
         }
         return descriptor
