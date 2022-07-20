@@ -130,6 +130,7 @@ struct SearchedBookView: View {
         book.pageCount = Int16(item.volumeInfo.wrappedPageCount)
         book.rating = Int16(3)
         book.dateRead = Date()
+        book.selfLink = item.selfLink
         book.thumbnail = item.volumeInfo.wrappedSmallThumbnail
         // When adding the spotlight information for a book that isn't
         // initially in our library we need to save it first, before we

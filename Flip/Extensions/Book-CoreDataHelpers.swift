@@ -60,6 +60,13 @@ extension Book {
         publishingCompany ?? "Unknown Publisher"
     }
 
+    var googleURL: URL? {
+        if let link = selfLink {
+            return URL(string: link)
+        }
+        return nil
+    }
+
     var bookGenres: [String] {
         guard let genreString = genres else { return ["No listed genres"] }
         let genreList: [String] = genreString.components(separatedBy: ",")
