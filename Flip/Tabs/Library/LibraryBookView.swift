@@ -29,6 +29,7 @@ struct LibraryBookView: View {
 
         let pageCountFormatter = NumberFormatter()
         pageCountFormatter.maximum = 30000
+        pageCountFormatter.minimum = 0
         self.pageCountFormatter = pageCountFormatter
     }
 
