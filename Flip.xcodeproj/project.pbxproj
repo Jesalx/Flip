@@ -35,6 +35,7 @@
 		71E002C5288095B9006E23DF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71E002C4288095B9006E23DF /* Preview Assets.xcassets */; };
 		71E002CD288095D4006E23DF /* Flip.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 71E002CB288095D4006E23DF /* Flip.xcdatamodeld */; };
 		71E002CF28809767006E23DF /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E002CE28809767006E23DF /* DataController.swift */; };
+		71EA3EF12887A4AB005ADB91 /* LibraryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA3EF02887A4AB005ADB91 /* LibraryListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		71E002C4288095B9006E23DF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		71E002CC288095D4006E23DF /* Flip.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Flip.xcdatamodel; sourceTree = "<group>"; };
 		71E002CE28809767006E23DF /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		71EA3EF02887A4AB005ADB91 /* LibraryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				71C624DD2880A149007B2CAF /* LibraryView.swift */,
+				71EA3EF02887A4AB005ADB91 /* LibraryListView.swift */,
 				7107F44D2880DA4500CE89A5 /* LibraryRowView.swift */,
 				71C624E72880B8EF007B2CAF /* LibraryBookView.swift */,
 				7107F4512881DD8000CE89A5 /* EmptySelectionView.swift */,
@@ -378,6 +381,7 @@
 				71E002CF28809767006E23DF /* DataController.swift in Sources */,
 				7135B3342885D3F500165246 /* LibraryRatingView.swift in Sources */,
 				71C624E02880AEC0007B2CAF /* Book-CoreDataHelpers.swift in Sources */,
+				71EA3EF12887A4AB005ADB91 /* LibraryListView.swift in Sources */,
 				7107F4542882032300CE89A5 /* SearchResponse.swift in Sources */,
 				71C624E82880B8EF007B2CAF /* LibraryBookView.swift in Sources */,
 				7107F45628820DE700CE89A5 /* SearchedBookView.swift in Sources */,
