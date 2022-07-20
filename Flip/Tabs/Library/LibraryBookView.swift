@@ -13,6 +13,8 @@ struct LibraryBookView: View {
     @EnvironmentObject var dataController: DataController
     @Environment(\.dismiss) private var dismiss
 
+    @FetchRequest private var books: FetchedResults<Book>
+
     @State private var dateRead: Date
     @State private var read: Bool
     @State private var rating: Int
@@ -31,6 +33,10 @@ struct LibraryBookView: View {
         pageCountFormatter.maximum = 30000
         pageCountFormatter.minimum = 0
         self.pageCountFormatter = pageCountFormatter
+
+        let predicate = NSPredicate(format: "id == %@", book.bookId)
+        let fetchRequest = FetchRequest<Book>(entity: Book.entity(), sortDescriptors: [], predicate: predicate)
+        _books = fetchRequest
     }
 
     var optionalReadForm: some View {
@@ -109,6 +115,7 @@ struct LibraryBookView: View {
         .onChange(of: rating) { _ in update() }
         .onChange(of: pageCount) { _ in update() }
         .onDisappear { dataController.update(book) }
+        .onAppear(perform: checkExists)
         .alert(isPresented: $showingDeleteConfirmation) {
             Alert(
                 title: Text("Delete book"),
@@ -134,6 +141,17 @@ struct LibraryBookView: View {
     func delete() {
         dataController.delete(book)
         dataController.save()
+        dismiss()
+    }
+
+    func checkExists() {
+        // We have to check if this book still exists in the situation:
+        // User opens 'book1' in library. User navigates to Search tab.
+        // User find 'book1' through search. User deletes 'book1' from
+        // search tab. User switches to library tab. Adding this line them
+        // out they are no longer left viewing a book that doesn't exist in
+        // their library
+        if books.first != nil { return }
         dismiss()
     }
 }

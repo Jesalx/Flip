@@ -15,6 +15,10 @@ extension Book {
         case allBooks, readBooks, unreadBooks
     }
 
+    var bookId: String {
+        id ?? "NO-ID-SOMETHING-IS-WRONG"
+    }
+
     var bookTitle: String {
         title ?? "Unknown Title"
     }

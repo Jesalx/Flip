@@ -30,13 +30,13 @@ struct StatsView: View {
     var yearlyReadBooks: [Book] {
         let comp = Calendar.current.dateComponents([.year], from: Date())
         let startOfYear = Calendar.current.date(from: comp) ?? Date()
-        return readBooks.filter { $0.bookDateRead > startOfYear }
+        return readBooks.filter { $0.bookDateRead >= startOfYear }
     }
 
     var monthlyReadBooks: [Book] {
         let comp = Calendar.current.dateComponents([.year, .month], from: Date())
         let startOfMonth = Calendar.current.date(from: comp) ?? Date()
-        return books.filter { $0.bookDateRead > startOfMonth }
+        return books.filter { $0.bookDateRead >= startOfMonth }
     }
 
     var chartBooks: [Book] {
@@ -70,7 +70,6 @@ struct StatsView: View {
                             .padding()
                         StatsMonthView(books: chartBooks)
 //                            .foregroundStyle(.teal)
-                            .frame(height: 100)
                             .frame(height: 100)
                             .padding()
                     }

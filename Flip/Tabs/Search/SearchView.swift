@@ -26,9 +26,7 @@ struct SearchView: View {
                 ProgressView()
             case .success:
                  List(searchedBooks) { item in
-                     NavigationLink(value: item) {
-                         SearchedBookRowView(item: item)
-                     }
+                     SearchedBookRowView(item: item)
                  }
             case .noResults:
                 Text("No results found.")
@@ -71,6 +69,7 @@ struct SearchView: View {
         let queryUrl = "https://www.googleapis.com/books/v1/volumes?q=\(formattedQuery)&printType=books&maxResults=20"
         guard let url = URL(string: queryUrl) else {
             print("Invalid search URL")
+            searchStatus = .noResults
             return
         }
         do {

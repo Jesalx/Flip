@@ -112,34 +112,8 @@ struct SearchedBookView: View {
 
     func saveBook() {
         if books.first != nil { return }
-        let generator = UIImpactFeedbackGenerator(style: .medium)
-        generator.impactOccurred()
-
-        let book = Book(context: managedObjectContext)
-        book.id = item.id
-        book.title = item.volumeInfo.wrappedTitle
-        let authors = item.volumeInfo.wrappedAuthors.joined(separator: ", ")
-        book.author = authors
-
-        book.summary = item.volumeInfo.wrappedDescription
-        book.read = false
-        book.publicationDate = item.volumeInfo.wrappedPublishedDate
-        let genres = item.volumeInfo.wrappedGenres.joined(separator: ", ")
-        book.genres = genres
-        book.publishingCompany = item.volumeInfo.wrappedPublisher
-        book.pageCount = Int16(item.volumeInfo.wrappedPageCount)
-        book.rating = Int16(3)
-        book.dateRead = Date()
-        book.selfLink = item.selfLink
-        book.thumbnail = item.volumeInfo.wrappedSmallThumbnail
-        // When adding the spotlight information for a book that isn't
-        // initially in our library we need to save it first, before we
-        // perform the dataController.update(book) function which adds
-        // the spotlight information (and saves again) because book doesn't
-        // initially have a unique objectId assigned to it by CoreData. Saving
-        // before we update the spotlight information fixes this.
-        dataController.save()
-        dataController.update(book)
+        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+        item.saveBook(dataController: dataController)
     }
 
     func deleteBook() {
