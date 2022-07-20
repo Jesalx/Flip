@@ -7,16 +7,9 @@
 import SwiftUI
 
 struct StatsRowView: View {
-    let books: [Book]
     let dateStyle: Date.FormatStyle
-
-    var pagesRead: Int {
-        books.reduce(0) { $0 + $1.bookPageCount}
-    }
-
-    var booksRead: Int {
-        books.count
-    }
+    let pagesRead: Int
+    let booksRead: Int
 
     var bookWord: String {
         return booksRead == 1 ? "Book" : "Books"
@@ -24,6 +17,12 @@ struct StatsRowView: View {
 
     var pageWord: String {
         return pagesRead == 1 ? "Page" : "Pages"
+    }
+    
+    init(books: [Book], dateStyle: Date.FormatStyle) {
+        self.dateStyle = dateStyle
+        self.pagesRead = books.reduce(0) { $0 + $1.bookPageCount }
+        self.booksRead = books.count
     }
 
     var body: some View {

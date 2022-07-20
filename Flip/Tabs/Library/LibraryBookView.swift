@@ -8,6 +8,7 @@ import SwiftUI
 
 struct LibraryBookView: View {
     let book: Book
+    let pageCountFormatter: NumberFormatter
 
     @EnvironmentObject var dataController: DataController
     @Environment(\.dismiss) private var dismiss
@@ -15,6 +16,7 @@ struct LibraryBookView: View {
     @State private var dateRead: Date
     @State private var read: Bool
     @State private var rating: Int
+    @State private var pageCount: Int
     @State private var showingDeleteConfirmation = false
     @State private var showingFullDescription = false
 
@@ -23,6 +25,11 @@ struct LibraryBookView: View {
         _dateRead = State(wrappedValue: book.bookDateRead)
         _read = State(wrappedValue: book.bookRead)
         _rating = State(wrappedValue: book.wrappedRating)
+        _pageCount = State(wrappedValue: book.bookPageCount)
+
+        let pageCountFormatter = NumberFormatter()
+        pageCountFormatter.maximum = 30000
+        self.pageCountFormatter = pageCountFormatter
     }
 
     var optionalReadForm: some View {
@@ -68,7 +75,8 @@ struct LibraryBookView: View {
                 Text(book.bookPublicationDate)
             }
             Section("Page Count") {
-                Text("\(book.bookPageCount)")
+                TextField("Page Count", value: $pageCount, formatter: pageCountFormatter)
+                    .keyboardType(.numberPad)
             }
             Section("Genres") {
                 ForEach(book.bookGenres, id: \.self) { genre in
@@ -98,6 +106,7 @@ struct LibraryBookView: View {
         .onChange(of: read) { _ in update() }
         .onChange(of: dateRead) { _ in update() }
         .onChange(of: rating) { _ in update() }
+        .onChange(of: pageCount) { _ in update() }
         .onDisappear { dataController.update(book) }
         .alert(isPresented: $showingDeleteConfirmation) {
             Alert(
@@ -111,6 +120,7 @@ struct LibraryBookView: View {
     func update() {
         book.objectWillChange.send()
         book.read = read
+        book.pageCount = Int16(pageCount)
         book.rating = Int16(rating)
         book.dateRead = dateRead
         if read == false {
