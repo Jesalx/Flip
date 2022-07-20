@@ -23,7 +23,7 @@ struct LibraryRowView: View {
             }
             Spacer()
             Image(systemName: "book")
-                .foregroundColor(book.bookRead ? .primary : .clear)
+                .foregroundColor(book.bookRead ? .accentColor : .clear)
         }
     }
 }

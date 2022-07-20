@@ -29,7 +29,7 @@ struct SearchedBookRowView: View {
     var swipeButtons: some View {
         bookExists
         ? Button("Delete") { deleteBook() }.tint(.red)
-        : Button("Add") { saveBook() }.tint(.green)
+        : Button("Add") { saveBook() }.tint(.yellow)
     }
 
     var body: some View {
@@ -46,7 +46,7 @@ struct SearchedBookRowView: View {
                 }
                 Spacer()
                 Image(systemName: "bookmark")
-                    .foregroundColor(bookExists ? .primary : .clear)
+                    .foregroundColor(bookExists ? .accentColor : .clear)
             }
         }
         .swipeActions(edge: .trailing, allowsFullSwipe: true) {

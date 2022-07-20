@@ -34,6 +34,8 @@ struct ContentView: View {
                 }
         }
         .onContinueUserActivity(CSSearchableItemActionType, perform: moveToHome)
+        .accentColor(.mint)
+        .tint(.mint)
     }
 
     func moveToHome(_ input: Any) {

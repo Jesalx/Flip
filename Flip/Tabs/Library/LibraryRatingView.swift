@@ -13,7 +13,7 @@ struct LibraryRatingView: View {
     let maxRating = 5
     let offImage = Image(systemName: "star")
     let onImage = Image(systemName: "star.fill")
-    let color = Color.blue
+    let color = Color.accentColor
 
     var body: some View {
         HStack {
