@@ -28,7 +28,7 @@ struct LibraryBookView: View {
     var optionalReadForm: some View {
         read ? readForm : nil
     }
-    
+
     var readForm: some View {
         VStack {
             HStack {

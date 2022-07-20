@@ -43,6 +43,12 @@ struct StatsView: View {
                     }
                     .padding()
                     StatsWeekView(books: readBooks)
+                        .foregroundStyle(.green)
+                        .frame(height: 100)
+                        .padding()
+                    StatsMonthView(books: readBooks)
+                        .foregroundStyle(.cyan)
+                        .frame(height: 100)
                         .frame(height: 100)
                         .padding()
                     LifetimeStatsView(books: readBooks)

@@ -12,6 +12,7 @@
 		7107F4542882032300CE89A5 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107F4532882032300CE89A5 /* SearchResponse.swift */; };
 		7107F45628820DE700CE89A5 /* SearchedBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107F45528820DE700CE89A5 /* SearchedBookView.swift */; };
 		7107F45A28821CD500CE89A5 /* SearchedBookRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107F45928821CD500CE89A5 /* SearchedBookRowView.swift */; };
+		7124C1DB288864B80070FAFB /* StatsMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7124C1DA288864B80070FAFB /* StatsMonthView.swift */; };
 		7135B3302885C63C00165246 /* StatsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135B32F2885C63C00165246 /* StatsRowView.swift */; };
 		7135B3322885CB4A00165246 /* LifetimeStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135B3312885CB4A00165246 /* LifetimeStatsView.swift */; };
 		7135B3342885D3F500165246 /* LibraryRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135B3332885D3F500165246 /* LibraryRatingView.swift */; };
@@ -54,6 +55,7 @@
 		7107F4532882032300CE89A5 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 		7107F45528820DE700CE89A5 /* SearchedBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedBookView.swift; sourceTree = "<group>"; };
 		7107F45928821CD500CE89A5 /* SearchedBookRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedBookRowView.swift; sourceTree = "<group>"; };
+		7124C1DA288864B80070FAFB /* StatsMonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsMonthView.swift; sourceTree = "<group>"; };
 		7135B32F2885C63C00165246 /* StatsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsRowView.swift; sourceTree = "<group>"; };
 		7135B3312885CB4A00165246 /* LifetimeStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeStatsView.swift; sourceTree = "<group>"; };
 		7135B3332885D3F500165246 /* LibraryRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryRatingView.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			children = (
 				71C624E32880B5F8007B2CAF /* StatsView.swift */,
 				71541F1128875877009C7DC1 /* StatsWeekView.swift */,
+				7124C1DA288864B80070FAFB /* StatsMonthView.swift */,
 				7135B32F2885C63C00165246 /* StatsRowView.swift */,
 				7135B3312885CB4A00165246 /* LifetimeStatsView.swift */,
 			);
@@ -390,6 +393,7 @@
 				71C624DE2880A149007B2CAF /* LibraryView.swift in Sources */,
 				7107F4522881DD8000CE89A5 /* EmptySelectionView.swift in Sources */,
 				71785A662885BACF008F1F96 /* ImageCache.swift in Sources */,
+				7124C1DB288864B80070FAFB /* StatsMonthView.swift in Sources */,
 				7107F45A28821CD500CE89A5 /* SearchedBookRowView.swift in Sources */,
 				7135B3302885C63C00165246 /* StatsRowView.swift in Sources */,
 				71785A642885B989008F1F96 /* CoverView.swift in Sources */,

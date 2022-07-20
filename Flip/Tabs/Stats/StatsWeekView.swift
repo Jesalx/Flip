@@ -24,10 +24,25 @@ struct StatsWeekView: View {
     var body: some View {
         Chart {
             ForEach(0...6, id: \.self) { number in
+                // Regular
                 BarMark(
                     x: .value("Weekday", Calendar.current.shortWeekdaySymbols[number]),
                     y: .value("Count", weekDays[number] ?? 0)
                 )
+                // Weird
+//                AreaMark(
+//                    x: .value("Weekday", Calendar.current.shortWeekdaySymbols[number]),
+//                    y: .value("Count", weekDays[number] ?? 0)
+//                )
+                // Interesting
+//                LineMark(
+//                    x: .value("Weekday", Calendar.current.shortWeekdaySymbols[number]),
+//                    y: .value("Count", weekDays[number] ?? 0)
+//                )
+//                PointMark(
+//                    x: .value("Weekday", Calendar.current.shortWeekdaySymbols[number]),
+//                    y: .value("Count", weekDays[number] ?? 0)
+//                )
             }
         }
     }

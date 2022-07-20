@@ -74,6 +74,10 @@ extension Book {
         return Calendar.current.component(.weekday, from: bookDateRead) - 1
     }
 
+    var monthNumber: Int {
+        return Calendar.current.component(.month, from: bookDateRead) - 1
+    }
+
     static var example: Book {
         let controller = DataController.preview
         let viewContext = controller.container.viewContext
