@@ -47,8 +47,17 @@ struct SearchedBookView: View {
         }
     }
 
-    var bookSections: some View {
-        Group {
+    var body: some View {
+        List {
+            HStack(alignment: .center) {
+                CoverView(url: item.volumeInfo.wrappedSmallThumbnail)
+                .cornerRadius(20)
+                .frame(width: 190, height: 270)
+            }
+            .frame(maxWidth: .infinity)
+            .listRowBackground(Color.clear)
+            .listRowInsets( EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0) )
+
             Section {
                 Text(item.volumeInfo.wrappedTitle)
                     .font(.headline)
@@ -83,21 +92,6 @@ struct SearchedBookView: View {
                         showingFullDescription.toggle()
                     }
             }
-        }
-    }
-
-    var body: some View {
-        List {
-            HStack(alignment: .center) {
-                CoverView(url: item.volumeInfo.wrappedSmallThumbnail)
-                .cornerRadius(20)
-                .frame(width: 190, height: 270)
-            }
-            .frame(maxWidth: .infinity)
-            .listRowBackground(Color.clear)
-            .listRowInsets( EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0) )
-
-            bookSections
         }
         .navigationTitle(item.volumeInfo.wrappedTitle)
         .navigationBarTitleDisplayMode(.inline)

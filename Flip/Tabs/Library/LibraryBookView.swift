@@ -25,9 +25,12 @@ struct LibraryBookView: View {
         _rating = State(wrappedValue: book.wrappedRating)
     }
 
-    var optionalReadView: some View {
-        read
-        ? Group {
+    var optionalReadForm: some View {
+        read ? readForm : nil
+    }
+    
+    var readForm: some View {
+        VStack {
             HStack {
                 Text("Rating")
                 Spacer()
@@ -35,11 +38,24 @@ struct LibraryBookView: View {
             }
             DatePicker("Date Finished", selection: $dateRead, in: ...Date.now, displayedComponents: [.date])
         }
-        : nil
     }
 
-    var bookSections: some View {
-        Group {
+    var body: some View {
+        Form {
+            HStack(alignment: .center) {
+                CoverView(url: book.thumbnail)
+                .cornerRadius(20)
+                .frame(width: 190, height: 270)
+            }
+            .frame(maxWidth: .infinity)
+            .listRowBackground(Color.clear)
+            .listRowInsets(EdgeInsets(
+                top: 0,
+                leading: 0,
+                bottom: 0,
+                trailing: 0)
+            )
+
             Section("Author") {
                 ForEach(book.bookAuthors, id: \.self) { author in
                     Text(author)
@@ -68,7 +84,7 @@ struct LibraryBookView: View {
             }
             Section {
                 Toggle("Mark Read", isOn: $read.animation())
-                optionalReadView
+                optionalReadForm
             }
             Section {
                 Button("Remove from library") {
@@ -76,26 +92,6 @@ struct LibraryBookView: View {
                 }
                 .tint(.red)
             }
-        }
-    }
-
-    var body: some View {
-        Form {
-            HStack(alignment: .center) {
-                CoverView(url: book.thumbnail)
-                .cornerRadius(20)
-                .frame(width: 190, height: 270)
-            }
-            .frame(maxWidth: .infinity)
-            .listRowBackground(Color.clear)
-            .listRowInsets(EdgeInsets(
-                top: 0,
-                leading: 0,
-                bottom: 0,
-                trailing: 0)
-            )
-
-            bookSections
         }
         .navigationTitle(book.bookTitle)
         .navigationBarTitleDisplayMode(.inline)
