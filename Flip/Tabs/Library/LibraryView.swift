@@ -18,6 +18,8 @@ struct LibraryView: View {
     ) private var books: FetchedResults<Book>
 
     @State private var showingSortOrder = false
+//    @SceneStorage("sortOrder") private var sortOrder: Book.SortOrder = .author
+//    @SceneStorage("bookFilter") private var bookFilter: Book.BookFilter = .allBooks
     @State private var sortOrder: Book.SortOrder = .author
     @State private var bookFilter: Book.BookFilter = .allBooks
     @State private var selectedBook: Book?
