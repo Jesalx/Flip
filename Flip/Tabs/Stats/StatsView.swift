@@ -7,9 +7,15 @@
 import SwiftUI
 
 struct StatsView: View {
+    enum ChartsRange {
+        case all, year
+    }
+
     static let tag: String = "Stats"
 
     let columns = [GridItem(.flexible(minimum: 80), spacing: 15), GridItem(.flexible(minimum: 80), spacing: 15)]
+
+    @State private var timeRange = ChartsRange.all
 
     @FetchRequest(
         sortDescriptors: [],
@@ -33,6 +39,15 @@ struct StatsView: View {
         return books.filter { $0.bookDateRead > startOfMonth }
     }
 
+    var chartBooks: [Book] {
+        switch timeRange {
+        case .all:
+            return readBooks
+        case .year:
+            return yearlyReadBooks
+        }
+    }
+
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -42,15 +57,23 @@ struct StatsView: View {
                         StatsRowView(books: monthlyReadBooks, dateStyle: .dateTime.month(.wide))
                     }
                     .padding()
-                    StatsWeekView(books: readBooks)
-                        .foregroundStyle(.green)
-                        .frame(height: 100)
-                        .padding()
-                    StatsMonthView(books: readBooks)
-                        .foregroundStyle(.cyan)
-                        .frame(height: 100)
-                        .frame(height: 100)
-                        .padding()
+                    VStack {
+                        Picker("Time Range", selection: $timeRange.animation()) {
+                            Text("All Years").tag(ChartsRange.all)
+                            Text("Current Year").tag(ChartsRange.year)
+                        }
+                        .pickerStyle(.segmented)
+                        .padding([.horizontal, .top])
+                        StatsWeekView(books: chartBooks)
+//                            .foregroundStyle(.pink)
+                            .frame(height: 100)
+                            .padding()
+                        StatsMonthView(books: chartBooks)
+//                            .foregroundStyle(.teal)
+                            .frame(height: 100)
+                            .frame(height: 100)
+                            .padding()
+                    }
                     LifetimeStatsView(books: readBooks)
                 }
             }

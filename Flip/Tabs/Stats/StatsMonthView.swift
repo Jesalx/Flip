@@ -28,7 +28,6 @@ struct StatsMonthView: View {
                     x: .value("Month", Calendar.current.shortMonthSymbols[number]),
                     y: .value("Count", months[number] ?? 0)
                 )
-//                )
             }
         }
     }
