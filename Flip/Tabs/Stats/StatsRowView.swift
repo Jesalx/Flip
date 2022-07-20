@@ -18,7 +18,7 @@ struct StatsRowView: View {
     var pageWord: String {
         return pagesRead == 1 ? "Page" : "Pages"
     }
-    
+
     init(books: [Book], dateStyle: Date.FormatStyle) {
         self.dateStyle = dateStyle
         self.pagesRead = books.reduce(0) { $0 + $1.bookPageCount }

@@ -8,14 +8,12 @@
 import SwiftUI
 
 struct LifetimeStatsView: View {
-    let books: [Book]
+    let booksRead: Int
+    let pagesRead: Int
 
-    var booksRead: Int {
-        books.count
-    }
-
-    var pagesRead: Int {
-        books.reduce(0) { $0 + $1.bookPageCount}
+    init(books: [Book]) {
+        self.pagesRead = books.reduce(0) { $0 + $1.bookPageCount }
+        self.booksRead = books.count
     }
 
     var body: some View {
