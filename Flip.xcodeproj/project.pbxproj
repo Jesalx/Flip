@@ -29,6 +29,7 @@
 		71C624E22880B5D5007B2CAF /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C624E12880B5D5007B2CAF /* SearchView.swift */; };
 		71C624E42880B5F8007B2CAF /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C624E32880B5F8007B2CAF /* StatsView.swift */; };
 		71C624E82880B8EF007B2CAF /* LibraryBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C624E72880B8EF007B2CAF /* LibraryBookView.swift */; };
+		71C89AC12888F865003BD8E3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C89AC02888F865003BD8E3 /* SettingsView.swift */; };
 		71E002BE288095B8006E23DF /* FlipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E002BD288095B8006E23DF /* FlipApp.swift */; };
 		71E002C0288095B8006E23DF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E002BF288095B8006E23DF /* ContentView.swift */; };
 		71E002C2288095B9006E23DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71E002C1288095B9006E23DF /* Assets.xcassets */; };
@@ -73,6 +74,7 @@
 		71C624E12880B5D5007B2CAF /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		71C624E32880B5F8007B2CAF /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		71C624E72880B8EF007B2CAF /* LibraryBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryBookView.swift; sourceTree = "<group>"; };
+		71C89AC02888F865003BD8E3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		71E002BA288095B8006E23DF /* Flip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71E002BD288095B8006E23DF /* FlipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipApp.swift; sourceTree = "<group>"; };
 		71E002BF288095B8006E23DF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				71B2BC242884B25500D4078C /* Library */,
 				71B2BC252884B26D00D4078C /* Search */,
 				71B2BC262884B27600D4078C /* Stats */,
+				71C89ABF2888F844003BD8E3 /* Settings */,
 			);
 			path = Tabs;
 			sourceTree = "<group>";
@@ -191,6 +194,14 @@
 				71C624D928809F9D007B2CAF /* CloudKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		71C89ABF2888F844003BD8E3 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				71C89AC02888F865003BD8E3 /* SettingsView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		71E002B1288095B8006E23DF = {
@@ -398,6 +409,7 @@
 				7135B3322885CB4A00165246 /* LifetimeStatsView.swift in Sources */,
 				71C624E42880B5F8007B2CAF /* StatsView.swift in Sources */,
 				7107F44E2880DA4500CE89A5 /* LibraryRowView.swift in Sources */,
+				71C89AC12888F865003BD8E3 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

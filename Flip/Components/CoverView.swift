@@ -2,6 +2,7 @@
 //  CoverView.swift
 //  Flip
 //
+//  Created by Jesal Patel on 7/17/22.
 //
 
 import CachedAsyncImage

@@ -2,6 +2,7 @@
 //  ContentView.swift
 //  Flip
 //
+//  Created by Jesal Patel on 7/14/22.
 //
 
 import CoreSpotlight
@@ -31,6 +32,13 @@ struct ContentView: View {
                 .tabItem {
                     Image(systemName: "list.clipboard")
                     Text("Stats")
+                }
+
+            SettingsView()
+                .tag(SettingsView.tag)
+                .tabItem {
+                    Image(systemName: "gear")
+                    Text("Settings")
                 }
         }
         .onContinueUserActivity(CSSearchableItemActionType, perform: moveToHome)

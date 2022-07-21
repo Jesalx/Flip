@@ -2,6 +2,7 @@
 //  FlipApp.swift
 //  Flip
 //
+//  Created by Jesal Patel on 7/14/22.
 //
 
 import SwiftUI
