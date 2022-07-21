@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct LibraryBookView: View {
-    let book: Book
+    @ObservedObject var book: Book
     let pageCountFormatter: NumberFormatter
 
     @EnvironmentObject var dataController: DataController

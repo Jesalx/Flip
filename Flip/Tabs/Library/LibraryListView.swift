@@ -46,12 +46,22 @@ struct LibraryListView: View {
                 NavigationLink(value: book) {
                     LibraryRowView(book: book)
                 }
+                .swipeActions(edge: .leading) {
+                    if !book.read && bookFilter == .allBooks {
+                        Button("Read") { toggleRead(book) }.tint(.purple)
+                    }
+                }
             }
             .onDelete { offsets in
                 delete(offsets)
             }
         }
         .searchable(text: $searchText, prompt: "Search")
+    }
+
+    func toggleRead(_ book: Book) {
+        book.objectWillChange.send()
+        book.read.toggle()
     }
 
     func delete(_ offsets: IndexSet) {
