@@ -17,6 +17,7 @@
 		7135B3342885D3F500165246 /* LibraryRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135B3332885D3F500165246 /* LibraryRatingView.swift */; };
 		714D19BF288500960092163A /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 714D19BE288500960092163A /* CachedAsyncImage */; };
 		71541F1228875877009C7DC1 /* StatsWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71541F1128875877009C7DC1 /* StatsWeekView.swift */; };
+		716EED7E2889E77A00E659E1 /* StatsRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716EED7D2889E77A00E659E1 /* StatsRatingView.swift */; };
 		71785A642885B989008F1F96 /* CoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71785A632885B989008F1F96 /* CoverView.swift */; };
 		71785A662885BACF008F1F96 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71785A652885BACF008F1F96 /* ImageCache.swift */; };
 		71B2BC2E2884B52A00D4078C /* FlipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B2BC2D2884B52A00D4078C /* FlipTests.swift */; };
@@ -61,6 +62,7 @@
 		7135B3312885CB4A00165246 /* LifetimeStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeStatsView.swift; sourceTree = "<group>"; };
 		7135B3332885D3F500165246 /* LibraryRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryRatingView.swift; sourceTree = "<group>"; };
 		71541F1128875877009C7DC1 /* StatsWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsWeekView.swift; sourceTree = "<group>"; };
+		716EED7D2889E77A00E659E1 /* StatsRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsRatingView.swift; sourceTree = "<group>"; };
 		71785A632885B989008F1F96 /* CoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverView.swift; sourceTree = "<group>"; };
 		71785A652885BACF008F1F96 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		71B2BC2B2884B52A00D4078C /* FlipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,6 +178,7 @@
 				71C624E32880B5F8007B2CAF /* StatsView.swift */,
 				71541F1128875877009C7DC1 /* StatsWeekView.swift */,
 				7124C1DA288864B80070FAFB /* StatsMonthView.swift */,
+				716EED7D2889E77A00E659E1 /* StatsRatingView.swift */,
 				7135B32F2885C63C00165246 /* StatsRowView.swift */,
 				7135B3312885CB4A00165246 /* LifetimeStatsView.swift */,
 			);
@@ -396,6 +399,7 @@
 			files = (
 				71E002C0288095B8006E23DF /* ContentView.swift in Sources */,
 				71E002CF28809767006E23DF /* DataController.swift in Sources */,
+				716EED7E2889E77A00E659E1 /* StatsRatingView.swift in Sources */,
 				7135B3342885D3F500165246 /* LibraryRatingView.swift in Sources */,
 				71C624E02880AEC0007B2CAF /* Book-CoreDataHelpers.swift in Sources */,
 				71EA3EF12887A4AB005ADB91 /* LibraryListView.swift in Sources */,

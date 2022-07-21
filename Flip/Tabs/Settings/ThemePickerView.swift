@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ThemePickerView: View {
 
-    @AppStorage("themeChoice") var themeChoice: Color.ThemeChoice = .green
+    @AppStorage("themeChoice") var themeChoice: Color.ThemeChoice = .mint
 
     var body: some View {
         Form {

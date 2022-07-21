@@ -24,6 +24,14 @@ struct GoogleBook: Codable, Identifiable, Hashable {
     func saveBook(dataController: DataController) {
         let managedObjectContext = dataController.container.viewContext
         let book = Book(context: managedObjectContext)
+
+        // It seems weird to use @AppStorage in this context, but this fixes
+        // an issue where if we attempt to access UserDefaults directly in this
+        // file then it will read from the UserDefault's cache instead of the most
+        // up-to-date data. An alternative would be to pass in the default value from
+        // the views that call this function. I'm not sure what solution is cleaner.
+        @AppStorage("defaultRating") var defaultRating = 3
+
         book.id = self.id
         book.title = self.volumeInfo.wrappedTitle
         let authors = self.volumeInfo.wrappedAuthors.joined(separator: ", ")
@@ -36,7 +44,7 @@ struct GoogleBook: Codable, Identifiable, Hashable {
         book.genres = genres
         book.publishingCompany = self.volumeInfo.wrappedPublisher
         book.pageCount = Int16(self.volumeInfo.wrappedPageCount)
-        book.rating = Int16(3)
+        book.rating = Int16(defaultRating)
         book.dateRead = Date.distantFuture
         book.selfLink = self.selfLink
         book.thumbnail = self.volumeInfo.wrappedSmallThumbnail

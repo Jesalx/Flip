@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct SettingsView: View {
-
-    @EnvironmentObject var dataController: DataController
-
     static let tag: String = "Settings"
+
     let emailString: String = "mailto:contact@jesal.dev?subject=Flip App"
         .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     let privacyPolicyUrl: String = "https://www.jesal.dev/flip/privacy_policy/"
+
+    @EnvironmentObject var dataController: DataController
+    @AppStorage("defaultRating") var defaultRating: Int = 3
 
     @State private var refresh = true
     @State private var showingDeleteConfirmation = false
@@ -23,7 +24,11 @@ struct SettingsView: View {
         NavigationStack {
             Form {
                 Section("Library") {
-//                    Toggle("Refresh cover images", isOn: $refresh)
+                    Stepper("Default Rating: \(defaultRating)",
+                            value: $defaultRating,
+                            in: 1...5
+                    )
+//                    .foregroundColor(.accentColor)
                 }
 
                 Section("Stats") {
@@ -33,7 +38,7 @@ struct SettingsView: View {
                 Section("Appearance") {
                     NavigationLink(destination: ThemePickerView()) {
                         Text("Accent Color")
-                            .foregroundColor(.accentColor)
+//                            .foregroundColor(.accentColor)
                     }
                 }
 

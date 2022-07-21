@@ -57,7 +57,7 @@ extension Book {
         Int(pageCount)
     }
 
-    var wrappedRating: Int {
+    var bookRating: Int {
         Int(rating)
     }
 

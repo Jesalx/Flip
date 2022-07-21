@@ -30,7 +30,7 @@ struct SearchedBookRowView: View {
     var swipeButtons: some View {
         bookExists
         ? Button("Delete") { deleteBook() }.tint(.red)
-        : Button("Add") { saveBook() }.tint(.orange)
+        : Button("Add") { saveBook() }.tint(.brown)
     }
 
     var body: some View {

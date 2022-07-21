@@ -13,6 +13,7 @@ struct LibraryListView: View {
     let bookFilter: Book.BookFilter
 
     @EnvironmentObject var dataController: DataController
+    @AppStorage("defaultRating") var defaultRating = 3
 
     let booksRequest: FetchRequest<Book>
     var books: [Book] {
@@ -64,6 +65,7 @@ struct LibraryListView: View {
         book.objectWillChange.send()
         book.read = true
         book.dateRead = Date.now
+        book.rating = Int16(defaultRating)
     }
 
     func delete(_ offsets: IndexSet) {

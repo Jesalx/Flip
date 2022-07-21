@@ -65,14 +65,23 @@ struct StatsView: View {
                         }
                         .pickerStyle(.segmented)
                         .padding([.horizontal, .top])
-                        StatsWeekView(books: chartBooks)
-//                            .foregroundStyle(.pink)
-                            .frame(height: 100)
-                            .padding()
-                        StatsMonthView(books: chartBooks)
-//                            .foregroundStyle(.teal)
-                            .frame(height: 100)
-                            .padding()
+                        VStack {
+                            Text("Date Finished").font(.caption.weight(.semibold))
+                            StatsWeekView(books: chartBooks)
+                                .frame(height: 100)
+                                .padding()
+                            StatsMonthView(books: chartBooks)
+                                .frame(height: 100)
+                                .padding()
+                        }
+                        .padding(.top, 8)
+                        VStack {
+                            Text("Ratings").font(.caption.weight(.semibold))
+                            StatsRatingView(books: chartBooks)
+                                .frame(height: 100)
+                                .padding()
+                        }
+                        .padding(.top, 4)
                     }
                     LifetimeStatsView(books: readBooks)
                 }

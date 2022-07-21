@@ -10,7 +10,8 @@ import SwiftUI
 
 struct ContentView: View {
     @SceneStorage("selectedView") var selectedView = LibraryView.tag
-    @AppStorage("themeChoice") var themeChoice: Color.ThemeChoice = .green
+    @AppStorage("themeChoice") var themeChoice: Color.ThemeChoice = .mint
+    @AppStorage("defaultRating") var defaultRating: Int = 3
 
     var body: some View {
         TabView(selection: $selectedView) {
