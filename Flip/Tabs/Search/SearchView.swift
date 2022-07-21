@@ -13,7 +13,7 @@ struct SearchView: View {
 
     static let tag: String = "Search"
 
-    @State private var searchedBooks: [Item] = []
+    @State private var searchedBooks: [GoogleBook] = []
     @State private var searchText = ""
     @State private var searchStatus = SearchStatus.prompt
 
@@ -44,7 +44,7 @@ struct SearchView: View {
         NavigationStack {
             optionalSearchView
             .navigationTitle("Search")
-            .navigationDestination(for: Item.self) { item in
+            .navigationDestination(for: GoogleBook.self) { item in
                 SearchedBookView(item: item)
             }
         }
@@ -78,7 +78,7 @@ struct SearchView: View {
             let formatter = DateFormatter()
             formatter.dateFormat = "YYYY-MM-dd"
             decoder.dateDecodingStrategy = .formatted(formatter)
-            if let decodedResponse = try? decoder.decode(GoogleBook.self, from: data) {
+            if let decodedResponse = try? decoder.decode(GoogleBooksResponse.self, from: data) {
                 searchedBooks = decodedResponse.items ?? []
                 searchStatus = decodedResponse.totalItems == 0 ? .noResults : .success
             } else {

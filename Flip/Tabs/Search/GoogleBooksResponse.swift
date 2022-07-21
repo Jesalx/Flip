@@ -6,12 +6,12 @@
 
 import SwiftUI
 
-struct GoogleBook: Codable {
+struct GoogleBooksResponse: Codable {
     let totalItems: Int
-    let items: [Item]?
+    let items: [GoogleBook]?
 }
 
-struct Item: Codable, Identifiable, Hashable {
+struct GoogleBook: Codable, Identifiable, Hashable {
     let id: String
     let selfLink: String
     let volumeInfo: VolumeInfo
@@ -59,8 +59,8 @@ struct Item: Codable, Identifiable, Hashable {
         dataController.update(book)
     }
 
-    static var example: Item {
-        Item(
+    static var example: GoogleBook {
+        GoogleBook(
             id: "abc123",
             selfLink: "somestring",
             volumeInfo:
@@ -82,7 +82,7 @@ struct Item: Codable, Identifiable, Hashable {
         )
     }
 
-    static func == (lhs: Item, rhs: Item) -> Bool {
+    static func == (lhs: GoogleBook, rhs: GoogleBook) -> Bool {
         return lhs.id == rhs.id
     }
 }

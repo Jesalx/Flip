@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct SearchedBookView: View {
-    let item: Item
+    let item: GoogleBook
 
     @EnvironmentObject var dataController: DataController
     @Environment(\.managedObjectContext) var managedObjectContext
@@ -17,7 +17,7 @@ struct SearchedBookView: View {
     @State private var showingFullDescription = false
     @State private var showingDeleteConfirmation = false
 
-    init(item: Item) {
+    init(item: GoogleBook) {
         self.item = item
         let predicate = NSPredicate(format: "id == %@", item.id)
         let fetchRequest = FetchRequest<Book>(entity: Book.entity(), sortDescriptors: [], predicate: predicate)
@@ -129,7 +129,7 @@ struct SearchedBookView_Previews: PreviewProvider {
     static var dataController = DataController.preview
     static var previews: some View {
         NavigationStack {
-            SearchedBookView(item: Item.example)
+            SearchedBookView(item: GoogleBook.example)
                 .environment(\.managedObjectContext, dataController.container.viewContext)
                 .environmentObject(dataController)
         }
