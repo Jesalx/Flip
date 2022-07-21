@@ -31,7 +31,10 @@ struct SettingsView: View {
                 }
 
                 Section("Appearance") {
-
+                    NavigationLink(destination: ThemePickerView()) {
+                        Text("Accent Color")
+                            .foregroundColor(.accentColor)
+                    }
                 }
 
                 Section("About") {
@@ -45,6 +48,7 @@ struct SettingsView: View {
                         .confirmationDialog("Delete Library", isPresented: $showingDeleteConfirmation) {
                             Button("Delete Library", role: .destructive) { dataController.deleteAll() }
                         } message: {
+                            // swiftlint:disable:next line_length
                             Text("Are you sure you want to delete all the books in your library? This action cannot be undone.")
                         }
                 }

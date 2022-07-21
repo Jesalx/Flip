@@ -36,6 +36,8 @@
 		71E002C5288095B9006E23DF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71E002C4288095B9006E23DF /* Preview Assets.xcassets */; };
 		71E002CD288095D4006E23DF /* Flip.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 71E002CB288095D4006E23DF /* Flip.xcdatamodeld */; };
 		71E002CF28809767006E23DF /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E002CE28809767006E23DF /* DataController.swift */; };
+		71E473082889CC0800FE208E /* ThemePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E473072889CC0800FE208E /* ThemePickerView.swift */; };
+		71E4730A2889CF7F00FE208E /* Color-Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E473092889CF7F00FE208E /* Color-Theme.swift */; };
 		71EA3EF12887A4AB005ADB91 /* LibraryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA3EF02887A4AB005ADB91 /* LibraryListView.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +84,8 @@
 		71E002C4288095B9006E23DF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		71E002CC288095D4006E23DF /* Flip.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Flip.xcdatamodel; sourceTree = "<group>"; };
 		71E002CE28809767006E23DF /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		71E473072889CC0800FE208E /* ThemePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePickerView.swift; sourceTree = "<group>"; };
+		71E473092889CF7F00FE208E /* Color-Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color-Theme.swift"; sourceTree = "<group>"; };
 		71EA3EF02887A4AB005ADB91 /* LibraryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +131,7 @@
 			children = (
 				71C624DF2880AEC0007B2CAF /* Book-CoreDataHelpers.swift */,
 				71785A652885BACF008F1F96 /* ImageCache.swift */,
+				71E473092889CF7F00FE208E /* Color-Theme.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -200,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				71C89AC02888F865003BD8E3 /* SettingsView.swift */,
+				71E473072889CC0800FE208E /* ThemePickerView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -403,7 +409,9 @@
 				7124C1DB288864B80070FAFB /* StatsMonthView.swift in Sources */,
 				7107F45A28821CD500CE89A5 /* SearchedBookRowView.swift in Sources */,
 				7135B3302885C63C00165246 /* StatsRowView.swift in Sources */,
+				71E4730A2889CF7F00FE208E /* Color-Theme.swift in Sources */,
 				71785A642885B989008F1F96 /* CoverView.swift in Sources */,
+				71E473082889CC0800FE208E /* ThemePickerView.swift in Sources */,
 				71E002CD288095D4006E23DF /* Flip.xcdatamodeld in Sources */,
 				71541F1228875877009C7DC1 /* StatsWeekView.swift in Sources */,
 				7135B3322885CB4A00165246 /* LifetimeStatsView.swift in Sources */,

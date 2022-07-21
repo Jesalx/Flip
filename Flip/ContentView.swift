@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     @SceneStorage("selectedView") var selectedView = LibraryView.tag
+    @AppStorage("themeChoice") var themeChoice: Color.ThemeChoice = .green
 
     var body: some View {
         TabView(selection: $selectedView) {
@@ -42,8 +43,8 @@ struct ContentView: View {
                 }
         }
         .onContinueUserActivity(CSSearchableItemActionType, perform: moveToHome)
-        .accentColor(.mint)
-        .tint(.mint)
+        .accentColor(Color.getThemeColor(themeChoice))
+        .tint(Color.getThemeColor(themeChoice))
     }
 
     func moveToHome(_ input: Any) {
