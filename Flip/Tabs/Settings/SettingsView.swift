@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct SettingsView: View {
+
+    @EnvironmentObject var dataController: DataController
+
     static let tag: String = "Settings"
-    let emailString: String = "mailto:flip@jesal.dev?subject=Flip App"
+    let emailString: String = "mailto:contact@jesal.dev?subject=Flip App"
         .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     let privacyPolicyUrl: String = "https://www.jesal.dev/flip/privacy_policy/"
 
     @State private var refresh = true
+    @State private var showingDeleteConfirmation = false
 
     var body: some View {
         NavigationStack {
@@ -31,8 +35,18 @@ struct SettingsView: View {
                 }
 
                 Section("About") {
-                    Link("Email me", destination: URL(string: emailString)!)
+                    Link("Send Email", destination: URL(string: emailString)!)
                     Link("Privacy Policy", destination: URL(string: privacyPolicyUrl)!)
+                }
+
+                Section("Debug") {
+                    // DON'T INCLUDE IN RELEASE
+                    Button("Delete Library", role: .destructive) { showingDeleteConfirmation = true }
+                        .confirmationDialog("Delete Library", isPresented: $showingDeleteConfirmation) {
+                            Button("Delete Library", role: .destructive) { dataController.deleteAll() }
+                        } message: {
+                            Text("Are you sure you want to delete all the books in your library? This action cannot be undone.")
+                        }
                 }
             }
             .navigationTitle("Settings")

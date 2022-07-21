@@ -29,14 +29,14 @@ struct StatsView: View {
     }
 
     var yearlyReadBooks: [Book] {
-        let comp = Calendar.current.dateComponents([.year], from: Date())
-        let startOfYear = Calendar.current.date(from: comp) ?? Date()
+        let comp = Calendar.current.dateComponents([.year], from: Date.now)
+        let startOfYear = Calendar.current.date(from: comp) ?? Date.now
         return readBooks.filter { $0.bookDateRead >= startOfYear }
     }
 
     var monthlyReadBooks: [Book] {
-        let comp = Calendar.current.dateComponents([.year, .month], from: Date())
-        let startOfMonth = Calendar.current.date(from: comp) ?? Date()
+        let comp = Calendar.current.dateComponents([.year, .month], from: Date.now)
+        let startOfMonth = Calendar.current.date(from: comp) ?? Date.now
         return books.filter { $0.bookDateRead >= startOfMonth }
     }
 

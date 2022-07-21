@@ -31,9 +31,9 @@ struct LibraryView: View {
 
     var sortToolbarItem: some View {
         Menu {
-            Button("All Items") { bookFilter = .allBooks }
-            Button("Read") { bookFilter = .readBooks }
-            Button("Unread") { bookFilter = .unreadBooks }
+            Button("All Items") { changeFilter(to: .allBooks) }
+            Button("Read") { changeFilter(to: .readBooks) }
+            Button("Unread") { changeFilter(to: .unreadBooks) }
         } label: {
             Label("Filter", systemImage: "line.3.horizontal.decrease.circle")
         }
@@ -57,11 +57,11 @@ struct LibraryView: View {
                 }
                 .onContinueUserActivity(CSSearchableItemActionType, perform: loadSpotlightBook)
                 .confirmationDialog("Sort Books", isPresented: $showingSortOrder) {
-                    Button("Author") { sortOrder = .author }
-                    Button("Title") { sortOrder = .title }
-                    Button("Page Count") { sortOrder = .pageCount }
-                    Button("Finish Date") { sortOrder = .readDate }
-                    Button("Publication Date") { sortOrder = .publicationDate }
+                    Button("Author") { changeSort(to: .author) }
+                    Button("Title") { changeSort(to: .title) }
+                    Button("Page Count") { changeSort(to: .pageCount) }
+                    Button("Finish Date") { changeSort(to: .readDate) }
+                    Button("Publication Date") { changeSort(to: .publicationDate) }
                     Button("Cancel", role: .cancel) { }
                 } message: {
                     Text("Sort Books")
@@ -79,6 +79,19 @@ struct LibraryView: View {
     func loadSpotlightBook(_ userActivity: NSUserActivity) {
         if let uniqueIdentifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String {
             selectBook(with: uniqueIdentifier)
+        }
+    }
+
+    func changeFilter(to filter: Book.BookFilter) {
+        withAnimation {
+            bookFilter = filter
+        }
+    }
+
+    func changeSort(to sort: Book.SortOrder) {
+        // I don't this adds an animation, even when sorting at the moment. Find out why
+        withAnimation {
+            sortOrder = sort
         }
     }
 

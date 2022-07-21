@@ -42,7 +42,7 @@ extension Book {
     }
 
     var bookDateRead: Date {
-        dateRead ?? Date()
+        dateRead ?? Date.now
     }
 
     var bookPublicationDate: String {
@@ -105,7 +105,7 @@ extension Book {
                     """
         book.publicationDate = "2022"
         book.read = true
-        book.dateRead = Date()
+        book.dateRead = Date.now
         book.pageCount = Int16(Int.random(in: 20...1500))
         book.publishingCompany = "Random Publishing Company"
         book.genres = "Genre1, Genre2, Genre3"
@@ -149,8 +149,8 @@ extension Book {
         case .readDate:
             descriptor = [
                 NSSortDescriptor(keyPath: \Book.read, ascending: false),
-                NSSortDescriptor(keyPath: \Book.dateRead, ascending: true),
-                NSSortDescriptor(keyPath: \Book.publicationDate, ascending: true)
+                NSSortDescriptor(keyPath: \Book.dateRead, ascending: true)
+//                NSSortDescriptor(keyPath: \Book.publicationDate, ascending: true)
             ]
         case .publicationDate:
             descriptor = [

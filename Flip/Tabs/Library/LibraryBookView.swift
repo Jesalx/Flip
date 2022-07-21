@@ -131,9 +131,9 @@ struct LibraryBookView: View {
         book.read = read
         book.pageCount = Int16(pageCount)
         book.rating = Int16(rating)
-        book.dateRead = dateRead
+        book.dateRead = formattedDate(dateRead)
         if read == false {
-            book.dateRead = Date()
+            book.dateRead = Date.distantFuture
             book.rating = Int16(3)
         }
         dataController.update(book)
@@ -143,6 +143,18 @@ struct LibraryBookView: View {
         dataController.delete(book)
         dataController.save()
         dismiss()
+    }
+
+    func formattedDate(_ selectedDate: Date) -> Date {
+        // Adds seconds and minutes to the given date from the picker so
+        // that finished reading date sorting works as expected
+        var comp = Calendar.current.dateComponents([.year, .month, .day], from: selectedDate)
+        let now = Calendar.current.dateComponents([.hour, .minute, .second], from: Date.now)
+        comp.hour = now.hour
+        comp.minute = now.minute
+        comp.second = now.second
+        let constructedDate = Calendar.current.date(from: comp) ?? Date.now
+        return min(constructedDate, Date.now)
     }
 
     func checkExists() {

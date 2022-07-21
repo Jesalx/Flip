@@ -36,7 +36,8 @@ struct LibraryListView: View {
         booksRequest = FetchRequest<Book>(
             entity: Book.entity(),
             sortDescriptors: Book.getSort(sortOrder),
-            predicate: Book.getPredicate(bookFilter)
+            predicate: Book.getPredicate(bookFilter),
+            animation: .default
         )
     }
 
@@ -48,7 +49,7 @@ struct LibraryListView: View {
                 }
                 .swipeActions(edge: .leading) {
                     if !book.read && bookFilter == .allBooks {
-                        Button("Read") { toggleRead(book) }.tint(.purple)
+                        Button("Read") { markRead(book) }.tint(.purple)
                     }
                 }
             }
@@ -59,9 +60,10 @@ struct LibraryListView: View {
         .searchable(text: $searchText, prompt: "Search")
     }
 
-    func toggleRead(_ book: Book) {
+    func markRead(_ book: Book) {
         book.objectWillChange.send()
-        book.read.toggle()
+        book.read = true
+        book.dateRead = Date.now
     }
 
     func delete(_ offsets: IndexSet) {

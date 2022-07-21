@@ -37,7 +37,7 @@ struct GoogleBook: Codable, Identifiable, Hashable {
         book.publishingCompany = self.volumeInfo.wrappedPublisher
         book.pageCount = Int16(self.volumeInfo.wrappedPageCount)
         book.rating = Int16(3)
-        book.dateRead = Date()
+        book.dateRead = Date.distantFuture
         book.selfLink = self.selfLink
         book.thumbnail = self.volumeInfo.wrappedSmallThumbnail
         let identifiers = self.volumeInfo.industryIdentifiers ?? []
