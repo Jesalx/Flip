@@ -100,6 +100,7 @@ struct LibraryBookView: View {
             }
             Section {
                 Toggle("Mark Read", isOn: $read.animation())
+                    .tint(.accentColor)
                 optionalReadForm
             }
             Section {

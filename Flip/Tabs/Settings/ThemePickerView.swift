@@ -32,7 +32,7 @@ struct ThemePickerView: View {
         }
         .navigationTitle("Color Options")
     }
-    
+
     func changeTheme(to choice: Color.ThemeChoice) {
         themeChoice = choice
     }
