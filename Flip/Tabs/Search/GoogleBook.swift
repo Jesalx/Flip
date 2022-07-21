@@ -6,7 +6,7 @@
 
 import SwiftUI
 
-struct SearchResponse: Codable {
+struct GoogleBook: Codable {
     let totalItems: Int
     let items: [Item]?
 }
@@ -39,6 +39,16 @@ struct Item: Codable, Identifiable, Hashable {
         book.dateRead = Date()
         book.selfLink = self.selfLink
         book.thumbnail = self.volumeInfo.wrappedSmallThumbnail
+        let identifiers = self.volumeInfo.industryIdentifiers ?? []
+        for industryIdentifier in identifiers {
+            if let isbn = industryIdentifier.type, let identifier = industryIdentifier.identifier {
+                if isbn == "ISBN_10" {
+                    book.isbn10 = identifier
+                } else if isbn == "ISBN_13" {
+                    book.isbn13 = identifier
+                }
+            }
+        }
         // When adding the spotlight information for a book that isn't
         // initially in our library we need to save it first, before we
         // perform the dataController.update(book) function which adds

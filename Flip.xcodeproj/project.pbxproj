@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7107F44E2880DA4500CE89A5 /* LibraryRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107F44D2880DA4500CE89A5 /* LibraryRowView.swift */; };
-		7107F4542882032300CE89A5 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107F4532882032300CE89A5 /* SearchResponse.swift */; };
+		7107F4542882032300CE89A5 /* GoogleBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107F4532882032300CE89A5 /* GoogleBook.swift */; };
 		7107F45628820DE700CE89A5 /* SearchedBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107F45528820DE700CE89A5 /* SearchedBookView.swift */; };
 		7107F45A28821CD500CE89A5 /* SearchedBookRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107F45928821CD500CE89A5 /* SearchedBookRowView.swift */; };
 		7124C1DB288864B80070FAFB /* StatsMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7124C1DA288864B80070FAFB /* StatsMonthView.swift */; };
@@ -50,7 +50,7 @@
 
 /* Begin PBXFileReference section */
 		7107F44D2880DA4500CE89A5 /* LibraryRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryRowView.swift; sourceTree = "<group>"; };
-		7107F4532882032300CE89A5 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
+		7107F4532882032300CE89A5 /* GoogleBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleBook.swift; sourceTree = "<group>"; };
 		7107F45528820DE700CE89A5 /* SearchedBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedBookView.swift; sourceTree = "<group>"; };
 		7107F45928821CD500CE89A5 /* SearchedBookRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedBookRowView.swift; sourceTree = "<group>"; };
 		7124C1DA288864B80070FAFB /* StatsMonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsMonthView.swift; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 				71C624E12880B5D5007B2CAF /* SearchView.swift */,
 				7107F45928821CD500CE89A5 /* SearchedBookRowView.swift */,
 				7107F45528820DE700CE89A5 /* SearchedBookView.swift */,
-				7107F4532882032300CE89A5 /* SearchResponse.swift */,
+				7107F4532882032300CE89A5 /* GoogleBook.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -382,7 +382,7 @@
 				7135B3342885D3F500165246 /* LibraryRatingView.swift in Sources */,
 				71C624E02880AEC0007B2CAF /* Book-CoreDataHelpers.swift in Sources */,
 				71EA3EF12887A4AB005ADB91 /* LibraryListView.swift in Sources */,
-				7107F4542882032300CE89A5 /* SearchResponse.swift in Sources */,
+				7107F4542882032300CE89A5 /* GoogleBook.swift in Sources */,
 				71C624E82880B8EF007B2CAF /* LibraryBookView.swift in Sources */,
 				7107F45628820DE700CE89A5 /* SearchedBookView.swift in Sources */,
 				71E002BE288095B8006E23DF /* FlipApp.swift in Sources */,

@@ -78,7 +78,7 @@ struct SearchView: View {
             let formatter = DateFormatter()
             formatter.dateFormat = "YYYY-MM-dd"
             decoder.dateDecodingStrategy = .formatted(formatter)
-            if let decodedResponse = try? decoder.decode(SearchResponse.self, from: data) {
+            if let decodedResponse = try? decoder.decode(GoogleBook.self, from: data) {
                 searchedBooks = decodedResponse.items ?? []
                 searchStatus = decodedResponse.totalItems == 0 ? .noResults : .success
             } else {
