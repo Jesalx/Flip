@@ -2,6 +2,7 @@
 //  Book-CoreDataHelpers.swift
 //  Flip
 //
+//  Created by Jesal Patel on 7/14/22.
 //
 
 import Foundation
@@ -131,32 +132,27 @@ extension Book {
         var descriptor: [NSSortDescriptor]
         switch sortOrder {
         case .title:
-//            descriptor = [SortDescriptor(\Book.title, order: .forward)]
             descriptor = [
                 NSSortDescriptor(keyPath: \Book.title, ascending: true),
                 NSSortDescriptor(keyPath: \Book.publicationDate, ascending: true)
             ]
         case .author:
-//            descriptor = [SortDescriptor(\Book.author, order: .forward)]
             descriptor = [
                 NSSortDescriptor(keyPath: \Book.author, ascending: true),
                 NSSortDescriptor(keyPath: \Book.publicationDate, ascending: true)
             ]
         case .pageCount:
-//            descriptor = [SortDescriptor(\Book.pageCount, order: .forward)]
             descriptor = [
                 NSSortDescriptor(keyPath: \Book.pageCount, ascending: true),
                 NSSortDescriptor(keyPath: \Book.publicationDate, ascending: true)
             ]
         case .readDate:
-//            descriptor = [SortDescriptor(\Book.dateRead, order: .forward)]
             descriptor = [
                 NSSortDescriptor(keyPath: \Book.read, ascending: false),
                 NSSortDescriptor(keyPath: \Book.dateRead, ascending: true),
                 NSSortDescriptor(keyPath: \Book.publicationDate, ascending: true)
             ]
         case .publicationDate:
-//            descriptor = [SortDescriptor(\Book.publicationDate, order: .forward)]
             descriptor = [
                 NSSortDescriptor(keyPath: \Book.publicationDate, ascending: true),
                 NSSortDescriptor(keyPath: \Book.title, ascending: true)

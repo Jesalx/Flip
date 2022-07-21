@@ -2,6 +2,7 @@
 //  StatsRowView.swift
 //  Flip
 //
+//  Created by Jesal Patel on 7/16/22.
 //
 
 import SwiftUI
