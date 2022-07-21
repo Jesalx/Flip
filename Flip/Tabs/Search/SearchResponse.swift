@@ -66,7 +66,8 @@ struct Item: Codable, Identifiable, Hashable {
                     imageLinks:
                         ImageLinks(
                             smallThumbnail: "",
-                            thumbnail: "")
+                            thumbnail: ""),
+                    industryIdentifiers: [IndustryIdentifier(type: "ISBN_10", identifier: "193906533X")]
                 )
         )
     }
@@ -90,6 +91,7 @@ struct VolumeInfo: Codable {
     let pageCount: Int?
     let categories: [String]?
     let imageLinks: ImageLinks?
+    let industryIdentifiers: [IndustryIdentifier]?
 
     var wrappedTitle: String {
         title ?? "Unknown Title"
@@ -141,7 +143,11 @@ struct VolumeInfo: Codable {
             description: "This is a description, I don't know what the book is about.",
             pageCount: 1403,
             categories: ["Fiction", "Sci-Fi"],
-            imageLinks: ImageLinks(smallThumbnail: "", thumbnail: ""))
+            imageLinks: ImageLinks(smallThumbnail: "", thumbnail: ""),
+            industryIdentifiers: [
+                IndustryIdentifier(type: "ISBN_10", identifier: "193906533X"),
+                IndustryIdentifier(type: "ISBN_13", identifier: "9781939065339")
+            ])
         return volumeInfo
     }
 }
@@ -163,4 +169,9 @@ struct ImageLinks: Codable {
         }
         return nil
     }
+}
+
+struct IndustryIdentifier: Codable {
+    let type: String?
+    let identifier: String?
 }
