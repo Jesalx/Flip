@@ -12,6 +12,7 @@ struct ContentView: View {
     @SceneStorage("selectedView") var selectedView = LibraryView.tag
     @AppStorage("themeChoice") var themeChoice: Color.ThemeChoice = .mint
     @AppStorage("defaultRating") var defaultRating: Int = 3
+    @AppStorage("readingGoal") var readingGoal: Int = 0
 
     var body: some View {
         TabView(selection: $selectedView) {

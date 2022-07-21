@@ -17,6 +17,7 @@ struct StatsView: View {
     let columns = [GridItem(.flexible(minimum: 80), spacing: 15), GridItem(.flexible(minimum: 80), spacing: 15)]
 
     @State private var timeRange = ChartsRange.all
+    @State private var showingUpdateReadingGoal = false
 
     @FetchRequest(
         sortDescriptors: [],
@@ -46,6 +47,14 @@ struct StatsView: View {
             return readBooks
         case .year:
             return yearlyReadBooks
+        }
+    }
+
+    var readingGoalToolbarItem: some View {
+        Button {
+            showingUpdateReadingGoal = true
+        } label: {
+            Image(systemName: "calendar")
         }
     }
 
@@ -87,7 +96,15 @@ struct StatsView: View {
                 }
             }
             .navigationTitle("Stats")
-            .navigationBarTitleDisplayMode(.automatic)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    readingGoalToolbarItem
+                }
+            }
+            .sheet(isPresented: $showingUpdateReadingGoal) {
+                UpdateGoalView()
+                    .presentationDetents([.medium, .large])
+            }
         }
     }
 }

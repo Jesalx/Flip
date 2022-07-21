@@ -18,6 +18,7 @@
 		714D19BF288500960092163A /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 714D19BE288500960092163A /* CachedAsyncImage */; };
 		71541F1228875877009C7DC1 /* StatsWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71541F1128875877009C7DC1 /* StatsWeekView.swift */; };
 		716EED7E2889E77A00E659E1 /* StatsRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716EED7D2889E77A00E659E1 /* StatsRatingView.swift */; };
+		716EED80288A03C600E659E1 /* UpdateGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716EED7F288A03C600E659E1 /* UpdateGoalView.swift */; };
 		71785A642885B989008F1F96 /* CoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71785A632885B989008F1F96 /* CoverView.swift */; };
 		71785A662885BACF008F1F96 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71785A652885BACF008F1F96 /* ImageCache.swift */; };
 		71B2BC2E2884B52A00D4078C /* FlipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B2BC2D2884B52A00D4078C /* FlipTests.swift */; };
@@ -63,6 +64,7 @@
 		7135B3332885D3F500165246 /* LibraryRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryRatingView.swift; sourceTree = "<group>"; };
 		71541F1128875877009C7DC1 /* StatsWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsWeekView.swift; sourceTree = "<group>"; };
 		716EED7D2889E77A00E659E1 /* StatsRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsRatingView.swift; sourceTree = "<group>"; };
+		716EED7F288A03C600E659E1 /* UpdateGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGoalView.swift; sourceTree = "<group>"; };
 		71785A632885B989008F1F96 /* CoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverView.swift; sourceTree = "<group>"; };
 		71785A652885BACF008F1F96 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		71B2BC2B2884B52A00D4078C /* FlipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,6 +183,7 @@
 				716EED7D2889E77A00E659E1 /* StatsRatingView.swift */,
 				7135B32F2885C63C00165246 /* StatsRowView.swift */,
 				7135B3312885CB4A00165246 /* LifetimeStatsView.swift */,
+				716EED7F288A03C600E659E1 /* UpdateGoalView.swift */,
 			);
 			path = Stats;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				71E002BE288095B8006E23DF /* FlipApp.swift in Sources */,
 				71C624E22880B5D5007B2CAF /* SearchView.swift in Sources */,
 				71C624DE2880A149007B2CAF /* LibraryView.swift in Sources */,
+				716EED80288A03C600E659E1 /* UpdateGoalView.swift in Sources */,
 				71785A662885BACF008F1F96 /* ImageCache.swift in Sources */,
 				7124C1DB288864B80070FAFB /* StatsMonthView.swift in Sources */,
 				7107F45A28821CD500CE89A5 /* SearchedBookRowView.swift in Sources */,
