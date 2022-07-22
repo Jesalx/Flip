@@ -58,7 +58,6 @@ struct SearchView: View {
 
     func submitSearch() {
         Task { @MainActor in
-            print("Here")
             searchStatus = .searching
             await loadData()
         }

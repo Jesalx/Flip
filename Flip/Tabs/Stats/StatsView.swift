@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct StatsView: View {
+    static let tag: String = "Stats"
     enum ChartsRange {
         case all, year
     }
 
-    static let tag: String = "Stats"
-
-    let columns = [GridItem(.flexible(minimum: 80), spacing: 15), GridItem(.flexible(minimum: 80), spacing: 15)]
+    @AppStorage("readingGoal") var readingGoal = 0
 
     @State private var timeRange = ChartsRange.all
     @State private var showingUpdateReadingGoal = false
