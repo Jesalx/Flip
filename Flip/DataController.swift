@@ -141,6 +141,7 @@ class DataController: ObservableObject {
 
     func deleteAll() {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Book.fetchRequest()
+        CSSearchableIndex.default().deleteSearchableItems(withDomainIdentifiers: ["dev.jesal"])
         delete(fetchRequest)
     }
 
