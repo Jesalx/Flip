@@ -35,7 +35,7 @@ struct UpdateGoalView: View {
                 .font(.title.weight(.semibold))
             TextField("Reading Goal", value: $readingGoal, formatter: formatter)
                 .padding(6)
-                .background(Color.gray.opacity(0.2))
+                .background(Color.secondary.opacity(0.2))
                 .cornerRadius(8)
                 .keyboardType(.numberPad)
             Text(readingGoalCaption)

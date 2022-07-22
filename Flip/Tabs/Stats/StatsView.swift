@@ -74,23 +74,23 @@ struct StatsView: View {
                         }
                         .pickerStyle(.segmented)
                         .padding([.horizontal, .top])
-                        VStack {
-                            Text("Date Finished").font(.caption.weight(.semibold))
+                        VStack(alignment: .leading) {
+                            Text("Weekday Finished").font(.caption.weight(.semibold)).padding(.horizontal)
                             StatsWeekView(books: chartBooks)
                                 .frame(height: 100)
-                                .padding()
+                                .padding(.horizontal)
+                            Text("Month Finished").font(.caption.weight(.semibold)).padding(.horizontal)
                             StatsMonthView(books: chartBooks)
                                 .frame(height: 100)
-                                .padding()
+                                .padding(.horizontal)
                         }
-                        .padding(.top, 8)
-                        VStack {
-                            Text("Ratings").font(.caption.weight(.semibold))
+                        .padding(.top, 6)
+                        VStack(alignment: .leading) {
+                            Text("Ratings").font(.caption.weight(.semibold)).padding(.horizontal)
                             StatsRatingView(books: chartBooks)
                                 .frame(height: 100)
-                                .padding()
+                                .padding(.horizontal)
                         }
-                        .padding(.top, 4)
                     }
                 }
             }
