@@ -14,19 +14,24 @@ struct UpdateGoalView: View {
     let formatter: NumberFormatter
     // swiftlint:disable:next line_length
     let readingGoalCaption = "Some text that could talk about your reading goal or why it's cool to have one or something."
+    let year: String
 
     init() {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.allowsFloats = false
-        formatter.maximum = 2500
-        formatter.minimum = 0
-        self.formatter = formatter
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.allowsFloats = false
+        numberFormatter.maximum = 2500
+        numberFormatter.minimum = 0
+        self.formatter = numberFormatter
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        self.year = dateFormatter.string(from: Date.now)
     }
 
     var body: some View {
         VStack {
-            Text("Reading Goal")
+            Text("\(year) Reading Goal")
                 .font(.title.weight(.semibold))
             TextField("Reading Goal", value: $readingGoal, formatter: formatter)
                 .padding(6)
