@@ -16,6 +16,7 @@ struct SettingsView: View {
 
     @EnvironmentObject var dataController: DataController
     @AppStorage("defaultRating") var defaultRating: Int = 3
+    @AppStorage("lockingEnabled") var lockingEnabled = false
 
     @State private var refresh = true
     @State private var showingDeleteConfirmation = false
@@ -28,17 +29,15 @@ struct SettingsView: View {
                             value: $defaultRating,
                             in: 1...5
                     )
-//                    .foregroundColor(.accentColor)
                 }
 
-                Section("Stats") {
-
+                Section("Security") {
+                    Toggle("Enable Authentication", isOn: $lockingEnabled)
                 }
 
                 Section("Appearance") {
                     NavigationLink(destination: ThemePickerView()) {
                         Text("Accent Color")
-//                            .foregroundColor(.accentColor)
                     }
                 }
 
