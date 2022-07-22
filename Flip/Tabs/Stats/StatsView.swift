@@ -62,6 +62,7 @@ struct StatsView: View {
             ScrollView {
                 VStack(alignment: .center) {
                     VStack {
+                        LifetimeRowView(books: readBooks)
                         StatsRowView(books: yearlyReadBooks, dateStyle: .dateTime.year())
                         StatsRowView(books: monthlyReadBooks, dateStyle: .dateTime.month(.wide))
                     }
@@ -91,7 +92,6 @@ struct StatsView: View {
                         }
                         .padding(.top, 4)
                     }
-                    LifetimeStatsView(books: readBooks)
                 }
             }
             .navigationTitle("Stats")

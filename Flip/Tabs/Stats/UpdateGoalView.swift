@@ -23,7 +23,7 @@ struct UpdateGoalView: View {
         numberFormatter.maximum = 2500
         numberFormatter.minimum = 0
         self.formatter = numberFormatter
-        
+
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy"
         self.year = dateFormatter.string(from: Date.now)
