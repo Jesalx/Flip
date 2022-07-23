@@ -128,7 +128,7 @@ struct ContentView: View {
             return
         }
     }
-    
+
     func unlockAnimation() {
         guard isUnlocked == true else { return }
         // Setting a blur of 0 causes a serious bug where either the navigation bar
@@ -138,7 +138,7 @@ struct ContentView: View {
         // remember to check if this bug has been fixed.
         withAnimation { contentBlur = 0.0000000000001 }
     }
-    
+
     func lockAnimation() {
         withAnimation { contentBlur = 15 }
     }

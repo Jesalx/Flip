@@ -30,7 +30,6 @@ struct LibraryBookView: View {
         _read = State(wrappedValue: book.bookRead)
         _rating = State(wrappedValue: book.bookRating)
         _pageCount = State(wrappedValue: book.bookPageCount)
-        print("RATING: \(_rating)")
 
         let pageCountFormatter = NumberFormatter()
         pageCountFormatter.maximum = 30000
@@ -139,7 +138,6 @@ struct LibraryBookView: View {
             book.dateRead = Date.distantFuture
             book.rating = Int16(defaultRating)
         }
-        print("RATING: \(book.rating)")
         dataController.update(book)
     }
 

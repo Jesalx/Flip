@@ -48,6 +48,13 @@ struct SearchView: View {
             .navigationDestination(for: GoogleBook.self) { item in
                 SearchedBookView(item: item)
             }
+            .toolbar {
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    NavigationLink(destination: CustomBookView()) {
+                        Image(systemName: "plus")
+                    }
+                }
+            }
         }
         .searchable(text: $searchText, prompt: "Search Google Books")
         .disableAutocorrection(true)

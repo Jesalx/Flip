@@ -21,7 +21,7 @@ struct GoogleBook: Codable, Identifiable, Hashable {
         hasher.combine(id)
     }
 
-    func saveBook(dataController: DataController) {
+    func saveGoogleBook(dataController: DataController) {
         let managedObjectContext = dataController.container.viewContext
         let book = Book(context: managedObjectContext)
 

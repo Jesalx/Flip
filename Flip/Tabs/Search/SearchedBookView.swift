@@ -114,7 +114,7 @@ struct SearchedBookView: View {
     func saveBook() {
         if books.first != nil { return }
         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-        item.saveBook(dataController: dataController)
+        item.saveGoogleBook(dataController: dataController)
     }
 
     func deleteBook() {
