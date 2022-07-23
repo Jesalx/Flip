@@ -9,7 +9,7 @@ import SwiftUI
 
 extension Color {
     enum ThemeChoice: String, Codable, CaseIterable {
-        case blue, brown, cyan, green, indigo, mint, orange, pink, purple, red, teal
+        case blue, brown, cyan, gray, green, indigo, mint, orange, pink, purple, red, teal, yellow
     }
 
     static func getThemeColor(_ choice: ThemeChoice) -> Color {
@@ -20,6 +20,8 @@ extension Color {
             return Color.brown
         case .cyan:
             return Color.cyan
+        case .gray:
+            return Color.gray
         case .green:
             return Color.green
         case .indigo:
@@ -36,6 +38,8 @@ extension Color {
             return Color.red
         case .teal:
             return Color.teal
+        case .yellow:
+            return Color.yellow
         }
     }
 }
