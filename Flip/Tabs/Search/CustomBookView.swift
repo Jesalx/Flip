@@ -13,9 +13,9 @@ struct CustomBookView: View {
     @EnvironmentObject var dataController: DataController
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.dismiss) private var dismiss
-    
+
     @AppStorage("defaultRating") var defaultRating = 3
-    
+
     @State private var bookTitle = ""
     @State private var bookAuthor = ""
     @State private var bookPublisher = ""
@@ -25,7 +25,7 @@ struct CustomBookView: View {
     @State private var description = ""
     @State private var isbn10 = ""
     @State private var isbn13 = ""
-    
+
     init() {
         let pageCountFormatter = NumberFormatter()
         pageCountFormatter.maximum = 30000
@@ -70,12 +70,12 @@ struct CustomBookView: View {
                 TextField("Description", text: $description, axis: .vertical)
                     .lineLimit(1...5)
             }
-            
+
             Section("ISBN") {
                 TextField("ISBN 10", text: $isbn10, axis: .horizontal)
                 TextField("ISBN 13", text: $isbn13, axis: .horizontal)
             }
-            
+
             Button("Save") {
                 saveBook()
             }
@@ -92,25 +92,27 @@ struct CustomBookView: View {
     func saveBook() {
         let book = Book(context: managedObjectContext)
         book.id = UUID().uuidString
-        book.title = bookTitle
-        book.author = bookAuthor
-        book.summary = description
+        book.title = bookTitle.trimmingCharacters(in: .whitespacesAndNewlines)
+        book.author = bookAuthor.trimmingCharacters(in: .whitespacesAndNewlines)
+        book.summary = description.isEmpty ? nil : description.trimmingCharacters(in: .whitespacesAndNewlines)
         book.read = false
 
-        book.publishingCompany = bookPublisher
+        book.publishingCompany = bookPublisher.isEmpty
+            ? nil
+            : bookPublisher.trimmingCharacters(in: .whitespacesAndNewlines)
+
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         book.publicationDate = dateFormatter.string(from: publicationDate)
 
-        book.genres = genres
+        book.genres = genres.isEmpty ? nil : genres.trimmingCharacters(in: .whitespacesAndNewlines)
 
         book.pageCount = Int16(pageCount)
-
         book.rating = Int16(defaultRating)
         book.dateRead = Date.distantFuture
 
-        book.isbn10 = isbn10
-        book.isbn13 = isbn13
+        book.isbn10 = isbn10.isEmpty ? nil : isbn10.trimmingCharacters(in: .whitespacesAndNewlines)
+        book.isbn13 = isbn13.isEmpty ? nil : isbn13.trimmingCharacters(in: .whitespacesAndNewlines)
 
         dataController.save()
         dataController.update(book)
