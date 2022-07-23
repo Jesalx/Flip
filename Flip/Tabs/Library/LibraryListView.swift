@@ -66,6 +66,7 @@ struct LibraryListView: View {
         book.read = true
         book.dateRead = Date.now
         book.rating = Int16(defaultRating)
+        dataController.update(book)
     }
 
     func delete(_ offsets: IndexSet) {
