@@ -14,6 +14,7 @@ struct StatsView: View {
     }
 
     @AppStorage("readingGoal") var readingGoal = 0
+    @AppStorage("showLifetimeBooksRead") var showLifetimeBooksRead = true
 
     @State private var timeRange = ChartsRange.all
     @State private var showingUpdateReadingGoal = false
@@ -63,7 +64,9 @@ struct StatsView: View {
                 VStack(alignment: .center) {
                     ReadingGoalView(yearRead: yearlyReadBooks.count)
                     VStack {
-                        LifetimeRowView(books: readBooks)
+                        if showLifetimeBooksRead {
+                            LifetimeRowView(books: readBooks)
+                        }
                         StatsRowView(books: yearlyReadBooks, dateStyle: .dateTime.year())
                         StatsRowView(books: monthlyReadBooks, dateStyle: .dateTime.month(.wide))
                     }

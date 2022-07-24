@@ -16,6 +16,8 @@ struct SettingsView: View {
 
     @EnvironmentObject var dataController: DataController
     @AppStorage("defaultRating") var defaultRating: Int = 3
+    @AppStorage("showReadingGoalProgress") var showReadingGoalProgress = true
+    @AppStorage("showLifetimeBooksRead") var showLifetimeBooksRead = true
     @AppStorage("lockingEnabled") var lockingEnabled = false
 
     @State private var refresh = true
@@ -29,6 +31,11 @@ struct SettingsView: View {
                             value: $defaultRating,
                             in: 1...5
                     )
+                }
+
+                Section("Stats") {
+                    Toggle("Show Reading Goal Progress", isOn: $showReadingGoalProgress)
+                    Toggle("Show Lifetime Books Read", isOn: $showLifetimeBooksRead)
                 }
 
                 Section("Security") {

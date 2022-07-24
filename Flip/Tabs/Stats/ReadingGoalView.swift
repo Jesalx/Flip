@@ -8,29 +8,31 @@
 import SwiftUI
 
 struct ReadingGoalView: View {
-    
+
     let yearRead: Int
-    
+
     @AppStorage("readingGoal") var readingGoal = 20
-    
+    @AppStorage("showReadingGoalProgress") var showReadingGoalProgress = true
+
     var body: some View {
-        if readingGoal == 0 {
+        if readingGoal == 0 || !showReadingGoalProgress {
             EmptyView()
         } else {
             VStack(alignment: .center) {
-                Text("2022 Reading Goal")
-                    .font(.title)
+                Text("\(Date.now.formatted(.dateTime.year())) Reading Goal")
+                    .font(.title.weight(.semibold))
                 HStack {
                     ProgressView(value: Double(min(yearRead, readingGoal)), total: Double(readingGoal))
                         .tint(.accentColor)
                         .padding(.leading)
                     Text("\(yearRead) / \(readingGoal)")
+                        .font(.subheadline.weight(.semibold))
                         .monospacedDigit()
                         .padding(.leading)
                 }
                 .padding(.horizontal)
-                
             }
+            .padding(.top, 8)
         }
     }
 }
