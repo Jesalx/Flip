@@ -18,13 +18,14 @@
 		7135B3302885C63C00165246 /* StatsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135B32F2885C63C00165246 /* StatsRowView.swift */; };
 		7135B3322885CB4A00165246 /* LifetimeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135B3312885CB4A00165246 /* LifetimeRowView.swift */; };
 		7135B3342885D3F500165246 /* LibraryRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135B3332885D3F500165246 /* LibraryRatingView.swift */; };
-		714D19BF288500960092163A /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 714D19BE288500960092163A /* CachedAsyncImage */; };
 		71541F1228875877009C7DC1 /* StatsWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71541F1128875877009C7DC1 /* StatsWeekView.swift */; };
+		7160DBBE288DBEE900560B85 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 7160DBBD288DBEE900560B85 /* Nuke */; };
+		7160DBC0288DBEE900560B85 /* NukeExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 7160DBBF288DBEE900560B85 /* NukeExtensions */; };
+		7160DBC2288DBEE900560B85 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7160DBC1288DBEE900560B85 /* NukeUI */; };
 		716D9D6E288B774900A5B59A /* CustomBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D9D6D288B774900A5B59A /* CustomBookView.swift */; };
 		716EED7E2889E77A00E659E1 /* StatsRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716EED7D2889E77A00E659E1 /* StatsRatingView.swift */; };
 		716EED80288A03C600E659E1 /* UpdateGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716EED7F288A03C600E659E1 /* UpdateGoalView.swift */; };
 		71785A642885B989008F1F96 /* CoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71785A632885B989008F1F96 /* CoverView.swift */; };
-		71785A662885BACF008F1F96 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71785A652885BACF008F1F96 /* ImageCache.swift */; };
 		71B2BC2E2884B52A00D4078C /* FlipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B2BC2D2884B52A00D4078C /* FlipTests.swift */; };
 		71B2BC372884B88800D4078C /* BookTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B2BC362884B88800D4078C /* BookTest.swift */; };
 		71B2BC392884BD7E00D4078C /* DevelopmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B2BC382884BD7E00D4078C /* DevelopmentTests.swift */; };
@@ -73,7 +74,6 @@
 		716EED7D2889E77A00E659E1 /* StatsRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsRatingView.swift; sourceTree = "<group>"; };
 		716EED7F288A03C600E659E1 /* UpdateGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGoalView.swift; sourceTree = "<group>"; };
 		71785A632885B989008F1F96 /* CoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverView.swift; sourceTree = "<group>"; };
-		71785A652885BACF008F1F96 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		71B2BC2B2884B52A00D4078C /* FlipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		71B2BC2D2884B52A00D4078C /* FlipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipTests.swift; sourceTree = "<group>"; };
 		71B2BC362884B88800D4078C /* BookTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTest.swift; sourceTree = "<group>"; };
@@ -114,7 +114,9 @@
 			files = (
 				7107897C288CAA290000656A /* SwiftCSV in Frameworks */,
 				71C624DA28809F9D007B2CAF /* CloudKit.framework in Frameworks */,
-				714D19BF288500960092163A /* CachedAsyncImage in Frameworks */,
+				7160DBC2288DBEE900560B85 /* NukeUI in Frameworks */,
+				7160DBBE288DBEE900560B85 /* Nuke in Frameworks */,
+				7160DBC0288DBEE900560B85 /* NukeExtensions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,7 +144,6 @@
 			isa = PBXGroup;
 			children = (
 				71C624DF2880AEC0007B2CAF /* Book-CoreDataHelpers.swift */,
-				71785A652885BACF008F1F96 /* ImageCache.swift */,
 				71E473092889CF7F00FE208E /* Color-Theme.swift */,
 			);
 			path = Extensions;
@@ -307,8 +308,10 @@
 			);
 			name = Flip;
 			packageProductDependencies = (
-				714D19BE288500960092163A /* CachedAsyncImage */,
 				7107897B288CAA290000656A /* SwiftCSV */,
+				7160DBBD288DBEE900560B85 /* Nuke */,
+				7160DBBF288DBEE900560B85 /* NukeExtensions */,
+				7160DBC1288DBEE900560B85 /* NukeUI */,
 			);
 			productName = Flip;
 			productReference = 71E002BA288095B8006E23DF /* Flip.app */;
@@ -343,8 +346,8 @@
 			);
 			mainGroup = 71E002B1288095B8006E23DF;
 			packageReferences = (
-				714D19BD288500960092163A /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
 				7107897A288CAA290000656A /* XCRemoteSwiftPackageReference "SwiftCSV" */,
+				7160DBBC288DBEE900560B85 /* XCRemoteSwiftPackageReference "Nuke" */,
 			);
 			productRefGroup = 71E002BB288095B8006E23DF /* Products */;
 			projectDirPath = "";
@@ -427,7 +430,6 @@
 				71C624DE2880A149007B2CAF /* LibraryView.swift in Sources */,
 				7107897E288CAA470000656A /* GoodreadsBook.swift in Sources */,
 				716EED80288A03C600E659E1 /* UpdateGoalView.swift in Sources */,
-				71785A662885BACF008F1F96 /* ImageCache.swift in Sources */,
 				7124C1DB288864B80070FAFB /* StatsMonthView.swift in Sources */,
 				716D9D6E288B774900A5B59A /* CustomBookView.swift in Sources */,
 				7107F45A28821CD500CE89A5 /* SearchedBookRowView.swift in Sources */,
@@ -713,12 +715,12 @@
 				minimumVersion = 0.8.0;
 			};
 		};
-		714D19BD288500960092163A /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
+		7160DBBC288DBEE900560B85 /* XCRemoteSwiftPackageReference "Nuke" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
+			repositoryURL = "https://github.com/kean/Nuke";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				branch = master;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -729,10 +731,20 @@
 			package = 7107897A288CAA290000656A /* XCRemoteSwiftPackageReference "SwiftCSV" */;
 			productName = SwiftCSV;
 		};
-		714D19BE288500960092163A /* CachedAsyncImage */ = {
+		7160DBBD288DBEE900560B85 /* Nuke */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 714D19BD288500960092163A /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
-			productName = CachedAsyncImage;
+			package = 7160DBBC288DBEE900560B85 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
+		};
+		7160DBBF288DBEE900560B85 /* NukeExtensions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7160DBBC288DBEE900560B85 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeExtensions;
+		};
+		7160DBC1288DBEE900560B85 /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7160DBBC288DBEE900560B85 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 

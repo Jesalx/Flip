@@ -5,31 +5,17 @@
 //  Created by Jesal Patel on 7/17/22.
 //
 
-import CachedAsyncImage
 import SwiftUI
+import NukeUI
 
 struct CoverView: View {
     let url: URL?
 
     var body: some View {
-        CachedAsyncImage(url: url, urlCache: .imageCache) { phase in
-            thumbnailImage(phase)
-        }
-    }
-
-    func thumbnailImage(_ phase: AsyncImagePhase) -> some View {
-        Group {
-            switch phase {
-            case .empty, .failure:
-                Image(systemName: "book.closed")
-                    .resizable()
-                    .font(.body.weight(.ultraLight))
-                    .scaledToFit()
-            case .success(let image):
+        LazyImage(url: url) { state in
+            if let image = state.image {
                 image
-                    .resizable()
-                    .scaledToFit()
-            @unknown default:
+            } else {
                 Image(systemName: "book.closed")
                     .resizable()
                     .font(.body.weight(.ultraLight))

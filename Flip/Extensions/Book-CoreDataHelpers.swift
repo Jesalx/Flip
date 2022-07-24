@@ -79,6 +79,13 @@ extension Book {
         return trimmed
     }
 
+    var bookThumbnail: URL? {
+        if thumbnail != nil { return thumbnail }
+        if let isbn13 = isbn13 { return Book.openLibraryUrl(isbn: isbn13) }
+        if let isbn10 = isbn10 { return Book.openLibraryUrl(isbn: isbn10) }
+        return nil
+    }
+
     var weekDayNumber: Int {
         // Calendar will return an integer in range [1,7] while we need to use
         // integers in the range [0,6] for mapping to weekday names in
@@ -159,5 +166,10 @@ extension Book {
             ]
         }
         return descriptor
+    }
+
+    static func openLibraryUrl(isbn: String) -> URL? {
+        let urlString = "https://covers.openlibrary.org/b/isbn/\(isbn)-M.jpg?default=false"
+        return URL(string: urlString)
     }
 }

@@ -12,7 +12,7 @@ struct LibraryRowView: View {
 
     var body: some View {
         HStack {
-            CoverView(url: book.thumbnail)
+            CoverView(url: book.bookThumbnail)
             .frame(width: 45, height: 70)
             .cornerRadius(8)
             VStack(alignment: .leading) {

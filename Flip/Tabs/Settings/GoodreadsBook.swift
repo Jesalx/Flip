@@ -84,7 +84,12 @@ struct GoodreadsBook {
 
     func isValid() -> Bool {
 //        return (!self.isbn10.isEmpty || !self.isbn13.isEmpty) && !self.title.isEmpty && self.author.isEmpty
-        return !self.title.isEmpty && !self.author.isEmpty && self.title != "NOT A BOOK" && (!self.isbn10.isEmpty || !self.isbn13.isEmpty)
+        return (
+            !self.title.isEmpty &&
+            !self.author.isEmpty &&
+            self.title != "NOT A BOOK" &&
+            (!self.isbn10.isEmpty || !self.isbn13.isEmpty)
+        )
     }
 
     func saveGoodreadsBook(dataController: DataController) {
@@ -116,7 +121,6 @@ struct GoodreadsBook {
         if book.read {
             book.dateRead = strToDate(date: self.dateRead)
         }
-        print(book.dateRead ?? "None")
         book.isbn10 = self.isbn10.isEmpty ? nil : self.isbn10
         book.isbn13 = self.isbn13.isEmpty ? nil : self.isbn13
 

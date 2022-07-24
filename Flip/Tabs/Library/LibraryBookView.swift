@@ -59,7 +59,7 @@ struct LibraryBookView: View {
     var body: some View {
         Form {
             HStack(alignment: .center) {
-                CoverView(url: book.thumbnail)
+                CoverView(url: book.bookThumbnail)
                 .cornerRadius(20)
                 .frame(width: 190, height: 270)
             }

@@ -1,21 +1,21 @@
 {
   "pins" : [
     {
+      "identity" : "nuke",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kean/Nuke",
+      "state" : {
+        "branch" : "master",
+        "revision" : "40fdbd6c397b54646f8a66dfa9d0e987aa5f2213"
+      }
+    },
+    {
       "identity" : "swiftcsv",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/swiftcsv/SwiftCSV",
       "state" : {
         "revision" : "048a1d3c2950b9c151ef9364b36f91baadc2c28c",
         "version" : "0.8.0"
-      }
-    },
-    {
-      "identity" : "swiftui-cached-async-image",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/lorenzofiamingo/swiftui-cached-async-image",
-      "state" : {
-        "revision" : "467a3d17479887943ab917a379e62bbaff60ac8a",
-        "version" : "2.1.1"
       }
     }
   ],
