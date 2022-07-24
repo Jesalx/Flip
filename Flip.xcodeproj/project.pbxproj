@@ -22,6 +22,7 @@
 		7160DBBE288DBEE900560B85 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 7160DBBD288DBEE900560B85 /* Nuke */; };
 		7160DBC0288DBEE900560B85 /* NukeExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 7160DBBF288DBEE900560B85 /* NukeExtensions */; };
 		7160DBC2288DBEE900560B85 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7160DBC1288DBEE900560B85 /* NukeUI */; };
+		7160DBC4288DDABE00560B85 /* ReadingGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7160DBC3288DDABE00560B85 /* ReadingGoalView.swift */; };
 		716D9D6E288B774900A5B59A /* CustomBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D9D6D288B774900A5B59A /* CustomBookView.swift */; };
 		716EED7E2889E77A00E659E1 /* StatsRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716EED7D2889E77A00E659E1 /* StatsRatingView.swift */; };
 		716EED80288A03C600E659E1 /* UpdateGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716EED7F288A03C600E659E1 /* UpdateGoalView.swift */; };
@@ -70,6 +71,7 @@
 		7135B3312885CB4A00165246 /* LifetimeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeRowView.swift; sourceTree = "<group>"; };
 		7135B3332885D3F500165246 /* LibraryRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryRatingView.swift; sourceTree = "<group>"; };
 		71541F1128875877009C7DC1 /* StatsWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsWeekView.swift; sourceTree = "<group>"; };
+		7160DBC3288DDABE00560B85 /* ReadingGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingGoalView.swift; sourceTree = "<group>"; };
 		716D9D6D288B774900A5B59A /* CustomBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBookView.swift; sourceTree = "<group>"; };
 		716EED7D2889E77A00E659E1 /* StatsRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsRatingView.swift; sourceTree = "<group>"; };
 		716EED7F288A03C600E659E1 /* UpdateGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGoalView.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				71C624E32880B5F8007B2CAF /* StatsView.swift */,
+				7160DBC3288DDABE00560B85 /* ReadingGoalView.swift */,
 				71541F1128875877009C7DC1 /* StatsWeekView.swift */,
 				7124C1DA288864B80070FAFB /* StatsMonthView.swift */,
 				716EED7D2889E77A00E659E1 /* StatsRatingView.swift */,
@@ -426,6 +429,7 @@
 				71C624E82880B8EF007B2CAF /* LibraryBookView.swift in Sources */,
 				7107F45628820DE700CE89A5 /* SearchedBookView.swift in Sources */,
 				71E002BE288095B8006E23DF /* FlipApp.swift in Sources */,
+				7160DBC4288DDABE00560B85 /* ReadingGoalView.swift in Sources */,
 				71C624E22880B5D5007B2CAF /* SearchView.swift in Sources */,
 				71C624DE2880A149007B2CAF /* LibraryView.swift in Sources */,
 				7107897E288CAA470000656A /* GoodreadsBook.swift in Sources */,

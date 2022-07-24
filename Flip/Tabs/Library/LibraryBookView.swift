@@ -46,7 +46,7 @@ struct LibraryBookView: View {
     }
 
     var readForm: some View {
-        VStack {
+        Group {
             HStack {
                 Text("Rating")
                 Spacer()

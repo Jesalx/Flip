@@ -11,12 +11,19 @@ struct LibraryRatingView: View {
     @Binding var rating: Int
 
     let maxRating = 5
-    let offImage = Image(systemName: "star")
-    let onImage = Image(systemName: "star.fill")
     let color = Color.accentColor
 
     var body: some View {
         HStack {
+//            Button("X") { }
+//                .buttonStyle(.bordered)
+//                .tint(.accentColor)
+//            Spacer()
+//                .frame(width: 10)
+//            Image(systemName: "star.slash.fill")
+//            Image(systemName: "arrow.uturn.backward")
+//                .foregroundColor(color)
+//                .padding(.trailing, 10)
             ForEach(1..<maxRating + 1, id: \.self) { number in
                 image(for: number)
                     .foregroundColor(color)
@@ -34,9 +41,9 @@ struct LibraryRatingView: View {
 
     func image(for number: Int) -> Image {
         if number > rating {
-            return offImage
+            return Image(systemName: "star")
         }
-        return onImage
+        return Image(systemName: "star.fill")
     }
 }
 

@@ -61,6 +61,7 @@ struct StatsView: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .center) {
+                    ReadingGoalView(yearRead: yearlyReadBooks.count)
                     VStack {
                         LifetimeRowView(books: readBooks)
                         StatsRowView(books: yearlyReadBooks, dateStyle: .dateTime.year())
