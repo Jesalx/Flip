@@ -47,7 +47,7 @@ struct SettingsView: View {
                 }
 
                 Section("Debug") {
-                    // DON'T INCLUDE IN RELEASE
+                    NavigationLink("Import", destination: ImportView())
                     Button("Delete Library", role: .destructive) { showingDeleteConfirmation = true }
                         .confirmationDialog("Delete Library", isPresented: $showingDeleteConfirmation) {
                             Button("Delete Library", role: .destructive) { dataController.deleteAll() }

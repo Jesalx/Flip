@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		71078979288CA9550000656A /* ImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71078978288CA9550000656A /* ImportView.swift */; };
+		7107897C288CAA290000656A /* SwiftCSV in Frameworks */ = {isa = PBXBuildFile; productRef = 7107897B288CAA290000656A /* SwiftCSV */; };
+		7107897E288CAA470000656A /* GoodreadsBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107897D288CAA470000656A /* GoodreadsBook.swift */; };
 		7107F44E2880DA4500CE89A5 /* LibraryRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107F44D2880DA4500CE89A5 /* LibraryRowView.swift */; };
 		7107F4542882032300CE89A5 /* GoogleBooksResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107F4532882032300CE89A5 /* GoogleBooksResponse.swift */; };
 		7107F45628820DE700CE89A5 /* SearchedBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107F45528820DE700CE89A5 /* SearchedBookView.swift */; };
@@ -55,6 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		71078978288CA9550000656A /* ImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportView.swift; sourceTree = "<group>"; };
+		7107897D288CAA470000656A /* GoodreadsBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodreadsBook.swift; sourceTree = "<group>"; };
 		7107F44D2880DA4500CE89A5 /* LibraryRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryRowView.swift; sourceTree = "<group>"; };
 		7107F4532882032300CE89A5 /* GoogleBooksResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleBooksResponse.swift; sourceTree = "<group>"; };
 		7107F45528820DE700CE89A5 /* SearchedBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedBookView.swift; sourceTree = "<group>"; };
@@ -107,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7107897C288CAA290000656A /* SwiftCSV in Frameworks */,
 				71C624DA28809F9D007B2CAF /* CloudKit.framework in Frameworks */,
 				714D19BF288500960092163A /* CachedAsyncImage in Frameworks */,
 			);
@@ -215,6 +221,8 @@
 			children = (
 				71C89AC02888F865003BD8E3 /* SettingsView.swift */,
 				71E473072889CC0800FE208E /* ThemePickerView.swift */,
+				71078978288CA9550000656A /* ImportView.swift */,
+				7107897D288CAA470000656A /* GoodreadsBook.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -300,6 +308,7 @@
 			name = Flip;
 			packageProductDependencies = (
 				714D19BE288500960092163A /* CachedAsyncImage */,
+				7107897B288CAA290000656A /* SwiftCSV */,
 			);
 			productName = Flip;
 			productReference = 71E002BA288095B8006E23DF /* Flip.app */;
@@ -335,6 +344,7 @@
 			mainGroup = 71E002B1288095B8006E23DF;
 			packageReferences = (
 				714D19BD288500960092163A /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
+				7107897A288CAA290000656A /* XCRemoteSwiftPackageReference "SwiftCSV" */,
 			);
 			productRefGroup = 71E002BB288095B8006E23DF /* Products */;
 			projectDirPath = "";
@@ -415,6 +425,7 @@
 				71E002BE288095B8006E23DF /* FlipApp.swift in Sources */,
 				71C624E22880B5D5007B2CAF /* SearchView.swift in Sources */,
 				71C624DE2880A149007B2CAF /* LibraryView.swift in Sources */,
+				7107897E288CAA470000656A /* GoodreadsBook.swift in Sources */,
 				716EED80288A03C600E659E1 /* UpdateGoalView.swift in Sources */,
 				71785A662885BACF008F1F96 /* ImageCache.swift in Sources */,
 				7124C1DB288864B80070FAFB /* StatsMonthView.swift in Sources */,
@@ -424,6 +435,7 @@
 				71E4730A2889CF7F00FE208E /* Color-Theme.swift in Sources */,
 				71785A642885B989008F1F96 /* CoverView.swift in Sources */,
 				71E473082889CC0800FE208E /* ThemePickerView.swift in Sources */,
+				71078979288CA9550000656A /* ImportView.swift in Sources */,
 				71E002CD288095D4006E23DF /* Flip.xcdatamodeld in Sources */,
 				71541F1228875877009C7DC1 /* StatsWeekView.swift in Sources */,
 				7135B3322885CB4A00165246 /* LifetimeRowView.swift in Sources */,
@@ -693,6 +705,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7107897A288CAA290000656A /* XCRemoteSwiftPackageReference "SwiftCSV" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swiftcsv/SwiftCSV";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.8.0;
+			};
+		};
 		714D19BD288500960092163A /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
@@ -704,6 +724,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7107897B288CAA290000656A /* SwiftCSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7107897A288CAA290000656A /* XCRemoteSwiftPackageReference "SwiftCSV" */;
+			productName = SwiftCSV;
+		};
 		714D19BE288500960092163A /* CachedAsyncImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 714D19BD288500960092163A /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
