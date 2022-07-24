@@ -18,8 +18,8 @@ struct LibraryListView: View {
     let booksRequest: FetchRequest<Book>
     var books: [Book] {
         Array(booksRequest.wrappedValue)
-
     }
+
     var searchedBooks: [Book] {
         if searchText.isEmpty {
             return books

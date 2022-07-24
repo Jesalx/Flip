@@ -82,8 +82,9 @@ struct GoodreadsBook {
         self.bcid = line[30]
     }
 
-    func isValid() -> Bool {
-//        return (!self.isbn10.isEmpty || !self.isbn13.isEmpty) && !self.title.isEmpty && self.author.isEmpty
+    func isValid(_ onlyValidDates: Bool) -> Bool {
+        let isRead = Int(self.readCount) ?? 0 > 0 ? true : false
+        if onlyValidDates && isRead && self.dateRead.isEmpty { return false }
         return (
             !self.title.isEmpty &&
             !self.author.isEmpty &&
@@ -92,8 +93,8 @@ struct GoodreadsBook {
         )
     }
 
-    func saveGoodreadsBook(dataController: DataController) {
-        guard self.isValid() else { return }
+    func saveGoodreadsBook(dataController: DataController, onlyValidDates: Bool = false) {
+        guard self.isValid(onlyValidDates) else { return }
         let managedObjectContext = dataController.container.viewContext
         let book = Book(context: managedObjectContext)
 
@@ -110,7 +111,7 @@ struct GoodreadsBook {
 
         // If publication date doesn't exist, choose original publication date, if that doesn't exist
         // choose nil
-        book.publicationDate = self.publicationYear.isEmpty ? nil : self.publishingCompany
+        book.publicationDate = self.publicationYear.isEmpty ? nil : self.publicationYear
         if book.publicationDate == nil {
             book.publicationDate = self.origPublicationYear.isEmpty ? nil : self.origPublicationYear
         }
