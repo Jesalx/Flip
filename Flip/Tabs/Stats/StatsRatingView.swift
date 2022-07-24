@@ -10,16 +10,21 @@ import SwiftUI
 
 struct StatsRatingView: View {
     let ratings: [Int: Int]
+    let ratingCount: Int
     let bookCount: Int
 
     init(books: [Book]) {
         var ratings = [Int: Int]()
+        var ratingCount = 0
         for book in books {
             let rating = book.bookRating
             ratings[rating] = (ratings[rating] ?? 0) + 1
+            // Only add to ratingCount if the rating isn't zero
+            ratingCount += rating == 0 ? 0 : 1
         }
         self.ratings = ratings
         self.bookCount = books.count
+        self.ratingCount = ratingCount
     }
 
     var chart: some View {
@@ -51,7 +56,7 @@ struct StatsRatingView: View {
     }
 
     var body: some View {
-        if bookCount == 0 {
+        if bookCount == 0 || ratingCount == 0 {
             noInfo
         } else {
             chart

@@ -14,7 +14,7 @@ struct ContentView: View {
 
     @SceneStorage("selectedView") var selectedView = LibraryView.tag
     @AppStorage("themeChoice") var themeChoice: Color.ThemeChoice = .mint
-    @AppStorage("defaultRating") var defaultRating: Int = 3
+    @AppStorage("defaultRating") var defaultRating: Int = 0
     @AppStorage("readingGoal") var readingGoal: Int = 0
     @AppStorage("lockingEnabled") var lockingEnabled = false
 

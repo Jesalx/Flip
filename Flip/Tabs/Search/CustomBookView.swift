@@ -14,7 +14,7 @@ struct CustomBookView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.dismiss) private var dismiss
 
-    @AppStorage("defaultRating") var defaultRating = 3
+    @AppStorage("defaultRating") var defaultRating = 0
 
     @State private var bookTitle = ""
     @State private var bookAuthor = ""

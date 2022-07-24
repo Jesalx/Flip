@@ -15,7 +15,7 @@ struct SettingsView: View {
     let privacyPolicyUrl: String = "https://www.jesal.dev/flip/privacy_policy/"
 
     @EnvironmentObject var dataController: DataController
-    @AppStorage("defaultRating") var defaultRating: Int = 3
+    @AppStorage("defaultRating") var defaultRating: Int = 0
     @AppStorage("showReadingGoalProgress") var showReadingGoalProgress = true
     @AppStorage("showLifetimeBooksRead") var showLifetimeBooksRead = true
     @AppStorage("lockingEnabled") var lockingEnabled = false
@@ -23,13 +23,18 @@ struct SettingsView: View {
     @State private var refresh = true
     @State private var showingDeleteConfirmation = false
 
+    var ratingText: String {
+        if defaultRating == 0 { return "Unrated" }
+        return String(defaultRating)
+    }
+
     var body: some View {
         NavigationStack {
             Form {
                 Section("Library") {
-                    Stepper("Default Rating: \(defaultRating)",
+                    Stepper("Default Rating: \(ratingText)",
                             value: $defaultRating,
-                            in: 1...5
+                            in: 0...5
                     )
                 }
 

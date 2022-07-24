@@ -46,16 +46,19 @@ struct GoodreadsBook {
         self.author = line[2]
         self.authorRev = line[3]
         self.additionalAuthors = line[4]
+
         // =\"1505886554\"
         // =\"\"
         var isbn10 = line[5]
-        isbn10.removeFirst(2)
-        isbn10.removeLast(1)
+        if isbn10.hasPrefix("=\"\"") { isbn10.removeFirst(2) }
+        if isbn10.hasSuffix("\"\"") { isbn10.removeLast(1) }
         self.isbn10 = isbn10
+
         var isbn13 = line[6]
-        isbn13.removeFirst(2)
-        isbn13.removeLast(1)
+        if isbn10.hasPrefix("=\"\"") { isbn13.removeFirst(2) }
+        if isbn10.hasSuffix("\"\"") { isbn13.removeLast(1) }
         self.isbn13 = isbn13
+
         self.userRating = line[7]
         self.avgRating = line[8]
         self.publishingCompany = line[9]

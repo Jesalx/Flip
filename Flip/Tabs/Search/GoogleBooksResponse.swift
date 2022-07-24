@@ -30,7 +30,7 @@ struct GoogleBook: Codable, Identifiable, Hashable {
         // file then it will read from the UserDefault's cache instead of the most
         // up-to-date data. An alternative would be to pass in the default value from
         // the views that call this function. I'm not sure what solution is cleaner.
-        @AppStorage("defaultRating") var defaultRating = 3
+        @AppStorage("defaultRating") var defaultRating = 0
 
         book.id = self.id
         book.title = self.volumeInfo.wrappedTitle

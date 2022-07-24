@@ -13,7 +13,7 @@ extension Book {
     }
 
     enum BookFilter: String, Codable, CaseIterable {
-        case allBooks, readBooks, unreadBooks
+        case allBooks, readBooks, unreadBooks, unratedBooks
     }
 
     var bookId: String {
@@ -131,6 +131,8 @@ extension Book {
             predicate = NSPredicate(format: "read = true")
         case .unreadBooks:
             predicate = NSPredicate(format: "read = false")
+        case .unratedBooks:
+            predicate = NSPredicate(format: "read = true AND rating = 0")
         }
         return predicate
     }

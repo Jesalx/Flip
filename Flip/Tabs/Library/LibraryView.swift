@@ -34,6 +34,7 @@ struct LibraryView: View {
             Button("All Items") { changeFilter(to: .allBooks) }
             Button("Read") { changeFilter(to: .readBooks) }
             Button("Unread") { changeFilter(to: .unreadBooks) }
+            Button("Unrated") { changeFilter(to: .unratedBooks) }
         } label: {
             Label("Filter", systemImage: "line.3.horizontal.decrease.circle")
         }
@@ -108,6 +109,8 @@ struct LibraryView: View {
             return "Read"
         case .unreadBooks:
             return "Unread"
+        case .unratedBooks:
+            return "Unrated"
         }
     }
 }

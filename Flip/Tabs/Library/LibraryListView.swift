@@ -13,7 +13,7 @@ struct LibraryListView: View {
     let bookFilter: Book.BookFilter
 
     @EnvironmentObject var dataController: DataController
-    @AppStorage("defaultRating") var defaultRating = 3
+    @AppStorage("defaultRating") var defaultRating = 0
 
     let booksRequest: FetchRequest<Book>
     var books: [Book] {

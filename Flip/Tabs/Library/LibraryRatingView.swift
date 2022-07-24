@@ -21,9 +21,12 @@ struct LibraryRatingView: View {
 //            Spacer()
 //                .frame(width: 10)
 //            Image(systemName: "star.slash.fill")
-//            Image(systemName: "arrow.uturn.backward")
-//                .foregroundColor(color)
-//                .padding(.trailing, 10)
+            Image(systemName: "arrow.uturn.backward")
+                .foregroundColor(color)
+                .onTapGesture {
+                    ratingTapped(number: 0)
+                }
+                .padding(.trailing, 10)
             ForEach(1..<maxRating + 1, id: \.self) { number in
                 image(for: number)
                     .foregroundColor(color)

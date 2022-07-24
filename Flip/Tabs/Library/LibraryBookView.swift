@@ -13,7 +13,7 @@ struct LibraryBookView: View {
 
     @EnvironmentObject var dataController: DataController
     @Environment(\.dismiss) private var dismiss
-    @AppStorage("defaultRating") var defaultRating = 3
+    @AppStorage("defaultRating") var defaultRating = 0
 
     @FetchRequest private var books: FetchedResults<Book>
 
