@@ -17,7 +17,7 @@ extension Book {
     }
 
     var bookId: String {
-        id ?? "NO-ID-SOMETHING-IS-WRONG"
+        id ?? "NO-ID-ERROR"
     }
 
     var bookTitle: String {

@@ -21,16 +21,31 @@ struct ImportView: View {
 
     var body: some View {
         Form {
-            Section {
-                Toggle("Only valid read dates", isOn: $importOnlyValidDates)
+            Section("Select File") {
                 Button("Select file") {
                     showingImport = true
                 }
                 if !fileName.isEmpty {
                     Text(fileName)
                 }
-                Button("Import") {
-                    try? makeBooks(url: fileUrl)
+            }
+
+            Section("Flip") {
+                Button("Import from Flip") {
+                    addingBooks = true
+                    makeFlipBooks()
+                    addingBooks = false
+                }
+                .disabled(fileUrl == nil || addingBooks)
+            }
+
+            Section {
+                Toggle("Only valid read dates", isOn: $importOnlyValidDates)
+
+                Button("Import from Goodreads") {
+                    addingBooks = true
+                    makeGoodreadsBooks()
+                    addingBooks = false
                 }
                 .disabled(fileUrl == nil || addingBooks)
             } header: {
@@ -58,17 +73,33 @@ struct ImportView: View {
         }
     }
 
-    func makeBooks(url: URL?) throws {
-        guard let url = url else { return }
-        addingBooks = true
-        let payload = try String(contentsOf: url)
-        let csv = try EnumeratedCSV(string: payload, delimiter: .comma, loadColumns: false)
-        for row in csv.rows {
-            let book = GoodreadsBook(line: row)
-            book.saveGoodreadsBook(dataController: dataController, onlyValidDates: importOnlyValidDates)
-        }
-        addingBooks = false
+    func makeFlipBooks() {
+        guard let csv = try? getCsvFromUrl(url: fileUrl) else { return }
         fileUrl = nil
+        for row in csv.rows {
+            if let book = FlipBook(row: row) {
+                book.saveFlipBook(dataController: dataController)
+            }
+        }
+    }
+
+    func makeGoodreadsBooks() {
+        guard let csv = try? getCsvFromUrl(url: fileUrl) else { return }
+        fileUrl = nil
+        for row in csv.rows {
+            if let book = GoodreadsBook(row: row) {
+                book.saveGoodreadsBook(dataController: dataController, onlyValidDates: importOnlyValidDates)
+            }
+        }
+    }
+
+    func getCsvFromUrl(url: URL?) throws -> EnumeratedCSV? {
+        guard let url = url else { return nil }
+        if let payload = try? String(contentsOf: url) {
+            let csv = try? EnumeratedCSV(string: payload, delimiter: .comma, loadColumns: false)
+            return csv
+        }
+        return nil
     }
 }
 

@@ -40,43 +40,44 @@ struct GoodreadsBook {
     let conditionDescription: String
     let bcid: String
 
-    init(line: [String]) {
-        self.goodreadsId = line[0]
-        self.title = line[1]
-        self.author = line[2]
-        self.authorRev = line[3]
-        self.additionalAuthors = line[4]
+    init?(row: [String]) {
+        guard row.count == 31 else { return nil }
+        self.goodreadsId = row[0]
+        self.title = row[1]
+        self.author = row[2]
+        self.authorRev = row[3]
+        self.additionalAuthors = row[4]
 
-        let isbn10 = line[5]
+        let isbn10 = row[5]
         self.isbn10 = isbn10.filter { $0.isLetter || $0.isNumber }
 
-        let isbn13 = line[6]
+        let isbn13 = row[6]
         self.isbn13 = isbn13.filter { $0.isLetter || $0.isNumber }
 
-        self.userRating = line[7]
-        self.avgRating = line[8]
-        self.publishingCompany = line[9]
-        self.binding = line[10]
-        self.pageCount = line[11]
-        self.publicationYear = line[12]
-        self.origPublicationYear = line[13]
-        self.dateRead = line[14]
-        self.dateAdded = line[15]
-        self.shelf = line[16]
-        self.shelfPos = line[17]
-        self.exclShelf = line[18]
-        self.review = line[19]
-        self.spoiler = line[20]
-        self.privateNotes = line[21]
-        self.readCount = line[22]
-        self.recommendedFor = line[23]
-        self.recommendedBy = line[24]
-        self.ownedCopies = line[25]
-        self.purchaseDate = line[26]
-        self.purchaseLocation = line[27]
-        self.condition = line[28]
-        self.conditionDescription = line[29]
-        self.bcid = line[30]
+        self.userRating = row[7]
+        self.avgRating = row[8]
+        self.publishingCompany = row[9]
+        self.binding = row[10]
+        self.pageCount = row[11]
+        self.publicationYear = row[12]
+        self.origPublicationYear = row[13]
+        self.dateRead = row[14]
+        self.dateAdded = row[15]
+        self.shelf = row[16]
+        self.shelfPos = row[17]
+        self.exclShelf = row[18]
+        self.review = row[19]
+        self.spoiler = row[20]
+        self.privateNotes = row[21]
+        self.readCount = row[22]
+        self.recommendedFor = row[23]
+        self.recommendedBy = row[24]
+        self.ownedCopies = row[25]
+        self.purchaseDate = row[26]
+        self.purchaseLocation = row[27]
+        self.condition = row[28]
+        self.conditionDescription = row[29]
+        self.bcid = row[30]
     }
 
     func isValid(_ onlyValidDates: Bool) -> Bool {
@@ -92,10 +93,11 @@ struct GoodreadsBook {
 
     func saveGoodreadsBook(dataController: DataController, onlyValidDates: Bool = false) {
         guard self.isValid(onlyValidDates) else { return }
+        guard !dataController.containsBook(id: self.goodreadsId) else { return }
         let managedObjectContext = dataController.container.viewContext
         let book = Book(context: managedObjectContext)
 
-        book.id = UUID().uuidString
+        book.id = self.goodreadsId
         book.title = self.title
         var authors = self.author
         if !self.additionalAuthors.isEmpty {

@@ -45,36 +45,13 @@ struct ExportView: View {
         var rows = ["id,title,author,publisher,publication date,isbn10,isbn13,rating,finished reading,date finished,page count,thumbnail,genres,summary"]
 
         for book in books {
-            let id = exportString(book.bookId)
-            let title = exportString(book.bookTitle)
-            let author = exportString(book.bookAuthor)
-            let publisher = exportString(book.publishingCompany)
-            let publicationDate = exportString(book.publicationDate)
-            let isbn10 = exportString(book.isbn10)
-            let isbn13 = exportString(book.isbn13)
-            let read = book.bookRead
-            let dateFinished = read ? ISO8601DateFormatter().string(from: book.bookDateRead) : ""
-            let rating = read ? book.bookRating : 0
-            let pageCount = book.bookPageCount
-            let thumbnail = book.thumbnail != nil ? book.thumbnail!.absoluteString : ""
-            let genres = book.genres ?? ""
-            var summary = book.summary ?? ""
-            summary.replace("\"", with: "'")
-
-            // swiftlint:disable:next line_length
-            let bookRow = "\(id),\"\(title)\",\"\(author)\",\"\(publisher)\",\(publicationDate),\(isbn10),\(isbn13),\(rating),\(read),\(dateFinished),\(pageCount),\(thumbnail),\"\(genres)\",\"\(summary)\""
+            let flipBook = FlipBook(book: book)
+            let bookRow = flipBook.createCsvRow()
             rows.append(bookRow)
         }
 
         let csvString = rows.joined(separator: "\n")
         return csvString
-    }
-
-    func exportString(_ str: String?) -> String {
-        guard let str = str else { return "" }
-        var cleanedString = str.trimmingCharacters(in: CharacterSet(charactersIn: "\""))
-        cleanedString = cleanedString.trimmingCharacters(in: .whitespacesAndNewlines)
-        return cleanedString
     }
 }
 
