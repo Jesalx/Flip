@@ -151,6 +151,10 @@ struct VolumeInfo: Codable {
         }
         return nil
     }
+    
+    var copyText: String {
+        wrappedTitle + " by " + wrappedFirstAuthor
+    }
 
     static var example: VolumeInfo {
         let volumeInfo = VolumeInfo(

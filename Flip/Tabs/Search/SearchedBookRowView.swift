@@ -60,6 +60,7 @@ struct SearchedBookRowView: View {
                     Label("Add To Library", systemImage: "bookmark")
                 }
             }
+            ShareLink(item: item.volumeInfo.copyText)
             Button {
                 copyToClipboard()
             } label: {
@@ -83,10 +84,10 @@ struct SearchedBookRowView: View {
             return
         }
     }
-    
+
     func copyToClipboard() {
         let pasteboard = UIPasteboard.general
-        pasteboard.string = item.volumeInfo.wrappedTitle + " by " + item.volumeInfo.wrappedFirstAuthor
+        pasteboard.string = item.volumeInfo.copyText
     }
 }
 

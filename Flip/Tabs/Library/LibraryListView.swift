@@ -58,17 +58,11 @@ struct LibraryListView: View {
                             Label("Mark Read", systemImage: "bookmark")
                         }
                     }
+                    ShareLink(item: book.copyText)
                     Button {
                         copyToClipboard(book)
                     } label: {
                         Label("Copy", systemImage: "doc.on.doc")
-                    }
-                    Button(role: .destructive) {
-                        if let index = searchedBooks.firstIndex(of: book) {
-                            delete([index])
-                        }
-                    } label: {
-                        Label("Delete", systemImage: "trash")
                     }
                 }
                 .swipeActions(edge: .leading) {
