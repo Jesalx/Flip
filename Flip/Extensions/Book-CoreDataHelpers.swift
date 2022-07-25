@@ -158,8 +158,8 @@ extension Book {
         case .readDate:
             descriptor = [
                 NSSortDescriptor(keyPath: \Book.read, ascending: false),
-                NSSortDescriptor(keyPath: \Book.dateRead, ascending: true)
-//                NSSortDescriptor(keyPath: \Book.publicationDate, ascending: true)
+                NSSortDescriptor(keyPath: \Book.dateRead, ascending: true),
+                NSSortDescriptor(keyPath: \Book.publicationDate, ascending: true)
             ]
         case .publicationDate:
             descriptor = [
