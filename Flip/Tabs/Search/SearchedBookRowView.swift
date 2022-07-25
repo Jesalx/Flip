@@ -50,6 +50,22 @@ struct SearchedBookRowView: View {
                     .foregroundColor(bookExists ? .accentColor : .clear)
             }
         }
+        .contextMenu {
+            Button {
+                bookExists ? deleteBook() : saveBook()
+            } label: {
+                if bookExists {
+                    Label("Remove From Library", systemImage: "bookmark.slash")
+                } else {
+                    Label("Add To Library", systemImage: "bookmark")
+                }
+            }
+            Button {
+                copyToClipboard()
+            } label: {
+                Label("Copy", systemImage: "doc.on.doc")
+            }
+        }
         .swipeActions(edge: .trailing, allowsFullSwipe: true) {
             swipeButtons
         }
@@ -57,7 +73,6 @@ struct SearchedBookRowView: View {
 
     func saveBook() {
         if books.first != nil { return }
-        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         item.saveGoogleBook(dataController: dataController)
     }
 
@@ -67,6 +82,11 @@ struct SearchedBookRowView: View {
             dataController.save()
             return
         }
+    }
+    
+    func copyToClipboard() {
+        let pasteboard = UIPasteboard.general
+        pasteboard.string = item.volumeInfo.wrappedTitle + " by " + item.volumeInfo.wrappedFirstAuthor
     }
 }
 

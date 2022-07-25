@@ -96,6 +96,10 @@ extension Book {
     var monthNumber: Int {
         return Calendar.current.component(.month, from: bookDateRead) - 1
     }
+    
+    var copyText: String {
+        bookTitle + " by " + bookAuthor
+    }
 
     static var example: Book {
         let controller = DataController.preview

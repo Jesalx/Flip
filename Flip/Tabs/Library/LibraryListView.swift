@@ -48,9 +48,32 @@ struct LibraryListView: View {
                 NavigationLink(value: book) {
                     LibraryRowView(book: book)
                 }
+                .contextMenu {
+                    Button {
+                        toggleRead(book)
+                    } label: {
+                        if book.read {
+                            Label("Mark Unread", systemImage: "bookmark.slash")
+                        } else {
+                            Label("Mark Read", systemImage: "bookmark")
+                        }
+                    }
+                    Button {
+                        copyToClipboard(book)
+                    } label: {
+                        Label("Copy", systemImage: "doc.on.doc")
+                    }
+                    Button(role: .destructive) {
+                        if let index = searchedBooks.firstIndex(of: book) {
+                            delete([index])
+                        }
+                    } label: {
+                        Label("Delete", systemImage: "trash")
+                    }
+                }
                 .swipeActions(edge: .leading) {
                     if !book.read && bookFilter == .allBooks {
-                        Button("Read") { markRead(book) }.tint(.purple)
+                        Button("Read") { toggleRead(book) }.tint(.purple)
                     }
                 }
             }
@@ -61,9 +84,10 @@ struct LibraryListView: View {
         .searchable(text: $searchText, prompt: "Search")
     }
 
-    func markRead(_ book: Book) {
+    func toggleRead(_ book: Book) {
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
         book.objectWillChange.send()
-        book.read = true
+        book.read.toggle()
         book.dateRead = Date.now
         book.rating = Int16(defaultRating)
         dataController.update(book)
@@ -76,6 +100,11 @@ struct LibraryListView: View {
             dataController.delete(book)
         }
         dataController.save()
+    }
+
+    func copyToClipboard(_ book: Book) {
+        let pasteboard = UIPasteboard.general
+        pasteboard.string = book.copyText
     }
 }
 
