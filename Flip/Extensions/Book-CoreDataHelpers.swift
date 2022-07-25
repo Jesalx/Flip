@@ -78,6 +78,10 @@ extension Book {
         let trimmed = genreList.map { $0.trimmingCharacters(in: .whitespacesAndNewlines)}
         return trimmed
     }
+    
+    var bookGenreString: String {
+        bookGenres.joined(separator: ", ")
+    }
 
     var bookThumbnail: URL? {
         if thumbnail != nil { return thumbnail }
@@ -96,7 +100,7 @@ extension Book {
     var monthNumber: Int {
         return Calendar.current.component(.month, from: bookDateRead) - 1
     }
-    
+
     var copyText: String {
         bookTitle + " by " + bookAuthor
     }
