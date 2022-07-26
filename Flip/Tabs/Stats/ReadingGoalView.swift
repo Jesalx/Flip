@@ -11,7 +11,7 @@ struct ReadingGoalView: View {
 
     let yearRead: Int
 
-    @AppStorage("readingGoal") var readingGoal = 20
+    @AppStorage("readingGoal", store: UserDefaults(suiteName: "group.dev.jesal.Flip")) var readingGoal = 0
     @AppStorage("showReadingGoalProgress") var showReadingGoalProgress = true
 
     var body: some View {

@@ -13,9 +13,12 @@ struct ContentView: View {
     @Environment(\.scenePhase) var scenePhase
 
     @SceneStorage("selectedView") var selectedView = LibraryView.tag
-    @AppStorage("themeChoice") var themeChoice: Color.ThemeChoice = .mint
     @AppStorage("defaultRating") var defaultRating: Int = 0
-    @AppStorage("readingGoal") var readingGoal: Int = 0
+    @AppStorage(
+        "themeChoice",
+        store: UserDefaults(suiteName: "group.dev.jesal.Flip")
+    ) var themeChoice: Color.ThemeChoice = .mint
+    @AppStorage("readingGoal", store: UserDefaults(suiteName: "group.dev.jesal.Flip")) var readingGoal = 0
     @AppStorage("lockingEnabled") var lockingEnabled = false
 
     @State private var isUnlocked = true

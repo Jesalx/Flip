@@ -51,7 +51,7 @@ struct FlipBook: Identifiable {
         self.isbn10 = row[5].isEmpty ? nil : row[5].filter { $0.isLetter || $0.isNumber }
         self.isbn13 = row[6].isEmpty ? nil : row[6].filter { $0.isLetter || $0.isNumber }
         self.rating = Int(row[7]) ?? 0
-        self.read = Bool(row[8]) ?? false
+        self.read = Bool(row[8].lowercased()) ?? false
         self.dateRead = ISO8601DateFormatter().date(from: row[9])
         self.pageCount = Int(row[10]) ?? 0
         self.thumbnail = URL(string: row[11])

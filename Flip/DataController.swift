@@ -8,6 +8,7 @@
 import CoreData
 import CoreSpotlight
 import SwiftUI
+import WidgetKit
 
 /// A singleton responsible for managing Core Data, specifically handling saving
 /// and loading, checking the existence of a book, and adding sample data for
@@ -25,6 +26,11 @@ class DataController: ObservableObject {
 
         if inMemory {
             container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
+        } else {
+            let groupID = "group.dev.jesal.Flip"
+            if let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: groupID) {
+                container.persistentStoreDescriptions.first?.url = url.appending(path: "Flip.sqlite")
+            }
         }
 
         container.loadPersistentStores { _, error in
@@ -129,6 +135,7 @@ class DataController: ObservableObject {
     func save() {
         if container.viewContext.hasChanges {
             try? container.viewContext.save()
+            WidgetCenter.shared.reloadAllTimelines()
         }
     }
 
@@ -193,5 +200,23 @@ class DataController: ObservableObject {
         }
 
         return try? container.viewContext.existingObject(with: id) as? Book
+    }
+
+    func yearlyReadCount() -> Int {
+        let request: NSFetchRequest<Book> = Book.fetchRequest()
+
+        let comp = Calendar.current.dateComponents([.year], from: Date.now)
+        let startOfYear = Calendar.current.date(from: comp) ?? Date.now
+        let yearPredicate = NSPredicate(format: "dateRead >= %@", startOfYear as NSDate)
+        let readPredicate = NSPredicate(format: "read = true")
+        let compoundPredicate = NSCompoundPredicate(type: .and, subpredicates: [yearPredicate, readPredicate])
+
+        request.predicate = compoundPredicate
+        request.sortDescriptors = []
+
+        if let books = try? container.viewContext.fetch(request) {
+            return books.count
+        }
+        return 0
     }
 }

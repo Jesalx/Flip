@@ -6,10 +6,14 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct ThemePickerView: View {
 
-    @AppStorage("themeChoice") var themeChoice: Color.ThemeChoice = .mint
+    @AppStorage(
+        "themeChoice",
+        store: UserDefaults(suiteName: "group.dev.jesal.Flip")
+    ) var themeChoice: Color.ThemeChoice = .mint
 
     var body: some View {
         Form {
@@ -30,6 +34,7 @@ struct ThemePickerView: View {
                 }
             }
         }
+        .onChange(of: themeChoice) { _ in WidgetCenter.shared.reloadAllTimelines() }
         .navigationTitle("Color Options")
     }
 

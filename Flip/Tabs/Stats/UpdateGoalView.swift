@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct UpdateGoalView: View {
 
-    @AppStorage("readingGoal") var readingGoal = 0
+    @AppStorage("readingGoal", store: UserDefaults(suiteName: "group.dev.jesal.Flip")) var readingGoal = 0
 
     let formatter: NumberFormatter
     // swiftlint:disable:next line_length
@@ -44,6 +45,7 @@ struct UpdateGoalView: View {
                 .padding(.top, 4)
             Spacer()
         }
+        .onChange(of: readingGoal) { _ in WidgetCenter.shared.reloadAllTimelines() }
         .padding(30)
     }
 }

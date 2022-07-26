@@ -13,7 +13,7 @@ struct StatsView: View {
         case all, year
     }
 
-    @AppStorage("readingGoal") var readingGoal = 0
+    @AppStorage("readingGoal", store: UserDefaults(suiteName: "group.dev.jesal.Flip")) var readingGoal = 0
     @AppStorage("showLifetimeBooksRead") var showLifetimeBooksRead = true
 
     @State private var timeRange = ChartsRange.all
