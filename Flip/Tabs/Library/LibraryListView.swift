@@ -24,10 +24,11 @@ struct LibraryListView: View {
         if searchText.isEmpty {
             return books
         } else {
-            return books.filter {
-                $0.bookTitle.contains(searchText) ||
-                $0.bookAuthor.contains(searchText) ||
-                $0.bookGenreString.contains(searchText)
+            return books.filter { book in
+                let search = searchText.lowercased()
+                return (book.bookTitle.lowercased().contains(search) ||
+                    book.bookAuthor.lowercased().contains(search) ||
+                    book.bookGenreString.lowercased().contains(search))
             }
         }
     }
