@@ -24,3 +24,9 @@ struct CoverView: View {
         }
     }
 }
+
+struct CoverView_Previews: PreviewProvider {
+    static var previews: some View {
+        CoverView(url: URL(string: "https://m.media-amazon.com/images/I/71SWhuF-O-L.jpg"))
+    }
+}

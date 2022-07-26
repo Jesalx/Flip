@@ -25,6 +25,7 @@ struct CustomBookView: View {
     @State private var description = ""
     @State private var isbn10 = ""
     @State private var isbn13 = ""
+    @State private var thumbnail = ""
 
     init() {
         let pageCountFormatter = NumberFormatter()
@@ -76,6 +77,12 @@ struct CustomBookView: View {
                 TextField("ISBN 13", text: $isbn13, axis: .horizontal)
             }
 
+            Section("Thumbnail URL") {
+                TextField("Thumbnail URL", text: $thumbnail, axis: .horizontal)
+                    .keyboardType(.URL)
+                    .textContentType(.URL)
+            }
+
             Button("Save") {
                 saveBook()
             }
@@ -113,6 +120,8 @@ struct CustomBookView: View {
 
         book.isbn10 = isbn10.isEmpty ? nil : isbn10.trimmingCharacters(in: .whitespacesAndNewlines)
         book.isbn13 = isbn13.isEmpty ? nil : isbn13.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        book.thumbnail = URL(string: thumbnail)
 
         dataController.save()
         dataController.update(book)
