@@ -9,14 +9,28 @@ import SwiftUI
 
 struct IconPickerView: View {
     var body: some View {
-        Form {
-            IconButtonView(iconName: nil, iconImage: "AppIconPurpleImage", iconText: "Purple")
-            IconButtonView(iconName: "AppIconGreen", iconImage: "AppIconGreenImage", iconText: "Green")
-            IconButtonView(iconName: "AppIconBlue", iconImage: "AppIconBlueImage", iconText: "Blue")
-            IconButtonView(iconName: "AppIconCandy", iconImage: "AppIconCandyImage", iconText: "Cotton Candy")
-            IconButtonView(iconName: "AppIconPink", iconImage: "AppIconPinkImage", iconText: "Pink")
-            IconButtonView(iconName: "AppIconTeal", iconImage: "AppIconTealImage", iconText: "Teal")
-            IconButtonView(iconName: "AppIconYellow", iconImage: "AppIconYellowImage", iconText: "Yellow")
+        List {
+            Section("Some name here") {
+                Group {
+                    IconButtonView(iconName: nil, iconImage: "AppIconBlueImage", iconText: "Blue")
+                    IconButtonView(iconName: "AppIconBrown", iconImage: "AppIconBrownImage", iconText: "Brown")
+                    IconButtonView(iconName: "AppIconCyan", iconImage: "AppIconCyanImage", iconText: "Cyan")
+                    IconButtonView(iconName: "AppIconGray", iconImage: "AppIconGrayImage", iconText: "Gray")
+                    IconButtonView(iconName: "AppIconGreen", iconImage: "AppIconGreenImage", iconText: "Green")
+                    IconButtonView(iconName: "AppIconIndigo", iconImage: "AppIconIndigoImage", iconText: "Indigo")
+                    IconButtonView(iconName: "AppIconMint", iconImage: "AppIconMintImage", iconText: "Mint")
+                    IconButtonView(iconName: "AppIconOrange", iconImage: "AppIconOrangeImage", iconText: "Orange")
+                    IconButtonView(iconName: "AppIconPink", iconImage: "AppIconPinkImage", iconText: "Pink")
+                }
+                IconButtonView(iconName: "AppIconPurple", iconImage: "AppIconPurpleImage", iconText: "Purple")
+                IconButtonView(iconName: "AppIconRed", iconImage: "AppIconRedImage", iconText: "Red")
+                IconButtonView(iconName: "AppIconTeal", iconImage: "AppIconTealImage", iconText: "Teal")
+                IconButtonView(iconName: "AppIconYellow", iconImage: "AppIconYellowImage", iconText: "Yellow")
+            }
+            Section("Other name here") {
+                IconButtonView(iconName: "AppIconCandy", iconImage: "AppIconCandyImage", iconText: "Pastelle")
+                IconButtonView(iconName: "AppIconBlack", iconImage: "AppIconBlackImage", iconText: "Amoled")
+            }
         }
         .navigationTitle("Icon Options")
     }
@@ -35,7 +49,7 @@ struct IconButtonView: View {
                 Image(iconImage)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 70, height: 70)
+                    .frame(width: 60, height: 60)
                     .cornerRadius(12)
                 Text(iconText)
                     .foregroundColor(.primary)
