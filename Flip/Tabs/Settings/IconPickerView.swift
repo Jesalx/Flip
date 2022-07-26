@@ -10,16 +10,13 @@ import SwiftUI
 struct IconPickerView: View {
     var body: some View {
         Form {
-            IconButtonView(
-                iconName: nil,
-                iconImage: "AppIconImage",
-                iconText: "Default"
-            )
-            IconButtonView(
-                iconName: "AppIconGreen",
-                iconImage: "AppIconGreenImage",
-                iconText: "Green"
-            )
+            IconButtonView(iconName: nil, iconImage: "AppIconPurpleImage", iconText: "Purple")
+            IconButtonView(iconName: "AppIconGreen", iconImage: "AppIconGreenImage", iconText: "Green")
+            IconButtonView(iconName: "AppIconBlue", iconImage: "AppIconBlueImage", iconText: "Blue")
+            IconButtonView(iconName: "AppIconCandy", iconImage: "AppIconCandyImage", iconText: "Cotton Candy")
+            IconButtonView(iconName: "AppIconPink", iconImage: "AppIconPinkImage", iconText: "Pink")
+            IconButtonView(iconName: "AppIconTeal", iconImage: "AppIconTealImage", iconText: "Teal")
+            IconButtonView(iconName: "AppIconYellow", iconImage: "AppIconYellowImage", iconText: "Yellow")
         }
         .navigationTitle("Icon Options")
     }
