@@ -51,6 +51,9 @@ struct SettingsView: View {
                     NavigationLink(destination: ThemePickerView()) {
                         Text("Accent Color")
                     }
+                    NavigationLink(destination: IconPickerView()) {
+                        Text("App Icon")
+                    }
                 }
 
                 Section("About") {

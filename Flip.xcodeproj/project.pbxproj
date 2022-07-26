@@ -21,6 +21,7 @@
 		7135B3302885C63C00165246 /* StatsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135B32F2885C63C00165246 /* StatsRowView.swift */; };
 		7135B3322885CB4A00165246 /* LifetimeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135B3312885CB4A00165246 /* LifetimeRowView.swift */; };
 		7135B3342885D3F500165246 /* LibraryRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135B3332885D3F500165246 /* LibraryRatingView.swift */; };
+		7142581E28906BDD0068BAAF /* IconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7142581D28906BDD0068BAAF /* IconPickerView.swift */; };
 		71466B22288F7B9E00270FF5 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71466B21288F7B9E00270FF5 /* WidgetKit.framework */; };
 		71466B24288F7B9E00270FF5 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71466B23288F7B9E00270FF5 /* SwiftUI.framework */; };
 		71466B27288F7B9E00270FF5 /* FlipWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71466B26288F7B9E00270FF5 /* FlipWidget.swift */; };
@@ -106,6 +107,7 @@
 		7135B32F2885C63C00165246 /* StatsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsRowView.swift; sourceTree = "<group>"; };
 		7135B3312885CB4A00165246 /* LifetimeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeRowView.swift; sourceTree = "<group>"; };
 		7135B3332885D3F500165246 /* LibraryRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryRatingView.swift; sourceTree = "<group>"; };
+		7142581D28906BDD0068BAAF /* IconPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerView.swift; sourceTree = "<group>"; };
 		71466B20288F7B9E00270FF5 /* FlipWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FlipWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		71466B21288F7B9E00270FF5 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		71466B23288F7B9E00270FF5 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -293,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				71C89AC02888F865003BD8E3 /* SettingsView.swift */,
+				7142581D28906BDD0068BAAF /* IconPickerView.swift */,
 				71E473072889CC0800FE208E /* ThemePickerView.swift */,
 				71078978288CA9550000656A /* ImportView.swift */,
 				7160DBC5288E164600560B85 /* ExportView.swift */,
@@ -554,6 +557,7 @@
 				7107897E288CAA470000656A /* GoodreadsBook.swift in Sources */,
 				716EED80288A03C600E659E1 /* UpdateGoalView.swift in Sources */,
 				7124C1DB288864B80070FAFB /* StatsMonthView.swift in Sources */,
+				7142581E28906BDD0068BAAF /* IconPickerView.swift in Sources */,
 				716D9D6E288B774900A5B59A /* CustomBookView.swift in Sources */,
 				7107F45A28821CD500CE89A5 /* SearchedBookRowView.swift in Sources */,
 				7135B3302885C63C00165246 /* StatsRowView.swift in Sources */,
@@ -799,8 +803,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = AppIconGreen;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Flip/Configuration/Flip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -833,8 +839,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = AppIconGreen;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Flip/Configuration/Flip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
