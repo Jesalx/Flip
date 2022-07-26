@@ -181,14 +181,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7142581F289071C90068BAAF /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				71466B2A288F7B9F00270FF5 /* Info.plist */,
+				71466B35288F7DCC00270FF5 /* FlipWidgetExtension.entitlements */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
 		71466B25288F7B9E00270FF5 /* FlipWidget */ = {
 			isa = PBXGroup;
 			children = (
+				7142581F289071C90068BAAF /* Configuration */,
 				71466B26288F7B9E00270FF5 /* FlipWidget.swift */,
 				712DFF7B288F930600DADDEA /* DataProvider.swift */,
 				712DFF7D288F934F00DADDEA /* ReadingGoalWidget.swift */,
 				71466B28288F7B9F00270FF5 /* Assets.xcassets */,
-				71466B2A288F7B9F00270FF5 /* Info.plist */,
 			);
 			path = FlipWidget;
 			sourceTree = "<group>";
@@ -307,7 +316,6 @@
 		71E002B1288095B8006E23DF = {
 			isa = PBXGroup;
 			children = (
-				71466B35288F7DCC00270FF5 /* FlipWidgetExtension.entitlements */,
 				71E002BC288095B8006E23DF /* Flip */,
 				71B2BC2C2884B52A00D4078C /* FlipTests */,
 				71466B25288F7B9E00270FF5 /* FlipWidget */,
@@ -597,12 +605,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = FlipWidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = FlipWidget/Configuration/FlipWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8W74HT4Y4R;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FlipWidget/Info.plist;
+				INFOPLIST_FILE = FlipWidget/Configuration/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FlipWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -626,12 +634,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = FlipWidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = FlipWidget/Configuration/FlipWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8W74HT4Y4R;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FlipWidget/Info.plist;
+				INFOPLIST_FILE = FlipWidget/Configuration/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FlipWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
