@@ -16,6 +16,8 @@
 		7107F45A28821CD500CE89A5 /* SearchedBookRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107F45928821CD500CE89A5 /* SearchedBookRowView.swift */; };
 		7124C1DB288864B80070FAFB /* StatsMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7124C1DA288864B80070FAFB /* StatsMonthView.swift */; };
 		712DFF7A288F8E6400DADDEA /* Color-Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E473092889CF7F00FE208E /* Color-Theme.swift */; };
+		712DFF7C288F930600DADDEA /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712DFF7B288F930600DADDEA /* DataProvider.swift */; };
+		712DFF7E288F934F00DADDEA /* ReadingGoalWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712DFF7D288F934F00DADDEA /* ReadingGoalWidget.swift */; };
 		7135B3302885C63C00165246 /* StatsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135B32F2885C63C00165246 /* StatsRowView.swift */; };
 		7135B3322885CB4A00165246 /* LifetimeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135B3312885CB4A00165246 /* LifetimeRowView.swift */; };
 		7135B3342885D3F500165246 /* LibraryRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135B3332885D3F500165246 /* LibraryRatingView.swift */; };
@@ -99,6 +101,8 @@
 		7107F45528820DE700CE89A5 /* SearchedBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedBookView.swift; sourceTree = "<group>"; };
 		7107F45928821CD500CE89A5 /* SearchedBookRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedBookRowView.swift; sourceTree = "<group>"; };
 		7124C1DA288864B80070FAFB /* StatsMonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsMonthView.swift; sourceTree = "<group>"; };
+		712DFF7B288F930600DADDEA /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		712DFF7D288F934F00DADDEA /* ReadingGoalWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingGoalWidget.swift; sourceTree = "<group>"; };
 		7135B32F2885C63C00165246 /* StatsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsRowView.swift; sourceTree = "<group>"; };
 		7135B3312885CB4A00165246 /* LifetimeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeRowView.swift; sourceTree = "<group>"; };
 		7135B3332885D3F500165246 /* LibraryRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryRatingView.swift; sourceTree = "<group>"; };
@@ -179,6 +183,8 @@
 			isa = PBXGroup;
 			children = (
 				71466B26288F7B9E00270FF5 /* FlipWidget.swift */,
+				712DFF7B288F930600DADDEA /* DataProvider.swift */,
+				712DFF7D288F934F00DADDEA /* ReadingGoalWidget.swift */,
 				71466B28288F7B9F00270FF5 /* Assets.xcassets */,
 				71466B2A288F7B9F00270FF5 /* Info.plist */,
 			);
@@ -506,6 +512,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				712DFF7E288F934F00DADDEA /* ReadingGoalWidget.swift in Sources */,
+				712DFF7C288F930600DADDEA /* DataProvider.swift in Sources */,
 				71466B33288F7C8F00270FF5 /* Book-CoreDataHelpers.swift in Sources */,
 				71466B34288F7CA300270FF5 /* DataController.swift in Sources */,
 				71466B32288F7C1700270FF5 /* Flip.xcdatamodeld in Sources */,
