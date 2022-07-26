@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension Color {
-    enum ThemeChoice: String, Codable, CaseIterable {
+    enum ThemeChoice: String, Codable, CaseIterable, ShapeStyle {
         case blue, brown, cyan, gray, green, indigo, mint, orange, pink, purple, red, teal, yellow
     }
 
