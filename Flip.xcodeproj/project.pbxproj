@@ -22,6 +22,7 @@
 		7135B3322885CB4A00165246 /* LifetimeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135B3312885CB4A00165246 /* LifetimeRowView.swift */; };
 		7135B3342885D3F500165246 /* LibraryRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135B3332885D3F500165246 /* LibraryRatingView.swift */; };
 		7142581E28906BDD0068BAAF /* IconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7142581D28906BDD0068BAAF /* IconPickerView.swift */; };
+		7142582128907A7D0068BAAF /* Book-Filtering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7142582028907A7D0068BAAF /* Book-Filtering.swift */; };
 		71466B22288F7B9E00270FF5 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71466B21288F7B9E00270FF5 /* WidgetKit.framework */; };
 		71466B24288F7B9E00270FF5 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71466B23288F7B9E00270FF5 /* SwiftUI.framework */; };
 		71466B27288F7B9E00270FF5 /* FlipWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71466B26288F7B9E00270FF5 /* FlipWidget.swift */; };
@@ -108,6 +109,7 @@
 		7135B3312885CB4A00165246 /* LifetimeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeRowView.swift; sourceTree = "<group>"; };
 		7135B3332885D3F500165246 /* LibraryRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryRatingView.swift; sourceTree = "<group>"; };
 		7142581D28906BDD0068BAAF /* IconPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerView.swift; sourceTree = "<group>"; };
+		7142582028907A7D0068BAAF /* Book-Filtering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Book-Filtering.swift"; sourceTree = "<group>"; };
 		71466B20288F7B9E00270FF5 /* FlipWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FlipWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		71466B21288F7B9E00270FF5 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		71466B23288F7B9E00270FF5 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -223,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				71C624DF2880AEC0007B2CAF /* Book-CoreDataHelpers.swift */,
+				7142582028907A7D0068BAAF /* Book-Filtering.swift */,
 				7160DBC9288F227200560B85 /* FlipBook.swift */,
 				71E473092889CF7F00FE208E /* Color-Theme.swift */,
 			);
@@ -548,6 +551,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7142582128907A7D0068BAAF /* Book-Filtering.swift in Sources */,
 				71E002C0288095B8006E23DF /* ContentView.swift in Sources */,
 				71E002CF28809767006E23DF /* DataController.swift in Sources */,
 				716EED7E2889E77A00E659E1 /* StatsRatingView.swift in Sources */,
