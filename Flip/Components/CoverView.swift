@@ -8,6 +8,11 @@
 import SwiftUI
 import NukeUI
 
+// Downgraded from Nuke 11 -> Nuke 10 + NukeUI because Nuke 11 has a bug where
+// ImageDecoding throws an error when decoding certain images while this doesn't
+// happen on Nuke 10. Nuke 11 is only a couple days old at the time of using so
+// periodically check if Nuke 11 will work as expected.
+
 struct CoverView: View {
     let url: String
 
