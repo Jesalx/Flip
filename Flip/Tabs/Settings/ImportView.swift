@@ -18,6 +18,8 @@ struct ImportView: View {
     @State private var fileUrl: URL?
     @State private var addingBooks = false
     @State private var importOnlyValidDates = false
+    @State private var showingFlipImportConfirmation = false
+    @State private var showingGoodreadsImportConfirmation = false
 
     var body: some View {
         Form {
@@ -32,9 +34,7 @@ struct ImportView: View {
 
             Section("Flip") {
                 Button("Import from Flip") {
-                    addingBooks = true
-                    makeFlipBooks()
-                    addingBooks = false
+                    showingFlipImportConfirmation = true
                 }
                 .disabled(fileUrl == nil || addingBooks)
             }
@@ -43,9 +43,7 @@ struct ImportView: View {
                 Toggle("Only valid read dates", isOn: $importOnlyValidDates)
 
                 Button("Import from Goodreads") {
-                    addingBooks = true
-                    makeGoodreadsBooks()
-                    addingBooks = false
+                    showingGoodreadsImportConfirmation = true
                 }
                 .disabled(fileUrl == nil || addingBooks)
             } header: {
@@ -70,6 +68,26 @@ struct ImportView: View {
             case .failure(let error):
                 print("Import CSV Error: \(error)")
             }
+        }
+        .confirmationDialog("Import", isPresented: $showingFlipImportConfirmation) {
+            Button("Import") {
+                addingBooks = true
+                makeFlipBooks()
+                addingBooks = false
+            }
+            Button("Cancel", role: .cancel) { }
+        } message: {
+            Text("Are you sure you want to import '\(fileName)' as a Flip import?")
+        }
+        .confirmationDialog("Import", isPresented: $showingGoodreadsImportConfirmation) {
+            Button("Goodreads Import Confirmation") {
+                addingBooks = true
+                makeGoodreadsBooks()
+                addingBooks = false
+            }
+            Button("Cancel", role: .cancel) { }
+        } message: {
+            Text("Are you sure you want to import '\(fileName)' as a Goodreads import?")
         }
     }
 
