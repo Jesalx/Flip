@@ -28,8 +28,8 @@ struct IconPickerView: View {
                 IconButtonView(iconName: "AppIconYellow", iconImage: "AppIconYellowImage", iconText: "Yellow")
             }
             Section("Other name here") {
-                IconButtonView(iconName: "AppIconCandy", iconImage: "AppIconCandyImage", iconText: "Pastelle")
-                IconButtonView(iconName: "AppIconBlack", iconImage: "AppIconBlackImage", iconText: "Amoled")
+                IconButtonView(iconName: "AppIconCandy", iconImage: "AppIconCandyImage", iconText: "Pastel")
+                IconButtonView(iconName: "AppIconBlack", iconImage: "AppIconBlackImage", iconText: "Black")
             }
         }
         .navigationTitle("Icon Options")
