@@ -10,7 +10,7 @@ import SwiftUI
 struct IconPickerView: View {
     var body: some View {
         List {
-            Section("Some name here") {
+            Section("Classic") {
                 Group {
                     IconButtonView(iconName: nil, iconImage: "AppIconBlueImage", iconText: "Blue")
                     IconButtonView(iconName: "AppIconBrown", iconImage: "AppIconBrownImage", iconText: "Brown")
@@ -27,7 +27,7 @@ struct IconPickerView: View {
                 IconButtonView(iconName: "AppIconTeal", iconImage: "AppIconTealImage", iconText: "Teal")
                 IconButtonView(iconName: "AppIconYellow", iconImage: "AppIconYellowImage", iconText: "Yellow")
             }
-            Section("Other name here") {
+            Section("Extra") {
                 IconButtonView(iconName: "AppIconCandy", iconImage: "AppIconCandyImage", iconText: "Pastel")
                 IconButtonView(iconName: "AppIconBlack", iconImage: "AppIconBlackImage", iconText: "Black")
             }
