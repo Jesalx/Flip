@@ -42,6 +42,7 @@
 		716EED7E2889E77A00E659E1 /* StatsRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716EED7D2889E77A00E659E1 /* StatsRatingView.swift */; };
 		716EED80288A03C600E659E1 /* UpdateGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716EED7F288A03C600E659E1 /* UpdateGoalView.swift */; };
 		71785A642885B989008F1F96 /* CoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71785A632885B989008F1F96 /* CoverView.swift */; };
+		718B4A7A2891B7F3005DA8C1 /* DateFormatter-MultipleFormats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718B4A792891B7F3005DA8C1 /* DateFormatter-MultipleFormats.swift */; };
 		71B2BC2E2884B52A00D4078C /* FlipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B2BC2D2884B52A00D4078C /* FlipTests.swift */; };
 		71B2BC372884B88800D4078C /* BookTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B2BC362884B88800D4078C /* BookTest.swift */; };
 		71B2BC392884BD7E00D4078C /* DevelopmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B2BC382884BD7E00D4078C /* DevelopmentTests.swift */; };
@@ -125,6 +126,7 @@
 		716EED7D2889E77A00E659E1 /* StatsRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsRatingView.swift; sourceTree = "<group>"; };
 		716EED7F288A03C600E659E1 /* UpdateGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGoalView.swift; sourceTree = "<group>"; };
 		71785A632885B989008F1F96 /* CoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverView.swift; sourceTree = "<group>"; };
+		718B4A792891B7F3005DA8C1 /* DateFormatter-MultipleFormats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter-MultipleFormats.swift"; sourceTree = "<group>"; };
 		71B2BC2B2884B52A00D4078C /* FlipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		71B2BC2D2884B52A00D4078C /* FlipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipTests.swift; sourceTree = "<group>"; };
 		71B2BC362884B88800D4078C /* BookTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTest.swift; sourceTree = "<group>"; };
@@ -226,8 +228,9 @@
 			children = (
 				71C624DF2880AEC0007B2CAF /* Book-CoreDataHelpers.swift */,
 				7142582028907A7D0068BAAF /* Book-Filtering.swift */,
-				7160DBC9288F227200560B85 /* FlipBook.swift */,
 				71E473092889CF7F00FE208E /* Color-Theme.swift */,
+				718B4A792891B7F3005DA8C1 /* DateFormatter-MultipleFormats.swift */,
+				7160DBC9288F227200560B85 /* FlipBook.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -577,6 +580,7 @@
 				71E4730A2889CF7F00FE208E /* Color-Theme.swift in Sources */,
 				71785A642885B989008F1F96 /* CoverView.swift in Sources */,
 				71E473082889CC0800FE208E /* ThemePickerView.swift in Sources */,
+				718B4A7A2891B7F3005DA8C1 /* DateFormatter-MultipleFormats.swift in Sources */,
 				71078979288CA9550000656A /* ImportView.swift in Sources */,
 				71E002CD288095D4006E23DF /* Flip.xcdatamodeld in Sources */,
 				71541F1228875877009C7DC1 /* StatsWeekView.swift in Sources */,

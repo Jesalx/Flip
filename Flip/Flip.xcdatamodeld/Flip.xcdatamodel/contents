@@ -8,7 +8,7 @@
         <attribute name="isbn10" optional="YES" attributeType="String"/>
         <attribute name="isbn13" optional="YES" attributeType="String"/>
         <attribute name="pageCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="publicationDate" optional="YES" attributeType="String"/>
+        <attribute name="publicationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="publishingCompany" optional="YES" attributeType="String"/>
         <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="read" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>

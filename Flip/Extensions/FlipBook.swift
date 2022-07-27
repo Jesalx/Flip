@@ -12,7 +12,7 @@ struct FlipBook: Identifiable {
     let title: String?
     let author: String?
     let publishingCompany: String?
-    let publicationDate: String?
+    let publicationDate: Date?
     let genres: String?
     let read: Bool
     let dateRead: Date?
@@ -47,12 +47,12 @@ struct FlipBook: Identifiable {
         self.title = row[1].isEmpty ? nil : row[1]
         self.author = row[2].isEmpty ? nil : row[2]
         self.publishingCompany = row[3].isEmpty ? nil : row[3]
-        self.publicationDate = row[4].isEmpty ? nil : row[4]
+        self.publicationDate = DateFormatter().dateFromMultipleFormats(from: row[4])
         self.isbn10 = row[5].isEmpty ? nil : row[5].filter { $0.isLetter || $0.isNumber }
         self.isbn13 = row[6].isEmpty ? nil : row[6].filter { $0.isLetter || $0.isNumber }
         self.rating = Int(row[7]) ?? 0
         self.read = Bool(row[8].lowercased()) ?? false
-        self.dateRead = ISO8601DateFormatter().date(from: row[9])
+        self.dateRead = DateFormatter().dateFromMultipleFormats(from: row[9])
         self.pageCount = Int(row[10]) ?? 0
         self.thumbnail = URL(string: row[11])
         self.genres = row[12].isEmpty ? nil : row[12]
@@ -89,7 +89,12 @@ struct FlipBook: Identifiable {
         let title = exportString(self.title)
         let author = exportString(self.author)
         let publisher = exportString(self.publishingCompany)
-        let publicationDate = exportString(self.publicationDate)
+        var publicationDate: String
+        if let pubDate = self.publicationDate {
+            publicationDate = ISO8601DateFormatter().string(from: pubDate)
+        } else {
+            publicationDate = ""
+        }
         let isbn10 = exportString(self.isbn10)
         let isbn13 = exportString(self.isbn13)
         let read = self.read

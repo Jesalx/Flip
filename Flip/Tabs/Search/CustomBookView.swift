@@ -108,9 +108,7 @@ struct CustomBookView: View {
             ? nil
             : bookPublisher.trimmingCharacters(in: .whitespacesAndNewlines)
 
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        book.publicationDate = dateFormatter.string(from: publicationDate)
+        book.publicationDate = publicationDate
 
         book.genres = genres.isEmpty ? nil : genres.trimmingCharacters(in: .whitespacesAndNewlines)
 

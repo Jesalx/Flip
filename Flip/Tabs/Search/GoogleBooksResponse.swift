@@ -39,7 +39,7 @@ struct GoogleBook: Codable, Identifiable, Hashable {
 
         book.summary = self.volumeInfo.wrappedDescription
         book.read = false
-        book.publicationDate = self.volumeInfo.wrappedPublishedDate
+        book.publicationDate = DateFormatter().dateFromMultipleFormats(from: self.volumeInfo.publishedDate)
         let genres = self.volumeInfo.wrappedGenres.joined(separator: ", ")
         book.genres = genres
         book.publishingCompany = self.volumeInfo.wrappedPublisher

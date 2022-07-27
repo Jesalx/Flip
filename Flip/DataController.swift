@@ -75,7 +75,7 @@ class DataController: ObservableObject {
             book.author = "Author Name"
             book.summary = "This is a summary of some book. Words. Blah blah blah."
             book.read = Bool.random()
-            book.publicationDate = "2022"
+            book.publicationDate = Date.now
             book.rating = Int16(Int.random(in: 1...5))
             book.genres = "Genre1, Genre2, Genre3"
             book.publishingCompany = "Random House Publishing"
@@ -90,7 +90,7 @@ class DataController: ObservableObject {
         // swiftlint:disable:next line_length
         book.summary = "Roshar is a world of stone and storms. Uncanny tempests of incredible power sweep across the rocky terrain so frequently that they have shaped ecology and civilization alike. Animals hide in shells, trees pull in branches, and grass retracts into the soilless ground. Cities are built only where the topography offers shelter."
         book.read = true
-        book.publicationDate = "2021"
+        book.publicationDate = Date.now
         book.rating = Int16(Int.random(in: 1...5))
         book.genres = "Fantasy, Action & Adventure, Epic"
         book.publishingCompany = "Tom Doherty Associates, 2010"
@@ -105,7 +105,7 @@ class DataController: ObservableObject {
         // swiftlint:disable:next line_length
         book2.summary = "With his home finally secure, Lindon delves deep into the ancient labyrinth, seeking long-lost Soulsmithing knowledge and the secret to destroying the Dreadgods. Monarchs plot against him and against each other, unaware of the threats gathering in realms beyond. Far above Lindon and the Monarchs and the Dreadgods, another war is waged. Suriel and the Abidan clash against the Mad King and his forces in a battle for the fate of many worlds. And if it is lost, Cradle will be destroyed."
         book2.read = true
-        book2.publicationDate = "2012"
+        book2.publicationDate = Date.now
         book2.rating = Int16(Int.random(in: 1...5))
         book2.genres = "Fiction, Fantasy, General"
         book2.publishingCompany = "Hidden Gnome Publishing"
@@ -119,7 +119,7 @@ class DataController: ObservableObject {
         book3.author = "Sir Noobington Richard Reginald Arthur"
         book3.summary = "This book takes place in space."
         book3.read = true
-        book3.publicationDate = "2014"
+        book3.publicationDate = Date.now
         book3.rating = Int16(Int.random(in: 1...5))
         book3.genres = "Genre1, Genre2, Genre3"
         book3.publishingCompany = "Random House Publishing"

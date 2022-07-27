@@ -110,10 +110,14 @@ struct GoodreadsBook {
 
         // If publication date doesn't exist, choose original publication date, if that doesn't exist
         // choose nil
-        book.publicationDate = self.publicationYear.isEmpty ? nil : self.publicationYear
-        if book.publicationDate == nil {
-            book.publicationDate = self.origPublicationYear.isEmpty ? nil : self.origPublicationYear
+        if !self.publicationYear.isEmpty {
+            book.publicationDate = DateFormatter().dateFromMultipleFormats(from: self.publicationYear)
+        } else if !self.origPublicationYear.isEmpty {
+            book.publicationDate = DateFormatter().dateFromMultipleFormats(from: self.origPublicationYear)
+        } else {
+            book.publicationDate = nil
         }
+
         book.publishingCompany = self.publishingCompany.isEmpty ? nil : self.publishingCompany
         book.pageCount = Int16(self.pageCount) ?? Int16(0)
         book.rating = Int16(self.userRating) ?? Int16(0)

@@ -38,8 +38,18 @@ extension Book {
         dateRead ?? Date.now
     }
 
+    var bookPublicationDateSort: Date {
+        // For sorting purposes, unknown publication dates will come last
+        publicationDate ?? Date.distantFuture
+    }
+
     var bookPublicationDate: String {
-        publicationDate ?? "Unknown Publication Date"
+        if let date = publicationDate {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            return dateFormatter.string(from: date)
+        }
+        return "Unknown Publication Date"
     }
 
     var bookRead: Bool {
@@ -111,7 +121,7 @@ extension Book {
                     I don't know how long this will be for a real book,
                     but this will have to do for now. Example text.
                     """
-        book.publicationDate = "2022"
+        book.publicationDate = Date.distantPast
         book.read = true
         book.dateRead = Date.now
         book.pageCount = Int16(Int.random(in: 20...1500))
