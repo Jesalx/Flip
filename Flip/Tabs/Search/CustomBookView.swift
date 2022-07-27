@@ -19,6 +19,7 @@ struct CustomBookView: View {
     @State private var bookTitle = ""
     @State private var bookAuthor = ""
     @State private var bookPublisher = ""
+    @State private var unknownPublicationDate = false
     @State private var publicationDate = Date.now
     @State private var pageCount: Int = 0
     @State private var genres = ""
@@ -51,10 +52,13 @@ struct CustomBookView: View {
                 TextField("Publisher", text: $bookPublisher, axis: .vertical)
                     .textInputAutocapitalization(.words)
                     .lineLimit(1...3)
-                DatePicker("Publication Date",
-                           selection: $publicationDate,
-                           displayedComponents: .date
-                )
+                Toggle("Unknown Publication Date", isOn: $unknownPublicationDate.animation())
+                if !unknownPublicationDate {
+                    DatePicker("Publication Date",
+                               selection: $publicationDate,
+                               displayedComponents: .date
+                    )
+                }
             }
             Section("Page Count") {
                 TextField("Page Count", value: $pageCount, formatter: pageCountFormatter)
@@ -108,7 +112,11 @@ struct CustomBookView: View {
             ? nil
             : bookPublisher.trimmingCharacters(in: .whitespacesAndNewlines)
 
-        book.publicationDate = publicationDate
+        if unknownPublicationDate {
+            book.publicationDate = nil
+        } else {
+            book.publicationDate = publicationDate
+        }
 
         book.genres = genres.isEmpty ? nil : genres.trimmingCharacters(in: .whitespacesAndNewlines)
 
