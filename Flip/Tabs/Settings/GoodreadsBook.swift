@@ -140,7 +140,7 @@ struct GoodreadsBook {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.date(from: date)
     }
-    
+
     static func cleanedRowString(rowString: String) -> String {
         return rowString
             .trimmingCharacters(in: .whitespacesAndNewlines)
