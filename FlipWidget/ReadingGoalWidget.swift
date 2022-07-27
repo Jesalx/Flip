@@ -35,29 +35,32 @@ struct ReadingGoalWidgetEntryView: View {
         return numberFormatter.string(from: progress as NSNumber) ?? "0%"
     }
 
-    var fontTitleSize: Font {
-        if sizeCategory > .extraLarge { return .caption.weight(.bold) }
-        return .headline
+    var fontTitleStyle: Font {
+        if sizeCategory > .extraLarge {
+            return .system(.caption, design: .rounded, weight: .bold)
+        }
+        return .system(.headline, design: .rounded)
     }
 
-    var fontInnerSize: Font {
-        if sizeCategory > .extraLarge { return .headline }
-        return .title2
+    var fontInnerStyle: Font {
+        var fontStyle: Font.TextStyle
+        fontStyle = sizeCategory > .extraLarge ? .headline : .title2
+        return .system(fontStyle, design: .rounded)
     }
 
     var body: some View {
         if readingGoal == 0 {
             Text("No reading goal")
-                .font(.title2)
+                .font(.system(.title2, design: .rounded))
         } else {
             VStack {
                 Text("Reading Goal")
-                    .font(fontTitleSize)
+                    .font(fontTitleStyle)
                 ZStack {
                     CircularProgressView(progress: progress, color: Color.getThemeColor(themeChoice))
                     Text(completionPercentage)
                         .monospacedDigit()
-                        .font(fontInnerSize)
+                        .font(fontInnerStyle)
                 }
                 .padding(.top, 3)
             }
