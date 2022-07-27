@@ -62,6 +62,9 @@ struct BookListView: View {
             }
         }
         .searchable(text: $searchText, prompt: "Search")
+        .navigationDestination(for: Book.self) { book in
+            LibraryBookView(book: book)
+        }
     }
 
     func toggleRead(_ book: Book) {

@@ -47,9 +47,6 @@ struct LibraryView: View {
         NavigationStack(path: $path) {
             LibraryListView(sortOrder: sortOrder, bookFilter: bookFilter)
                 .navigationTitle(navigationTitleText())
-                .navigationDestination(for: Book.self) { book in
-                    LibraryBookView(book: book)
-                }
                 .toolbar {
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
                         filterToolbarItem
