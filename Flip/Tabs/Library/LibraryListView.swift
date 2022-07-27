@@ -29,7 +29,11 @@ struct LibraryListView: View {
     }
 
     var body: some View {
-        BookListView(books: books, canToggleRead: bookFilter == .allBooks)
+        BookListView(books: books, canToggleRead: bookFilter == .allBooks) { book in
+            NavigationLink(value: book) {
+                LibraryRowView(book: book)
+            }
+        }
     }
 }
 
@@ -37,6 +41,5 @@ struct LibraryListView_Previews: PreviewProvider {
     static var dataController = DataController.preview
     static var previews: some View {
         LibraryListView(sortOrder: .author, bookFilter: .allBooks)
-            .environmentObject(dataController)
     }
 }

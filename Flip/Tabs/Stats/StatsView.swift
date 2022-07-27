@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+enum StatsRoute: Hashable {
+    case list(Book.BookFilter)
+    case book(Book)
+}
+
 struct StatsView: View {
     static let tag: String = "Stats"
     enum ChartsRange {
@@ -67,8 +72,21 @@ struct StatsView: View {
                         if showLifetimeBooksRead {
                             LifetimeRowView(books: readBooks)
                         }
-                        StatsRowView(books: yearlyReadBooks, dateStyle: .dateTime.year())
-                        StatsRowView(books: monthlyReadBooks, dateStyle: .dateTime.month(.wide))
+
+                        NavigationLink(value: StatsRoute.list(.yearlyBooks)) {
+                            StatsRowView(books: yearlyReadBooks, dateStyle: .dateTime.year())
+                        }
+                        NavigationLink(value: StatsRoute.list(.monthlyBooks)) {
+                            StatsRowView(books: monthlyReadBooks, dateStyle: .dateTime.month(.wide))
+                        }
+                    }
+                    .navigationDestination(for: StatsRoute.self) { route in
+                        switch route {
+                        case let .list(bookFilter):
+                            StatsBookListView(bookFilter: bookFilter)
+                        case let .book(book):
+                            LibraryBookView(book: book)
+                        }
                     }
                     .padding()
                     VStack {

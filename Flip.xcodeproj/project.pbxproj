@@ -48,6 +48,7 @@
 		718B4A802891D72F005DA8C1 /* Book-Cleaning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718B4A7F2891D72F005DA8C1 /* Book-Cleaning.swift */; };
 		718B4A822891DA25005DA8C1 /* Book-Sharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718B4A812891DA25005DA8C1 /* Book-Sharing.swift */; };
 		718D8DEA2891E55C002B6866 /* BookListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D8DE92891E55C002B6866 /* BookListView.swift */; };
+		718D8DEC2891F106002B6866 /* StatsBookListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D8DEB2891F106002B6866 /* StatsBookListView.swift */; };
 		71B2BC2E2884B52A00D4078C /* FlipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B2BC2D2884B52A00D4078C /* FlipTests.swift */; };
 		71B2BC372884B88800D4078C /* BookTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B2BC362884B88800D4078C /* BookTest.swift */; };
 		71B2BC392884BD7E00D4078C /* DevelopmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B2BC382884BD7E00D4078C /* DevelopmentTests.swift */; };
@@ -137,6 +138,7 @@
 		718B4A7F2891D72F005DA8C1 /* Book-Cleaning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Book-Cleaning.swift"; sourceTree = "<group>"; };
 		718B4A812891DA25005DA8C1 /* Book-Sharing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Book-Sharing.swift"; sourceTree = "<group>"; };
 		718D8DE92891E55C002B6866 /* BookListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListView.swift; sourceTree = "<group>"; };
+		718D8DEB2891F106002B6866 /* StatsBookListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsBookListView.swift; sourceTree = "<group>"; };
 		71B2BC2B2884B52A00D4078C /* FlipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		71B2BC2D2884B52A00D4078C /* FlipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipTests.swift; sourceTree = "<group>"; };
 		71B2BC362884B88800D4078C /* BookTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTest.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				71C624E32880B5F8007B2CAF /* StatsView.swift */,
+				718D8DEB2891F106002B6866 /* StatsBookListView.swift */,
 				7160DBC3288DDABE00560B85 /* ReadingGoalView.swift */,
 				71541F1128875877009C7DC1 /* StatsWeekView.swift */,
 				7124C1DA288864B80070FAFB /* StatsMonthView.swift */,
@@ -613,6 +616,7 @@
 				718B4A7E2891CAC4005DA8C1 /* BookEditView.swift in Sources */,
 				7135B3322885CB4A00165246 /* LifetimeRowView.swift in Sources */,
 				71C624E42880B5F8007B2CAF /* StatsView.swift in Sources */,
+				718D8DEC2891F106002B6866 /* StatsBookListView.swift in Sources */,
 				7107F44E2880DA4500CE89A5 /* LibraryRowView.swift in Sources */,
 				71C89AC12888F865003BD8E3 /* SettingsView.swift in Sources */,
 				718B4A7C2891CA22005DA8C1 /* LibraryBookEditView.swift in Sources */,

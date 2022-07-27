@@ -47,6 +47,9 @@ struct LibraryView: View {
         NavigationStack(path: $path) {
             LibraryListView(sortOrder: sortOrder, bookFilter: bookFilter)
                 .navigationTitle(navigationTitleText())
+                .navigationDestination(for: Book.self) { book in
+                    LibraryBookView(book: book)
+                }
                 .toolbar {
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
                         filterToolbarItem
@@ -100,14 +103,11 @@ struct LibraryView: View {
 
     func navigationTitleText() -> String {
         switch bookFilter {
-        case .allBooks:
-            return "Library"
-        case .readBooks:
-            return "Read"
-        case .unreadBooks:
-            return "Unread"
-        case .unratedBooks:
-            return "Unrated"
+        case .allBooks: return "Library"
+        case .readBooks: return "Read"
+        case .unreadBooks: return "Unread"
+        case .unratedBooks: return "Unrated"
+        default: return "Library"
         }
     }
 }

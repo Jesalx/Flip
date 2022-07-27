@@ -7,12 +7,17 @@
 
 import SwiftUI
 
-struct BookListView: View {
+struct BookListView<Content: View>: View {
     @EnvironmentObject var dataController: DataController
     @AppStorage("defaultRating") var defaultRating = 0
 
     let books: [Book]
     let canToggleRead: Bool
+
+    // Using this so we can specify the type of navigation link used from wherever
+    // we create this view. Some views might use a different type of route such as
+    // stats view using StatsRoute.book(book) for its routing.
+    @ViewBuilder var navigationLink: (Book) -> Content
 
     @State private var searchText = ""
     var searchedBooks: [Book] {
@@ -31,9 +36,7 @@ struct BookListView: View {
     var body: some View {
         List {
             ForEach(searchedBooks) { book in
-                NavigationLink(value: book) {
-                    LibraryRowView(book: book)
-                }
+                navigationLink(book)
                 .contextMenu {
                     Button {
                         toggleRead(book)
@@ -62,9 +65,6 @@ struct BookListView: View {
             }
         }
         .searchable(text: $searchText, prompt: "Search")
-        .navigationDestination(for: Book.self) { book in
-            LibraryBookView(book: book)
-        }
     }
 
     func toggleRead(_ book: Book) {
@@ -87,7 +87,14 @@ struct BookListView: View {
 }
 
 struct BookList_Previews: PreviewProvider {
+    static var dataController = DataController()
     static var previews: some View {
-        BookListView(books: [Book.example], canToggleRead: true)
+        BookListView(books: [Book.example], canToggleRead: true) { book in
+            NavigationLink(value: book) {
+                LibraryRowView(book: book)
+            }
+        }
+        .environment(\.managedObjectContext, dataController.container.viewContext)
+        .environmentObject(dataController)
     }
 }

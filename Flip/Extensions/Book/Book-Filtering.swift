@@ -13,7 +13,7 @@ extension Book {
     }
 
     enum BookFilter: String, Codable, CaseIterable {
-        case allBooks, readBooks, unreadBooks, unratedBooks
+        case allBooks, readBooks, unreadBooks, unratedBooks, yearlyBooks, monthlyBooks
     }
 
     static func getPredicate(_ bookFilter: BookFilter) -> NSPredicate {
@@ -27,6 +27,14 @@ extension Book {
             predicate = NSPredicate(format: "read = false")
         case .unratedBooks:
             predicate = NSPredicate(format: "read = true AND rating = 0")
+        case .yearlyBooks:
+            let comp = Calendar.current.dateComponents([.year], from: Date.now)
+            let startOfYear = Calendar.current.date(from: comp) ?? Date.now
+            predicate = NSPredicate(format: "dateRead >= %@", startOfYear as NSDate)
+        case .monthlyBooks:
+            let comp = Calendar.current.dateComponents([.year, .month], from: Date.now)
+            let startOfMonth = Calendar.current.date(from: comp) ?? Date.now
+            predicate = NSPredicate(format: "dateRead >= %@", startOfMonth as NSDate)
         }
         return predicate
     }
