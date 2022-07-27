@@ -59,7 +59,7 @@ struct ContentView: View {
              StatsView()
                 .tag(StatsView.tag)
                 .tabItem {
-                    Image(systemName: "list.clipboard")
+                    Image(systemName: "chart.bar.fill")
                     Text("Stats")
                 }
 
