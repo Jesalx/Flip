@@ -240,6 +240,7 @@
 		71B2BC212884B0B700D4078C /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				71E002CB288095D4006E23DF /* Flip.xcdatamodeld */,
 				71C624D728809F80007B2CAF /* Info.plist */,
 				71C624D628809F5D007B2CAF /* Flip.entitlements */,
 			);
@@ -373,7 +374,6 @@
 				71E002BD288095B8006E23DF /* FlipApp.swift */,
 				71E002CE28809767006E23DF /* DataController.swift */,
 				71E002BF288095B8006E23DF /* ContentView.swift */,
-				71E002CB288095D4006E23DF /* Flip.xcdatamodeld */,
 				71E002C1288095B9006E23DF /* Assets.xcassets */,
 				71E002C3288095B9006E23DF /* Preview Content */,
 			);
