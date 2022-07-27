@@ -42,42 +42,44 @@ struct GoodreadsBook {
 
     init?(row: [String]) {
         guard row.count == 31 else { return nil }
-        self.goodreadsId = row[0]
-        self.title = row[1]
-        self.author = row[2]
-        self.authorRev = row[3]
-        self.additionalAuthors = row[4]
+        self.goodreadsId = GoodreadsBook.cleanedRowString(rowString: row[0])
+        self.title = GoodreadsBook.cleanedRowString(rowString: row[1])
+        self.author = GoodreadsBook.cleanedRowString(rowString: row[2])
+        self.authorRev = GoodreadsBook.cleanedRowString(rowString: row[3])
+        self.additionalAuthors = GoodreadsBook.cleanedRowString(rowString: row[4])
 
-        let isbn10 = row[5]
-        self.isbn10 = isbn10.filter { $0.isLetter || $0.isNumber }
+        let isbn10 = GoodreadsBook.cleanedRowString(rowString: row[5])
+        self.isbn10 = isbn10
+            .filter { $0.isLetter || $0.isNumber }
 
-        let isbn13 = row[6]
-        self.isbn13 = isbn13.filter { $0.isLetter || $0.isNumber }
+        let isbn13 = GoodreadsBook.cleanedRowString(rowString: row[6])
+        self.isbn13 = isbn13
+            .filter { $0.isLetter || $0.isNumber }
 
-        self.userRating = row[7]
-        self.avgRating = row[8]
-        self.publishingCompany = row[9]
-        self.binding = row[10]
-        self.pageCount = row[11]
-        self.publicationYear = row[12]
-        self.origPublicationYear = row[13]
-        self.dateRead = row[14]
-        self.dateAdded = row[15]
-        self.shelf = row[16]
-        self.shelfPos = row[17]
-        self.exclShelf = row[18]
-        self.review = row[19]
-        self.spoiler = row[20]
-        self.privateNotes = row[21]
-        self.readCount = row[22]
-        self.recommendedFor = row[23]
-        self.recommendedBy = row[24]
-        self.ownedCopies = row[25]
-        self.purchaseDate = row[26]
-        self.purchaseLocation = row[27]
-        self.condition = row[28]
-        self.conditionDescription = row[29]
-        self.bcid = row[30]
+        self.userRating = GoodreadsBook.cleanedRowString(rowString: row[7])
+        self.avgRating = GoodreadsBook.cleanedRowString(rowString: row[8])
+        self.publishingCompany = GoodreadsBook.cleanedRowString(rowString: row[9])
+        self.binding = GoodreadsBook.cleanedRowString(rowString: row[10])
+        self.pageCount = GoodreadsBook.cleanedRowString(rowString: row[11])
+        self.publicationYear = GoodreadsBook.cleanedRowString(rowString: row[12])
+        self.origPublicationYear = GoodreadsBook.cleanedRowString(rowString: row[13])
+        self.dateRead = GoodreadsBook.cleanedRowString(rowString: row[14])
+        self.dateAdded = GoodreadsBook.cleanedRowString(rowString: row[15])
+        self.shelf = GoodreadsBook.cleanedRowString(rowString: row[16])
+        self.shelfPos = GoodreadsBook.cleanedRowString(rowString: row[17])
+        self.exclShelf = GoodreadsBook.cleanedRowString(rowString: row[18])
+        self.review = GoodreadsBook.cleanedRowString(rowString: row[19])
+        self.spoiler = GoodreadsBook.cleanedRowString(rowString: row[20])
+        self.privateNotes = GoodreadsBook.cleanedRowString(rowString: row[21])
+        self.readCount = GoodreadsBook.cleanedRowString(rowString: row[22])
+        self.recommendedFor = GoodreadsBook.cleanedRowString(rowString: row[23])
+        self.recommendedBy = GoodreadsBook.cleanedRowString(rowString: row[24])
+        self.ownedCopies = GoodreadsBook.cleanedRowString(rowString: row[25])
+        self.purchaseDate = GoodreadsBook.cleanedRowString(rowString: row[26])
+        self.purchaseLocation = GoodreadsBook.cleanedRowString(rowString: row[27])
+        self.condition = GoodreadsBook.cleanedRowString(rowString: row[28])
+        self.conditionDescription = GoodreadsBook.cleanedRowString(rowString: row[29])
+        self.bcid = GoodreadsBook.cleanedRowString(rowString: row[30])
     }
 
     func isValid(_ onlyValidDates: Bool) -> Bool {
@@ -137,5 +139,10 @@ struct GoodreadsBook {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.date(from: date)
+    }
+    
+    static func cleanedRowString(rowString: String) -> String {
+        return rowString
+            .trimmingCharacters(in: .whitespacesAndNewlines)
     }
 }
