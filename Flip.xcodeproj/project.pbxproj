@@ -21,6 +21,7 @@
 		7135B3302885C63C00165246 /* StatsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135B32F2885C63C00165246 /* StatsRowView.swift */; };
 		7135B3322885CB4A00165246 /* LifetimeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135B3312885CB4A00165246 /* LifetimeRowView.swift */; };
 		7135B3342885D3F500165246 /* LibraryRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135B3332885D3F500165246 /* LibraryRatingView.swift */; };
+		713A01622890E4E700C80531 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 713A01612890E4E700C80531 /* NukeUI */; };
 		7142581E28906BDD0068BAAF /* IconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7142581D28906BDD0068BAAF /* IconPickerView.swift */; };
 		7142582128907A7D0068BAAF /* Book-Filtering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7142582028907A7D0068BAAF /* Book-Filtering.swift */; };
 		71466B22288F7B9E00270FF5 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71466B21288F7B9E00270FF5 /* WidgetKit.framework */; };
@@ -33,7 +34,6 @@
 		71466B34288F7CA300270FF5 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E002CE28809767006E23DF /* DataController.swift */; };
 		71541F1228875877009C7DC1 /* StatsWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71541F1128875877009C7DC1 /* StatsWeekView.swift */; };
 		7160DBBE288DBEE900560B85 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 7160DBBD288DBEE900560B85 /* Nuke */; };
-		7160DBC0288DBEE900560B85 /* NukeExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 7160DBBF288DBEE900560B85 /* NukeExtensions */; };
 		7160DBC2288DBEE900560B85 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7160DBC1288DBEE900560B85 /* NukeUI */; };
 		7160DBC4288DDABE00560B85 /* ReadingGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7160DBC3288DDABE00560B85 /* ReadingGoalView.swift */; };
 		7160DBC6288E164600560B85 /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7160DBC5288E164600560B85 /* ExportView.swift */; };
@@ -175,8 +175,8 @@
 				7107897C288CAA290000656A /* SwiftCSV in Frameworks */,
 				71C624DA28809F9D007B2CAF /* CloudKit.framework in Frameworks */,
 				7160DBC2288DBEE900560B85 /* NukeUI in Frameworks */,
+				713A01622890E4E700C80531 /* NukeUI in Frameworks */,
 				7160DBBE288DBEE900560B85 /* Nuke in Frameworks */,
-				7160DBC0288DBEE900560B85 /* NukeExtensions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,8 +419,8 @@
 			packageProductDependencies = (
 				7107897B288CAA290000656A /* SwiftCSV */,
 				7160DBBD288DBEE900560B85 /* Nuke */,
-				7160DBBF288DBEE900560B85 /* NukeExtensions */,
 				7160DBC1288DBEE900560B85 /* NukeUI */,
+				713A01612890E4E700C80531 /* NukeUI */,
 			);
 			productName = Flip;
 			productReference = 71E002BA288095B8006E23DF /* Flip.app */;
@@ -460,6 +460,7 @@
 			packageReferences = (
 				7107897A288CAA290000656A /* XCRemoteSwiftPackageReference "SwiftCSV" */,
 				7160DBBC288DBEE900560B85 /* XCRemoteSwiftPackageReference "Nuke" */,
+				713A01602890E4E700C80531 /* XCRemoteSwiftPackageReference "NukeUI" */,
 			);
 			productRefGroup = 71E002BB288095B8006E23DF /* Products */;
 			projectDirPath = "";
@@ -933,12 +934,20 @@
 				minimumVersion = 0.8.0;
 			};
 		};
+		713A01602890E4E700C80531 /* XCRemoteSwiftPackageReference "NukeUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/NukeUI";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		7160DBBC288DBEE900560B85 /* XCRemoteSwiftPackageReference "Nuke" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Nuke";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -949,15 +958,15 @@
 			package = 7107897A288CAA290000656A /* XCRemoteSwiftPackageReference "SwiftCSV" */;
 			productName = SwiftCSV;
 		};
+		713A01612890E4E700C80531 /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 713A01602890E4E700C80531 /* XCRemoteSwiftPackageReference "NukeUI" */;
+			productName = NukeUI;
+		};
 		7160DBBD288DBEE900560B85 /* Nuke */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7160DBBC288DBEE900560B85 /* XCRemoteSwiftPackageReference "Nuke" */;
 			productName = Nuke;
-		};
-		7160DBBF288DBEE900560B85 /* NukeExtensions */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7160DBBC288DBEE900560B85 /* XCRemoteSwiftPackageReference "Nuke" */;
-			productName = NukeExtensions;
 		};
 		7160DBC1288DBEE900560B85 /* NukeUI */ = {
 			isa = XCSwiftPackageProductDependency;

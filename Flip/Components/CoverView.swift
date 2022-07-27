@@ -9,10 +9,14 @@ import SwiftUI
 import NukeUI
 
 struct CoverView: View {
-    let url: URL?
+    let url: String
+
+    init(url: URL?) {
+        self.url = url?.absoluteString ?? ""
+    }
 
     var body: some View {
-        LazyImage(url: url) { state in
+        LazyImage(source: url) { state in
             if let image = state.image {
                 image
             } else {
