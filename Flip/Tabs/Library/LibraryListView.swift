@@ -65,7 +65,7 @@ struct LibraryListView: View {
                     }
                     ShareLink(item: book.copyText)
                     Button {
-                        copyToClipboard(book)
+                        book.copyToClipboard()
                     } label: {
                         Label("Copy", systemImage: "doc.on.doc")
                     }
@@ -99,11 +99,6 @@ struct LibraryListView: View {
             dataController.delete(book)
         }
         dataController.save()
-    }
-
-    func copyToClipboard(_ book: Book) {
-        let pasteboard = UIPasteboard.general
-        pasteboard.string = book.copyText
     }
 }
 

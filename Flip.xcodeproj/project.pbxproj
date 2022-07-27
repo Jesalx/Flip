@@ -43,6 +43,10 @@
 		716EED80288A03C600E659E1 /* UpdateGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716EED7F288A03C600E659E1 /* UpdateGoalView.swift */; };
 		71785A642885B989008F1F96 /* CoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71785A632885B989008F1F96 /* CoverView.swift */; };
 		718B4A7A2891B7F3005DA8C1 /* DateFormatter-MultipleFormats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718B4A792891B7F3005DA8C1 /* DateFormatter-MultipleFormats.swift */; };
+		718B4A7C2891CA22005DA8C1 /* LibraryBookEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718B4A7B2891CA22005DA8C1 /* LibraryBookEditView.swift */; };
+		718B4A7E2891CAC4005DA8C1 /* BookEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718B4A7D2891CAC4005DA8C1 /* BookEditView.swift */; };
+		718B4A802891D72F005DA8C1 /* Book-Cleaning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718B4A7F2891D72F005DA8C1 /* Book-Cleaning.swift */; };
+		718B4A822891DA25005DA8C1 /* Book-Sharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718B4A812891DA25005DA8C1 /* Book-Sharing.swift */; };
 		71B2BC2E2884B52A00D4078C /* FlipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B2BC2D2884B52A00D4078C /* FlipTests.swift */; };
 		71B2BC372884B88800D4078C /* BookTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B2BC362884B88800D4078C /* BookTest.swift */; };
 		71B2BC392884BD7E00D4078C /* DevelopmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B2BC382884BD7E00D4078C /* DevelopmentTests.swift */; };
@@ -127,6 +131,10 @@
 		716EED7F288A03C600E659E1 /* UpdateGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGoalView.swift; sourceTree = "<group>"; };
 		71785A632885B989008F1F96 /* CoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverView.swift; sourceTree = "<group>"; };
 		718B4A792891B7F3005DA8C1 /* DateFormatter-MultipleFormats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter-MultipleFormats.swift"; sourceTree = "<group>"; };
+		718B4A7B2891CA22005DA8C1 /* LibraryBookEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryBookEditView.swift; sourceTree = "<group>"; };
+		718B4A7D2891CAC4005DA8C1 /* BookEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookEditView.swift; sourceTree = "<group>"; };
+		718B4A7F2891D72F005DA8C1 /* Book-Cleaning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Book-Cleaning.swift"; sourceTree = "<group>"; };
+		718B4A812891DA25005DA8C1 /* Book-Sharing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Book-Sharing.swift"; sourceTree = "<group>"; };
 		71B2BC2B2884B52A00D4078C /* FlipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		71B2BC2D2884B52A00D4078C /* FlipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipTests.swift; sourceTree = "<group>"; };
 		71B2BC362884B88800D4078C /* BookTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTest.swift; sourceTree = "<group>"; };
@@ -210,8 +218,20 @@
 			isa = PBXGroup;
 			children = (
 				71785A632885B989008F1F96 /* CoverView.swift */,
+				718B4A7D2891CAC4005DA8C1 /* BookEditView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		718B4A832891DA3D005DA8C1 /* Book */ = {
+			isa = PBXGroup;
+			children = (
+				71C624DF2880AEC0007B2CAF /* Book-CoreDataHelpers.swift */,
+				718B4A812891DA25005DA8C1 /* Book-Sharing.swift */,
+				7142582028907A7D0068BAAF /* Book-Filtering.swift */,
+				718B4A7F2891D72F005DA8C1 /* Book-Cleaning.swift */,
+			);
+			path = Book;
 			sourceTree = "<group>";
 		};
 		71B2BC212884B0B700D4078C /* Configuration */ = {
@@ -226,8 +246,7 @@
 		71B2BC222884B21100D4078C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				71C624DF2880AEC0007B2CAF /* Book-CoreDataHelpers.swift */,
-				7142582028907A7D0068BAAF /* Book-Filtering.swift */,
+				718B4A832891DA3D005DA8C1 /* Book */,
 				71E473092889CF7F00FE208E /* Color-Theme.swift */,
 				718B4A792891B7F3005DA8C1 /* DateFormatter-MultipleFormats.swift */,
 				7160DBC9288F227200560B85 /* FlipBook.swift */,
@@ -253,6 +272,7 @@
 				71EA3EF02887A4AB005ADB91 /* LibraryListView.swift */,
 				7107F44D2880DA4500CE89A5 /* LibraryRowView.swift */,
 				71C624E72880B8EF007B2CAF /* LibraryBookView.swift */,
+				718B4A7B2891CA22005DA8C1 /* LibraryBookEditView.swift */,
 				7135B3332885D3F500165246 /* LibraryRatingView.swift */,
 			);
 			path = Library;
@@ -556,7 +576,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7142582128907A7D0068BAAF /* Book-Filtering.swift in Sources */,
+				718B4A802891D72F005DA8C1 /* Book-Cleaning.swift in Sources */,
 				71E002C0288095B8006E23DF /* ContentView.swift in Sources */,
+				718B4A822891DA25005DA8C1 /* Book-Sharing.swift in Sources */,
 				71E002CF28809767006E23DF /* DataController.swift in Sources */,
 				716EED7E2889E77A00E659E1 /* StatsRatingView.swift in Sources */,
 				7135B3342885D3F500165246 /* LibraryRatingView.swift in Sources */,
@@ -584,10 +606,12 @@
 				71078979288CA9550000656A /* ImportView.swift in Sources */,
 				71E002CD288095D4006E23DF /* Flip.xcdatamodeld in Sources */,
 				71541F1228875877009C7DC1 /* StatsWeekView.swift in Sources */,
+				718B4A7E2891CAC4005DA8C1 /* BookEditView.swift in Sources */,
 				7135B3322885CB4A00165246 /* LifetimeRowView.swift in Sources */,
 				71C624E42880B5F8007B2CAF /* StatsView.swift in Sources */,
 				7107F44E2880DA4500CE89A5 /* LibraryRowView.swift in Sources */,
 				71C89AC12888F865003BD8E3 /* SettingsView.swift in Sources */,
+				718B4A7C2891CA22005DA8C1 /* LibraryBookEditView.swift in Sources */,
 				7160DBCA288F227200560B85 /* FlipBook.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CustomBookView: View {
-    let pageCountFormatter: NumberFormatter
 
     @EnvironmentObject var dataController: DataController
     @Environment(\.managedObjectContext) var managedObjectContext
@@ -28,71 +27,21 @@ struct CustomBookView: View {
     @State private var isbn13 = ""
     @State private var thumbnail = ""
 
-    init() {
-        let pageCountFormatter = NumberFormatter()
-        pageCountFormatter.maximum = 30000
-        pageCountFormatter.minimum = 0
-        self.pageCountFormatter = pageCountFormatter
-    }
-
     var body: some View {
-        Form {
-            Section("Title") {
-                TextField("Title", text: $bookTitle, axis: .vertical)
-                    .lineLimit(1...3)
-            }
-
-            Section("Authors") {
-                TextField("Author1, Author2, ...", text: $bookAuthor, axis: .vertical)
-                    .textInputAutocapitalization(.words)
-                    .lineLimit(1...3)
-            }
-
-            Section("Publisher") {
-                TextField("Publisher", text: $bookPublisher, axis: .vertical)
-                    .textInputAutocapitalization(.words)
-                    .lineLimit(1...3)
-                Toggle("Unknown Publication Date", isOn: $unknownPublicationDate.animation())
-                if !unknownPublicationDate {
-                    DatePicker("Publication Date",
-                               selection: $publicationDate,
-                               displayedComponents: .date
-                    )
-                }
-            }
-            Section("Page Count") {
-                TextField("Page Count", value: $pageCount, formatter: pageCountFormatter)
-                    .keyboardType(.numberPad)
-            }
-
-            Section("Genres") {
-                TextField("Genre1, Genre2, ...", text: $genres, axis: .vertical)
-                    .textInputAutocapitalization(.words)
-                    .lineLimit(1...3)
-            }
-
-            Section("Description") {
-                TextField("Description", text: $description, axis: .vertical)
-                    .lineLimit(1...5)
-            }
-
-            Section("ISBN") {
-                TextField("ISBN 10", text: $isbn10, axis: .horizontal)
-                TextField("ISBN 13", text: $isbn13, axis: .horizontal)
-            }
-
-            Section("Thumbnail URL") {
-                TextField("Thumbnail URL", text: $thumbnail, axis: .horizontal)
-                    .keyboardType(.URL)
-                    .textContentType(.URL)
-            }
-
-            Button("Save") {
+        BookEditView(
+            bookTitle: $bookTitle,
+            bookAuthor: $bookAuthor,
+            bookPublisher: $bookPublisher,
+            unknownPublicationDate: $unknownPublicationDate,
+            publicationDate: $publicationDate,
+            pageCount: $pageCount,
+            genres: $genres,
+            description: $description,
+            isbn10: $isbn10,
+            isbn13: $isbn13,
+            thumbnail: $thumbnail) {
                 saveBook()
             }
-            .disabled(disableCriteria())
-
-        }
         .navigationTitle("Create Book")
     }
 
@@ -103,14 +52,12 @@ struct CustomBookView: View {
     func saveBook() {
         let book = Book(context: managedObjectContext)
         book.id = UUID().uuidString
-        book.title = bookTitle.trimmingCharacters(in: .whitespacesAndNewlines)
-        book.author = bookAuthor.trimmingCharacters(in: .whitespacesAndNewlines)
-        book.summary = description.isEmpty ? nil : description.trimmingCharacters(in: .whitespacesAndNewlines)
+        book.title = Book.cleanedBookString(string: bookTitle)
+        book.author = Book.cleanedBookString(string: bookAuthor)
+        book.summary = Book.cleanedBookString(string: description)
         book.read = false
 
-        book.publishingCompany = bookPublisher.isEmpty
-            ? nil
-            : bookPublisher.trimmingCharacters(in: .whitespacesAndNewlines)
+        book.publishingCompany = Book.cleanedBookString(string: bookPublisher)
 
         if unknownPublicationDate {
             book.publicationDate = nil
@@ -118,16 +65,20 @@ struct CustomBookView: View {
             book.publicationDate = publicationDate
         }
 
-        book.genres = genres.isEmpty ? nil : genres.trimmingCharacters(in: .whitespacesAndNewlines)
+        book.genres = Book.cleanedBookString(string: genres)
 
         book.pageCount = Int16(pageCount)
         book.rating = Int16(defaultRating)
         book.dateRead = Date.distantFuture
 
-        book.isbn10 = isbn10.isEmpty ? nil : isbn10.trimmingCharacters(in: .whitespacesAndNewlines)
-        book.isbn13 = isbn13.isEmpty ? nil : isbn13.trimmingCharacters(in: .whitespacesAndNewlines)
+        book.isbn10 = Book.cleanedBookString(string: isbn10)
+        book.isbn13 = Book.cleanedBookString(string: isbn13)
 
-        book.thumbnail = URL(string: thumbnail)
+        if let cleanedThumbnail = Book.cleanedBookString(string: thumbnail) {
+            book.thumbnail = URL(string: cleanedThumbnail)
+        } else {
+            book.thumbnail = nil
+        }
 
         dataController.save()
         dataController.update(book)

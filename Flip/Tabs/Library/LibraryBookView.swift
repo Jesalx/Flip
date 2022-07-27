@@ -9,7 +9,6 @@ import SwiftUI
 
 struct LibraryBookView: View {
     @ObservedObject var book: Book
-    let pageCountFormatter: NumberFormatter
 
     @EnvironmentObject var dataController: DataController
     @Environment(\.dismiss) private var dismiss
@@ -20,21 +19,15 @@ struct LibraryBookView: View {
     @State private var dateRead: Date
     @State private var read: Bool
     @State private var rating: Int
-    @State private var pageCount: Int
     @State private var showingDeleteConfirmation = false
     @State private var showingFullDescription = false
+    @State private var showingEditMode = false
 
     init(book: Book) {
         self.book = book
         _dateRead = State(wrappedValue: book.bookDateRead)
         _read = State(wrappedValue: book.bookRead)
         _rating = State(wrappedValue: book.bookRating)
-        _pageCount = State(wrappedValue: book.bookPageCount)
-
-        let pageCountFormatter = NumberFormatter()
-        pageCountFormatter.maximum = 30000
-        pageCountFormatter.minimum = 0
-        self.pageCountFormatter = pageCountFormatter
 
         let predicate = NSPredicate(format: "id == %@", book.bookId)
         let fetchRequest = FetchRequest<Book>(entity: Book.entity(), sortDescriptors: [], predicate: predicate)
@@ -53,6 +46,28 @@ struct LibraryBookView: View {
                 LibraryRatingView(rating: $rating)
             }
             DatePicker("Date Finished", selection: $dateRead, in: ...Date.now, displayedComponents: [.date])
+        }
+    }
+
+    var toolbarMenu: some View {
+        Menu {
+            // Sharelink doesn't work in this menu right now. Find out why
+            // ShareLink(item: book.copyText)
+            Button {
+                book.copyToClipboard()
+            } label: {
+                Label("Copy", systemImage: "doc.on.doc")
+            }
+            Button {
+                showingEditMode = true
+            } label: {
+                Label("Edit", systemImage: "pencil")
+            }
+        } label: {
+            Label("Book Options", systemImage: "ellipsis.circle")
+        }
+        .onTapGesture {
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
         }
     }
 
@@ -84,8 +99,7 @@ struct LibraryBookView: View {
                 Text(book.bookPublicationDate)
             }
             Section("Page Count") {
-                TextField("Page Count", value: $pageCount, formatter: pageCountFormatter)
-                    .keyboardType(.numberPad)
+                Text("\(book.bookPageCount)")
             }
             Section("Genres") {
                 ForEach(book.bookGenres, id: \.self) { genre in
@@ -116,7 +130,6 @@ struct LibraryBookView: View {
         .onChange(of: read) { _ in update() }
         .onChange(of: dateRead) { _ in update() }
         .onChange(of: rating) { _ in update() }
-        .onChange(of: pageCount) { _ in update() }
         .onDisappear { dataController.update(book) }
         .onAppear(perform: checkExists)
         .alert(isPresented: $showingDeleteConfirmation) {
@@ -126,12 +139,22 @@ struct LibraryBookView: View {
                 primaryButton: .destructive(Text("Delete"), action: delete),
                 secondaryButton: .cancel())
         }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                toolbarMenu
+            }
+        }
+        .sheet(isPresented: $showingEditMode) {
+            NavigationView {
+                LibraryBookEditView(book: book)
+                    .presentationDetents([.large])
+            }
+        }
     }
 
     func update() {
         book.objectWillChange.send()
         book.read = read
-        book.pageCount = Int16(pageCount)
         book.rating = Int16(rating)
         book.dateRead = formattedDate(dateRead)
         if read == false {
