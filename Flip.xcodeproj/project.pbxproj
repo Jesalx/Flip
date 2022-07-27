@@ -252,7 +252,6 @@
 				718B4A832891DA3D005DA8C1 /* Book */,
 				71E473092889CF7F00FE208E /* Color-Theme.swift */,
 				718B4A792891B7F3005DA8C1 /* DateFormatter-MultipleFormats.swift */,
-				7160DBC9288F227200560B85 /* FlipBook.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -337,6 +336,7 @@
 				71E473072889CC0800FE208E /* ThemePickerView.swift */,
 				71078978288CA9550000656A /* ImportView.swift */,
 				7160DBC5288E164600560B85 /* ExportView.swift */,
+				7160DBC9288F227200560B85 /* FlipBook.swift */,
 				7107897D288CAA470000656A /* GoodreadsBook.swift */,
 			);
 			path = Settings;
