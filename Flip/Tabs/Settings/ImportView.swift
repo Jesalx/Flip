@@ -40,7 +40,7 @@ struct ImportView: View {
             }
 
             Section {
-                Toggle("Only valid read dates", isOn: $importOnlyValidDates)
+                Toggle("Only Valid Read Dates", isOn: $importOnlyValidDates)
 
                 Button("Import from Goodreads") {
                     showingGoodreadsImportConfirmation = true
@@ -50,7 +50,7 @@ struct ImportView: View {
                 Text("Goodreads")
             } footer: {
                 // swiftlint:disable:next line_length
-                Text("Goodreads doesn't always accurately provide the date books are marked read. Write some more about why Goodreads sucks for this.")
+                Text("Goodreads doesn't always accurately provide the date that user's mark a book read or ISBN numbers. Flip will only import books with a valid ISBN and provides an option to choose whether you would like to import only books with valid read dates. Books without valid read dates will have their read dates marked for today.")
             }
         }
         .navigationTitle("Import")
