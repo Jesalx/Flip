@@ -80,7 +80,7 @@ struct ImportView: View {
             Text("Are you sure you want to import '\(fileName)' as a Flip import?")
         }
         .confirmationDialog("Import", isPresented: $showingGoodreadsImportConfirmation) {
-            Button("Goodreads Import Confirmation") {
+            Button("Import") {
                 addingBooks = true
                 makeGoodreadsBooks()
                 addingBooks = false
