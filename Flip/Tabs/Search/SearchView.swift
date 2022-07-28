@@ -101,10 +101,11 @@ struct SearchView: View {
             searchStatus = .failed
         }
     }
-    
+
     func loadAdditionalBooks() async {
         let strippedQuery = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
         let formattedQuery = strippedQuery.replacingOccurrences(of: " ", with: "+")
+        // swiftlint:disable:next line_length
         let queryUrl = "https://www.googleapis.com/books/v1/volumes?q=\(formattedQuery)&printType=books&startIndex=\(searchedBooks.count + 1)&maxResults=20"
         guard let url = URL(string: queryUrl) else { return }
         do {
