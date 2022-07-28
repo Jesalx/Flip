@@ -28,6 +28,12 @@ struct SearchView: View {
             case .success:
                  List(searchedBooks) { item in
                      SearchedBookRowView(item: item)
+                         .task {
+                             guard item == searchedBooks.last else { return }
+                             // Only load a maximum of 60 books
+                             guard searchedBooks.count <= 40 else { return }
+                             await loadAdditionalBooks()
+                         }
                  }
             case .noResults:
                 Text("No results found.")
@@ -82,9 +88,6 @@ struct SearchView: View {
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
             let decoder = JSONDecoder()
-            let formatter = DateFormatter()
-            formatter.dateFormat = "YYYY-MM-dd"
-            decoder.dateDecodingStrategy = .formatted(formatter)
             if let decodedResponse = try? decoder.decode(GoogleBooksResponse.self, from: data) {
                 searchedBooks = decodedResponse.items ?? []
                 searchStatus = decodedResponse.totalItems == 0 ? .noResults : .success
@@ -97,7 +100,22 @@ struct SearchView: View {
             searchedBooks = []
             searchStatus = .failed
         }
-        print(searchStatus)
+    }
+    
+    func loadAdditionalBooks() async {
+        let strippedQuery = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        let formattedQuery = strippedQuery.replacingOccurrences(of: " ", with: "+")
+        let queryUrl = "https://www.googleapis.com/books/v1/volumes?q=\(formattedQuery)&printType=books&startIndex=\(searchedBooks.count + 1)&maxResults=20"
+        guard let url = URL(string: queryUrl) else { return }
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            let decoder = JSONDecoder()
+            if let decodedResponse = try? decoder.decode(GoogleBooksResponse.self, from: data) {
+                searchedBooks.append(contentsOf: decodedResponse.items ?? [])
+            }
+        } catch {
+            print("Invalid pagination data")
+        }
     }
 }
 
