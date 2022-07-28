@@ -22,6 +22,7 @@ struct ExportView: View {
             } header: {
                 Text("Flip Export")
             } footer: {
+                // swiftlint:disable:next line_length
                 Text("Exporting from Flip produces a CSV file that may be useful as an additional backup of your Flip library or to import into another service.")
             }
         }

@@ -14,7 +14,7 @@ struct UpdateGoalView: View {
 
     let formatter: NumberFormatter
     // swiftlint:disable:next line_length
-    let readingGoalCaption = "Some text that could talk about your reading goal or why it's cool to have one or something."
+    let readingGoalCaption = "Setting a reading goal can be a fun way to challenge yourself to read more books this year."
     let year: String
 
     init() {
