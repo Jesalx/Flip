@@ -70,7 +70,7 @@ struct SearchView: View {
             await loadBooks()
         }
     }
-    
+
     func submitPaginationRequest(item: GoogleBook) {
         guard item == searchedBooks[searchedBooks.count - 5] else { return }
         // Only load a maximum of 60 books
@@ -79,7 +79,7 @@ struct SearchView: View {
             await loadAdditionalBooks()
         }
     }
-    
+
     func loadBooks() async {
         let strippedQuery = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
         let formattedQuery = strippedQuery.replacingOccurrences(of: " ", with: "+")
@@ -100,7 +100,7 @@ struct SearchView: View {
         guard let url = URL(string: queryUrl) else { return }
         searchedBooks.append(contentsOf: await getRequestedBooks(url: url, updateStatus: false))
     }
-    
+
     func getRequestedBooks(url: URL, updateStatus: Bool) async -> [GoogleBook] {
         var resultBooks: [GoogleBook] = []
         do {
