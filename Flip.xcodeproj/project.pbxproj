@@ -21,7 +21,6 @@
 		7135B3302885C63C00165246 /* StatsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135B32F2885C63C00165246 /* StatsRowView.swift */; };
 		7135B3322885CB4A00165246 /* LifetimeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135B3312885CB4A00165246 /* LifetimeRowView.swift */; };
 		7135B3342885D3F500165246 /* LibraryRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135B3332885D3F500165246 /* LibraryRatingView.swift */; };
-		713A01622890E4E700C80531 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 713A01612890E4E700C80531 /* NukeUI */; };
 		7142581E28906BDD0068BAAF /* IconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7142581D28906BDD0068BAAF /* IconPickerView.swift */; };
 		7142582128907A7D0068BAAF /* Book-Filtering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7142582028907A7D0068BAAF /* Book-Filtering.swift */; };
 		71466B22288F7B9E00270FF5 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71466B21288F7B9E00270FF5 /* WidgetKit.framework */; };
@@ -189,7 +188,6 @@
 				7107897C288CAA290000656A /* SwiftCSV in Frameworks */,
 				71C624DA28809F9D007B2CAF /* CloudKit.framework in Frameworks */,
 				7160DBC2288DBEE900560B85 /* NukeUI in Frameworks */,
-				713A01622890E4E700C80531 /* NukeUI in Frameworks */,
 				7160DBBE288DBEE900560B85 /* Nuke in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,7 +447,6 @@
 				7107897B288CAA290000656A /* SwiftCSV */,
 				7160DBBD288DBEE900560B85 /* Nuke */,
 				7160DBC1288DBEE900560B85 /* NukeUI */,
-				713A01612890E4E700C80531 /* NukeUI */,
 			);
 			productName = Flip;
 			productReference = 71E002BA288095B8006E23DF /* Flip.app */;
@@ -489,7 +486,6 @@
 			packageReferences = (
 				7107897A288CAA290000656A /* XCRemoteSwiftPackageReference "SwiftCSV" */,
 				7160DBBC288DBEE900560B85 /* XCRemoteSwiftPackageReference "Nuke" */,
-				713A01602890E4E700C80531 /* XCRemoteSwiftPackageReference "NukeUI" */,
 			);
 			productRefGroup = 71E002BB288095B8006E23DF /* Products */;
 			projectDirPath = "";
@@ -970,20 +966,12 @@
 				minimumVersion = 0.8.0;
 			};
 		};
-		713A01602890E4E700C80531 /* XCRemoteSwiftPackageReference "NukeUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kean/NukeUI";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		7160DBBC288DBEE900560B85 /* XCRemoteSwiftPackageReference "Nuke" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Nuke";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 10.0.0;
+				minimumVersion = 11.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -993,11 +981,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7107897A288CAA290000656A /* XCRemoteSwiftPackageReference "SwiftCSV" */;
 			productName = SwiftCSV;
-		};
-		713A01612890E4E700C80531 /* NukeUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 713A01602890E4E700C80531 /* XCRemoteSwiftPackageReference "NukeUI" */;
-			productName = NukeUI;
 		};
 		7160DBBD288DBEE900560B85 /* Nuke */ = {
 			isa = XCSwiftPackageProductDependency;
