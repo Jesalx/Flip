@@ -132,12 +132,10 @@ struct LibraryBookView: View {
         .onChange(of: rating) { _ in update() }
         .onDisappear { dataController.update(book) }
         .onAppear(perform: checkExists)
-        .alert(isPresented: $showingDeleteConfirmation) {
-            Alert(
-                title: Text("Delete book"),
-                message: Text("Are you sure you want to delete \(book.bookTitle) from your library?"),
-                primaryButton: .destructive(Text("Delete"), action: delete),
-                secondaryButton: .cancel())
+        .confirmationDialog("Delete Book", isPresented: $showingDeleteConfirmation) {
+            Button("Delete Book", role: .destructive) { dataController.deleteAll() }
+        } message: {
+            Text("Are you sure you want to delete \(book.bookTitle) from your library? This action cannot be undone.")
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
