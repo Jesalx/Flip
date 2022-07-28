@@ -22,6 +22,7 @@ struct CoverView: View {
                     .scaledToFit()
             }
         }
+        .pipeline(ImagePipeline.coverPipeline)
     }
 }
 
