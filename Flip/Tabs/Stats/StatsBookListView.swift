@@ -45,7 +45,17 @@ struct StatsBookListView: View {
     }
 
     var body: some View {
-        BookListView(books: books, canToggleRead: true) { book in
+        // Right now there is a bug where on loading this view the search bar will
+        // flash onto a book before disappearing. Allowing BookListView to accept
+        // a parameter to choose the search display mode is part of alleviating this
+        // issue because keeping the bar always visible fixes the issue. Another
+        // alternative might be to disallow searching on this specific page. Check
+        // periodically if an .automatic searchBarDisplayMode still has this glitch.
+        BookListView(
+            books: books,
+            canToggleRead: true,
+            searchBarDisplayMode: .always
+        ) { book in
             NavigationLink(value: StatsRoute.book(book)) {
                 LibraryRowView(book: book)
             }

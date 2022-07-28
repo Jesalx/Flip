@@ -29,7 +29,11 @@ struct LibraryListView: View {
     }
 
     var body: some View {
-        BookListView(books: books, canToggleRead: bookFilter == .allBooks) { book in
+        BookListView(
+            books: books,
+            canToggleRead: bookFilter == .allBooks,
+            searchBarDisplayMode: .automatic
+        ) { book in
             NavigationLink(value: book) {
                 LibraryRowView(book: book)
             }

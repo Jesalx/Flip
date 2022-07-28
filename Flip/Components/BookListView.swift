@@ -13,6 +13,7 @@ struct BookListView<Content: View>: View {
 
     let books: [Book]
     let canToggleRead: Bool
+    let searchBarDisplayMode: SearchFieldPlacement.NavigationBarDrawerDisplayMode
 
     // Using this so we can specify the type of navigation link used from wherever
     // we create this view. Some views might use a different type of route such as
@@ -64,7 +65,11 @@ struct BookListView<Content: View>: View {
                 delete(offsets)
             }
         }
-        .searchable(text: $searchText, prompt: "Search")
+        .searchable(
+            text: $searchText,
+            placement: .navigationBarDrawer(displayMode: searchBarDisplayMode),
+            prompt: "Search"
+        )
     }
 
     func toggleRead(_ book: Book) {
@@ -89,7 +94,7 @@ struct BookListView<Content: View>: View {
 struct BookList_Previews: PreviewProvider {
     static var dataController = DataController()
     static var previews: some View {
-        BookListView(books: [Book.example], canToggleRead: true) { book in
+        BookListView(books: [Book.example], canToggleRead: true, searchBarDisplayMode: .automatic) { book in
             NavigationLink(value: book) {
                 LibraryRowView(book: book)
             }
