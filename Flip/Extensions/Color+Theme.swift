@@ -1,5 +1,5 @@
 //
-//  Color-Theme.swift
+//  Color+Theme.swift
 //  Flip
 //
 //  Created by Jesal Patel on 7/21/22.
