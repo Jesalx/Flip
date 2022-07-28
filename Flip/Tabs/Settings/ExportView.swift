@@ -17,8 +17,12 @@ struct ExportView: View {
 
     var body: some View {
         Form {
-            Button("Export") {
-                saveCSV()
+            Section {
+                Button("Export") { saveCSV() }
+            } header: {
+                Text("Flip Export")
+            } footer: {
+                Text("Exporting from Flip produces a CSV file that may be useful as an additional backup of your Flip library or to import into another service.")
             }
         }
         .navigationTitle("Export")
