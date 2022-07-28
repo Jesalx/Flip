@@ -28,12 +28,7 @@ struct SearchView: View {
             case .success:
                  List(searchedBooks) { item in
                      SearchedBookRowView(item: item)
-                         .task {
-                             guard item == searchedBooks.last else { return }
-                             // Only load a maximum of 60 books
-                             guard searchedBooks.count <= 40 else { return }
-                             await loadAdditionalBooks()
-                         }
+                         .task { submitPaginationRequest(item: item) }
                  }
             case .noResults:
                 Text("No results found.")
@@ -72,11 +67,20 @@ struct SearchView: View {
     func submitSearch() {
         Task { @MainActor in
             searchStatus = .searching
-            await loadData()
+            await loadBooks()
         }
     }
-
-    func loadData() async {
+    
+    func submitPaginationRequest(item: GoogleBook) {
+        guard item == searchedBooks[searchedBooks.count - 5] else { return }
+        // Only load a maximum of 60 books
+        guard searchedBooks.count <= 40 else { return }
+        Task { @MainActor in
+            await loadAdditionalBooks()
+        }
+    }
+    
+    func loadBooks() async {
         let strippedQuery = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
         let formattedQuery = strippedQuery.replacingOccurrences(of: " ", with: "+")
         let queryUrl = "https://www.googleapis.com/books/v1/volumes?q=\(formattedQuery)&printType=books&maxResults=20"
@@ -85,21 +89,7 @@ struct SearchView: View {
             searchStatus = .noResults
             return
         }
-        do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            let decoder = JSONDecoder()
-            if let decodedResponse = try? decoder.decode(GoogleBooksResponse.self, from: data) {
-                searchedBooks = decodedResponse.items ?? []
-                searchStatus = decodedResponse.totalItems == 0 ? .noResults : .success
-            } else {
-                searchedBooks = []
-                searchStatus = .failed
-            }
-        } catch {
-            print("Invalid search data")
-            searchedBooks = []
-            searchStatus = .failed
-        }
+        searchedBooks = await getRequestedBooks(url: url, updateStatus: true)
     }
 
     func loadAdditionalBooks() async {
@@ -108,15 +98,25 @@ struct SearchView: View {
         // swiftlint:disable:next line_length
         let queryUrl = "https://www.googleapis.com/books/v1/volumes?q=\(formattedQuery)&printType=books&startIndex=\(searchedBooks.count + 1)&maxResults=20"
         guard let url = URL(string: queryUrl) else { return }
+        searchedBooks.append(contentsOf: await getRequestedBooks(url: url, updateStatus: false))
+    }
+    
+    func getRequestedBooks(url: URL, updateStatus: Bool) async -> [GoogleBook] {
+        var resultBooks: [GoogleBook] = []
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
-            let decoder = JSONDecoder()
-            if let decodedResponse = try? decoder.decode(GoogleBooksResponse.self, from: data) {
-                searchedBooks.append(contentsOf: decodedResponse.items ?? [])
+            if let decodedResponse = try? JSONDecoder().decode(GoogleBooksResponse.self, from: data) {
+                resultBooks = decodedResponse.items ?? []
+                if updateStatus { searchStatus = decodedResponse.totalItems == 0 ? .noResults : .success }
+            } else {
+                print("Failed to decode")
+                if updateStatus { searchStatus = .failed }
             }
         } catch {
-            print("Invalid pagination data")
+            print("Invalid search data")
+            if updateStatus { searchStatus = .failed }
         }
+        return resultBooks
     }
 }
 
