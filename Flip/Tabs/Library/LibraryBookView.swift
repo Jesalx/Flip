@@ -53,15 +53,14 @@ struct LibraryBookView: View {
         Menu {
             // Sharelink doesn't work in this menu right now. Find out why
             // ShareLink(item: book.copyText)
-            Button {
-                book.copyToClipboard()
-            } label: {
+            Button(action: book.copyToClipboard) {
                 Label("Copy", systemImage: "doc.on.doc")
             }
-            Button {
-                showingEditMode = true
-            } label: {
+            Button { showingEditMode = true } label: {
                 Label("Edit", systemImage: "pencil")
+            }
+            Button(role: .destructive) { showingDeleteConfirmation = true } label: {
+                Label("Delete", systemImage: "trash")
             }
         } label: {
             Label("Book Options", systemImage: "ellipsis.circle")
@@ -133,7 +132,7 @@ struct LibraryBookView: View {
         .onDisappear { dataController.update(book) }
         .onAppear(perform: checkExists)
         .confirmationDialog("Delete Book", isPresented: $showingDeleteConfirmation) {
-            Button("Delete Book", role: .destructive) { dataController.deleteAll() }
+            Button("Delete Book", role: .destructive) { delete() }
         } message: {
             Text("Are you sure you want to delete \(book.bookTitle) from your library? This action cannot be undone.")
         }
