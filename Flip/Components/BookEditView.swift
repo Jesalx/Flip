@@ -105,10 +105,14 @@ struct BookEditView: View {
                 TextField("ISBN 13", text: $isbn13, axis: .horizontal)
             }
 
-            Section("Thumbnail URL") {
+            Section {
                 TextField("Thumbnail URL", text: $thumbnail, axis: .horizontal)
                     .keyboardType(.URL)
                     .textContentType(.URL)
+            } header: {
+                Text("Thumbnail URL")
+            } footer: {
+                Text("If no thumbnail is provided then Flip will attempt to display one using one of the ISBN numbers.")
             }
 
             Button("Save") {
