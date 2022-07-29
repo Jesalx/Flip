@@ -8,30 +8,29 @@
 import SwiftUI
 
 struct WelcomeScreenView: View {
-    
+
     @Environment(\.dismiss) private var dismiss
-    
+
     var body: some View {
         ScrollView {
             VStack {
                 Text("Welcome to Flip")
                     .font(.title.weight(.semibold))
                     .padding(.vertical)
-                
+
                 VStack(alignment: .leading, spacing: 20) {
                     WelcomeCategoryView(
                         icon: Image(systemName: "calendar"),
                         title: "Reading Goal",
                         content: "You can set a reading goal in the Stats tab. Blah blah blah"
                     )
-                    
+
                     WelcomeCategoryView(
                         icon: Image(systemName: "chart.bar.xaxis"),
                         title: "Stats",
                         content: "View interesting information about your reading stuff in the Stats tab."
                     )
-                    
-                    
+
                 }
                 Button {
                     print("tapped")
@@ -57,7 +56,7 @@ struct WelcomeCategoryView: View {
 
     var body: some View {
         HStack {
-            
+
             icon
                 .font(.system(size: 30, weight: .semibold))
                 .padding(.leading)
