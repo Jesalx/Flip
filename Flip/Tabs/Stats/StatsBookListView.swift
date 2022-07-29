@@ -54,7 +54,7 @@ struct StatsBookListView: View {
         BookListView(
             books: books,
             canToggleRead: true,
-            searchBarDisplayMode: .always
+            searchBarDisplayMode: .automatic
         ) { book in
             NavigationLink(value: StatsRoute.book(book)) {
                 LibraryRowView(book: book)
