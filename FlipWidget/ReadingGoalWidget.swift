@@ -11,6 +11,7 @@ import WidgetKit
 struct ReadingGoalWidgetEntryView: View {
     var entry: Provider.Entry
 
+    @Environment(\.widgetFamily) var widgetFamily
     @Environment(\.sizeCategory) var sizeCategory
 
     @AppStorage(
@@ -24,6 +25,10 @@ struct ReadingGoalWidgetEntryView: View {
 
     var progress: Double {
         Double(entry.yearlyRead) / Double(readingGoal)
+    }
+
+    var currentYear: String {
+        Date.now.formatted(.dateTime.year())
     }
 
     var completionPercentage: String {
@@ -48,23 +53,48 @@ struct ReadingGoalWidgetEntryView: View {
         return .system(fontStyle, design: .rounded)
     }
 
+    var mediumWidget: some View {
+        VStack(spacing: 20) {
+            Text("\(currentYear) Reading Goal")
+                .font(.system(.title2, design: .rounded))
+
+            ProgressView(value: Double(min(entry.yearlyRead, readingGoal)), total: Double(readingGoal))
+                .progressViewStyle(BarProgressViewStyle(barColor: Color.getThemeColor(themeChoice)))
+
+            Text("\(entry.yearlyRead) out of \(readingGoal) books")
+        }
+        .padding()
+    }
+
+    var smallWidget: some View {
+        VStack {
+            Text("Reading Goal")
+                .font(fontTitleStyle)
+            ZStack {
+                ProgressView(value: Double(entry.yearlyRead), total: Double(readingGoal))
+                    .progressViewStyle(
+                        CircularCompletionProgressViewStyle(
+                            strokeColor: Color.getThemeColor(themeChoice),
+                            strokeWidth: 15
+                        )
+                    )
+                Text(completionPercentage)
+                    .monospacedDigit()
+                    .font(fontInnerStyle)
+            }
+            .padding(.top, 3)
+        }
+        .padding()
+    }
+
     var body: some View {
         if readingGoal == 0 {
             Text("No reading goal")
                 .font(.system(.title2, design: .rounded))
+        } else if widgetFamily == .systemSmall {
+            smallWidget
         } else {
-            VStack {
-                Text("Reading Goal")
-                    .font(fontTitleStyle)
-                ZStack {
-                    CircularProgressView(progress: progress, color: Color.getThemeColor(themeChoice))
-                    Text(completionPercentage)
-                        .monospacedDigit()
-                        .font(fontInnerStyle)
-                }
-                .padding(.top, 3)
-            }
-            .padding()
+            mediumWidget
         }
     }
 }
@@ -78,36 +108,47 @@ struct ReadingGoalWidget: Widget {
         }
         .configurationDisplayName("Reading Goal")
         .description("Check in on your reading goal.")
-        .supportedFamilies([.systemSmall])
+        .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
 
 struct FlipWidget_Previews: PreviewProvider {
     static var previews: some View {
         ReadingGoalWidgetEntryView(entry: SimpleEntry(date: Date(), yearlyRead: 20))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+            .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }
 
-struct CircularProgressView: View {
-    let progress: Double
-    let color: Color
+struct CircularCompletionProgressViewStyle: ProgressViewStyle {
+    var strokeColor = Color.blue
+    var strokeWidth = 15.0
 
-    var body: some View {
-        ZStack {
+    func makeBody(configuration: Configuration) -> some View {
+        let fractionCompleted = configuration.fractionCompleted ?? 0
+
+        return ZStack {
             Circle()
-                .stroke(color.opacity(0.2), lineWidth: 15)
+                .trim()
+                .stroke(strokeColor.opacity(0.2), style: StrokeStyle(lineWidth: strokeWidth, lineCap: .round))
             Circle()
-                .trim(from: 0, to: progress)
-                .stroke(
-                    color,
-                    style: StrokeStyle(
-                        lineWidth: 15,
-                        lineCap: .round
-                    )
-                )
+                .trim(from: 0, to: fractionCompleted)
+                .stroke(strokeColor, style: StrokeStyle(lineWidth: strokeWidth, lineCap: .round))
                 .rotationEffect(.degrees(-90))
-                .animation(.easeOut, value: progress)
+        }
+    }
+}
+
+struct BarProgressViewStyle: ProgressViewStyle {
+    var barColor = Color.blue
+
+    func makeBody(configuration: Configuration) -> some View {
+        ZStack(alignment: .leading) {
+            RoundedRectangle(cornerRadius: 14)
+                .frame(width: 250, height: 15)
+                .foregroundColor(barColor.opacity(0.2))
+            RoundedRectangle(cornerRadius: 14)
+                .frame(width: CGFloat(configuration.fractionCompleted ?? 0) * 250, height: 15)
+                .foregroundColor(barColor)
         }
     }
 }
