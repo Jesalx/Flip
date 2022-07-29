@@ -22,6 +22,7 @@ struct SettingsView: View {
 
     @State private var refresh = true
     @State private var showingDeleteConfirmation = false
+    @State private var showingWelcome = false
 
     var ratingText: String {
         if defaultRating == 0 { return "Unrated" }
@@ -64,6 +65,7 @@ struct SettingsView: View {
                 Section("Debug") {
                     NavigationLink("Import", destination: ImportView())
                     NavigationLink("Export", destination: ExportView())
+                    Button("Welcome Screen") { showingWelcome = true }
                     Button("Delete Library", role: .destructive) { showingDeleteConfirmation = true }
                         .confirmationDialog("Delete Library", isPresented: $showingDeleteConfirmation) {
                             Button("Delete Library", role: .destructive) { dataController.deleteAll() }
@@ -74,6 +76,9 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Settings")
+            .sheet(isPresented: $showingWelcome) {
+                WelcomeScreenView()
+            }
         }
     }
 }

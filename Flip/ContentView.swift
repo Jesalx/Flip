@@ -13,6 +13,7 @@ struct ContentView: View {
     @Environment(\.scenePhase) var scenePhase
 
     @SceneStorage("selectedView") var selectedView = LibraryView.tag
+    @AppStorage("seenWelcome") var seenWelcome = false
     @AppStorage("defaultRating") var defaultRating: Int = 0
     @AppStorage(
         "themeChoice",
@@ -24,6 +25,7 @@ struct ContentView: View {
     @State private var isUnlocked = true
     @State private var showingFailure = false
     @State private var contentBlur: Double = 0
+    @State private var showingWelcome = false
 
     init() {
         let unlocked = lockingEnabled ? false : true
@@ -83,6 +85,8 @@ struct ContentView: View {
         .onChange(of: scenePhase, perform: performLockActions)
         .accentColor(Color.getThemeColor(themeChoice))
         .tint(Color.getThemeColor(themeChoice))
+        .onAppear { if seenWelcome == false { showingWelcome = true } }
+        .sheet(isPresented: $showingWelcome) { WelcomeScreenView() }
     }
 
     func moveToHome(_ input: Any) {
