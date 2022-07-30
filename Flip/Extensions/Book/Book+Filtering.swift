@@ -8,11 +8,11 @@
 import Foundation
 
 extension Book {
-    enum SortOrder: String, Codable, CaseIterable {
+    enum SortOrder {
         case title, author, pageCount, publicationDate, readDate
     }
 
-    enum BookFilter: String, Codable, CaseIterable {
+    enum BookFilter {
         case allBooks, readBooks, unreadBooks, unratedBooks, yearlyBooks, monthlyBooks
     }
 

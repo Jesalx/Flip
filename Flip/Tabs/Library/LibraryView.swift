@@ -13,10 +13,9 @@ struct LibraryView: View {
 
     @EnvironmentObject var dataController: DataController
 
-    @SceneStorage("sortOrder") private var sortOrder: Book.SortOrder = .author
-    @SceneStorage("bookFilter") private var bookFilter: Book.BookFilter = .allBooks
-
     @State private var path = [Book]()
+    @State private var sortOrder: Book.SortOrder = .author
+    @State private var bookFilter: Book.BookFilter = .allBooks
     @State private var selectedBook: Book?
     @State private var showingSortOrder = false
 
