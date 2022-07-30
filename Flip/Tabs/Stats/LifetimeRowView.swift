@@ -38,6 +38,7 @@ struct LifetimeRowView: View {
         }
         .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
         .padding()
+        .foregroundColor(.primary)
         .background(Color.secondary.opacity(0.2))
         .cornerRadius(20)
     }

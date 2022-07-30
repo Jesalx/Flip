@@ -28,12 +28,10 @@ extension Book {
         case .unratedBooks:
             predicate = NSPredicate(format: "read = true AND rating = 0")
         case .yearlyBooks:
-            let comp = Calendar.current.dateComponents([.year], from: Date.now)
-            let startOfYear = Calendar.current.date(from: comp) ?? Date.now
+            let startOfYear = Calendar.current.startOfYear(for: Date.now)
             predicate = NSPredicate(format: "dateRead >= %@", startOfYear as NSDate)
         case .monthlyBooks:
-            let comp = Calendar.current.dateComponents([.year, .month], from: Date.now)
-            let startOfMonth = Calendar.current.date(from: comp) ?? Date.now
+            let startOfMonth = Calendar.current.startOfMonth(for: Date.now)
             predicate = NSPredicate(format: "dateRead >= %@", startOfMonth as NSDate)
         }
         return predicate

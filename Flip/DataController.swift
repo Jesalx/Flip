@@ -205,8 +205,7 @@ class DataController: ObservableObject {
     func yearlyReadCount() -> Int {
         let request: NSFetchRequest<Book> = Book.fetchRequest()
 
-        let comp = Calendar.current.dateComponents([.year], from: Date.now)
-        let startOfYear = Calendar.current.date(from: comp) ?? Date.now
+        let startOfYear = Calendar.current.startOfYear(for: Date.now)
         let yearPredicate = NSPredicate(format: "dateRead >= %@", startOfYear as NSDate)
         let readPredicate = NSPredicate(format: "read = true")
         let compoundPredicate = NSCompoundPredicate(type: .and, subpredicates: [yearPredicate, readPredicate])

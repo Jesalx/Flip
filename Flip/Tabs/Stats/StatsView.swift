@@ -8,6 +8,7 @@
 import SwiftUI
 
 enum StatsRoute: Hashable {
+    case yearList
     case list(Book.BookFilter)
     case book(Book)
 }
@@ -35,14 +36,12 @@ struct StatsView: View {
     }
 
     var yearlyReadBooks: [Book] {
-        let comp = Calendar.current.dateComponents([.year], from: Date.now)
-        let startOfYear = Calendar.current.date(from: comp) ?? Date.now
+        let startOfYear = Calendar.current.startOfYear(for: Date.now)
         return readBooks.filter { $0.bookDateRead >= startOfYear }
     }
 
     var monthlyReadBooks: [Book] {
-        let comp = Calendar.current.dateComponents([.year, .month], from: Date.now)
-        let startOfMonth = Calendar.current.date(from: comp) ?? Date.now
+        let startOfMonth = Calendar.current.startOfMonth(for: Date.now)
         return books.filter { $0.bookDateRead >= startOfMonth }
     }
 
@@ -70,7 +69,9 @@ struct StatsView: View {
                     ReadingGoalView(yearRead: yearlyReadBooks.count)
                     VStack {
                         if showLifetimeBooksRead {
-                            LifetimeRowView(books: readBooks)
+                            NavigationLink(value: StatsRoute.yearList) {
+                                LifetimeRowView(books: readBooks)
+                            }
                         }
 
                         NavigationLink(value: StatsRoute.list(.yearlyBooks)) {
@@ -82,6 +83,8 @@ struct StatsView: View {
                     }
                     .navigationDestination(for: StatsRoute.self) { route in
                         switch route {
+                        case .yearList:
+                            EmptyView()
                         case let .list(bookFilter):
                             StatsBookListView(bookFilter: bookFilter)
                         case let .book(book):
