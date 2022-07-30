@@ -20,9 +20,7 @@ extension DateFormatter {
         if let date = ISO8601DateFormatter().date(from: dateString) { return date }
         for format in DateFormatter.bookDateFormats {
             self.dateFormat = format
-            if let date = self.date(from: dateString) {
-                return date
-            }
+            if let date = self.date(from: dateString) { return date }
         }
         return nil
     }

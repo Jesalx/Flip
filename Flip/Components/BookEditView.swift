@@ -126,9 +126,3 @@ struct BookEditView: View {
         return bookTitle.isEmpty || bookAuthor.isEmpty
     }
 }
-
-// struct BookEditView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        BookEditView()
-//    }
-// }

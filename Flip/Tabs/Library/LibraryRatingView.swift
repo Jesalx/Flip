@@ -15,12 +15,6 @@ struct LibraryRatingView: View {
 
     var body: some View {
         HStack {
-//            Button("X") { }
-//                .buttonStyle(.bordered)
-//                .tint(.accentColor)
-//            Spacer()
-//                .frame(width: 10)
-//            Image(systemName: "star.slash.fill")
             Image(systemName: "arrow.uturn.backward")
                 .foregroundColor(color)
                 .onTapGesture {
