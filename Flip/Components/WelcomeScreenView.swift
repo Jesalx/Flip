@@ -92,6 +92,7 @@ struct WelcomeCategoryView: View {
                 .padding(.leading)
                 .padding(.trailing, 10)
                 .foregroundColor(iconColor)
+                .frame(width: 55)
             VStack(alignment: .leading) {
                 Text(title)
                     .font(.headline)
