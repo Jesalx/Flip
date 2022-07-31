@@ -38,7 +38,7 @@ struct ResetCacheView: View {
         }
         .onAppear(perform: getSize)
     }
-    
+
     func clearCache() {
         if let dataCache = ImagePipeline.coverPipeline.configuration.dataCache as? DataCache,
            let imageCache = ImagePipeline.coverPipeline.configuration.imageCache as? ImageCache {
@@ -49,7 +49,7 @@ struct ResetCacheView: View {
             getSize()
         }
     }
-    
+
     func getSize() {
         if let dataCache = ImagePipeline.coverPipeline.configuration.dataCache as? DataCache,
            let imageCache = ImagePipeline.coverPipeline.configuration.imageCache as? ImageCache {
