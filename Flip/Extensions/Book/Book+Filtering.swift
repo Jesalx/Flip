@@ -12,8 +12,9 @@ extension Book {
         case title, author, pageCount, publicationDate, readDate
     }
 
-    enum BookFilter {
+    enum BookFilter: Equatable, Hashable {
         case allBooks, readBooks, unreadBooks, unratedBooks, yearlyBooks, monthlyBooks
+        case specificYear(Int)
     }
 
     static func getPredicate(_ bookFilter: BookFilter) -> NSPredicate {
@@ -33,6 +34,16 @@ extension Book {
         case .monthlyBooks:
             let startOfMonth = Calendar.current.startOfMonth(for: Date.now)
             predicate = NSPredicate(format: "dateRead >= %@", startOfMonth as NSDate)
+        case let .specificYear(year):
+            let date = DateFormatter().dateFromMultipleFormats(from: String(year)) ?? .now
+            let startOfYear = Calendar.current.startOfYear(for: date)
+            let startOfNextYear = Calendar.current.startOfNextYear(for: date)
+            print("DATE: \(date), STARTOFYEAR: \(startOfYear), NEXTYEAR: \(startOfNextYear)")
+            predicate = NSPredicate(
+                format: "dateRead >= %@ AND dateRead < %@",
+                startOfYear as NSDate,
+                startOfNextYear as NSDate
+            )
         }
         return predicate
     }

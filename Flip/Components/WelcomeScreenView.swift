@@ -20,7 +20,7 @@ struct WelcomeScreenView: View {
                         .font(.title.weight(.semibold))
                         .padding(.top, 50)
                         .padding(.bottom, 30)
-                    
+
                     VStack(alignment: .leading, spacing: 20) {
                         WelcomeCategoryView(
                             icon: Image(systemName: "text.book.closed.fill"),
@@ -28,7 +28,7 @@ struct WelcomeScreenView: View {
                             title: "Library",
                             content: "Keeps up with books you've read and want to read in the Library tab."
                         )
-                        
+
                         WelcomeCategoryView(
                             icon: Image(systemName: "magnifyingglass"),
                             iconColor: .orange,
@@ -36,14 +36,14 @@ struct WelcomeScreenView: View {
                             // swiftlint:disable:next line_length
                             content: "Search for new books and add them to the library in the Search tab. Add your own custom books by clicking the plus icon at the top of the page."
                         )
-                        
+
                         WelcomeCategoryView(
                             icon: Image(systemName: "chart.bar.xaxis"),
                             iconColor: .blue,
                             title: "Stats",
                             content: "Check out some interesting info about your reading habits in the Stats tab."
                         )
-                        
+
                         WelcomeCategoryView(
                             icon: Image(systemName: "calendar"),
                             iconColor: .green,
@@ -51,7 +51,7 @@ struct WelcomeScreenView: View {
                             // swiftlint:disable:next line_length
                             content: "Keep up with how many books you want to read this year by setting a reading goal in the Stats tab by clicking the calendar icon at the top of the page."
                         )
-                        
+
                         WelcomeCategoryView(
                             icon: Image(systemName: "paintpalette"),
                             iconColor: .red,

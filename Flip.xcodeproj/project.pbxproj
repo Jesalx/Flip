@@ -21,6 +21,9 @@
 		7135B3302885C63C00165246 /* StatsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135B32F2885C63C00165246 /* StatsRowView.swift */; };
 		7135B3322885CB4A00165246 /* LifetimeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135B3312885CB4A00165246 /* LifetimeRowView.swift */; };
 		7135B3342885D3F500165246 /* LibraryRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135B3332885D3F500165246 /* LibraryRatingView.swift */; };
+		7137B5032895FF0E0085124B /* YearsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7137B5022895FF0E0085124B /* YearsListView.swift */; };
+		7137B505289600060085124B /* Date+CurrentYear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7137B504289600060085124B /* Date+CurrentYear.swift */; };
+		7137B507289607560085124B /* YearRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7137B506289607560085124B /* YearRowView.swift */; };
 		7142581E28906BDD0068BAAF /* IconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7142581D28906BDD0068BAAF /* IconPickerView.swift */; };
 		7142582128907A7D0068BAAF /* Book+Filtering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7142582028907A7D0068BAAF /* Book+Filtering.swift */; };
 		71466B22288F7B9E00270FF5 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71466B21288F7B9E00270FF5 /* WidgetKit.framework */; };
@@ -117,6 +120,9 @@
 		7135B32F2885C63C00165246 /* StatsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsRowView.swift; sourceTree = "<group>"; };
 		7135B3312885CB4A00165246 /* LifetimeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeRowView.swift; sourceTree = "<group>"; };
 		7135B3332885D3F500165246 /* LibraryRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryRatingView.swift; sourceTree = "<group>"; };
+		7137B5022895FF0E0085124B /* YearsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearsListView.swift; sourceTree = "<group>"; };
+		7137B504289600060085124B /* Date+CurrentYear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+CurrentYear.swift"; sourceTree = "<group>"; };
+		7137B506289607560085124B /* YearRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearRowView.swift; sourceTree = "<group>"; };
 		7142581D28906BDD0068BAAF /* IconPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerView.swift; sourceTree = "<group>"; };
 		7142582028907A7D0068BAAF /* Book+Filtering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Book+Filtering.swift"; sourceTree = "<group>"; };
 		71466B20288F7B9E00270FF5 /* FlipWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FlipWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -260,6 +266,7 @@
 				718B4A832891DA3D005DA8C1 /* Book */,
 				71E473092889CF7F00FE208E /* Color+Theme.swift */,
 				71D75EFD2894BB630046C6CA /* Calendar+StartOfTimeframe.swift */,
+				7137B504289600060085124B /* Date+CurrentYear.swift */,
 				718B4A792891B7F3005DA8C1 /* DateFormatter+MultipleFormats.swift */,
 				718D8DEF289224A9002B6866 /* ImagePipeline+Cover.swift */,
 			);
@@ -306,6 +313,8 @@
 			isa = PBXGroup;
 			children = (
 				71C624E32880B5F8007B2CAF /* StatsView.swift */,
+				7137B5022895FF0E0085124B /* YearsListView.swift */,
+				7137B506289607560085124B /* YearRowView.swift */,
 				718D8DEB2891F106002B6866 /* StatsBookListView.swift */,
 				7160DBC3288DDABE00560B85 /* ReadingGoalView.swift */,
 				71541F1128875877009C7DC1 /* StatsWeekView.swift */,
@@ -598,9 +607,12 @@
 				71EA3EF12887A4AB005ADB91 /* LibraryListView.swift in Sources */,
 				7107F4542882032300CE89A5 /* GoogleBooksResponse.swift in Sources */,
 				71C624E82880B8EF007B2CAF /* LibraryBookView.swift in Sources */,
+				7137B507289607560085124B /* YearRowView.swift in Sources */,
 				7160DBC6288E164600560B85 /* ExportView.swift in Sources */,
+				7137B5032895FF0E0085124B /* YearsListView.swift in Sources */,
 				71D75EFE2894BB630046C6CA /* Calendar+StartOfTimeframe.swift in Sources */,
 				7107F45628820DE700CE89A5 /* SearchedBookView.swift in Sources */,
+				7137B505289600060085124B /* Date+CurrentYear.swift in Sources */,
 				71E002BE288095B8006E23DF /* FlipApp.swift in Sources */,
 				718D8DF0289224A9002B6866 /* ImagePipeline+Cover.swift in Sources */,
 				7160DBC4288DDABE00560B85 /* ReadingGoalView.swift in Sources */,

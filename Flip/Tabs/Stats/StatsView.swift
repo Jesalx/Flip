@@ -84,7 +84,7 @@ struct StatsView: View {
                     .navigationDestination(for: StatsRoute.self) { route in
                         switch route {
                         case .yearList:
-                            EmptyView()
+                            YearsListView()
                         case let .list(bookFilter):
                             StatsBookListView(bookFilter: bookFilter)
                         case let .book(book):
