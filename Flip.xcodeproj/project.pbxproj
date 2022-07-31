@@ -263,11 +263,9 @@
 		71B2BC222884B21100D4078C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				71CE11922896F52300D73E55 /* Date */,
 				718B4A832891DA3D005DA8C1 /* Book */,
 				71E473092889CF7F00FE208E /* Color+Theme.swift */,
-				71D75EFD2894BB630046C6CA /* Calendar+StartOfTimeframe.swift */,
-				7137B504289600060085124B /* Date+CurrentYear.swift */,
-				718B4A792891B7F3005DA8C1 /* DateFormatter+MultipleFormats.swift */,
 				718D8DEF289224A9002B6866 /* ImagePipeline+Cover.swift */,
 			);
 			path = Extensions;
@@ -360,6 +358,16 @@
 				7107897D288CAA470000656A /* GoodreadsBook.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		71CE11922896F52300D73E55 /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				718B4A792891B7F3005DA8C1 /* DateFormatter+MultipleFormats.swift */,
+				7137B504289600060085124B /* Date+CurrentYear.swift */,
+				71D75EFD2894BB630046C6CA /* Calendar+StartOfTimeframe.swift */,
+			);
+			path = Date;
 			sourceTree = "<group>";
 		};
 		71E002B1288095B8006E23DF = {
