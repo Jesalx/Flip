@@ -63,6 +63,7 @@
 		71C624E42880B5F8007B2CAF /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C624E32880B5F8007B2CAF /* StatsView.swift */; };
 		71C624E82880B8EF007B2CAF /* LibraryBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C624E72880B8EF007B2CAF /* LibraryBookView.swift */; };
 		71C89AC12888F865003BD8E3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C89AC02888F865003BD8E3 /* SettingsView.swift */; };
+		71CE11942896F9B600D73E55 /* ResetCacheView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CE11932896F9B600D73E55 /* ResetCacheView.swift */; };
 		71D75EFC28947B950046C6CA /* WelcomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D75EFB28947B950046C6CA /* WelcomeScreenView.swift */; };
 		71D75EFE2894BB630046C6CA /* Calendar+StartOfTimeframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D75EFD2894BB630046C6CA /* Calendar+StartOfTimeframe.swift */; };
 		71E002BE288095B8006E23DF /* FlipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E002BD288095B8006E23DF /* FlipApp.swift */; };
@@ -162,6 +163,7 @@
 		71C624E32880B5F8007B2CAF /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		71C624E72880B8EF007B2CAF /* LibraryBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryBookView.swift; sourceTree = "<group>"; };
 		71C89AC02888F865003BD8E3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		71CE11932896F9B600D73E55 /* ResetCacheView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetCacheView.swift; sourceTree = "<group>"; };
 		71D75EFB28947B950046C6CA /* WelcomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenView.swift; sourceTree = "<group>"; };
 		71D75EFD2894BB630046C6CA /* Calendar+StartOfTimeframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+StartOfTimeframe.swift"; sourceTree = "<group>"; };
 		71E002BA288095B8006E23DF /* Flip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flip.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -350,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				71C89AC02888F865003BD8E3 /* SettingsView.swift */,
+				71CE11932896F9B600D73E55 /* ResetCacheView.swift */,
 				7142581D28906BDD0068BAAF /* IconPickerView.swift */,
 				71E473072889CC0800FE208E /* ThemePickerView.swift */,
 				71078978288CA9550000656A /* ImportView.swift */,
@@ -625,6 +628,7 @@
 				718D8DF0289224A9002B6866 /* ImagePipeline+Cover.swift in Sources */,
 				7160DBC4288DDABE00560B85 /* ReadingGoalView.swift in Sources */,
 				71C624E22880B5D5007B2CAF /* SearchView.swift in Sources */,
+				71CE11942896F9B600D73E55 /* ResetCacheView.swift in Sources */,
 				71C624DE2880A149007B2CAF /* LibraryView.swift in Sources */,
 				7107897E288CAA470000656A /* GoodreadsBook.swift in Sources */,
 				716EED80288A03C600E659E1 /* UpdateGoalView.swift in Sources */,

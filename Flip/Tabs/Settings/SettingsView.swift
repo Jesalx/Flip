@@ -66,6 +66,7 @@ struct SettingsView: View {
                     NavigationLink("Import", destination: ImportView())
                     NavigationLink("Export", destination: ExportView())
                     Button("Welcome Screen") { showingWelcome = true }
+                    ResetCacheView()
                     Button("Delete Library", role: .destructive) { showingDeleteConfirmation = true }
                         .confirmationDialog("Delete Library", isPresented: $showingDeleteConfirmation) {
                             Button("Delete Library", role: .destructive) { dataController.deleteAll() }
