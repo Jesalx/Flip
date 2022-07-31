@@ -29,7 +29,6 @@ struct StatsBookListView: View {
         }
 
         self.bookFilter = bookFilter
-        let sortOrder = Book.SortOrder.readDate
 
         let readPredicate = Book.getPredicate(.readBooks)
         let timePredicate = Book.getPredicate(bookFilter)
@@ -40,7 +39,7 @@ struct StatsBookListView: View {
 
         booksRequest = FetchRequest<Book>(
             entity: Book.entity(),
-            sortDescriptors: Book.getSort(sortOrder),
+            sortDescriptors: Book.getSort(.readDate),
             predicate: predicate,
             animation: .default
         )

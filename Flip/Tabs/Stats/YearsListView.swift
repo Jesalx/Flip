@@ -32,7 +32,7 @@ struct YearsListView: View {
                     }
                 }
             }
-            .padding()
+            .padding(.horizontal)
         }
         .navigationTitle("Years")
     }
