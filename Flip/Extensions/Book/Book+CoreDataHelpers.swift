@@ -31,7 +31,7 @@ extension Book {
     }
 
     var bookSummary: String {
-        summary ?? "No Description."
+        summary ?? "No Description"
     }
 
     var bookDateRead: Date {
