@@ -1,9 +1,8 @@
 
-<p align="center">
-    <img src=".github/flip_rounded_icon.png" width="70">
-</p>
-
-# Flip
+<div align="center">
+    <img valign="middle" src=".github/flip_rounded_icon.png" width="70">
+    <h1>Flip</h1>
+</div>
 
 Flip is a project aimed at helping users manage their library of books. It has a clean user interface, allows users to sort and filter their library with various conditions, and offers interesting insight into user reading history. Flip syncs user data across their devices and integrates with [Spotlight](https://developer.apple.com/documentation/corespotlight). Flip's minimum requirements are iOS 16 and iPadOS 16.
 
