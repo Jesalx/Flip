@@ -93,9 +93,9 @@ struct GoodreadsBook {
         )
     }
 
-    func saveGoodreadsBook(dataController: DataController, onlyValidDates: Bool = false) {
-        guard self.isValid(onlyValidDates) else { return }
-        guard !dataController.containsBook(id: self.goodreadsId) else { return }
+    func saveGoodreadsBook(dataController: DataController, onlyValidDates: Bool = false) -> Int {
+        guard self.isValid(onlyValidDates) else { return 0 }
+        guard !dataController.containsBook(id: self.goodreadsId) else { return 0 }
         let managedObjectContext = dataController.container.viewContext
         let book = Book(context: managedObjectContext)
 
@@ -132,6 +132,7 @@ struct GoodreadsBook {
 
         dataController.save()
         dataController.update(book)
+        return 1
     }
 
     func strToDate(date: String) -> Date? {

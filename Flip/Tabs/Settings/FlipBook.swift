@@ -59,8 +59,8 @@ struct FlipBook: Identifiable {
         self.summary = row[13].isEmpty ? nil : row[13]
     }
 
-    func saveFlipBook(dataController: DataController) {
-        guard !dataController.containsBook(id: self.id) else { return }
+    func saveFlipBook(dataController: DataController) -> Int {
+        guard !dataController.containsBook(id: self.id) else { return 0 }
 
         let managedObjectContext = dataController.container.viewContext
         let book = Book(context: managedObjectContext)
@@ -82,6 +82,7 @@ struct FlipBook: Identifiable {
 
         dataController.save()
         dataController.update(book)
+        return 1
     }
 
     func createCsvRow() -> String {

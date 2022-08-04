@@ -22,9 +22,10 @@ struct ImportView: View {
     @State private var fileUrl: URL?
     @State private var addingBooks = false
     @State private var importOnlyValidDates = false
-    @State private var showingFlipImportConfirmation = false
-    @State private var showingGoodreadsImportConfirmation = false
     @State private var showingImportConfirmation = false
+    @State private var showingFinishAlert = false
+    @State private var booksImported = 0
+    @State private var totalBooks = 0
 
     var body: some View {
         Form {
@@ -86,23 +87,32 @@ struct ImportView: View {
         } message: {
             Text("Are you sure you want to import '\(fileName)' as a \(importType.rawValue.capitalized) import?")
         }
+        .alert("Import Status", isPresented: $showingFinishAlert) {
+            Button("OK") { }
+        } message: {
+            Text("Imported \(booksImported) of \(totalBooks) books.")
+        }
     }
-    
+
     func makeBooks() {
+        booksImported = 0
+        totalBooks = 0
         switch importType {
         case .flip:
             makeFlipBooks()
         case .goodreads:
             makeGoodreadsBooks()
         }
+        showingFinishAlert = true
     }
 
     func makeFlipBooks() {
         guard let csv = try? getCsvFromUrl(url: fileUrl) else { return }
         fileUrl = nil
         for row in csv.rows {
+            totalBooks += 1
             if let book = FlipBook(row: row) {
-                book.saveFlipBook(dataController: dataController)
+                booksImported += book.saveFlipBook(dataController: dataController)
             }
         }
     }
@@ -111,8 +121,9 @@ struct ImportView: View {
         guard let csv = try? getCsvFromUrl(url: fileUrl) else { return }
         fileUrl = nil
         for row in csv.rows {
+            totalBooks += 1
             if let book = GoodreadsBook(row: row) {
-                book.saveGoodreadsBook(dataController: dataController, onlyValidDates: importOnlyValidDates)
+                booksImported += book.saveGoodreadsBook(dataController: dataController, onlyValidDates: importOnlyValidDates)
             }
         }
     }
