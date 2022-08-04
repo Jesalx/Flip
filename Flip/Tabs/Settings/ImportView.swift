@@ -9,10 +9,14 @@ import SwiftCSV
 import SwiftUI
 
 struct ImportView: View {
+    enum ImportOption: String, CaseIterable {
+        case flip, goodreads
+    }
 
     @EnvironmentObject var dataController: DataController
     @Environment(\.managedObjectContext) var managedObjectContext
 
+    @State private var importType: ImportOption = .flip
     @State private var showingImport = false
     @State private var fileName = ""
     @State private var fileUrl: URL?
@@ -20,9 +24,28 @@ struct ImportView: View {
     @State private var importOnlyValidDates = false
     @State private var showingFlipImportConfirmation = false
     @State private var showingGoodreadsImportConfirmation = false
+    @State private var showingImportConfirmation = false
 
     var body: some View {
         Form {
+            Section {
+                Picker("Import Type", selection: $importType.animation()) {
+                    ForEach(ImportOption.allCases, id: \.self) {
+                        Text($0.rawValue.capitalized)
+                    }
+                }
+                if importType == .goodreads {
+                    Toggle("Only Valid Read Dates", isOn: $importOnlyValidDates)
+                }
+            } header: {
+                Text("Import Options")
+            } footer: {
+                if importType == .goodreads {
+                    // swiftlint:disable:next line_length
+                    Text("Goodreads doesn't always accurately provide the date that user's mark a book read or ISBN numbers. Flip will only import books with a valid ISBN and provides an option to choose whether you would like to import only books with valid read dates. Books without valid read dates will have their read dates marked as today.")
+                }
+            }
+            
             Section("Select File") {
                 Button("Select file") {
                     showingImport = true
@@ -31,26 +54,10 @@ struct ImportView: View {
                     Text(fileName)
                 }
             }
-
-            Section("Flip") {
-                Button("Import from Flip") {
-                    showingFlipImportConfirmation = true
-                }
-                .disabled(fileUrl == nil || addingBooks)
-            }
-
-            Section {
-                Toggle("Only Valid Read Dates", isOn: $importOnlyValidDates)
-
-                Button("Import from Goodreads") {
-                    showingGoodreadsImportConfirmation = true
-                }
-                .disabled(fileUrl == nil || addingBooks)
-            } header: {
-                Text("Goodreads")
-            } footer: {
-                // swiftlint:disable:next line_length
-                Text("Goodreads doesn't always accurately provide the date that user's mark a book read or ISBN numbers. Flip will only import books with a valid ISBN and provides an option to choose whether you would like to import only books with valid read dates. Books without valid read dates will have their read dates marked as today.")
+            
+            Section("Import") {
+                Button("Import from \(importType.rawValue.capitalized)") { showingImportConfirmation = true }
+                    .disabled(fileUrl == nil || addingBooks)
             }
         }
         .navigationTitle("Import")
@@ -69,25 +76,24 @@ struct ImportView: View {
                 print("Import CSV Error: \(error)")
             }
         }
-        .confirmationDialog("Import", isPresented: $showingFlipImportConfirmation) {
+        .confirmationDialog("Import", isPresented: $showingImportConfirmation) {
             Button("Import") {
                 addingBooks = true
-                makeFlipBooks()
+                makeBooks()
                 addingBooks = false
             }
             Button("Cancel", role: .cancel) { }
         } message: {
-            Text("Are you sure you want to import '\(fileName)' as a Flip import?")
+            Text("Are you sure you want to import '\(fileName)' as a \(importType.rawValue.capitalized) import?")
         }
-        .confirmationDialog("Import", isPresented: $showingGoodreadsImportConfirmation) {
-            Button("Import") {
-                addingBooks = true
-                makeGoodreadsBooks()
-                addingBooks = false
-            }
-            Button("Cancel", role: .cancel) { }
-        } message: {
-            Text("Are you sure you want to import '\(fileName)' as a Goodreads import?")
+    }
+    
+    func makeBooks() {
+        switch importType {
+        case .flip:
+            makeFlipBooks()
+        case .goodreads:
+            makeGoodreadsBooks()
         }
     }
 
