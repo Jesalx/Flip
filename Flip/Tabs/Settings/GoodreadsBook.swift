@@ -93,11 +93,12 @@ struct GoodreadsBook {
         )
     }
 
-    func saveGoodreadsBook(dataController: DataController, onlyValidDates: Bool = false) -> Int {
+    func saveGoodreadsBook(dataController: DataController, onlyValidDates: Bool, overwriteDuplicates: Bool) -> Int {
         guard self.isValid(onlyValidDates) else { return 0 }
-        guard !dataController.containsBook(id: self.goodreadsId) else { return 0 }
+        guard overwriteDuplicates == true || !dataController.containsBook(id: self.goodreadsId) else { return 0 }
+
         let managedObjectContext = dataController.container.viewContext
-        let book = Book(context: managedObjectContext)
+        let book = dataController.book(id: self.goodreadsId) ?? Book(context: managedObjectContext)
 
         book.id = self.goodreadsId
         book.title = self.title

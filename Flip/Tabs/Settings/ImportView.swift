@@ -26,6 +26,7 @@ struct ImportView: View {
     @State private var showingFinishAlert = false
     @State private var booksImported = 0
     @State private var totalBooks = 0
+    @State private var overwriteDuplicates = true
 
     var body: some View {
         Form {
@@ -35,6 +36,7 @@ struct ImportView: View {
                         Text($0.rawValue.capitalized)
                     }
                 }
+                Toggle("Overwrite Duplicate Books", isOn: $overwriteDuplicates)
                 if importType == .goodreads {
                     Toggle("Only Valid Read Dates", isOn: $importOnlyValidDates)
                 }
@@ -46,7 +48,7 @@ struct ImportView: View {
                     Text("Goodreads doesn't always accurately provide the date that user's mark a book read or ISBN numbers. Flip will only import books with a valid ISBN and provides an option to choose whether you would like to import only books with valid read dates. Books without valid read dates will have their read dates marked as today.")
                 }
             }
-            
+
             Section("Select File") {
                 Button("Select file") {
                     showingImport = true
@@ -55,7 +57,7 @@ struct ImportView: View {
                     Text(fileName)
                 }
             }
-            
+
             Section("Import") {
                 Button("Import from \(importType.rawValue.capitalized)") { showingImportConfirmation = true }
                     .disabled(fileUrl == nil || addingBooks)
@@ -112,7 +114,10 @@ struct ImportView: View {
         for row in csv.rows {
             totalBooks += 1
             if let book = FlipBook(row: row) {
-                booksImported += book.saveFlipBook(dataController: dataController)
+                booksImported += book.saveFlipBook(
+                    dataController: dataController,
+                    overwriteDuplicates: overwriteDuplicates
+                )
             }
         }
     }
@@ -123,7 +128,11 @@ struct ImportView: View {
         for row in csv.rows {
             totalBooks += 1
             if let book = GoodreadsBook(row: row) {
-                booksImported += book.saveGoodreadsBook(dataController: dataController, onlyValidDates: importOnlyValidDates)
+                booksImported += book.saveGoodreadsBook(
+                    dataController: dataController,
+                    onlyValidDates: importOnlyValidDates,
+                    overwriteDuplicates: overwriteDuplicates
+                )
             }
         }
     }

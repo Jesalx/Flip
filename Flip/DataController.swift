@@ -190,6 +190,13 @@ class DataController: ObservableObject {
         save()
     }
 
+    func book(id: String) -> Book? {
+        let fetchRequest: NSFetchRequest<Book> = NSFetchRequest(entityName: "Book")
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+        let results = try? container.viewContext.fetch(fetchRequest)
+        return results?.first
+    }
+
     func book(with uniqueIdentifier: String) -> Book? {
         guard let url = URL(string: uniqueIdentifier) else {
             return nil

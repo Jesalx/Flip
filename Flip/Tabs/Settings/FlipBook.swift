@@ -59,11 +59,13 @@ struct FlipBook: Identifiable {
         self.summary = row[13].isEmpty ? nil : row[13]
     }
 
-    func saveFlipBook(dataController: DataController) -> Int {
-        guard !dataController.containsBook(id: self.id) else { return 0 }
+    func saveFlipBook(dataController: DataController, overwriteDuplicates: Bool) -> Int {
+        // Only continue if we're overwriting duplicates or this book id doesn't exist
+        guard overwriteDuplicates == true || !dataController.containsBook(id: self.id) else { return 0 }
 
         let managedObjectContext = dataController.container.viewContext
-        let book = Book(context: managedObjectContext)
+        // dataController.book(id: String) will return a book if it exists, otherwise create new book
+        let book = dataController.book(id: self.id) ?? Book(context: managedObjectContext)
 
         book.id = self.id
         book.title = self.title
