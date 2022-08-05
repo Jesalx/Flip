@@ -56,7 +56,7 @@ struct WelcomeScreenView: View {
                             icon: Image(systemName: "paintpalette"),
                             iconColor: .red,
                             title: "Appearance",
-                            content: "Customize your app by picking a color in the Settings tab (garbage)."
+                            content: "Customize your app by picking a color in the Settings tab."
                         )
                     }
                 }
