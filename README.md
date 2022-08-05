@@ -23,3 +23,66 @@ Flip is built using the [Swift](https://www.swift.org) language, [SwiftUI](https
 - **Import/Export**: Flip allows users to import and export so that they can easily move services while maintaining their library.
 - **Custom Entries**: Flip allows users to create custom entries for their library or modify existing entries if they want to add additional details or change the book cover image.
 
+## Screenshots
+
+### Library
+
+<p float="left">
+    <img src=".github/DemoImages/Library.png" width="200"/>
+    <img src=".github/DemoImages/Filter%20Options.png" width="200"/>
+    <img src=".github/DemoImages/Sorting%20Options.png" width="200"/>
+    <img src=".github/DemoImages/Book%20Detail%20Mark%20Read.png" width="200"/>
+    <img src=".github/DemoImages/Book%20Edit%20Top.png" width="200"/>
+    <img src=".github/DemoImages/Book%20Edit%20Bottom.png" width="200"/>
+</p>
+
+### Search
+
+<p float="left">
+    <img src=".github/DemoImages/Search.png" width="200"/>
+</p>
+
+### Stats
+
+<p float="left">
+    <img src=".github/DemoImages/Stats.png" width="200"/>
+    <img src=".github/DemoImages/Stats%20w:%20goal.png" width="200"/>
+    <img src=".github/DemoImages/stats%20w%20graph.png" width="200"/>
+    <img src=".github/DemoImages/Stats%20Page%20Demo.gif" width="200"/>
+</p>
+
+### Settings
+
+<p float="left">
+    <img src=".github/DemoImages/Settings%20top.png" width="200"/>
+    <img src=".github/DemoImages/Color%20options.png" width="200"/>
+    <img src=".github/DemoImages/Icon%20Options.png" width="200"/>
+    <img src=".github/DemoImages/Icon%20Options%20Extra.png" width="200"/>
+    <img src=".github/DemoImages/Import%20Flip.png" width="200"/>
+    <img src=".github/DemoImages/Import%20Goodreads.png" width="200"/>
+    <img src="" width="200"/>
+</p>
+
+### Example Color Scheme
+
+<p float="left">
+    <img src=".github/DemoImages/Example%20Color%20Green.png" width="200"/>
+    <img src=".github/DemoImages/Example%20Color%20Mint.png" width="200"/>
+    <img src=".github/DemoImages/Example%20Color%20Yellow.png" width="200"/>
+    <img src=".github/DemoImages/Example%20Color%20Purple.png" width="200"/>
+</p>
+
+### Widgets
+
+<p float="left">
+    <img src=".github/DemoImages/Widget%20Small%20Mint.png" width="200"/>
+    <img src=".github/DemoImages/Widget%20Medium%20Green.png" width="200"/>
+    <img src=".github/DemoImages/Widget%20Medium%20Mint.png" width="200"/>
+    <img src=".github/DemoImages/Widget%20Medium%20Green.png" width="200"/>
+</p>
+
+### Other
+
+<p float="left">
+    <img src=".github/DemoImages/Welcome%20Screen.png" width="200"/>
+</p>
