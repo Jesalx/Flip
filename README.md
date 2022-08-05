@@ -60,7 +60,6 @@ Flip is built using the [Swift](https://www.swift.org) language, [SwiftUI](https
     <img src=".github/DemoImages/Icon%20Options%20Extra.png" width="200"/>
     <img src=".github/DemoImages/Import%20Flip.png" width="200"/>
     <img src=".github/DemoImages/Import%20Goodreads.png" width="200"/>
-    <img src="" width="200"/>
 </p>
 
 ### Example Color Scheme
