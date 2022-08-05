@@ -75,7 +75,7 @@ Flip is built using the [Swift](https://www.swift.org) language, [SwiftUI](https
 
 <p float="left">
     <img src=".github/DemoImages/Widget%20Small%20Mint.png" width="200"/>
-    <img src=".github/DemoImages/Widget%20Medium%20Green.png" width="200"/>
+    <img src=".github/DemoImages/Widget%20Small%20Green.png" width="200"/>
     <img src=".github/DemoImages/Widget%20Medium%20Mint.png" width="200"/>
     <img src=".github/DemoImages/Widget%20Medium%20Green.png" width="200"/>
 </p>
