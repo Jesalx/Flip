@@ -26,7 +26,7 @@ struct WelcomeScreenView: View {
                             icon: Image(systemName: "text.book.closed.fill"),
                             iconColor: .indigo,
                             title: "Library",
-                            content: "Keeps up with books you've read and want to read in the Library tab."
+                            content: "Keep up with books you've read and want to read in the Library tab."
                         )
 
                         WelcomeCategoryView(
