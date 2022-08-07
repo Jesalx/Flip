@@ -13,7 +13,7 @@ Flip is built using the [Swift](https://www.swift.org) language, [SwiftUI](https
 
 - **Clean User Interface**: Flip offers a clean user interface with a simple, intuitive interface.
 - **iCloud Data Sync**: Flip seamlessly syncs user data across iCloud enabled devices.
-- **Security**: Users can optionally require biometrics such as [Face ID](https://support.apple.com/en-us/HT208108) or [Touch ID](https://support.apple.com/en-us/HT201371) in order to access Flip.
+- **Security**: Users can optionally require authentication using [Face ID](https://support.apple.com/en-us/HT208108), [Touch ID](https://support.apple.com/en-us/HT201371), or Device Password in order to access Flip.
 - **Spotlight Integration**: Flip integrates with Apple's [Spotlight](https://developer.apple.com/documentation/corespotlight) to allow users easier access to their library.
 - **Reading Goal**: Flip allows users to set a reading goal and keeps them up to date on their progress.
 - **Stats**: Flip provides stats on user reading history and provides insight into user reading/rating habits.
