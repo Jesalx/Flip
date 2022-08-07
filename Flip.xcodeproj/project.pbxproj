@@ -48,6 +48,7 @@
 		718B4A7E2891CAC4005DA8C1 /* BookEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718B4A7D2891CAC4005DA8C1 /* BookEditView.swift */; };
 		718B4A802891D72F005DA8C1 /* Book+Cleaning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718B4A7F2891D72F005DA8C1 /* Book+Cleaning.swift */; };
 		718B4A822891DA25005DA8C1 /* Book+Sharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718B4A812891DA25005DA8C1 /* Book+Sharing.swift */; };
+		718B919328A0396B008F34FD /* RatingsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718B919228A0396B008F34FD /* RatingsListView.swift */; };
 		718D8DEA2891E55C002B6866 /* BookListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D8DE92891E55C002B6866 /* BookListView.swift */; };
 		718D8DEC2891F106002B6866 /* StatsBookListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D8DEB2891F106002B6866 /* StatsBookListView.swift */; };
 		718D8DF0289224A9002B6866 /* ImagePipeline+Cover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D8DEF289224A9002B6866 /* ImagePipeline+Cover.swift */; };
@@ -146,6 +147,7 @@
 		718B4A7D2891CAC4005DA8C1 /* BookEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookEditView.swift; sourceTree = "<group>"; };
 		718B4A7F2891D72F005DA8C1 /* Book+Cleaning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Book+Cleaning.swift"; sourceTree = "<group>"; };
 		718B4A812891DA25005DA8C1 /* Book+Sharing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Book+Sharing.swift"; sourceTree = "<group>"; };
+		718B919228A0396B008F34FD /* RatingsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingsListView.swift; sourceTree = "<group>"; };
 		718D8DE92891E55C002B6866 /* BookListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListView.swift; sourceTree = "<group>"; };
 		718D8DEB2891F106002B6866 /* StatsBookListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsBookListView.swift; sourceTree = "<group>"; };
 		718D8DEF289224A9002B6866 /* ImagePipeline+Cover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImagePipeline+Cover.swift"; sourceTree = "<group>"; };
@@ -316,11 +318,12 @@
 			children = (
 				71C624E32880B5F8007B2CAF /* StatsView.swift */,
 				7137B5022895FF0E0085124B /* YearsListView.swift */,
-				718D8DEB2891F106002B6866 /* StatsBookListView.swift */,
+				718B919228A0396B008F34FD /* RatingsListView.swift */,
 				7160DBC3288DDABE00560B85 /* ReadingGoalView.swift */,
 				71541F1128875877009C7DC1 /* StatsWeekView.swift */,
 				7124C1DA288864B80070FAFB /* StatsMonthView.swift */,
 				716EED7D2889E77A00E659E1 /* StatsRatingView.swift */,
+				718D8DEB2891F106002B6866 /* StatsBookListView.swift */,
 				7135B32F2885C63C00165246 /* StatsRowView.swift */,
 				7135B3312885CB4A00165246 /* LifetimeRowView.swift */,
 				716EED7F288A03C600E659E1 /* UpdateGoalView.swift */,
@@ -657,6 +660,7 @@
 				71078979288CA9550000656A /* ImportView.swift in Sources */,
 				71E002CD288095D4006E23DF /* Flip.xcdatamodeld in Sources */,
 				71541F1228875877009C7DC1 /* StatsWeekView.swift in Sources */,
+				718B919328A0396B008F34FD /* RatingsListView.swift in Sources */,
 				718B4A7E2891CAC4005DA8C1 /* BookEditView.swift in Sources */,
 				7135B3322885CB4A00165246 /* LifetimeRowView.swift in Sources */,
 				71C624E42880B5F8007B2CAF /* StatsView.swift in Sources */,

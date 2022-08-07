@@ -9,6 +9,7 @@ import SwiftUI
 
 enum StatsRoute: Hashable {
     case yearList
+    case ratingList
     case list(Book.BookFilter)
     case book(Book)
 }
@@ -81,16 +82,6 @@ struct StatsView: View {
                             StatsRowView(filter: .monthlyBooks)
                         }
                     }
-                    .navigationDestination(for: StatsRoute.self) { route in
-                        switch route {
-                        case .yearList:
-                            YearsListView()
-                        case let .list(bookFilter):
-                            StatsBookListView(bookFilter: bookFilter)
-                        case let .book(book):
-                            LibraryBookView(book: book)
-                        }
-                    }
                     .padding()
                     VStack {
                         Picker("Time Range", selection: $timeRange.animation()) {
@@ -112,10 +103,24 @@ struct StatsView: View {
                         .padding(.top, 6)
                         VStack(alignment: .leading) {
                             Text("Ratings").font(.caption.weight(.semibold)).padding(.horizontal)
-                            StatsRatingView(books: chartBooks)
-                                .frame(height: 100)
-                                .padding(.horizontal)
+                            NavigationLink(value: StatsRoute.ratingList) {
+                                StatsRatingView(books: chartBooks)
+                                    .frame(height: 100)
+                                    .padding(.horizontal)
+                            }
                         }
+                    }
+                }
+                .navigationDestination(for: StatsRoute.self) { route in
+                    switch route {
+                    case .yearList:
+                        YearsListView()
+                    case .ratingList:
+                        RatingsListView()
+                    case let .list(bookFilter):
+                        StatsBookListView(bookFilter: bookFilter)
+                    case let .book(book):
+                        LibraryBookView(book: book)
                     }
                 }
             }

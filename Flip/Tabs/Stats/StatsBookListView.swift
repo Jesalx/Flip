@@ -18,6 +18,16 @@ struct StatsBookListView: View {
 
     init(bookFilter: Book.BookFilter) {
         switch bookFilter {
+        case .allBooks:
+            self.titleString = "All"
+        case .readBooks:
+            self.titleString = "Read"
+        case .unreadBooks:
+            self.titleString = "Unread"
+        case .ratedBooks:
+            self.titleString = "Rated"
+        case .unratedBooks:
+            self.titleString = "Unrated"
         case .yearlyBooks:
             self.titleString = Date.now.formatted(.dateTime.year())
         case .monthlyBooks:
@@ -26,8 +36,6 @@ struct StatsBookListView: View {
             self.titleString = String(year)
         case let .specificRating(rating):
             self.titleString = rating == 0 ? "Unrated" : "\(rating) Stars"
-        default:
-            self.titleString = Date.now.formatted(.dateTime.year())
         }
 
         self.bookFilter = bookFilter

@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct YearsListView: View {
-
     let booksRequest: FetchRequest<Book>
 
     var yearsWithReadBooks: [Int] {

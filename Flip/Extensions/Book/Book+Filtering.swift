@@ -13,7 +13,7 @@ extension Book {
     }
 
     enum BookFilter: Equatable, Hashable {
-        case allBooks, readBooks, unreadBooks, unratedBooks, yearlyBooks, monthlyBooks
+        case allBooks, readBooks, unreadBooks, ratedBooks, unratedBooks, yearlyBooks, monthlyBooks
         case specificYear(Int)
         case specificRating(Int)
     }
@@ -27,6 +27,8 @@ extension Book {
             predicate = NSPredicate(format: "read = true")
         case .unreadBooks:
             predicate = NSPredicate(format: "read = false")
+        case .ratedBooks:
+            predicate = NSPredicate(format: "read = true AND rating != 0")
         case .unratedBooks:
             predicate = NSPredicate(format: "read = true AND rating = 0")
         case .yearlyBooks:
@@ -46,7 +48,7 @@ extension Book {
                 startOfNextYear as NSDate
             )
         case let .specificRating(rating):
-            predicate = NSPredicate(format: "rating = %@", rating)
+            predicate = NSPredicate(format: "rating == %d", rating)
         }
         return predicate
     }

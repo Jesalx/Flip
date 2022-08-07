@@ -36,6 +36,8 @@ struct StatsRowView: View {
             titleString = "Lifetime"
         case .unreadBooks:
             titleString = "Unread"
+        case .ratedBooks:
+            titleString = "Rated"
         case .unratedBooks:
             titleString = "Unrated"
         case .yearlyBooks:
