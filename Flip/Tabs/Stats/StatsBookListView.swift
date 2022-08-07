@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StatsBookListView: View {
     let bookFilter: Book.BookFilter
-    let dateString: String
+    let titleString: String
 
     let booksRequest: FetchRequest<Book>
     var books: [Book] {
@@ -19,13 +19,15 @@ struct StatsBookListView: View {
     init(bookFilter: Book.BookFilter) {
         switch bookFilter {
         case .yearlyBooks:
-            self.dateString = Date.now.formatted(.dateTime.year())
+            self.titleString = Date.now.formatted(.dateTime.year())
         case .monthlyBooks:
-            self.dateString = Date.now.formatted(.dateTime.month(.wide))
+            self.titleString = Date.now.formatted(.dateTime.month(.wide))
         case let .specificYear(year):
-            self.dateString = String(year)
+            self.titleString = String(year)
+        case let .specificRating(rating):
+            self.titleString = rating == 0 ? "Unrated" : "\(rating) Stars"
         default:
-            self.dateString = Date.now.formatted(.dateTime.year())
+            self.titleString = Date.now.formatted(.dateTime.year())
         }
 
         self.bookFilter = bookFilter
@@ -55,7 +57,7 @@ struct StatsBookListView: View {
                 LibraryRowView(book: book)
             }
         }
-        .navigationTitle(dateString)
+        .navigationTitle(titleString)
     }
 }
 

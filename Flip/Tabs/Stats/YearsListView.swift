@@ -28,7 +28,7 @@ struct YearsListView: View {
             VStack {
                 ForEach(yearsWithReadBooks, id: \.self) { year in
                     NavigationLink(value: StatsRoute.list(.specificYear(year))) {
-                        YearRowView(year: year)
+                        StatsRowView(filter: .specificYear(year))
                     }
                 }
             }

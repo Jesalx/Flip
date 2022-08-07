@@ -15,6 +15,7 @@ extension Book {
     enum BookFilter: Equatable, Hashable {
         case allBooks, readBooks, unreadBooks, unratedBooks, yearlyBooks, monthlyBooks
         case specificYear(Int)
+        case specificRating(Int)
     }
 
     static func getPredicate(_ bookFilter: BookFilter) -> NSPredicate {
@@ -44,6 +45,8 @@ extension Book {
                 startOfYear as NSDate,
                 startOfNextYear as NSDate
             )
+        case let .specificRating(rating):
+            predicate = NSPredicate(format: "rating = %@", rating)
         }
         return predicate
     }

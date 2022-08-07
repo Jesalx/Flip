@@ -70,15 +70,15 @@ struct StatsView: View {
                     VStack {
                         if showLifetimeBooksRead {
                             NavigationLink(value: StatsRoute.yearList) {
-                                LifetimeRowView(books: readBooks)
+                                StatsRowView(filter: .readBooks)
                             }
                         }
 
                         NavigationLink(value: StatsRoute.list(.yearlyBooks)) {
-                            StatsRowView(books: yearlyReadBooks, dateStyle: .dateTime.year())
+                            StatsRowView(filter: .yearlyBooks)
                         }
                         NavigationLink(value: StatsRoute.list(.monthlyBooks)) {
-                            StatsRowView(books: monthlyReadBooks, dateStyle: .dateTime.month(.wide))
+                            StatsRowView(filter: .monthlyBooks)
                         }
                     }
                     .navigationDestination(for: StatsRoute.self) { route in
