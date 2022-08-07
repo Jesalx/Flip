@@ -60,6 +60,7 @@ struct LibraryView: View {
                     Button("Author") { changeSort(to: .author) }
                     Button("Title") { changeSort(to: .title) }
                     Button("Page Count") { changeSort(to: .pageCount) }
+                    Button("Rating") { changeSort(to: .rating) }
                     Button("Finish Date") { changeSort(to: .readDate) }
                     Button("Publication Date") { changeSort(to: .publicationDate) }
                     Button("Cancel", role: .cancel) { }

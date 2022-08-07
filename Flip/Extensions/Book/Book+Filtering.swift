@@ -9,7 +9,7 @@ import Foundation
 
 extension Book {
     enum SortOrder {
-        case title, author, pageCount, publicationDate, readDate
+        case title, author, rating, pageCount, publicationDate, readDate
     }
 
     enum BookFilter: Equatable, Hashable {
@@ -59,6 +59,14 @@ extension Book {
         case .author:
             descriptor = [
                 NSSortDescriptor(keyPath: \Book.author, ascending: true),
+                NSSortDescriptor(keyPath: \Book.publicationDate, ascending: true)
+            ]
+        case .rating:
+            descriptor = [
+                NSSortDescriptor(keyPath: \Book.read, ascending: false),
+                NSSortDescriptor(keyPath: \Book.rating, ascending: false),
+                NSSortDescriptor(keyPath: \Book.author, ascending: true),
+                NSSortDescriptor(keyPath: \Book.dateRead, ascending: true),
                 NSSortDescriptor(keyPath: \Book.publicationDate, ascending: true)
             ]
         case .pageCount:
