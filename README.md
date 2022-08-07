@@ -83,5 +83,6 @@ Flip is built using the [Swift](https://www.swift.org) language, [SwiftUI](https
 ### Other
 
 <p float="left">
+    <img src=".github/DemoImages/Spotlight%20Search.png" width="200"/>
     <img src=".github/DemoImages/Welcome%20Screen.png" width="200"/>
 </p>
