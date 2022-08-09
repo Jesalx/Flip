@@ -19,24 +19,29 @@ extension Book {
     }
 
     static func getPredicate(_ bookFilter: BookFilter) -> NSPredicate {
+        let readPredicate = NSPredicate(format: "read = true")
         var predicate: NSPredicate
         switch bookFilter {
         case .allBooks:
             predicate = NSPredicate(value: true)
         case .readBooks:
-            predicate = NSPredicate(format: "read = true")
+            predicate = readPredicate
         case .unreadBooks:
             predicate = NSPredicate(format: "read = false")
         case .ratedBooks:
-            predicate = NSPredicate(format: "read = true AND rating != 0")
+            let ratedPredicate = NSPredicate(format: "rating != 0")
+            predicate = NSCompoundPredicate(type: .and, subpredicates: [readPredicate, ratedPredicate])
         case .unratedBooks:
-            predicate = NSPredicate(format: "read = true AND rating = 0")
+            let unratedPredicate = NSPredicate(format: "rating = 0")
+            predicate = NSCompoundPredicate(type: .and, subpredicates: [readPredicate, unratedPredicate])
         case .yearlyBooks:
             let startOfYear = Calendar.current.startOfYear(for: Date.now)
-            predicate = NSPredicate(format: "dateRead >= %@", startOfYear as NSDate)
+            let yearPredicate = NSPredicate(format: "dateRead >= %@", startOfYear as NSDate)
+            predicate = NSCompoundPredicate(type: .and, subpredicates: [readPredicate, yearPredicate])
         case .monthlyBooks:
             let startOfMonth = Calendar.current.startOfMonth(for: Date.now)
-            predicate = NSPredicate(format: "dateRead >= %@", startOfMonth as NSDate)
+            let monthPredicate = NSPredicate(format: "dateRead >= %@", startOfMonth as NSDate)
+            predicate = NSCompoundPredicate(type: .and, subpredicates: [readPredicate, monthPredicate])
         case let .specificYear(year):
             let date = DateFormatter().dateFromMultipleFormats(from: String(year)) ?? .now
             let startOfYear = Calendar.current.startOfYear(for: date)
@@ -48,7 +53,6 @@ extension Book {
                 startOfNextYear as NSDate
             )
         case let .specificRating(rating):
-            let readPredicate = NSPredicate(format: "read = true")
             let ratingPredicate = NSPredicate(format: "rating == %d", rating)
             predicate = NSCompoundPredicate(type: .and, subpredicates: [readPredicate, ratingPredicate])
         }
