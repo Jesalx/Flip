@@ -48,7 +48,9 @@ extension Book {
                 startOfNextYear as NSDate
             )
         case let .specificRating(rating):
-            predicate = NSPredicate(format: "rating == %d", rating)
+            let readPredicate = NSPredicate(format: "read = true")
+            let ratingPredicate = NSPredicate(format: "rating == %d", rating)
+            predicate = NSCompoundPredicate(type: .and, subpredicates: [readPredicate, ratingPredicate])
         }
         return predicate
     }
